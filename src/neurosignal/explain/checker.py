@@ -6,8 +6,8 @@ The checker uses no model. It reports one finding per violation:
 
   UNKNOWN_KEY        the cited key is not in the metrics
   VALUE_MISMATCH     the number before a citation differs from the metric at
-                     the precision written (|w - v| > half a unit in the last
-                     written decimal place)
+                     the precision written (|w - v| not below half a unit in
+                     the last written decimal place)
   MISSING_VALUE      a citation has no number (numeric metric) or does not
                      contain the cited text (string / list metric) before it
   UNCITED_NUMBER     a number with no citation
@@ -61,9 +61,12 @@ class CheckResult:
 
 
 def _matches(written: str, value: float) -> bool:
+    """Strictly less than half a unit in the last written place. An exact tie
+    (0.5 written as 0 or 1) is ambiguous between rounding conventions and is
+    rejected: write one more decimal (BUILD_JOURNAL ISSUE-007)."""
     decimals = len(written.split(".")[1]) if "." in written else 0
-    tol = 0.5 * 10.0**-decimals + 1e-9 * abs(value)
-    return abs(float(written) - value) <= tol
+    half = 0.5 * 10.0**-decimals
+    return abs(float(written) - value) < half - 1e-12 * max(1.0, abs(value))
 
 
 def _numeric(key: str, segment: str, value: float) -> tuple[Finding | None, bool]:

@@ -17,7 +17,13 @@ DISCLAIMER = (
 
 
 def _num(x: float, decimals: int) -> str:
-    return f"{x:.{decimals}f}"
+    """Round to `decimals`, adding decimals while the result would be an exact
+    rounding tie (rejected by the checker as ambiguous)."""
+    for d in range(decimals, 9):
+        text = f"{x:.{d}f}"
+        if abs(float(text) - x) < 0.5 * 10.0**-d * (1 - 1e-9):
+            return text
+    return repr(x)
 
 
 def _c(value: Any, key: str, decimals: int = 2) -> str:

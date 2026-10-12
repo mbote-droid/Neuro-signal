@@ -154,6 +154,7 @@ class SynthSpec:
     line_noise_uv: float = 10.0
     blinks_per_min: float = 0.0
     muscle_per_min: float = 0.0
+    alpha_bursts_per_min: float = 0.0
     alpha: bool = True
 
 
@@ -185,6 +186,7 @@ def make_recording(seed: int, spec: SynthSpec | None = None) -> tuple[Recording,
     events = _add_events(data, t, seed, spec, channels, background_rms)
     _add_blinks(data, t, seed, spec, channels)
     _add_muscle(data, seed, spec, channels, background_rms)
+    _add_alpha_bursts(data, seed, spec, channels, background_rms)
     if spec.line_noise_uv > 0:
         phase = rng(seed, 4).uniform(0, 2 * np.pi)
         data += spec.line_noise_uv * np.sin(2 * np.pi * 50.0 * t + phase)
@@ -287,6 +289,36 @@ def _add_muscle(
         for ch in g.choice(sites, size=int(g.integers(1, 4)), replace=False):
             k = channels.index(str(ch))
             data[k, i0 : i0 + dur] += g.uniform(1.0, 3.0) * background_rms[k] * burst
+
+
+def _add_alpha_bursts(
+    data: FloatArray,
+    seed: int,
+    spec: SynthSpec,
+    channels: tuple[str, ...],
+    background_rms: FloatArray,
+) -> None:
+    """Normal rhythms that are not events: posterior alpha bursts (eyes closed,
+    drowsiness) of 3-30 s at 8-13 Hz, and spindle-like 11-15 Hz trains.
+    Added after the CHB-MIT development run showed them as the main source of
+    false detections (BUILD_JOURNAL ISSUE-009)."""
+    if spec.alpha_bursts_per_min <= 0:
+        return
+    g = rng(seed, 7)
+    posterior = [c for c in ("P3", "Pz", "P4", "P7", "P8", "O1", "O2") if c in channels]
+    central = [c for c in ("F3", "Fz", "F4", "C3", "Cz", "C4") if c in channels]
+    n_total = data.shape[1]
+    for _ in range(g.poisson(spec.alpha_bursts_per_min * spec.duration_s / 60)):
+        spindle = g.random() < 0.3
+        dur = int((g.uniform(0.8, 2.5) if spindle else g.uniform(3.0, 30.0)) * spec.sfreq)
+        i0 = int(g.uniform(0, n_total - dur))
+        f0 = g.uniform(11.0, 15.0) if spindle else g.uniform(8.0, 13.0)
+        rhythm = ChannelSpectrum(offset=0.0, exponent=0.0, peaks=(Peak(f0, 2.0, 0.4),))
+        burst = shaped_noise(rhythm, dur, spec.sfreq, g) * _envelope(dur, spec.sfreq, ramp_s=0.5)
+        burst /= max(float(np.sqrt(np.mean(burst**2))), 1e-12)
+        for ch in central if spindle else posterior:
+            k = channels.index(ch)
+            data[k, i0 : i0 + dur] += g.uniform(1.5, 4.0) * background_rms[k] * burst
 
 
 def _add_bad_channels(

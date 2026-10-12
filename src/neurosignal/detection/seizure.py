@@ -8,10 +8,12 @@ is compared with the recording's own baseline through a robust z-score of
 log LL. A window is active when at least `channel_fraction` of the good
 channels exceed `z_threshold`; active windows closer than `merge_gap_s`
 are merged and events shorter than `min_duration_s` are dropped. Finally a
-rhythmicity gate keeps an event only if the dominant frequency of its
-band-limited spectrum lies in 2-13 Hz (delta to alpha, where ictal rhythms
-are); spectra peaking at the band edges come from blinks and drift (about
-1 Hz) or muscle leaking into the band (about 20 Hz). The gate limits come
+rhythmicity gate keeps an event only if its dominant frequency lies in
+2-13 Hz (delta to alpha, where ictal rhythms are). The dominant frequency is
+the peak of the event spectrum *divided by the background spectrum of the
+same channels*: a raw spectrum peaks at the lowest frequencies because of
+the 1/f background (the H1 confound; BUILD_JOURNAL ISSUE-008). Blinks and
+drift put the ratio peak near 1 Hz, muscle near 20 Hz. The gate limits come
 from physiology, not from tuning.
 
 The detector is unsupervised: it never sees labels. Its thresholds were
@@ -54,7 +56,7 @@ class DetectorParams:
     step_s: float = 1.0
     z_threshold: float = 3.0
     channel_fraction: float = 0.05
-    min_duration_s: float = 8.0
+    min_duration_s: float = 4.0
     merge_gap_s: float = 5.0
     band_hz: tuple[float, float] = (1.0, 20.0)
     rhythm_hz: tuple[float, float] = (2.0, 13.0)
@@ -98,13 +100,19 @@ def detect(rec: Recording, params: DetectorParams | None = None) -> list[Detecte
     return rhythm_gate(events_from_z(z, chans, p), x, chans, rec.sfreq, p)
 
 
-def dominant_frequency(seg: FloatArray, sfreq: float, band: tuple[float, float]) -> float:
-    """Peak of the channel-averaged Welch spectrum of seg (channels, samples) within band."""
+def dominant_frequency(
+    seg: FloatArray, sfreq: float, band: tuple[float, float], background: FloatArray | None = None
+) -> float:
+    """Peak frequency within band of the channel-averaged Welch spectrum of seg
+    (channels, samples), divided by `background` (same channels, same Welch
+    settings) when given."""
     nper = min(seg.shape[-1], int(2 * sfreq))
     f, pxx = signal.welch(seg, fs=sfreq, nperseg=nper, axis=-1)
-    mean = pxx.mean(axis=0) if pxx.ndim == 2 else pxx
+    spec = pxx.mean(axis=0) if pxx.ndim == 2 else pxx
+    if background is not None and background.shape == spec.shape:
+        spec = spec / np.maximum(background, 1e-30)
     m = (f >= band[0]) & (f <= band[1])
-    return float(f[m][np.argmax(mean[m])])
+    return float(f[m][np.argmax(spec[m])])
 
 
 def rhythm_gate(
@@ -115,10 +123,15 @@ def rhythm_gate(
     p: DetectorParams,
 ) -> list[DetectedEvent]:
     kept = []
+    if not events:
+        return kept
+    nper = int(2 * sfreq)
+    _, bg = signal.welch(x, fs=sfreq, nperseg=min(nper, x.shape[-1]), axis=-1)
     for e in events:
         idx = [chans.index(c) for c in e.channels] or list(range(len(chans)))
         seg = x[idx, int(e.onset_s * sfreq) : int(e.offset_s * sfreq)]
-        f_dom = dominant_frequency(seg, sfreq, p.band_hz)
+        background = bg[idx].mean(axis=0) if seg.shape[-1] >= nper else None
+        f_dom = dominant_frequency(seg, sfreq, p.band_hz, background)
         if p.rhythm_hz[0] <= f_dom <= p.rhythm_hz[1]:
             kept.append(replace(e, dominant_freq_hz=f_dom))
     return kept
