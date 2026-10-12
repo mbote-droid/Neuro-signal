@@ -79,6 +79,9 @@ def main() -> None:
             }
         )
     feasible = [r for r in rows if r["false_per_hour"] <= MAX_FALSE_PER_HOUR]
+    if not feasible:
+        write_result("detector_tuning_infeasible", {"seeds": [TUNING_SEEDS.start, TUNING_SEEDS.stop - 1], "grid": rows})
+        raise SystemExit("no setting meets the false-detection constraint; grid saved")
     best = max(
         feasible,
         key=lambda r: (

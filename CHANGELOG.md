@@ -17,7 +17,7 @@ semantic versioning.
 - Rhythmic seizure-like event detector (1-20 Hz line length, robust z, channel
   vote, background-normalised rhythm gate) with thresholds chosen on synthetic
   data only.
-- Deterministic explainer, optional Claude explainer, and a mechanical claim
+- Deterministic explainer, optional LLM explainer, and a mechanical claim
   checker; self-contained HTML report with citation chips.
 - Synthetic ground-truth generators; validation campaign; detector tuning;
   explanation mutants; test-suite mutation testing; generated validation
