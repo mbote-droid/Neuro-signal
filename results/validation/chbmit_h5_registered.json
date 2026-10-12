@@ -1,0 +1,241 @@
+{
+  "H5_accepted": false,
+  "dataset": "CHB-MIT Scalp EEG Database v1.0.0 (PhysioNet), subject chb01",
+  "experiment": "chbmit_h5_registered",
+  "false_detections": 5,
+  "false_per_hour": 0.5183585313174945,
+  "false_per_hour_upper95": 1.2096584836352755,
+  "files": 10,
+  "hits": 2,
+  "hours": 9.645833333333334,
+  "note": "H5 as pre-registered: detector v1 (raw-spectrum rhythm gate), first and only confirmatory run on chb01.",
+  "onset_latency_median_s": 1.0,
+  "provenance": {
+    "git": {
+      "commit": "651fe2d864e6ecebed90ccd883a41bb4870bb90c",
+      "dirty": true
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "rows": [
+    {
+      "bad_channels": [],
+      "detections": [
+        [
+          54.0,
+          64.0,
+          3.5,
+          3
+        ],
+        [
+          1981.0,
+          1990.0,
+          2.0,
+          4
+        ]
+      ],
+      "false": 2,
+      "file": "chb01_01.edf",
+      "hits": 0,
+      "hours": 1.0,
+      "latencies_s": [],
+      "runtime_s": 9.646071226999993,
+      "seizures": [],
+      "sha256": "92ec026f633dca94ee74c2e2b67cf9d58aa50da700b650a1696cf497dac073e3"
+    },
+    {
+      "bad_channels": [],
+      "detections": [
+        [
+          2413.0,
+          2425.0,
+          2.5,
+          1
+        ]
+      ],
+      "false": 1,
+      "file": "chb01_02.edf",
+      "hits": 0,
+      "hours": 1.0,
+      "latencies_s": [],
+      "runtime_s": 9.792101355999876,
+      "seizures": [],
+      "sha256": "185bebea970f5dfac5b3044d04b9f7c4fa007b8c6bbea744e8b69f8b39d1f060"
+    },
+    {
+      "bad_channels": [],
+      "detections": [],
+      "false": 0,
+      "file": "chb01_03.edf",
+      "hits": 0,
+      "hours": 1.0,
+      "latencies_s": [],
+      "runtime_s": 9.712424353999722,
+      "seizures": [
+        [
+          2996.0,
+          3036.0
+        ]
+      ],
+      "sha256": "4c4a95a9b4331aeaadadd538763eb2e735950d9aa615b85ee6246c784be8ae90"
+    },
+    {
+      "bad_channels": [],
+      "detections": [],
+      "false": 0,
+      "file": "chb01_04.edf",
+      "hits": 0,
+      "hours": 1.0,
+      "latencies_s": [],
+      "runtime_s": 9.612742480000179,
+      "seizures": [
+        [
+          1467.0,
+          1494.0
+        ]
+      ],
+      "sha256": "d91d190b2362697fe2cdef922a593baabadcb12fde437bd8d50c01b084ca9030"
+    },
+    {
+      "bad_channels": [],
+      "detections": [
+        [
+          36.0,
+          48.0,
+          2.0,
+          1
+        ]
+      ],
+      "false": 1,
+      "file": "chb01_05.edf",
+      "hits": 0,
+      "hours": 1.0,
+      "latencies_s": [],
+      "runtime_s": 7.765638743000181,
+      "seizures": [],
+      "sha256": "935accfd943e9ab372e65e21fbfd1e93a5c84e32dc717b685548f3301cc2fd6e"
+    },
+    {
+      "bad_channels": [],
+      "detections": [],
+      "false": 0,
+      "file": "chb01_15.edf",
+      "hits": 0,
+      "hours": 1.0,
+      "latencies_s": [],
+      "runtime_s": 7.715758296999866,
+      "seizures": [
+        [
+          1732.0,
+          1772.0
+        ]
+      ],
+      "sha256": "00157966600e41bec0754d189d4fb92b020b214cb7e559df1421c6dc29ee8eca"
+    },
+    {
+      "bad_channels": [],
+      "detections": [],
+      "false": 0,
+      "file": "chb01_16.edf",
+      "hits": 0,
+      "hours": 1.0,
+      "latencies_s": [],
+      "runtime_s": 7.619168375999834,
+      "seizures": [
+        [
+          1015.0,
+          1066.0
+        ]
+      ],
+      "sha256": "6c90e98a1938c9c2308ac9777ba3221dc5811d93db4186ff09f50b9a4ee7c710"
+    },
+    {
+      "bad_channels": [],
+      "detections": [],
+      "false": 0,
+      "file": "chb01_18.edf",
+      "hits": 0,
+      "hours": 1.0,
+      "latencies_s": [],
+      "runtime_s": 7.6091900010001154,
+      "seizures": [
+        [
+          1720.0,
+          1810.0
+        ]
+      ],
+      "sha256": "da6c386c78d6f8348b38886b90bf67e4dc2e6f26e5eb657c1920d612fc0651b5"
+    },
+    {
+      "bad_channels": [],
+      "detections": [
+        [
+          327.0,
+          420.0,
+          2.0,
+          13
+        ],
+        [
+          3262.0,
+          3277.0,
+          2.0,
+          1
+        ]
+      ],
+      "false": 1,
+      "file": "chb01_21.edf",
+      "hits": 1,
+      "hours": 1.0,
+      "latencies_s": [
+        0.0
+      ],
+      "runtime_s": 6.142553543999838,
+      "seizures": [
+        [
+          327.0,
+          420.0
+        ]
+      ],
+      "sha256": "ceb3e5c3e6d513ed8894d6d5d5fd4599c5650e98a1a1c960660b0031b720e559"
+    },
+    {
+      "bad_channels": [],
+      "detections": [
+        [
+          1864.0,
+          1963.0,
+          2.0,
+          10
+        ]
+      ],
+      "false": 0,
+      "file": "chb01_26.edf",
+      "hits": 1,
+      "hours": 0.6458333333333334,
+      "latencies_s": [
+        2.0
+      ],
+      "runtime_s": 4.129564748999655,
+      "seizures": [
+        [
+          1862.0,
+          1963.0
+        ]
+      ],
+      "sha256": "c70832d28f4e2905e5f0179fdb7d5ec24c4f24006adf6a9905b60072a75cc630"
+    }
+  ],
+  "seizures": 7,
+  "sensitivity": 0.2857142857142857,
+  "sensitivity_wilson": [
+    0.08221892400405678,
+    0.6410655481673808
+  ]
+}

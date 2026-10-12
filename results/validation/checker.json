@@ -1,0 +1,87 @@
+{
+  "H4_accepted": true,
+  "blind_spots": {
+    "number_as_words": {
+      "applied": 60,
+      "caught": 0
+    }
+  },
+  "caught": 2153,
+  "equivalent_mutants": 7,
+  "experiment": "checker",
+  "faithful_accepted": 60,
+  "false_reject_upper95": 0.05,
+  "live_mutants": 2153,
+  "miss_rate_upper95": 0.0013934045517882026,
+  "n_explanations": 60,
+  "operators": {
+    "diagnostic": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
+      "mutants": 240
+    },
+    "drop_citation": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
+      "mutants": 240
+    },
+    "fake_channel": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
+      "mutants": 240
+    },
+    "no_disclaimer": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
+      "mutants": 240
+    },
+    "perturb_number": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
+      "mutants": 240
+    },
+    "scale_1000": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
+      "mutants": 240
+    },
+    "swap_key": {
+      "caught": 233,
+      "equivalent": 7,
+      "live": 233,
+      "mutants": 240
+    },
+    "uncited_number": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
+      "mutants": 240
+    },
+    "unknown_key": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
+      "mutants": 240
+    }
+  },
+  "provenance": {
+    "git": {
+      "commit": "651fe2d864e6ecebed90ccd883a41bb4870bb90c",
+      "dirty": true
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  }
+}

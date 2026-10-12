@@ -1,0 +1,23 @@
+{
+  "P-01_pass": true,
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "experiment": "resources",
+  "peak_rss_mb": 1547.7890625,
+  "provenance": {
+    "git": {
+      "commit": "651fe2d864e6ecebed90ccd883a41bb4870bb90c",
+      "dirty": true
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "recording": "synthetic, 32 channels, 3600 s, 256 Hz (29.5 M samples, 236 MB float64)",
+  "runtime_s": 10.929902524000227,
+  "threads": 1
+}

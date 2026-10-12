@@ -1,0 +1,32 @@
+{
+  "V-04_pass": true,
+  "experiment": "qc",
+  "fn": 0,
+  "fp": 0,
+  "n_recordings": 100,
+  "precision": 1.0,
+  "precision_wilson": [
+    0.9812466731939421,
+    0.9999999999999999
+  ],
+  "provenance": {
+    "git": {
+      "commit": "651fe2d864e6ecebed90ccd883a41bb4870bb90c",
+      "dirty": true
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "recall": 1.0,
+  "recall_wilson": [
+    0.9812466731939421,
+    0.9999999999999999
+  ],
+  "tp": 201
+}
