@@ -47,7 +47,7 @@ class PipelineConfig:
     ll_z_threshold: float = 2.5
     ll_channel_fraction: float = 0.05
     ll_min_duration_s: float = 10.0
-    ll_merge_gap_s: float = 5.0
+    ll_merge_gap_s: float = 1.0
     ll_band_hz: tuple[float, float] = (1.0, 20.0)
     rhythm_band_hz: tuple[float, float] = (2.0, 7.5)
     # reproducibility

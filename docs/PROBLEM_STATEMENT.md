@@ -164,3 +164,10 @@ result on it after the revision is post hoc.
   alarm exposure). Chosen by this rule before downloading.
 * **No changes after the run.** Whatever the result, it is reported as is;
   any later change to the detector needs another untouched subject.
+
+**Frozen detector for H6.** The detector tested on chb03 is the one at the
+commit that adds this paragraph: 1-20 Hz line length, robust z > 2.5,
+one-channel vote, events of at least 10 s, 1 s merge gap, and a rhythm gate
+on the fundamental of the background-normalised spectrum in 2-7.5 Hz
+(BUILD_JOURNAL ISSUE-008 to ISSUE-011). chb03 data had not been downloaded
+when this was committed.

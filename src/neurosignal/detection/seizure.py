@@ -57,7 +57,7 @@ class DetectorParams:
     z_threshold: float = 2.5
     channel_fraction: float = 0.05
     min_duration_s: float = 10.0
-    merge_gap_s: float = 5.0
+    merge_gap_s: float = 1.0
     band_hz: tuple[float, float] = (1.0, 20.0)
     rhythm_hz: tuple[float, float] = (2.0, 7.5)
 
