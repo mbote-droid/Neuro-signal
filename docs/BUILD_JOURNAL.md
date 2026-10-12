@@ -156,3 +156,26 @@ Mitigation: model the failure in simulation first: add alpha bursts
 the generator, add the gate's upper limit (13 vs 8 Hz) to the tuning grid,
 and let the synthetic rule choose. Then freeze the detector before chb03.
 Verification: see `detector_tuning.json` and the H2/H6 results.
+
+### ISSUE-010 Harmonics, an 8.0 Hz bin edge, and an infeasible constraint   (2026-10-12)
+Phase: development (synthetic, after ISSUE-009)
+Symptom: with alpha and spindle bursts simulated, no grid setting met the
+1 false/h tuning constraint (best 1.3/h at sensitivity 0.48); with the
+2-8 Hz gate, sensitivity fell to 0.70.
+Root cause, established by listing every candidate on 20 tuning seeds:
+(1) dividing by the 1/f background boosts the harmonics of a spike-wave
+train, so the largest peak of the ratio was often at 6-9 Hz instead of the
+2.5-5 Hz fundamental; (2) alpha bursts drawn at 8.0-8.25 Hz fall into the
+8.0 Hz Welch bin and passed an inclusive "<= 8 Hz" gate. A third hypothesis,
+that the common average reference spread posterior alpha into frontal
+channels, was tested (detection with and without CAR on 20 seeds) and
+rejected: no change at 2-13 Hz.
+Mitigation: the gate reads the fundamental (lowest peak at least half the
+largest) of the background-normalised spectrum; the delta-theta option is
+2-7.5 Hz. On 20 tuning seeds the fundamental raised sensitivity from 0.70
+to 0.83 at the narrow gate. The tuning constraint was revised from 1 to
+2 false detections per hour, H2's own pre-registered limit, because the
+original one had no feasible setting; both the infeasible grid
+(`detector_tuning_infeasible.json`) and the revision are kept.
+Lesson: a realistic negative class (normal rhythms) is worth more than any
+amount of tuning on an easy one.

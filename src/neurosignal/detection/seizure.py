@@ -8,10 +8,10 @@ is compared with the recording's own baseline through a robust z-score of
 log LL. A window is active when at least `channel_fraction` of the good
 channels exceed `z_threshold`; active windows closer than `merge_gap_s`
 are merged and events shorter than `min_duration_s` are dropped. Finally a
-rhythmicity gate keeps an event only if its dominant frequency lies in
-2-13 Hz (delta to alpha, where ictal rhythms are). The dominant frequency is
-the peak of the event spectrum *divided by the background spectrum of the
-same channels*: a raw spectrum peaks at the lowest frequencies because of
+rhythmicity gate keeps an event only if its fundamental frequency lies in a
+physiological band (delta-theta 2-7.5 Hz or delta-alpha 2-13 Hz, chosen by
+the synthetic tuning rule). The fundamental is the lowest strong peak of the
+event spectrum *divided by the background spectrum of the same channels*: a raw spectrum peaks at the lowest frequencies because of
 the 1/f background (the H1 confound; BUILD_JOURNAL ISSUE-008). Blinks and
 drift put the ratio peak near 1 Hz, muscle near 20 Hz. The gate limits come
 from physiology, not from tuning.
@@ -101,18 +101,36 @@ def detect(rec: Recording, params: DetectorParams | None = None) -> list[Detecte
 
 
 def dominant_frequency(
-    seg: FloatArray, sfreq: float, band: tuple[float, float], background: FloatArray | None = None
+    seg: FloatArray,
+    sfreq: float,
+    band: tuple[float, float],
+    background: FloatArray | None = None,
+    rel: float = 0.5,
 ) -> float:
-    """Peak frequency within band of the channel-averaged Welch spectrum of seg
-    (channels, samples), divided by `background` (same channels, same Welch
-    settings) when given."""
+    """Fundamental frequency of seg (channels, samples) within band: the lowest
+    spectral peak reaching `rel` of the largest one, in the channel-averaged
+    Welch spectrum divided by `background` when given.
+
+    The lowest strong peak, not the largest: dividing by a 1/f background
+    boosts the harmonics of a spike-wave train above its fundamental
+    (BUILD_JOURNAL ISSUE-010)."""
     nper = min(seg.shape[-1], int(2 * sfreq))
     f, pxx = signal.welch(seg, fs=sfreq, nperseg=nper, axis=-1)
     spec = pxx.mean(axis=0) if pxx.ndim == 2 else pxx
     if background is not None and background.shape == spec.shape:
         spec = spec / np.maximum(background, 1e-30)
     m = (f >= band[0]) & (f <= band[1])
-    return float(f[m][np.argmax(spec[m])])
+    fb, sb = f[m], spec[m]
+    peaks, _ = signal.find_peaks(np.concatenate([[0.0], sb, [0.0]]))
+    peaks = peaks - 1
+    peaks = peaks[sb[peaks] >= rel * sb.max()]
+    return float(fb[peaks.min()]) if peaks.size else float(fb[np.argmax(sb)])
+
+
+def background_spectra(x: FloatArray, sfreq: float) -> FloatArray:
+    """Per-channel Welch spectra of the whole band-limited recording."""
+    nper = min(int(2 * sfreq), x.shape[-1])
+    return np.asarray(signal.welch(x, fs=sfreq, nperseg=nper, axis=-1)[1], dtype=np.float64)
 
 
 def rhythm_gate(
@@ -121,17 +139,19 @@ def rhythm_gate(
     chans: tuple[str, ...],
     sfreq: float,
     p: DetectorParams,
+    background: FloatArray | None = None,
 ) -> list[DetectedEvent]:
-    kept = []
+    """`background` is background_spectra(x, sfreq), computed here if not given."""
+    kept: list[DetectedEvent] = []
     if not events:
         return kept
     nper = int(2 * sfreq)
-    _, bg = signal.welch(x, fs=sfreq, nperseg=min(nper, x.shape[-1]), axis=-1)
+    bg = background if background is not None else background_spectra(x, sfreq)
     for e in events:
         idx = [chans.index(c) for c in e.channels] or list(range(len(chans)))
         seg = x[idx, int(e.onset_s * sfreq) : int(e.offset_s * sfreq)]
-        background = bg[idx].mean(axis=0) if seg.shape[-1] >= nper else None
-        f_dom = dominant_frequency(seg, sfreq, p.band_hz, background)
+        ref = bg[idx].mean(axis=0) if seg.shape[-1] >= nper else None
+        f_dom = dominant_frequency(seg, sfreq, p.band_hz, ref)
         if p.rhythm_hz[0] <= f_dom <= p.rhythm_hz[1]:
             kept.append(replace(e, dominant_freq_hz=f_dom))
     return kept

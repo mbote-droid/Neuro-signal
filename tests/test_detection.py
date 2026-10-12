@@ -80,3 +80,18 @@ def test_detector_params_defaults_match_config():
         cfg.ll_z_threshold, cfg.ll_channel_fraction, cfg.ll_min_duration_s, cfg.rhythm_band_hz,
     )  # fmt: skip
     assert np.isclose(d.window_s, cfg.ll_window_s)
+
+
+def test_rhythm_gate_reads_the_fundamental_not_a_harmonic():
+    """A 3 Hz spike-wave train over a 1/f background: the background-normalised
+    spectrum peaks on a harmonic, but the fundamental is 3 Hz."""
+    from neurosignal.core.seeds import rng
+    from neurosignal.detection.seizure import background_spectra, dominant_frequency
+    from neurosignal.synth.eeg import ChannelSpectrum, shaped_noise, spike_wave
+
+    fs = 256.0
+    t = np.arange(int(60 * fs)) / fs
+    bg = shaped_noise(ChannelSpectrum(1.5, 2.0), t.size, fs, rng(9))
+    event = bg + 3 * np.std(bg) * spike_wave(t, 3.0, 3.0)
+    ref = background_spectra(bg[None, :], fs)[0]
+    assert abs(dominant_frequency(event[None, :], fs, (1.0, 20.0), ref) - 3.0) <= 0.5
