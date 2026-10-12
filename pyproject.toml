@@ -1,0 +1,71 @@
+[project]
+name = "neurosignal"
+version = "0.1.0"
+description = "Drop an EEG file, get a validated report: a deterministic, ground-truth-validated EEG pipeline with provenance-checked explanations."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Samuel Ngigi Mbote", email = "mbotesamuel9@gmail.com" }]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.1",
+    "scipy>=1.14",
+    "mne>=1.8",
+    "matplotlib>=3.9",
+]
+
+[project.optional-dependencies]
+llm = ["anthropic>=1.0"]
+
+[project.scripts]
+neurosignal = "neurosignal.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "hypothesis>=6.120",
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "specparam>=2.0.0rc1",
+]
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/neurosignal"]
+
+[tool.uv]
+prerelease = "if-necessary-or-explicit"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+markers = ["slow: runs the pipeline on long recordings or many seeds"]
+filterwarnings = ["error::RuntimeWarning"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "C90", "N", "SIM", "RUF", "PL"]
+ignore = ["PLR2004", "PLR0913", "PLR0917", "PLC0415", "RUF001", "RUF002", "RUF003", "N818"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.per-file-ignores]
+# inline CSS in the HTML template
+"src/neurosignal/report/render.py" = ["E501"]
+"tests/**" = ["PLR0917", "PLC0415", "N802", "N806", "E501"]
+"validation/**" = ["E402", "PLC0415", "PLR0914", "PLR0915", "PLR0912", "C901", "E501", "PLR0911"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/neurosignal"]
+
+[[tool.mypy.overrides]]
+module = ["scipy.*", "mne.*", "matplotlib.*", "anthropic.*"]
+ignore_missing_imports = true
