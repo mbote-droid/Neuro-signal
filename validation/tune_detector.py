@@ -29,9 +29,11 @@ from neurosignal.pipeline import preprocess
 from neurosignal.synth.eeg import make_recording
 from validation.common import TUNING_SEEDS, detection_spec, write_result
 
-Z_GRID = (2.5, 3.0, 4.0, 5.0)
+Z_GRID = (2.5, 3.0, 4.0)
 FRACTION_GRID = (0.05, 0.1, 0.2)
-MIN_DURATION_GRID = (4.0, 6.0, 8.0, 10.0, 15.0)
+MIN_DURATION_GRID = (6.0, 10.0, 15.0)
+# merge gap: blink trains merged across 5 s gaps posed as rhythmic events (ISSUE-011)
+MERGE_GAP_GRID = (1.0, 2.0, 5.0)
 # rhythm gate: delta-alpha (2-13 Hz) or delta-theta (2-7.5 Hz: alpha starts at 8 Hz,
 # and the 0.5 Hz bin at 8.0 Hz holds 8.0-8.25 Hz alpha); both physiological
 RHYTHM_GRID = ((2.0, 13.0), (2.0, 7.5))
@@ -55,10 +57,14 @@ def main() -> None:
         cached.append((x, z, chans, truth, rec.duration_s, clean.sfreq, bg))
         print(f"seed {seed} prepared", file=sys.stderr)
     rows = []
-    grid = itertools.product(Z_GRID, FRACTION_GRID, MIN_DURATION_GRID, RHYTHM_GRID)
-    for zt, frac, mind, rhythm in grid:
+    grid = itertools.product(Z_GRID, FRACTION_GRID, MIN_DURATION_GRID, RHYTHM_GRID, MERGE_GAP_GRID)
+    for zt, frac, mind, rhythm, gap in grid:
         p = DetectorParams(
-            z_threshold=zt, channel_fraction=frac, min_duration_s=mind, rhythm_hz=rhythm
+            z_threshold=zt,
+            channel_fraction=frac,
+            min_duration_s=mind,
+            rhythm_hz=rhythm,
+            merge_gap_s=gap,
         )
         hits = n_true = false = 0
         hours = 0.0
@@ -76,6 +82,7 @@ def main() -> None:
                 "channel_fraction": frac,
                 "min_duration_s": mind,
                 "rhythm_hz": list(rhythm),
+                "merge_gap_s": gap,
                 "sensitivity": hits / n_true,
                 "false_per_hour": false / hours,
                 "hits": hits,
@@ -86,7 +93,10 @@ def main() -> None:
         )
     feasible = [r for r in rows if r["false_per_hour"] <= MAX_FALSE_PER_HOUR]
     if not feasible:
-        write_result("detector_tuning_infeasible", {"seeds": [TUNING_SEEDS.start, TUNING_SEEDS.stop - 1], "grid": rows})
+        write_result(
+            "detector_tuning_infeasible",
+            {"seeds": [TUNING_SEEDS.start, TUNING_SEEDS.stop - 1], "grid": rows},
+        )
         raise SystemExit("no setting meets the false-detection constraint; grid saved")
     best = max(
         feasible,
@@ -95,6 +105,7 @@ def main() -> None:
             r["z_threshold"],
             r["min_duration_s"],
             -r["rhythm_hz"][1],
+            -r["merge_gap_s"],
             -r["channel_fraction"],
         ),
     )

@@ -54,12 +54,12 @@ class DetectedEvent:
 class DetectorParams:
     window_s: float = 2.0
     step_s: float = 1.0
-    z_threshold: float = 3.0
+    z_threshold: float = 2.5
     channel_fraction: float = 0.05
-    min_duration_s: float = 4.0
+    min_duration_s: float = 10.0
     merge_gap_s: float = 5.0
     band_hz: tuple[float, float] = (1.0, 20.0)
-    rhythm_hz: tuple[float, float] = (2.0, 13.0)
+    rhythm_hz: tuple[float, float] = (2.0, 7.5)
 
     def to_dict(self) -> dict[str, Any]:
         return {k: list(v) if isinstance(v, tuple) else v for k, v in self.__dict__.items()}

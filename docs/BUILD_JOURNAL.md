@@ -179,3 +179,22 @@ original one had no feasible setting; both the infeasible grid
 (`detector_tuning_infeasible.json`) and the revision are kept.
 Lesson: a realistic negative class (normal rhythms) is worth more than any
 amount of tuning on an easy one.
+
+### ISSUE-011 Blink trains posed as 2.5 Hz rhythmic events   (2026-10-12)
+Phase: development (synthetic)
+Symptom: after ISSUE-010 the selected setting (z = 2.5) produced
+detections in 5 of 8 five-minute event-free recordings, and the false rate
+on 30 event-free ten-minute recordings was 6.4-6.6/h at z = 2.5, 3 and 4
+alike, far above the 1.9/h on the tuning set.
+Root cause: a blink band-limited to 1-20 Hz is a biphasic wave with most
+energy near 2-3 Hz; at 15 blinks per minute, consecutive blinks were merged
+across the fixed 5 s gap into one long event whose fundamental (2.5 Hz)
+passed the gate. Detections were independent of z because blink line
+length is far above any threshold. The tuning set hid it: every tuning
+recording contained two discharges, and long merged blink runs that touched
+a discharge counted as hits.
+Mitigation: the merge gap (1, 2 or 5 s) joins the tuning grid; one tuning
+and evaluation recording in five is now event-free, so false detections on
+clean background are part of the objective.
+Lesson: include the null case in every tuning set; a detector tuned only on
+recordings that contain events learns to call everything an event.

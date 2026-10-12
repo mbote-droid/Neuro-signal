@@ -20,12 +20,12 @@ SNR_LEVELS_DB = (0.0, 3.0, 6.0, 10.0)
 
 
 def detection_spec(seed: int) -> SynthSpec:
-    """Ten minutes, two discharges, blinks, muscle and normal alpha/spindle
-    bursts; SNR cycles over levels."""
+    """Ten minutes; two discharges (none in one recording of five); blinks,
+    muscle and normal alpha/spindle bursts; SNR cycles over levels."""
     g = rng(seed, 900)
     return SynthSpec(
         duration_s=600.0,
-        n_events=2,
+        n_events=0 if seed % 5 == 4 else 2,  # one recording in five has no events
         snr_db=SNR_LEVELS_DB[seed % len(SNR_LEVELS_DB)],
         n_flat=int(g.integers(0, 2)),
         n_noisy=int(g.integers(0, 2)),

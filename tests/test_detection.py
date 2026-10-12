@@ -71,6 +71,7 @@ def test_config_thresholds_come_from_the_tuning_result():
     assert cfg.ll_channel_fraction == sel["channel_fraction"]
     assert cfg.ll_min_duration_s == sel["min_duration_s"]
     assert list(cfg.rhythm_band_hz) == sel["rhythm_hz"]
+    assert cfg.ll_merge_gap_s == sel["merge_gap_s"]
 
 
 def test_detector_params_defaults_match_config():
