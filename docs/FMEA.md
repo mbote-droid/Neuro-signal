@@ -10,8 +10,8 @@ RPN = S x O x D. O and D values use measured rates where they exist.
 
 | # | failure mode | effect | cause | S | O | D | RPN | mitigation | evidence |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | true rhythmic event missed | reader concludes no event candidates | low-amplitude or focal discharge; fast (> 13 Hz) onset rhythm outside the gate; event spans < 8 s | 8 | 5 | 8 | 320 | research-use banner; "candidates for expert review, not findings"; per-SNR sensitivity and CHB-MIT misses published | VALIDATION_REPORT (synthetic 0 dB sensitivity; CHB-MIT tables) |
-| 2 | false event candidate | wasted review time; alarm fatigue | rhythmic artifact (chewing, electrode pop), alpha bursts | 4 | 4 | 3 | 48 | rhythm gate; false detections per hour reported with upper bound; figure shows the trace | detection and CHB-MIT results |
+| 1 | true rhythmic event missed | reader concludes no event candidates | low-amplitude or focal discharge; ictal rhythm outside the 2-7.5 Hz gate (slow delta < 2 Hz, as in 3 of 7 held-out chb03 seizures, or fast > 7.5 Hz); event shorter than 10 s | 8 | 7 | 8 | 448 | research-use banner; "candidates for expert review, not findings"; per-SNR sensitivity and CHB-MIT misses published | VALIDATION_REPORT (synthetic 0 dB sensitivity; CHB-MIT tables) |
+| 2 | false event candidate | wasted review time; alarm fatigue | blink trains, alpha and spindle bursts, peri-ictal rhythmic activity (3.3/h on held-out chb03) | 4 | 6 | 3 | 72 | rhythm gate; false detections per hour reported with upper bound; figure shows the trace | detection and CHB-MIT results |
 | 3 | band-power change read as oscillation | wrong scientific conclusion | aperiodic exponent shift | 5 | 6 | 7 | 210 | report gives peak power above aperiodic fit next to band power, with an explicit warning | H1 |
 | 4 | spurious connectivity | wrong network conclusion | volume conduction | 5 | 7 | 7 | 245 | dwPLI is the reported measure; PLV shown only as contrast | H3 |
 | 5 | LLM states an uncomputed number or a diagnosis | misinformation in the report | model error | 7 | 4 | 2 | 56 | claim checker; fallback to template; failure shown in report | H4 |
