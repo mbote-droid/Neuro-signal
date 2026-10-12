@@ -168,16 +168,25 @@ zero (FINDINGS F-1). Epochs inside detected events are excluded.
    are not inflated by the events themselves (the same reasoning as
    Quiroga's $\hat\sigma = \operatorname{median}|x| / 0.6745$).
 4. Vote: a window is active when at least a fraction $\phi$ of good channels
-   have $z > \theta$. Merge active runs closer than 5 s; drop runs shorter
-   than $T_{\min}$.
-5. Rhythmicity gate: keep an event only if the dominant frequency of its
-   channel-averaged 1-20 Hz Welch spectrum lies in 2-13 Hz. The gate limits
-   come from physiology and were not tuned.
+   have $z > \theta$. Merge active runs separated by at most $g$ seconds;
+   drop runs shorter than $T_{\min}$.
+5. Rhythmicity gate on the **fundamental of the background-normalised
+   spectrum**. With $\bar P_e(f)$ the channel-averaged Welch spectrum of the
+   event and $\bar P_b(f)$ that of the whole recording on the same channels,
+   $$R(f) = \bar P_e(f) / \bar P_b(f), \qquad
+   f_0 = \min\{f_k : f_k \text{ is a local maximum of } R,\ R(f_k) \ge \tfrac12 \max R\}.$$
+   Keep the event if $f_0$ lies in the gate band. Dividing by $\bar P_b$
+   removes the 1/f background, which otherwise puts the raw maximum at
+   1-2 Hz for any real EEG segment (ISSUE-008); taking the lowest strong peak
+   rather than the largest stops a spike-wave train's harmonics, boosted by
+   the division, from hiding its fundamental (ISSUE-010).
 
-$\theta$, $\phi$, $T_{\min}$ were chosen once on synthetic tuning seeds
-0-59 by a rule fixed in advance (maximise sensitivity subject to ≤ 1 false
-detection per hour; ties to the more conservative setting): $\theta = 3$,
-$\phi = 0.05$ (one channel), $T_{\min} = 8$ s.
+$\theta$, $\phi$, $T_{\min}$, $g$ and the gate band (2-13 Hz or 2-7.5 Hz)
+were chosen on synthetic tuning seeds 0-59 by a rule fixed before each run:
+maximise sensitivity subject to at most 2 false detections per hour (first
+1/h; revised when that proved infeasible, ISSUE-010), ties to the more
+conservative setting. Selected: $\theta = 2.5$, $\phi = 0.05$ (one channel),
+$T_{\min} = 10$ s, $g = 1$ s, gate 2-7.5 Hz (delta-theta).
 
 **Scoring:** any-overlap (OVLP; Ziyabari et al. 2017): a true event is
 detected if any detection overlaps it; a detection overlapping no true event
