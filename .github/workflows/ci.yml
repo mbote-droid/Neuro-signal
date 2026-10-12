@@ -54,7 +54,7 @@ jobs:
           for e in aperiodic h1 qc detection connectivity checker resources; do
             uv run --frozen python validation/campaign.py "$e"
           done
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: validation
           path: results/validation
