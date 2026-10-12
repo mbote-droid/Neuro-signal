@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.env
+.env.*
+# raw recordings are downloaded, checksummed and never committed
+data/
+# report outputs written by the CLI
+out/
+reports/
