@@ -17,6 +17,13 @@ def test_volume_conduction_inflates_plv_but_not_debiased_wpli():
     assert np.percentile(dwpli, 95) <= 0.15
 
 
+def test_debiased_wpli_is_unbiased_under_the_null():
+    """Only the debiased estimator can go negative; its mean is near zero."""
+    d = phase_coupling(mixed_sources(3, duration_s=120.0)).upper("dwpli")
+    assert d.min() < 0
+    assert abs(d.mean()) < 0.01
+
+
 def test_lagged_coupling_is_found():
     """V-07: a truly lagged pair gives wPLI > 0.5."""
     c = phase_coupling(coupled_pair(0))

@@ -126,3 +126,14 @@ def test_property_time_shift_equivariance_away_from_edges(shift, seed):
     y2 = zero_phase(np.roll(x, shift), h)
     core = slice(1000, 3000)
     np.testing.assert_allclose(np.roll(y1, shift)[core], y2[core], atol=1e-9)
+
+
+def test_applied_filter_is_minus_6_db_at_cutoff_not_minus_12():
+    """Single-pass zero phase gives |H| (-6 dB at the windowed-sinc cutoff); a
+    forward-backward pass would give |H|² (-12 dB). Measured on the output."""
+    h = design_bandpass(0.5, 45.0, FS)
+    cutoff = 45.0 + lowpass_transition(45.0, FS) / 2
+    t = np.arange(int(60 * FS)) / FS
+    y = zero_phase(np.sin(2 * np.pi * cutoff * t), h)
+    gain = np.std(y[int(10 * FS) : int(50 * FS)]) * np.sqrt(2)
+    assert abs(gain - 0.5) < 0.03

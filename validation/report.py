@@ -80,11 +80,17 @@ def section_hypotheses(r: dict[str, Any]) -> list[str]:
             f"| {k['caught']}/{k['live_mutants']} caught; {k['faithful_accepted']}/{k['n_explanations']} faithful accepted "
             f"| {_verdict(k['H4_accepted'])} | {_link('checker')} |"
         )
-    if m := r.get("chbmit"):
+    if m := r.get("chbmit_h5_registered"):
         lines.append(
-            f"| H5 transfer to CHB-MIT (exploratory) | >= 5 of 7 seizures at <= 2 false/h "
+            f"| H5 transfer to CHB-MIT chb01 (exploratory, detector v1) | >= 5 of 7 seizures at <= 2 false/h "
             f"| {m['hits']}/{m['seizures']} at {m['false_per_hour']:.2f}/h "
-            f"| {_verdict(m['H5_accepted'])} | {_link('chbmit')} |"
+            f"| {_verdict(m['H5_accepted'])} | {_link('chbmit_h5_registered')} |"
+        )
+    if m := r.get("chbmit_heldout"):
+        lines.append(
+            f"| H6 held-out subject chb03 (frozen detector, one run) | >= 60 % of seizures at <= 2 false/h "
+            f"| {m['hits']}/{m['seizures']} ({m['sensitivity']:.0%}, Wilson {_ci(m['sensitivity_wilson'])}) at {m['false_per_hour']:.2f}/h "
+            f"| {_verdict(m['H6_accepted'])} | {_link('chbmit_heldout')} |"
         )
     return [*lines, ""]
 
@@ -121,7 +127,8 @@ def section_detection(r: dict[str, Any]) -> list[str]:
         "## Event detection on synthetic evaluation seeds",
         "",
         f"{d['n_recordings']} recordings of 10 minutes (seeds {d['seeds'][0]}-{d['seeds'][1]}, disjoint from the tuning seeds), "
-        f"{d['n_true']} injected spike-wave discharges, blinks at 15/min and muscle bursts at 2/min. "
+        f"{d['n_true']} injected spike-wave discharges (one recording in five has none), blinks at 15/min, "
+        "muscle bursts at 2/min, and normal alpha/spindle bursts at 1/min. "
         f"Overall sensitivity {d['sensitivity']:.3f} (Wilson 95 % {_ci(d['sensitivity_wilson'])}); "
         f"{d['false_detections']} false detections in {d['hours']:.1f} h = {d['false_per_hour']:.2f}/h "
         f"(95 % upper bound {d['false_per_hour_upper95']:.2f}/h); median onset latency {_f(d['onset_latency_median_s'], 1)} s.",
@@ -136,17 +143,13 @@ def section_detection(r: dict[str, Any]) -> list[str]:
     return [*lines, ""]
 
 
-def section_chbmit(r: dict[str, Any]) -> list[str]:
-    m = r.get("chbmit")
-    if not m:
-        return []
+def _chb_table(m: dict[str, Any], title: str, note: str, name: str) -> list[str]:
     lines = [
-        "## Real data: CHB-MIT chb01",
+        f"## {title}",
         "",
-        f"{m['dataset']}. {m['files']} files, {m['hours']:.1f} h, {m['seizures']} expert-marked seizures. "
-        "Thresholds were fixed on synthetic tuning seeds before this run and were not changed after it.",
+        f"{m['dataset']}. {m['files']} files, {m['hours']:.1f} h, {m['seizures']} expert-marked seizures. {note}",
         "",
-        "| file | seizures (s) | detections (onset-offset s, rhythm Hz) | hits | false |",
+        "| file | seizures (s) | detections (onset-offset s, fundamental Hz) | hits | false |",
         "|---|---|---|---|---|",
     ]
     for row in m["rows"]:
@@ -157,10 +160,38 @@ def section_chbmit(r: dict[str, Any]) -> list[str]:
         "",
         f"Sensitivity {m['hits']}/{m['seizures']} (Wilson {_ci(m['sensitivity_wilson'])}); "
         f"{m['false_detections']} false detections = {m['false_per_hour']:.2f}/h "
-        f"(95 % upper bound {m['false_per_hour_upper95']:.2f}/h); median onset latency {_f(m['onset_latency_median_s'], 1)} s.",
+        f"(95 % upper bound {m['false_per_hour_upper95']:.2f}/h); median onset latency "
+        f"{_f(m['onset_latency_median_s'], 1)} s. Evidence: {_link(name)}.",
         "",
     ]
     return lines
+
+
+def section_chbmit(r: dict[str, Any]) -> list[str]:
+    out: list[str] = []
+    if m := r.get("chbmit_heldout"):
+        out += _chb_table(
+            m,
+            "Real data, held out: CHB-MIT chb03 (H6)",
+            "Detector frozen and committed before these files were downloaded; run once.",
+            "chbmit_heldout",
+        )
+    if m := r.get("chbmit"):
+        out += _chb_table(
+            m,
+            "Real data, development: CHB-MIT chb01 (post hoc)",
+            "chb01 was H5's test set; after ISSUE-008 it was used for development, so these "
+            "numbers are optimistic and not a test.",
+            "chbmit",
+        )
+    if m := r.get("chbmit_h5_registered"):
+        out += _chb_table(
+            m,
+            "Real data, H5 as registered: CHB-MIT chb01 with detector v1",
+            "The first and only confirmatory run on chb01 (raw-spectrum rhythm gate).",
+            "chbmit_h5_registered",
+        )
+    return out
 
 
 def section_checker(r: dict[str, Any]) -> list[str]:
@@ -210,11 +241,16 @@ def section_tuning(r: dict[str, Any]) -> list[str]:
     if not t:
         return []
     s = t["selected"]
+    extra = (
+        f", rhythm gate {s['rhythm_hz'][0]:g}-{s['rhythm_hz'][1]:g} Hz, merge gap {s['merge_gap_s']:g} s"
+        if "rhythm_hz" in s
+        else ""
+    )
     return [
         "## Detector tuning (synthetic seeds only)",
         "",
         f"Seeds {t['seeds'][0]}-{t['seeds'][1]}; {len(t['grid'])} settings. Selected z = {s['z_threshold']}, "
-        f"channel fraction = {s['channel_fraction']}, minimum duration = {s['min_duration_s']} s: "
+        f"channel fraction = {s['channel_fraction']}, minimum duration = {s['min_duration_s']} s{extra}: "
         f"sensitivity {s['sensitivity']:.3f}, {s['false_per_hour']:.2f} false/h on the tuning set. {_link('detector_tuning')}",
         "",
     ]
@@ -239,7 +275,8 @@ def manifest() -> list[str]:
 
 def main() -> None:
     names = ["aperiodic", "h1_confound", "qc", "detection_synthetic", "connectivity", "checker",
-             "chbmit", "resources", "detector_tuning", "mutation"]  # fmt: skip
+             "chbmit_h5_registered", "chbmit", "chbmit_heldout", "resources",
+             "detector_tuning", "mutation"]  # fmt: skip
     r = {n: d for n in names if (d := _load(n)) is not None}
     commits = sorted({str(d["provenance"]["git"]["commit"])[:10] for d in r.values()})
     dirty = any(d["provenance"]["git"]["dirty"] for d in r.values())

@@ -9,12 +9,13 @@ log LL. A window is active when at least `channel_fraction` of the good
 channels exceed `z_threshold`; active windows closer than `merge_gap_s`
 are merged and events shorter than `min_duration_s` are dropped. Finally a
 rhythmicity gate keeps an event only if its fundamental frequency lies in a
-physiological band (delta-theta 2-7.5 Hz or delta-alpha 2-13 Hz, chosen by
-the synthetic tuning rule). The fundamental is the lowest strong peak of the
-event spectrum *divided by the background spectrum of the same channels*: a raw spectrum peaks at the lowest frequencies because of
-the 1/f background (the H1 confound; BUILD_JOURNAL ISSUE-008). Blinks and
-drift put the ratio peak near 1 Hz, muscle near 20 Hz. The gate limits come
-from physiology, not from tuning.
+physiological band (delta-theta 2-7.5 Hz or delta-alpha 2-13 Hz; the
+synthetic tuning rule chose between these two). The fundamental is the
+lowest strong peak of the event spectrum *divided by the background
+spectrum of the same channels*: a raw spectrum peaks at the lowest
+frequencies because of the 1/f background (the H1 confound; BUILD_JOURNAL
+ISSUE-008), and the largest ratio peak is often a harmonic (ISSUE-010).
+Blinks and drift put the ratio peak near 1 Hz, muscle near 20 Hz.
 
 The detector is unsupervised: it never sees labels. Its thresholds were
 chosen on synthetic tuning seeds only (validation/tune_detector.py).

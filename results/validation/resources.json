@@ -2,10 +2,10 @@
   "P-01_pass": true,
   "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
   "experiment": "resources",
-  "peak_rss_mb": 1547.7890625,
+  "peak_rss_mb": 1547.4296875,
   "provenance": {
     "git": {
-      "commit": "651fe2d864e6ecebed90ccd883a41bb4870bb90c",
+      "commit": "36b7964d71f5251ba9b0e2ea6240d032ddf72c00",
       "dirty": true
     },
     "python": "3.12.3",
@@ -18,6 +18,6 @@
     }
   },
   "recording": "synthetic, 32 channels, 3600 s, 256 Hz (29.5 M samples, 236 MB float64)",
-  "runtime_s": 10.929902524000227,
+  "runtime_s": 12.704474410999865,
   "threads": 1
 }

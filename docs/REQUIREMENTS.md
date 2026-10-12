@@ -42,7 +42,7 @@ least one test file, so this table cannot silently drift from the tests.
 | V-06 | Hypothesis H2 (event detection, synthetic) | PROBLEM_STATEMENT §4 | A |
 | V-07 | Hypothesis H3 (volume conduction) | PROBLEM_STATEMENT §4 | A, T |
 | V-08 | Hypothesis H4 (claim checker) | PROBLEM_STATEMENT §4 | A, T |
-| V-09 | Hypotheses H1 and H5 are evaluated and reported, accepted or rejected. | PROBLEM_STATEMENT §4 | A |
+| V-09 | Hypotheses H1, H5 and H6 are evaluated and reported, accepted or rejected. | PROBLEM_STATEMENT §4, §9 | A |
 | V-10 | Detector thresholds shall be chosen on tuning seeds disjoint from the evaluation seeds, and never on CHB-MIT. | no double dipping | I, T |
 
 ## Performance
@@ -82,7 +82,7 @@ least one test file, so this table cannot silently drift from the tests.
 | F-09, V-01, V-02, V-03 | `features/aperiodic.py` | `tests/test_aperiodic.py` | `results/validation/aperiodic.json` |
 | F-11, V-07 | `features/connectivity.py` | `tests/test_connectivity.py` | `results/validation/connectivity.json` |
 | F-12, V-06, V-10 | `detection/seizure.py`, `detection/events.py` | `tests/test_detection.py` | `results/validation/detection_synthetic.json` |
-| V-09 | `validation/campaign.py` | `tests/test_campaign.py` | `results/validation/h1_confound.json`, `results/validation/chbmit.json` |
+| V-09 | `validation/campaign.py` | `tests/test_campaign.py` | `results/validation/h1_confound.json`, `chbmit_h5_registered.json`, `chbmit_heldout.json` |
 | F-13, R-01, R-02 | `pipeline.py`, `report/` | `tests/test_pipeline.py` | n/a |
 | F-14, F-15, F-16, V-08, S-03, S-04 | `explain/` | `tests/test_explain.py` | `results/validation/checker.json` |
 | F-17 | `cli.py` | `tests/test_cli.py` | n/a |

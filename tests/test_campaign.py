@@ -11,7 +11,8 @@ from validation.campaign import parse_summary
 from validation.common import RESULTS
 
 EXPECTED = ["aperiodic", "h1_confound", "qc", "detection_synthetic", "connectivity", "checker",
-            "chbmit", "resources", "detector_tuning"]  # fmt: skip
+            "chbmit", "chbmit_h5_registered", "chbmit_heldout", "resources", "detector_tuning",
+            "mutation"]  # fmt: skip
 
 
 def _load(name):
@@ -42,7 +43,8 @@ def test_manifest_matches_result_files():
 def test_hypotheses_h1_and_h5_have_verdicts():
     """V-09: evaluated and reported, accepted or rejected."""
     assert isinstance(_load("h1_confound")["H1_accepted"], bool)
-    assert isinstance(_load("chbmit")["H5_accepted"], bool)
+    assert isinstance(_load("chbmit_h5_registered")["H5_accepted"], bool)
+    assert isinstance(_load("chbmit_heldout")["H6_accepted"], bool)
 
 
 def test_resource_budget():

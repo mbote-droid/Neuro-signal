@@ -1,0 +1,211 @@
+{
+  "experiment": "mutation",
+  "killed": 17,
+  "mutants": 17,
+  "not_applied": [],
+  "provenance": {
+    "git": {
+      "commit": "36b7964d71f5251ba9b0e2ea6240d032ddf72c00",
+      "dirty": true
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "rows": [
+    {
+      "file": "preprocessing/filters.py",
+      "id": "filtfilt_style_double_pass",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_filters.py"
+      ]
+    },
+    {
+      "file": "preprocessing/filters.py",
+      "id": "causal_instead_of_zero_phase",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_filters.py"
+      ]
+    },
+    {
+      "file": "preprocessing/qc.py",
+      "id": "mad_constant_wrong",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_qc.py",
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "preprocessing/qc.py",
+      "id": "flat_check_disabled",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_qc.py"
+      ]
+    },
+    {
+      "file": "preprocessing/reference.py",
+      "id": "car_includes_bad_channels",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_reference.py"
+      ]
+    },
+    {
+      "file": "preprocessing/reference.py",
+      "id": "car_on_bipolar",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_reference.py"
+      ]
+    },
+    {
+      "file": "features/connectivity.py",
+      "id": "wpli_without_abs_denominator",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_connectivity.py"
+      ]
+    },
+    {
+      "file": "features/connectivity.py",
+      "id": "dwpli_biased",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_connectivity.py"
+      ]
+    },
+    {
+      "file": "features/aperiodic.py",
+      "id": "exponent_sign_flip",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_aperiodic.py"
+      ]
+    },
+    {
+      "file": "features/spectral.py",
+      "id": "welch_no_overlap",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_spectral.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "rhythm_gate_off",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "explain/checker.py",
+      "id": "checker_ignores_precision",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_explain.py"
+      ]
+    },
+    {
+      "file": "explain/checker.py",
+      "id": "checker_no_uncited",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_explain.py"
+      ]
+    },
+    {
+      "file": "explain/checker.py",
+      "id": "checker_no_diagnostic",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_explain.py"
+      ]
+    },
+    {
+      "file": "io/readers.py",
+      "id": "reader_keeps_volts",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_io.py"
+      ]
+    },
+    {
+      "file": "io/readers.py",
+      "id": "size_limit_off",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_io.py"
+      ]
+    },
+    {
+      "file": "pipeline.py",
+      "id": "metrics_random_run_id",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_pipeline.py"
+      ]
+    }
+  ],
+  "survived": []
+}

@@ -53,7 +53,7 @@ MUTANTS = [
      "        if p.rhythm_hz[0] <= f_dom <= p.rhythm_hz[1]:", "        if True:",
      ["tests/test_detection.py"]),
     ("checker_ignores_precision", "explain/checker.py",
-     "    tol = 0.5 * 10.0**-decimals + 1e-9 * abs(value)", "    tol = 0.5 + 1e-9 * abs(value)",
+     "    half = 0.5 * 10.0**-decimals", "    half = 0.5",
      ["tests/test_explain.py"]),
     ("checker_no_uncited", "explain/checker.py",
      "        if n.start() not in consumed:", "        if False:", ["tests/test_explain.py"]),
@@ -64,8 +64,8 @@ MUTANTS = [
      'data = raw.get_data(units="uV")', "data = raw.get_data()", ["tests/test_io.py"]),
     ("size_limit_off", "io/readers.py", "    if size > max_bytes:", "    if False:",
      ["tests/test_io.py"]),
-    ("metrics_unsorted_time", "pipeline.py",
-     '        "config": cfg.to_dict(),', '        "config": cfg.to_dict(),\n        "now": __import__("time").time(),',
+    ("metrics_random_run_id", "pipeline.py",
+     '        "config": cfg.to_dict(),', '        "config": cfg.to_dict(),\n        "run_id": __import__("os").urandom(4).hex(),',
      ["tests/test_pipeline.py"]),
 ]  # fmt: skip
 
