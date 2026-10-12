@@ -1,0 +1,60 @@
+name: ci
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "23 3 * * 1"  # weekly: dependency drift, full synthetic campaign
+
+permissions:
+  contents: read
+
+env:
+  OMP_NUM_THREADS: "1"
+  OPENBLAS_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"
+  PYTHONHASHSEED: "0"
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - run: make lint
+      - run: make typecheck
+      - run: make test
+
+  determinism:
+    # Report the same file twice in separate processes; metrics must be byte-identical (R-01).
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - run: make determinism
+
+  validation:
+    # Synthetic campaign (no download needed); uploads the result files.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - name: synthetic experiments
+        run: |
+          for e in aperiodic h1 qc detection connectivity checker resources; do
+            uv run --frozen python validation/campaign.py "$e"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validation
+          path: results/validation

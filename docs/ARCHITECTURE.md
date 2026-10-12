@@ -86,8 +86,8 @@ width) applied forward and backward, i.e. zero phase.
 Alternatives: IIR Butterworth (non-linear phase unless applied
 forward-backward, and forward-backward squares the magnitude response with
 less control of the transition band); causal FIR (group delay of
-`(N-1)/2fs`, about 0.85 s for the 0.5 Hz high-pass, would shift event
-onsets).
+`(N-1)/2fs`, 3.3 s for the 1691-tap 0.5 Hz high-pass at 256 Hz, would
+shift every event onset by that much).
 Consequences: the pipeline is non-causal and must never be reused for
 real-time work without a separate causal plugin.
 Verification: `tests/test_filters.py` (impulse not shifted; ripple and
@@ -133,8 +133,15 @@ Context: no labelled training data may be used without leakage risk, and
 the evaluation must be honest about transfer to real data (H5).
 Decision: line length in 2 s windows (1 s step), robust z-score against the
 recording's own baseline, a multi-channel vote and a minimum duration.
-Thresholds are chosen once on synthetic tuning seeds (0-99) and evaluated on
-disjoint seeds (1000+) and on CHB-MIT, never re-tuned on the latter.
+Thresholds are chosen once on synthetic tuning seeds (0-59) and evaluated on
+disjoint seeds (1000-1199) and on CHB-MIT, never re-tuned on the latter.
+The signal is band-limited to 1-20 Hz first, and a rhythmicity gate rejects
+blink, muscle and normal-rhythm candidates: the dominant frequency of the event
+spectrum *relative to the channel's own background spectrum* must fall in a
+physiological band whose upper limit (8 or 13 Hz) was itself chosen by the
+synthetic tuning rule (BUILD_JOURNAL ISSUE-002, -005, -008, -009). CHB-MIT
+chb01 became a development set after H5; the frozen detector was tested once
+on the held-out subject chb03 (H6).
 Alternatives: supervised classifier on CHB-MIT (needs patient-grouped
 cross-validation and more data than chb01; a later project); band-power
 ratio detector (sensitive to aperiodic shifts, see H1).
