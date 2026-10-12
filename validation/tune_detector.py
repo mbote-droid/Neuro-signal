@@ -2,8 +2,9 @@
 
 Selection rule, fixed before running: among settings with at most 1 false
 detection per hour on the tuning set, take the highest sensitivity; break
-ties by the higher z threshold, then the longer minimum duration (the more
-conservative setting). CHB-MIT is never touched here.
+ties by the higher z threshold, then the longer minimum duration, then the
+narrower rhythm gate (the more conservative setting). CHB-MIT is never
+touched here.
 """
 
 from __future__ import annotations
@@ -27,9 +28,11 @@ from neurosignal.pipeline import preprocess
 from neurosignal.synth.eeg import make_recording
 from validation.common import TUNING_SEEDS, detection_spec, write_result
 
-Z_GRID = (2.5, 3.0, 4.0, 5.0, 6.0, 8.0)
-FRACTION_GRID = (0.05, 0.1, 0.15, 0.2, 0.3)
+Z_GRID = (2.5, 3.0, 4.0, 5.0)
+FRACTION_GRID = (0.05, 0.1, 0.2)
 MIN_DURATION_GRID = (4.0, 6.0, 8.0, 10.0, 15.0)
+# rhythm gate upper limit: delta-alpha (13 Hz) or delta-theta (8 Hz); both physiological
+RHYTHM_GRID = ((2.0, 13.0), (2.0, 8.0))
 MAX_FALSE_PER_HOUR = 1.0
 
 
@@ -46,8 +49,11 @@ def main() -> None:
         cached.append((x, z, chans, truth, rec.duration_s, clean.sfreq))
         print(f"seed {seed} prepared", file=sys.stderr)
     rows = []
-    for zt, frac, mind in itertools.product(Z_GRID, FRACTION_GRID, MIN_DURATION_GRID):
-        p = DetectorParams(z_threshold=zt, channel_fraction=frac, min_duration_s=mind)
+    grid = itertools.product(Z_GRID, FRACTION_GRID, MIN_DURATION_GRID, RHYTHM_GRID)
+    for zt, frac, mind, rhythm in grid:
+        p = DetectorParams(
+            z_threshold=zt, channel_fraction=frac, min_duration_s=mind, rhythm_hz=rhythm
+        )
         hits = n_true = false = 0
         hours = 0.0
         for x, z, chans, truth, dur, sfreq in cached:
@@ -63,6 +69,7 @@ def main() -> None:
                 "z_threshold": zt,
                 "channel_fraction": frac,
                 "min_duration_s": mind,
+                "rhythm_hz": list(rhythm),
                 "sensitivity": hits / n_true,
                 "false_per_hour": false / hours,
                 "hits": hits,
@@ -78,6 +85,7 @@ def main() -> None:
             r["sensitivity"],
             r["z_threshold"],
             r["min_duration_s"],
+            -r["rhythm_hz"][1],
             -r["channel_fraction"],
         ),
     )

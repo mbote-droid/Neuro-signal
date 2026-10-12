@@ -20,7 +20,8 @@ SNR_LEVELS_DB = (0.0, 3.0, 6.0, 10.0)
 
 
 def detection_spec(seed: int) -> SynthSpec:
-    """Ten minutes, two discharges, realistic artifacts; SNR cycles over levels."""
+    """Ten minutes, two discharges, blinks, muscle and normal alpha/spindle
+    bursts; SNR cycles over levels."""
     g = rng(seed, 900)
     return SynthSpec(
         duration_s=600.0,
@@ -31,6 +32,7 @@ def detection_spec(seed: int) -> SynthSpec:
         line_noise_uv=float(g.uniform(0.0, 20.0)),
         blinks_per_min=15.0,
         muscle_per_min=2.0,
+        alpha_bursts_per_min=1.0,
     )
 
 
