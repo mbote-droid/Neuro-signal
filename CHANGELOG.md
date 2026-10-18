@@ -3,7 +3,24 @@
 All notable changes to this project. Format: Keep a Changelog; versions:
 semantic versioning.
 
-## [0.1.0] - 2026-10-12
+## [0.1.1] - 2026-10-18
+
+### Fixed
+- Text files are checked out with LF line endings on every platform
+  (`.gitattributes`), so the SHA-256 result manifest also verifies on Windows.
+- Explanation wording: singular/plural counts, a clearer line-noise sentence,
+  no "-0.000", an explicit note that zero detected events is not evidence of
+  absence, and a disclaimer that no longer calls the software "validated".
+  The H4 checker campaign was re-run on the new text (2157/2157).
+
+### Changed
+- CITATION.cff title: "validation-first" instead of "validated" (four of
+  six pre-registered hypotheses were rejected).
+- README: Windows (PowerShell) commands; how to get a real recording.
+
+## [0.1.0] - 2026-10-18
+
+Archived on Zenodo: [10.5281/zenodo.23447347](https://doi.org/10.5281/zenodo.23447347).
 
 ### Added
 - `neurosignal` CLI: `report`, `synth`, `explain`, `check`, `info`.
