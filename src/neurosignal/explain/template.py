@@ -109,7 +109,8 @@ def _alpha(m: dict[str, Any]) -> str:
         freq, power = ap["alpha_peak_freq_hz"]["mean"], ap["alpha_peak_power"]["mean"]
         text = (
             "An alpha peak was found in "
-            f"{_n(n_alpha, 'aperiodic.n_channels_with_alpha', 'channel')}, at {_c(freq, 'aperiodic.alpha_peak_freq_hz.mean', 1)} Hz on average, "
+            f"{_n(n_alpha, 'aperiodic.n_channels_with_alpha', 'channel')}, "
+            f"at {_c(freq, 'aperiodic.alpha_peak_freq_hz.mean', 1)} Hz on average, "
             f"rising {_c(power, 'aperiodic.alpha_peak_power.mean')} log10 units above the "
             "aperiodic fit. "
         )
