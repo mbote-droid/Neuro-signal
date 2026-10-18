@@ -1,0 +1,1823 @@
+{
+  "experiment": "detector_tuning_infeasible",
+  "grid": [
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 246,
+      "false_per_hour": 24.600000000000005,
+      "hits": 111,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.925,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 26,
+      "false_per_hour": 2.6000000000000005,
+      "hits": 83,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6916666666666667,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 229,
+      "false_per_hour": 22.900000000000006,
+      "hits": 111,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.925,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 26,
+      "false_per_hour": 2.6000000000000005,
+      "hits": 83,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6916666666666667,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 223,
+      "false_per_hour": 22.300000000000004,
+      "hits": 111,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.925,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 25,
+      "false_per_hour": 2.5000000000000004,
+      "hits": 83,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6916666666666667,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 209,
+      "false_per_hour": 20.900000000000002,
+      "hits": 110,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9166666666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 82,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6833333333333333,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 175,
+      "false_per_hour": 17.500000000000004,
+      "hits": 108,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 16,
+      "false_per_hour": 1.6000000000000003,
+      "hits": 81,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.675,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 242,
+      "false_per_hour": 24.200000000000003,
+      "hits": 108,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 23,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 78,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.65,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 220,
+      "false_per_hour": 22.000000000000004,
+      "hits": 107,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8916666666666667,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 77,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6416666666666667,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 215,
+      "false_per_hour": 21.500000000000004,
+      "hits": 106,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8833333333333333,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 76,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6333333333333333,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 198,
+      "false_per_hour": 19.800000000000004,
+      "hits": 105,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.875,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 18,
+      "false_per_hour": 1.8000000000000003,
+      "hits": 76,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6333333333333333,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 166,
+      "false_per_hour": 16.6,
+      "hits": 104,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8666666666666667,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 15,
+      "false_per_hour": 1.5000000000000002,
+      "hits": 76,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6333333333333333,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 248,
+      "false_per_hour": 24.800000000000004,
+      "hits": 105,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.875,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 23,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 76,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6333333333333333,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 220,
+      "false_per_hour": 22.000000000000004,
+      "hits": 104,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8666666666666667,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 75,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.625,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 212,
+      "false_per_hour": 21.200000000000003,
+      "hits": 102,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.85,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 20,
+      "false_per_hour": 2.0000000000000004,
+      "hits": 73,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6083333333333333,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 193,
+      "false_per_hour": 19.300000000000004,
+      "hits": 100,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8333333333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 17,
+      "false_per_hour": 1.7000000000000004,
+      "hits": 72,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 156,
+      "false_per_hour": 15.600000000000003,
+      "hits": 98,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8166666666666667,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 14,
+      "false_per_hour": 1.4000000000000004,
+      "hits": 71,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5916666666666667,
+      "z_threshold": 2.5
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 243,
+      "false_per_hour": 24.300000000000004,
+      "hits": 111,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.925,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 22,
+      "false_per_hour": 2.2,
+      "hits": 82,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6833333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 227,
+      "false_per_hour": 22.700000000000003,
+      "hits": 110,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9166666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 22,
+      "false_per_hour": 2.2,
+      "hits": 82,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6833333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 221,
+      "false_per_hour": 22.100000000000005,
+      "hits": 110,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9166666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 82,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6833333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 207,
+      "false_per_hour": 20.700000000000003,
+      "hits": 108,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 18,
+      "false_per_hour": 1.8000000000000003,
+      "hits": 81,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.675,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 173,
+      "false_per_hour": 17.300000000000004,
+      "hits": 106,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8833333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 15,
+      "false_per_hour": 1.5000000000000002,
+      "hits": 80,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6666666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 241,
+      "false_per_hour": 24.100000000000005,
+      "hits": 107,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8916666666666667,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 23,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 78,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.65,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 218,
+      "false_per_hour": 21.800000000000004,
+      "hits": 106,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8833333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 77,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6416666666666667,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 212,
+      "false_per_hour": 21.200000000000003,
+      "hits": 106,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8833333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 77,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6416666666666667,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 195,
+      "false_per_hour": 19.500000000000004,
+      "hits": 104,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8666666666666667,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 18,
+      "false_per_hour": 1.8000000000000003,
+      "hits": 76,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6333333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 162,
+      "false_per_hour": 16.200000000000003,
+      "hits": 103,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8583333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 15,
+      "false_per_hour": 1.5000000000000002,
+      "hits": 76,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6333333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 247,
+      "false_per_hour": 24.700000000000003,
+      "hits": 99,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.825,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 24,
+      "false_per_hour": 2.4000000000000004,
+      "hits": 67,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5583333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 221,
+      "false_per_hour": 22.100000000000005,
+      "hits": 98,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8166666666666667,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 67,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5583333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 211,
+      "false_per_hour": 21.100000000000005,
+      "hits": 95,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7916666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 20,
+      "false_per_hour": 2.0000000000000004,
+      "hits": 65,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5416666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 193,
+      "false_per_hour": 19.300000000000004,
+      "hits": 93,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.775,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 17,
+      "false_per_hour": 1.7000000000000004,
+      "hits": 63,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.525,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 153,
+      "false_per_hour": 15.300000000000002,
+      "hits": 88,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7333333333333333,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 14,
+      "false_per_hour": 1.4000000000000004,
+      "hits": 60,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5,
+      "z_threshold": 3.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 242,
+      "false_per_hour": 24.200000000000003,
+      "hits": 106,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8833333333333333,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 22,
+      "false_per_hour": 2.2,
+      "hits": 74,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6166666666666667,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 225,
+      "false_per_hour": 22.500000000000004,
+      "hits": 103,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8583333333333333,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 73,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6083333333333333,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 220,
+      "false_per_hour": 22.000000000000004,
+      "hits": 103,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8583333333333333,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 73,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6083333333333333,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 204,
+      "false_per_hour": 20.400000000000002,
+      "hits": 101,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8416666666666667,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 18,
+      "false_per_hour": 1.8000000000000003,
+      "hits": 72,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.6,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 171,
+      "false_per_hour": 17.1,
+      "hits": 99,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.825,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 15,
+      "false_per_hour": 1.5000000000000002,
+      "hits": 71,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5916666666666667,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 245,
+      "false_per_hour": 24.500000000000004,
+      "hits": 102,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.85,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 23,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 69,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.575,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 221,
+      "false_per_hour": 22.100000000000005,
+      "hits": 99,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.825,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 69,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.575,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 211,
+      "false_per_hour": 21.100000000000005,
+      "hits": 99,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.825,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 20,
+      "false_per_hour": 2.0000000000000004,
+      "hits": 69,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.575,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 194,
+      "false_per_hour": 19.400000000000002,
+      "hits": 98,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8166666666666667,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 17,
+      "false_per_hour": 1.7000000000000004,
+      "hits": 69,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.575,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 161,
+      "false_per_hour": 16.1,
+      "hits": 96,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 15,
+      "false_per_hour": 1.5000000000000002,
+      "hits": 68,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5666666666666667,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 247,
+      "false_per_hour": 24.700000000000003,
+      "hits": 93,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.775,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 24,
+      "false_per_hour": 2.4000000000000004,
+      "hits": 60,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 221,
+      "false_per_hour": 22.100000000000005,
+      "hits": 88,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7333333333333333,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 21,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 57,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.475,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 207,
+      "false_per_hour": 20.700000000000003,
+      "hits": 86,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7166666666666667,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 19,
+      "false_per_hour": 1.9000000000000004,
+      "hits": 55,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.4583333333333333,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 194,
+      "false_per_hour": 19.400000000000002,
+      "hits": 82,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.6833333333333333,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 17,
+      "false_per_hour": 1.7000000000000004,
+      "hits": 54,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.45,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 145,
+      "false_per_hour": 14.500000000000002,
+      "hits": 78,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.65,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 14,
+      "false_per_hour": 1.4000000000000004,
+      "hits": 52,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.43333333333333335,
+      "z_threshold": 4.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 242,
+      "false_per_hour": 24.200000000000003,
+      "hits": 100,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8333333333333334,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 23,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 67,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5583333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 224,
+      "false_per_hour": 22.400000000000006,
+      "hits": 98,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8166666666666667,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 22,
+      "false_per_hour": 2.2,
+      "hits": 67,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5583333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 214,
+      "false_per_hour": 21.400000000000002,
+      "hits": 98,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8166666666666667,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 22,
+      "false_per_hour": 2.2,
+      "hits": 67,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5583333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 201,
+      "false_per_hour": 20.100000000000005,
+      "hits": 97,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8083333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 19,
+      "false_per_hour": 1.9000000000000004,
+      "hits": 67,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5583333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 158,
+      "false_per_hour": 15.800000000000002,
+      "hits": 94,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7833333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.05,
+      "false_detections": 14,
+      "false_per_hour": 1.4000000000000004,
+      "hits": 65,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5416666666666666,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 245,
+      "false_per_hour": 24.500000000000004,
+      "hits": 98,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8166666666666667,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 23,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 65,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5416666666666666,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 220,
+      "false_per_hour": 22.000000000000004,
+      "hits": 96,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 20,
+      "false_per_hour": 2.0000000000000004,
+      "hits": 65,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5416666666666666,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 209,
+      "false_per_hour": 20.900000000000002,
+      "hits": 94,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7833333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 19,
+      "false_per_hour": 1.9000000000000004,
+      "hits": 62,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5166666666666667,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 193,
+      "false_per_hour": 19.300000000000004,
+      "hits": 91,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7583333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 16,
+      "false_per_hour": 1.6000000000000003,
+      "hits": 61,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.5083333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 150,
+      "false_per_hour": 15.000000000000004,
+      "hits": 86,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7166666666666667,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.1,
+      "false_detections": 13,
+      "false_per_hour": 1.3000000000000003,
+      "hits": 58,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.48333333333333334,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 246,
+      "false_per_hour": 24.600000000000005,
+      "hits": 85,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7083333333333334,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 25,
+      "false_per_hour": 2.5000000000000004,
+      "hits": 51,
+      "hours": 9.999999999999998,
+      "min_duration_s": 4.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.425,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 217,
+      "false_per_hour": 21.700000000000003,
+      "hits": 81,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.675,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 22,
+      "false_per_hour": 2.2,
+      "hits": 48,
+      "hours": 9.999999999999998,
+      "min_duration_s": 6.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.4,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 204,
+      "false_per_hour": 20.400000000000002,
+      "hits": 73,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.6083333333333333,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 20,
+      "false_per_hour": 2.0000000000000004,
+      "hits": 43,
+      "hours": 9.999999999999998,
+      "min_duration_s": 8.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.35833333333333334,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 186,
+      "false_per_hour": 18.600000000000005,
+      "hits": 71,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.5916666666666667,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 18,
+      "false_per_hour": 1.8000000000000003,
+      "hits": 43,
+      "hours": 9.999999999999998,
+      "min_duration_s": 10.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.35833333333333334,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 137,
+      "false_per_hour": 13.700000000000003,
+      "hits": 69,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.575,
+      "z_threshold": 5.0
+    },
+    {
+      "channel_fraction": 0.2,
+      "false_detections": 15,
+      "false_per_hour": 1.5000000000000002,
+      "hits": 43,
+      "hours": 9.999999999999998,
+      "min_duration_s": 15.0,
+      "n_true": 120,
+      "rhythm_hz": [
+        2.0,
+        8.0
+      ],
+      "sensitivity": 0.35833333333333334,
+      "z_threshold": 5.0
+    }
+  ],
+  "provenance": {
+    "git": {
+      "commit": "4fa658961efd5fd4c24e0c5b601b77810fd199d8",
+      "dirty": false
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "seeds": [
+    0,
+    59
+  ]
+}

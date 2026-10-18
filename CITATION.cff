@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "NeuroSignal: a validated EEG report pipeline with provenance-checked explanations"
+abstract: >-
+  Drop an EEG file, get a validated report. A deterministic pipeline (quality
+  control, zero-phase FIR filtering, aperiodic/periodic spectral
+  parameterisation, debiased wPLI coupling, rhythmic event detection) whose every
+  method is checked against synthetic ground truth and public data, and whose
+  narrative explanations are mechanically checked against the computed metrics.
+authors:
+  - family-names: Mbote
+    given-names: Samuel Ngigi
+version: 0.1.0
+date-released: "2026-10-12"
+license: MIT
+repository-code: "https://github.com/mbote-droid/neuro-signal"
+keywords:
+  - EEG
+  - signal processing
+  - aperiodic
+  - specparam
+  - wPLI
+  - seizure detection
+  - validation
+  - reproducibility
+  - LLM evaluation

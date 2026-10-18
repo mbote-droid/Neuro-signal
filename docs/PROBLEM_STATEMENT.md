@@ -146,3 +146,28 @@ mutation testing (H4).
 | H1-H5 | as stated above | as stated above |
 | determinism | same file and seed, two processes | byte-identical metrics.json |
 | resources | 1-hour, 32-channel, 256 Hz synthetic recording | peak RSS <= 2 GB, runtime <= 5 min on one core |
+
+## 9. Addendum (2026-10-12): pre-registered held-out test H6
+
+Written after H5 was evaluated on CHB-MIT chb01 and the rhythm gate was
+revised (BUILD_JOURNAL ISSUE-008), and **before any chb03 file was
+downloaded or inspected**. chb01 has become a development set: every
+result on it after the revision is post hoc.
+
+* **H6 (held-out transfer).** With the revised detector (background-
+  normalised rhythm gate) and thresholds re-chosen on synthetic tuning
+  seeds only, applied once and unchanged to CHB-MIT subject chb03, the
+  detector finds at least 60 % of the expert-marked seizures with at most
+  2 false detections per hour.
+* **Files:** every chb03 file that the subject summary lists with at least
+  one seizure, plus the first three files listed without seizures (false-
+  alarm exposure). Chosen by this rule before downloading.
+* **No changes after the run.** Whatever the result, it is reported as is;
+  any later change to the detector needs another untouched subject.
+
+**Frozen detector for H6.** The detector tested on chb03 is the one at the
+commit that adds this paragraph: 1-20 Hz line length, robust z > 2.5,
+one-channel vote, events of at least 10 s, 1 s merge gap, and a rhythm gate
+on the fundamental of the background-normalised spectrum in 2-7.5 Hz
+(BUILD_JOURNAL ISSUE-008 to ISSUE-011). chb03 data had not been downloaded
+when this was committed.

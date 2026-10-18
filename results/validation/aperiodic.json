@@ -1,0 +1,2034 @@
+{
+  "V-01_pass": true,
+  "V-02_pass": true,
+  "V-03_pass": true,
+  "alpha_detected": 200,
+  "alpha_freq_median_abs_error_hz": 0.06696455903281961,
+  "alpha_height_median_error": -0.021076157964759312,
+  "experiment": "aperiodic",
+  "exponent_median_abs_error": 0.013719116889635785,
+  "exponent_p95_abs_error": 0.03832124726160635,
+  "n": 200,
+  "provenance": {
+    "git": {
+      "commit": "36b7964d71f5251ba9b0e2ea6240d032ddf72c00",
+      "dirty": true
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "rows": [
+    {
+      "fit_alpha_freq": 9.385866477975894,
+      "fit_alpha_height": 0.298167098759402,
+      "fit_exponent": 1.6687519535771334,
+      "seed": 0,
+      "specparam_exponent": 1.6795244546796344,
+      "true_alpha_freq": 9.206733985357587,
+      "true_alpha_height": 0.32399422192712773,
+      "true_exponent": 1.6858013722719332
+    },
+    {
+      "fit_alpha_freq": 10.425032843270856,
+      "fit_alpha_height": 0.6062470454194273,
+      "fit_exponent": 2.0207988944124247,
+      "seed": 1,
+      "specparam_exponent": 2.033756955491563,
+      "true_alpha_freq": 10.440074432816681,
+      "true_alpha_height": 0.6344116588113388,
+      "true_exponent": 2.0176128206677513
+    },
+    {
+      "fit_alpha_freq": 8.787672576401082,
+      "fit_alpha_height": 0.5240055832738616,
+      "fit_exponent": 0.9903710304703776,
+      "seed": 2,
+      "specparam_exponent": 0.9953550203415966,
+      "true_alpha_freq": 8.920368715121418,
+      "true_alpha_height": 0.5710390020075334,
+      "true_exponent": 0.9878894211076595
+    },
+    {
+      "fit_alpha_freq": 8.55847009953915,
+      "fit_alpha_height": 0.8119289173162215,
+      "fit_exponent": 1.461944939569872,
+      "seed": 3,
+      "specparam_exponent": 1.4665522474892418,
+      "true_alpha_freq": 8.584989350434022,
+      "true_alpha_height": 0.8267192641158554,
+      "true_exponent": 1.45432794997531
+    },
+    {
+      "fit_alpha_freq": 9.996660605370757,
+      "fit_alpha_height": 0.45947400705712294,
+      "fit_exponent": 1.5241081772795675,
+      "seed": 4,
+      "specparam_exponent": 1.5258102742305868,
+      "true_alpha_freq": 10.119707422394027,
+      "true_alpha_height": 0.49113096821865265,
+      "true_exponent": 1.5245148766675913
+    },
+    {
+      "fit_alpha_freq": 9.72895989995357,
+      "fit_alpha_height": 0.7384752730105083,
+      "fit_exponent": 0.994691463895522,
+      "seed": 5,
+      "specparam_exponent": 1.0368605410490905,
+      "true_alpha_freq": 9.664579963182824,
+      "true_alpha_height": 0.7218026961037287,
+      "true_exponent": 0.9985658293703136
+    },
+    {
+      "fit_alpha_freq": 9.476747317247252,
+      "fit_alpha_height": 0.9240943995146192,
+      "fit_exponent": 2.103742265997441,
+      "seed": 6,
+      "specparam_exponent": 2.105181278717361,
+      "true_alpha_freq": 9.517591971742036,
+      "true_alpha_height": 0.963083514977537,
+      "true_exponent": 2.0917624061182716
+    },
+    {
+      "fit_alpha_freq": 8.065852648178076,
+      "fit_alpha_height": 0.4172029637090951,
+      "fit_exponent": 1.4242294253747767,
+      "seed": 7,
+      "specparam_exponent": 1.4470922059399072,
+      "true_alpha_freq": 8.086771165421318,
+      "true_alpha_height": 0.43013835020096514,
+      "true_exponent": 1.4126294568275786
+    },
+    {
+      "fit_alpha_freq": 10.37133765677406,
+      "fit_alpha_height": 0.6314291298310605,
+      "fit_exponent": 1.5687142670736534,
+      "seed": 8,
+      "specparam_exponent": 1.566788061446893,
+      "true_alpha_freq": 10.377208940333286,
+      "true_alpha_height": 0.6797387350245152,
+      "true_exponent": 1.5377017644237356
+    },
+    {
+      "fit_alpha_freq": 9.503564883652707,
+      "fit_alpha_height": 0.4812407092957251,
+      "fit_exponent": 1.7170693248530544,
+      "seed": 9,
+      "specparam_exponent": 1.710274578636655,
+      "true_alpha_freq": 9.540953269259276,
+      "true_alpha_height": 0.434879403753973,
+      "true_exponent": 1.729120979743132
+    },
+    {
+      "fit_alpha_freq": 9.624932021172494,
+      "fit_alpha_height": 0.6309561116976492,
+      "fit_exponent": 2.128724528541452,
+      "seed": 10,
+      "specparam_exponent": 2.1306528228546653,
+      "true_alpha_freq": 9.5024004910565,
+      "true_alpha_height": 0.6579924202437463,
+      "true_exponent": 2.1065716248910973
+    },
+    {
+      "fit_alpha_freq": 10.498786451050012,
+      "fit_alpha_height": 0.5301212808189171,
+      "fit_exponent": 1.3878735724998592,
+      "seed": 11,
+      "specparam_exponent": 1.38720497157859,
+      "true_alpha_freq": 10.422305341515706,
+      "true_alpha_height": 0.528417407766187,
+      "true_exponent": 1.3978726326219857
+    },
+    {
+      "fit_alpha_freq": 11.665371820867634,
+      "fit_alpha_height": 0.7273901966552556,
+      "fit_exponent": 1.3801554224786092,
+      "seed": 12,
+      "specparam_exponent": 1.3814114650615845,
+      "true_alpha_freq": 11.64193972924757,
+      "true_alpha_height": 0.7256037607751653,
+      "true_exponent": 1.3566970921430586
+    },
+    {
+      "fit_alpha_freq": 9.236825709904306,
+      "fit_alpha_height": 0.7559731168493589,
+      "fit_exponent": 2.1433114234212995,
+      "seed": 13,
+      "specparam_exponent": 2.145913416418685,
+      "true_alpha_freq": 9.327746102352926,
+      "true_alpha_height": 0.788941176016432,
+      "true_exponent": 2.131150558695431
+    },
+    {
+      "fit_alpha_freq": 12.108573977874048,
+      "fit_alpha_height": 0.6130082912830206,
+      "fit_exponent": 1.1357872636433528,
+      "seed": 14,
+      "specparam_exponent": 1.136388095834509,
+      "true_alpha_freq": 11.93459235317577,
+      "true_alpha_height": 0.6468360796473991,
+      "true_exponent": 1.1456533926799004
+    },
+    {
+      "fit_alpha_freq": 11.8898004334636,
+      "fit_alpha_height": 0.8692152560863348,
+      "fit_exponent": 2.0248264634498163,
+      "seed": 15,
+      "specparam_exponent": 2.026725847863307,
+      "true_alpha_freq": 11.864021302774074,
+      "true_alpha_height": 0.89050293001778,
+      "true_exponent": 1.9931435455797677
+    },
+    {
+      "fit_alpha_freq": 11.326940691658828,
+      "fit_alpha_height": 0.6418478603661459,
+      "fit_exponent": 1.16759339071046,
+      "seed": 16,
+      "specparam_exponent": 1.1675263580069732,
+      "true_alpha_freq": 11.347427524123583,
+      "true_alpha_height": 0.6270879353341302,
+      "true_exponent": 1.1538881728399264
+    },
+    {
+      "fit_alpha_freq": 9.22004799951492,
+      "fit_alpha_height": 0.5238104919767793,
+      "fit_exponent": 1.0747729299133815,
+      "seed": 17,
+      "specparam_exponent": 1.1052847407888176,
+      "true_alpha_freq": 9.055945291121972,
+      "true_alpha_height": 0.544072552130043,
+      "true_exponent": 1.0824600364238757
+    },
+    {
+      "fit_alpha_freq": 10.42888117601628,
+      "fit_alpha_height": 0.3379922544834461,
+      "fit_exponent": 1.297014728128799,
+      "seed": 18,
+      "specparam_exponent": 1.2948501541548343,
+      "true_alpha_freq": 10.286904905650399,
+      "true_alpha_height": 0.3714503658896182,
+      "true_exponent": 1.310695150982499
+    },
+    {
+      "fit_alpha_freq": 10.690473173900289,
+      "fit_alpha_height": 0.44694931068484683,
+      "fit_exponent": 1.2625660174460076,
+      "seed": 19,
+      "specparam_exponent": 1.2745626124929077,
+      "true_alpha_freq": 10.952772175975847,
+      "true_alpha_height": 0.47921402189920825,
+      "true_exponent": 1.264136230182297
+    },
+    {
+      "fit_alpha_freq": 10.29800523476851,
+      "fit_alpha_height": 0.8986556468180277,
+      "fit_exponent": 1.0401081288057452,
+      "seed": 20,
+      "specparam_exponent": 1.0402977343943889,
+      "true_alpha_freq": 10.444655275920569,
+      "true_alpha_height": 0.9132826990206417,
+      "true_exponent": 1.0501359888467785
+    },
+    {
+      "fit_alpha_freq": 8.136045327017058,
+      "fit_alpha_height": 0.6533559481651906,
+      "fit_exponent": 0.9148205514858168,
+      "seed": 21,
+      "specparam_exponent": 0.940967505449381,
+      "true_alpha_freq": 8.239898927172431,
+      "true_alpha_height": 0.7501352924922005,
+      "true_exponent": 0.9083733068758728
+    },
+    {
+      "fit_alpha_freq": 11.992947188398016,
+      "fit_alpha_height": 0.6336059110007782,
+      "fit_exponent": 2.088936656514666,
+      "seed": 22,
+      "specparam_exponent": 2.0883809605333554,
+      "true_alpha_freq": 11.92796470996959,
+      "true_alpha_height": 0.6398732219384239,
+      "true_exponent": 2.0705387178891543
+    },
+    {
+      "fit_alpha_freq": 11.534464153332193,
+      "fit_alpha_height": 0.6396113121789702,
+      "fit_exponent": 1.485183888710723,
+      "seed": 23,
+      "specparam_exponent": 1.4895100035700966,
+      "true_alpha_freq": 11.531536821316823,
+      "true_alpha_height": 0.6664941463966518,
+      "true_exponent": 1.4805160186720079
+    },
+    {
+      "fit_alpha_freq": 8.682172897897003,
+      "fit_alpha_height": 0.41541160619774364,
+      "fit_exponent": 1.304489943568849,
+      "seed": 24,
+      "specparam_exponent": 1.3112732192039362,
+      "true_alpha_freq": 8.811990541357375,
+      "true_alpha_height": 0.3986252069654941,
+      "true_exponent": 1.2793874188742949
+    },
+    {
+      "fit_alpha_freq": 11.924875256400364,
+      "fit_alpha_height": 0.9333688941486287,
+      "fit_exponent": 1.16965861229944,
+      "seed": 25,
+      "specparam_exponent": 1.1701263535694848,
+      "true_alpha_freq": 11.96801199349176,
+      "true_alpha_height": 0.9939685039188184,
+      "true_exponent": 1.1674053802380302
+    },
+    {
+      "fit_alpha_freq": 10.260373689848706,
+      "fit_alpha_height": 0.37384415339442506,
+      "fit_exponent": 1.298268974552035,
+      "seed": 26,
+      "specparam_exponent": 1.297891177977398,
+      "true_alpha_freq": 10.09398482540486,
+      "true_alpha_height": 0.3527117973929035,
+      "true_exponent": 1.2904493977756175
+    },
+    {
+      "fit_alpha_freq": 11.696127917846761,
+      "fit_alpha_height": 0.6337458311091456,
+      "fit_exponent": 1.515712248467895,
+      "seed": 27,
+      "specparam_exponent": 1.510662119450475,
+      "true_alpha_freq": 11.715158281626024,
+      "true_alpha_height": 0.6260795217601229,
+      "true_exponent": 1.4871107061493836
+    },
+    {
+      "fit_alpha_freq": 11.35890931703574,
+      "fit_alpha_height": 0.6204664800346535,
+      "fit_exponent": 1.6321566161782812,
+      "seed": 28,
+      "specparam_exponent": 1.633249884371069,
+      "true_alpha_freq": 11.33872212145309,
+      "true_alpha_height": 0.637022850814925,
+      "true_exponent": 1.6209565907079877
+    },
+    {
+      "fit_alpha_freq": 8.59419801455672,
+      "fit_alpha_height": 0.712921803615576,
+      "fit_exponent": 1.3901787709909288,
+      "seed": 29,
+      "specparam_exponent": 1.3854440003016013,
+      "true_alpha_freq": 8.577044575190115,
+      "true_alpha_height": 0.7453042176856106,
+      "true_exponent": 1.377418512726035
+    },
+    {
+      "fit_alpha_freq": 11.59040508921522,
+      "fit_alpha_height": 0.46756670342363416,
+      "fit_exponent": 1.9579988010190486,
+      "seed": 30,
+      "specparam_exponent": 1.9575762164427626,
+      "true_alpha_freq": 11.518366342022297,
+      "true_alpha_height": 0.44239814242052866,
+      "true_exponent": 1.8940631026851211
+    },
+    {
+      "fit_alpha_freq": 10.258653478393077,
+      "fit_alpha_height": 0.8702083422793223,
+      "fit_exponent": 1.0900102908555738,
+      "seed": 31,
+      "specparam_exponent": 1.091034054138956,
+      "true_alpha_freq": 10.285538222221792,
+      "true_alpha_height": 0.8367622915994624,
+      "true_exponent": 1.0851401161067247
+    },
+    {
+      "fit_alpha_freq": 9.125970449469904,
+      "fit_alpha_height": 0.5176065937016489,
+      "fit_exponent": 1.0550571912755309,
+      "seed": 32,
+      "specparam_exponent": 1.0701933273745952,
+      "true_alpha_freq": 9.005018421309597,
+      "true_alpha_height": 0.5794768398796626,
+      "true_exponent": 1.0349686058192984
+    },
+    {
+      "fit_alpha_freq": 9.29585204631706,
+      "fit_alpha_height": 0.7108250122803852,
+      "fit_exponent": 1.649875888931295,
+      "seed": 33,
+      "specparam_exponent": 1.657045978876045,
+      "true_alpha_freq": 9.446830018915257,
+      "true_alpha_height": 0.7290165118377125,
+      "true_exponent": 1.6341917411041182
+    },
+    {
+      "fit_alpha_freq": 11.184079122978941,
+      "fit_alpha_height": 0.6270610286526798,
+      "fit_exponent": 2.113136406435798,
+      "seed": 34,
+      "specparam_exponent": 2.1669758161409436,
+      "true_alpha_freq": 11.118625948555197,
+      "true_alpha_height": 0.6273882514179898,
+      "true_exponent": 2.1449013689963747
+    },
+    {
+      "fit_alpha_freq": 10.239662470302497,
+      "fit_alpha_height": 0.7522678368066924,
+      "fit_exponent": 1.0020540298935272,
+      "seed": 35,
+      "specparam_exponent": 1.0035080490090407,
+      "true_alpha_freq": 10.2569339618592,
+      "true_alpha_height": 0.7699677492939065,
+      "true_exponent": 0.9990655187714149
+    },
+    {
+      "fit_alpha_freq": 11.984415596155273,
+      "fit_alpha_height": 0.9048293161242121,
+      "fit_exponent": 1.1166296568463068,
+      "seed": 36,
+      "specparam_exponent": 1.120499507966212,
+      "true_alpha_freq": 11.991509869379872,
+      "true_alpha_height": 0.9835872731883994,
+      "true_exponent": 1.0880077088645868
+    },
+    {
+      "fit_alpha_freq": 8.585075689047317,
+      "fit_alpha_height": 0.8785651386807785,
+      "fit_exponent": 1.6253220903177659,
+      "seed": 37,
+      "specparam_exponent": 1.6271112470855524,
+      "true_alpha_freq": 8.793499894694683,
+      "true_alpha_height": 0.9604322418196838,
+      "true_exponent": 1.6117121783003578
+    },
+    {
+      "fit_alpha_freq": 11.66650203556713,
+      "fit_alpha_height": 0.594486576510408,
+      "fit_exponent": 2.084114555715601,
+      "seed": 38,
+      "specparam_exponent": 2.0808900828817327,
+      "true_alpha_freq": 11.890449304957759,
+      "true_alpha_height": 0.6488154202114591,
+      "true_exponent": 2.0786717626908082
+    },
+    {
+      "fit_alpha_freq": 11.650833798717823,
+      "fit_alpha_height": 0.283822428915135,
+      "fit_exponent": 1.4236903282817315,
+      "seed": 39,
+      "specparam_exponent": 1.4184199468619672,
+      "true_alpha_freq": 11.369024450867132,
+      "true_alpha_height": 0.3060108498001579,
+      "true_exponent": 1.4232870815477139
+    },
+    {
+      "fit_alpha_freq": 8.67659538868055,
+      "fit_alpha_height": 0.7497368565200818,
+      "fit_exponent": 0.9549747932755801,
+      "seed": 40,
+      "specparam_exponent": 0.943739418696071,
+      "true_alpha_freq": 8.840991870859884,
+      "true_alpha_height": 0.7904851432774476,
+      "true_exponent": 0.9087331570019039
+    },
+    {
+      "fit_alpha_freq": 11.893626458445453,
+      "fit_alpha_height": 0.29483288427838816,
+      "fit_exponent": 1.9364356829506868,
+      "seed": 41,
+      "specparam_exponent": 1.937327271446618,
+      "true_alpha_freq": 11.889865050784143,
+      "true_alpha_height": 0.30632422565593403,
+      "true_exponent": 1.947922820345751
+    },
+    {
+      "fit_alpha_freq": 8.095512101817922,
+      "fit_alpha_height": 0.8094743486440267,
+      "fit_exponent": 1.5630770180948061,
+      "seed": 42,
+      "specparam_exponent": 1.5638350325789663,
+      "true_alpha_freq": 8.03455306718234,
+      "true_alpha_height": 0.8177720999176981,
+      "true_exponent": 1.524892151801596
+    },
+    {
+      "fit_alpha_freq": 9.780101449011243,
+      "fit_alpha_height": 0.5895732439483271,
+      "fit_exponent": 1.317660321515129,
+      "seed": 43,
+      "specparam_exponent": 1.3281498486693335,
+      "true_alpha_freq": 9.631474823262025,
+      "true_alpha_height": 0.5961947972841617,
+      "true_exponent": 1.2615639963474918
+    },
+    {
+      "fit_alpha_freq": 8.734854012263806,
+      "fit_alpha_height": 0.6790094162804519,
+      "fit_exponent": 1.6134921797128237,
+      "seed": 44,
+      "specparam_exponent": 1.6159615770575122,
+      "true_alpha_freq": 8.749776231672062,
+      "true_alpha_height": 0.7415742065378751,
+      "true_exponent": 1.6111495031080267
+    },
+    {
+      "fit_alpha_freq": 9.426906791220325,
+      "fit_alpha_height": 0.8740167083416824,
+      "fit_exponent": 1.6090519049588172,
+      "seed": 45,
+      "specparam_exponent": 1.6033449508179136,
+      "true_alpha_freq": 9.334915786965285,
+      "true_alpha_height": 0.9705995506561007,
+      "true_exponent": 1.5953188890500793
+    },
+    {
+      "fit_alpha_freq": 9.88278627864352,
+      "fit_alpha_height": 0.41910319973988885,
+      "fit_exponent": 2.123880454475884,
+      "seed": 46,
+      "specparam_exponent": 2.1153595791397746,
+      "true_alpha_freq": 9.91463411346648,
+      "true_alpha_height": 0.39635458502423465,
+      "true_exponent": 2.100914561581659
+    },
+    {
+      "fit_alpha_freq": 9.039828380183392,
+      "fit_alpha_height": 0.3953714950566785,
+      "fit_exponent": 1.777020607306226,
+      "seed": 47,
+      "specparam_exponent": 1.7967162815335616,
+      "true_alpha_freq": 8.211934416701467,
+      "true_alpha_height": 0.5326543684445413,
+      "true_exponent": 1.7728925929425323
+    },
+    {
+      "fit_alpha_freq": 8.75249457615937,
+      "fit_alpha_height": 0.3571703131507431,
+      "fit_exponent": 0.8167660935974107,
+      "seed": 48,
+      "specparam_exponent": 0.8160591811464593,
+      "true_alpha_freq": 8.766766768976442,
+      "true_alpha_height": 0.31843550951024585,
+      "true_exponent": 0.8414762064781222
+    },
+    {
+      "fit_alpha_freq": 8.673531657877355,
+      "fit_alpha_height": 0.6850861466167111,
+      "fit_exponent": 1.6095242840969746,
+      "seed": 49,
+      "specparam_exponent": 1.6096717895145072,
+      "true_alpha_freq": 8.645507962038014,
+      "true_alpha_height": 0.6976517867569373,
+      "true_exponent": 1.6034586043599912
+    },
+    {
+      "fit_alpha_freq": 10.896110079714846,
+      "fit_alpha_height": 0.4823919513277889,
+      "fit_exponent": 1.290394144163375,
+      "seed": 50,
+      "specparam_exponent": 1.2920076465567416,
+      "true_alpha_freq": 10.674095880628471,
+      "true_alpha_height": 0.5769462471010645,
+      "true_exponent": 1.2663136378637216
+    },
+    {
+      "fit_alpha_freq": 9.198256879089435,
+      "fit_alpha_height": 0.2828858618879065,
+      "fit_exponent": 2.024994258247461,
+      "seed": 51,
+      "specparam_exponent": 2.0186269551299025,
+      "true_alpha_freq": 9.10746718187107,
+      "true_alpha_height": 0.35199388077876737,
+      "true_exponent": 1.9678156014507135
+    },
+    {
+      "fit_alpha_freq": 10.930929880650421,
+      "fit_alpha_height": 0.4754932350897605,
+      "fit_exponent": 1.2733910528517418,
+      "seed": 52,
+      "specparam_exponent": 1.2758913287572455,
+      "true_alpha_freq": 10.726029753678606,
+      "true_alpha_height": 0.5110361714810144,
+      "true_exponent": 1.2794504972736662
+    },
+    {
+      "fit_alpha_freq": 11.201229728942145,
+      "fit_alpha_height": 0.4150114147856219,
+      "fit_exponent": 0.9902667928381588,
+      "seed": 53,
+      "specparam_exponent": 0.9918382958068722,
+      "true_alpha_freq": 11.134912393804521,
+      "true_alpha_height": 0.3903518641502583,
+      "true_exponent": 1.0311792784992957
+    },
+    {
+      "fit_alpha_freq": 9.855280358293262,
+      "fit_alpha_height": 0.9392912159537515,
+      "fit_exponent": 1.7667991536874257,
+      "seed": 54,
+      "specparam_exponent": 1.76629311679497,
+      "true_alpha_freq": 9.808457299405315,
+      "true_alpha_height": 0.955171500569787,
+      "true_exponent": 1.7727077284489594
+    },
+    {
+      "fit_alpha_freq": 9.993452472752761,
+      "fit_alpha_height": 0.33245232167989974,
+      "fit_exponent": 0.9077899260858076,
+      "seed": 55,
+      "specparam_exponent": 0.9042869586088927,
+      "true_alpha_freq": 9.874226562608238,
+      "true_alpha_height": 0.3542746165850514,
+      "true_exponent": 0.8851025984493572
+    },
+    {
+      "fit_alpha_freq": 9.422364320697637,
+      "fit_alpha_height": 0.748936569549181,
+      "fit_exponent": 0.9852015509612829,
+      "seed": 56,
+      "specparam_exponent": 0.9824536618255898,
+      "true_alpha_freq": 9.74526615105661,
+      "true_alpha_height": 0.8768996733329013,
+      "true_exponent": 1.0071290559892185
+    },
+    {
+      "fit_alpha_freq": 9.356273885259046,
+      "fit_alpha_height": 0.4144372217898826,
+      "fit_exponent": 1.5024177396732492,
+      "seed": 57,
+      "specparam_exponent": 1.5020679645916757,
+      "true_alpha_freq": 9.629806433849971,
+      "true_alpha_height": 0.7019545739869433,
+      "true_exponent": 1.5110988616762975
+    },
+    {
+      "fit_alpha_freq": 10.912623298703998,
+      "fit_alpha_height": 0.3596116762519182,
+      "fit_exponent": 1.4419211269773229,
+      "seed": 58,
+      "specparam_exponent": 1.441610454344671,
+      "true_alpha_freq": 10.473156580516834,
+      "true_alpha_height": 0.3628134903123691,
+      "true_exponent": 1.4228635514440622
+    },
+    {
+      "fit_alpha_freq": 8.458696200019164,
+      "fit_alpha_height": 0.8211452824086763,
+      "fit_exponent": 2.153208743484284,
+      "seed": 59,
+      "specparam_exponent": 2.1588237725934394,
+      "true_alpha_freq": 8.42979858636594,
+      "true_alpha_height": 0.8461060928033186,
+      "true_exponent": 2.1546868313567016
+    },
+    {
+      "fit_alpha_freq": 10.965653462510064,
+      "fit_alpha_height": 0.9111416104157195,
+      "fit_exponent": 2.1738000556042794,
+      "seed": 60,
+      "specparam_exponent": 2.1864356272260403,
+      "true_alpha_freq": 10.912742667761679,
+      "true_alpha_height": 0.9247733491791443,
+      "true_exponent": 2.136576493439711
+    },
+    {
+      "fit_alpha_freq": 12.011510179358373,
+      "fit_alpha_height": 0.86222410951337,
+      "fit_exponent": 1.6514958260463923,
+      "seed": 61,
+      "specparam_exponent": 1.6472700480430258,
+      "true_alpha_freq": 11.977046904194141,
+      "true_alpha_height": 0.8540356139943417,
+      "true_exponent": 1.6344133763318327
+    },
+    {
+      "fit_alpha_freq": 9.825895834385712,
+      "fit_alpha_height": 0.47864579399712864,
+      "fit_exponent": 1.146528954140778,
+      "seed": 62,
+      "specparam_exponent": 1.1674491281725556,
+      "true_alpha_freq": 9.756935916541199,
+      "true_alpha_height": 0.4596992229147125,
+      "true_exponent": 1.1645949847749586
+    },
+    {
+      "fit_alpha_freq": 11.977943976227083,
+      "fit_alpha_height": 0.9634783478843088,
+      "fit_exponent": 1.0298495780472419,
+      "seed": 63,
+      "specparam_exponent": 1.030407835218615,
+      "true_alpha_freq": 11.94322357426194,
+      "true_alpha_height": 0.9894309137532715,
+      "true_exponent": 1.0341255410875838
+    },
+    {
+      "fit_alpha_freq": 9.954759939310367,
+      "fit_alpha_height": 0.7972224523199634,
+      "fit_exponent": 1.3250395412103784,
+      "seed": 64,
+      "specparam_exponent": 1.3426309585788119,
+      "true_alpha_freq": 10.003750577597685,
+      "true_alpha_height": 0.7991023779600122,
+      "true_exponent": 1.3524036271388065
+    },
+    {
+      "fit_alpha_freq": 10.918877816901839,
+      "fit_alpha_height": 0.3050343932310094,
+      "fit_exponent": 1.5511338913498374,
+      "seed": 65,
+      "specparam_exponent": 1.5558209584952023,
+      "true_alpha_freq": 10.63715525499667,
+      "true_alpha_height": 0.36065995087546077,
+      "true_exponent": 1.5587746036222683
+    },
+    {
+      "fit_alpha_freq": 10.13533583836528,
+      "fit_alpha_height": 0.843978253026732,
+      "fit_exponent": 1.5690457363802675,
+      "seed": 66,
+      "specparam_exponent": 1.569437491152233,
+      "true_alpha_freq": 10.188189293902143,
+      "true_alpha_height": 0.9062430223808557,
+      "true_exponent": 1.5677699631003967
+    },
+    {
+      "fit_alpha_freq": 9.057159118423405,
+      "fit_alpha_height": 0.3644127289065955,
+      "fit_exponent": 1.0004037392496794,
+      "seed": 67,
+      "specparam_exponent": 1.0084266082949302,
+      "true_alpha_freq": 8.88593235253428,
+      "true_alpha_height": 0.36891893604339177,
+      "true_exponent": 0.9882112265704077
+    },
+    {
+      "fit_alpha_freq": 10.797625734679466,
+      "fit_alpha_height": 0.925394148679196,
+      "fit_exponent": 1.5640298742411085,
+      "seed": 68,
+      "specparam_exponent": 1.5689415071273851,
+      "true_alpha_freq": 10.74611467540384,
+      "true_alpha_height": 0.9322033243173018,
+      "true_exponent": 1.5532924256344098
+    },
+    {
+      "fit_alpha_freq": 11.897319648394044,
+      "fit_alpha_height": 0.8892160594121034,
+      "fit_exponent": 1.03314976810885,
+      "seed": 69,
+      "specparam_exponent": 1.0328915006953476,
+      "true_alpha_freq": 11.809427958335858,
+      "true_alpha_height": 0.9112950098150041,
+      "true_exponent": 1.0599931314253634
+    },
+    {
+      "fit_alpha_freq": 10.613423489692556,
+      "fit_alpha_height": 0.5425423766567397,
+      "fit_exponent": 1.646982820845897,
+      "seed": 70,
+      "specparam_exponent": 1.6551198402624816,
+      "true_alpha_freq": 10.632371309517103,
+      "true_alpha_height": 0.5933353070248794,
+      "true_exponent": 1.6303148733110704
+    },
+    {
+      "fit_alpha_freq": 9.369554475176738,
+      "fit_alpha_height": 0.4639925698126396,
+      "fit_exponent": 0.9273107976468222,
+      "seed": 71,
+      "specparam_exponent": 0.9480706636347889,
+      "true_alpha_freq": 9.02110920899072,
+      "true_alpha_height": 0.5826291667185054,
+      "true_exponent": 0.9263796013353063
+    },
+    {
+      "fit_alpha_freq": 9.039257832045218,
+      "fit_alpha_height": 0.6467661051069895,
+      "fit_exponent": 0.8026426124855716,
+      "seed": 72,
+      "specparam_exponent": 0.8027669592060303,
+      "true_alpha_freq": 8.992584265940756,
+      "true_alpha_height": 0.6251755153492546,
+      "true_exponent": 0.8113754980820763
+    },
+    {
+      "fit_alpha_freq": 11.187968458455622,
+      "fit_alpha_height": 0.6127564814339654,
+      "fit_exponent": 1.9516361516282648,
+      "seed": 73,
+      "specparam_exponent": 1.9542788022976199,
+      "true_alpha_freq": 11.137872712020561,
+      "true_alpha_height": 0.6305132015849986,
+      "true_exponent": 1.9347038726915398
+    },
+    {
+      "fit_alpha_freq": 9.446517514156957,
+      "fit_alpha_height": 0.5363136821595177,
+      "fit_exponent": 1.162139648402879,
+      "seed": 74,
+      "specparam_exponent": 1.1679989916094866,
+      "true_alpha_freq": 8.785119376293231,
+      "true_alpha_height": 0.6081455000850664,
+      "true_exponent": 1.178185692375516
+    },
+    {
+      "fit_alpha_freq": 11.874411815510278,
+      "fit_alpha_height": 0.9235883382099154,
+      "fit_exponent": 1.0195164565668149,
+      "seed": 75,
+      "specparam_exponent": 1.0171059145973922,
+      "true_alpha_freq": 11.630291047013008,
+      "true_alpha_height": 0.9869134482006752,
+      "true_exponent": 1.0031360208419766
+    },
+    {
+      "fit_alpha_freq": 10.834785175364233,
+      "fit_alpha_height": 0.6625399717532426,
+      "fit_exponent": 1.749625264732091,
+      "seed": 76,
+      "specparam_exponent": 1.7497178573403753,
+      "true_alpha_freq": 10.977703555070839,
+      "true_alpha_height": 0.7344362184051731,
+      "true_exponent": 1.7620994488514103
+    },
+    {
+      "fit_alpha_freq": 8.624867429713518,
+      "fit_alpha_height": 0.4089827793598994,
+      "fit_exponent": 1.7894967778641597,
+      "seed": 77,
+      "specparam_exponent": 1.7894810943323611,
+      "true_alpha_freq": 8.93345739316559,
+      "true_alpha_height": 0.4460703846752402,
+      "true_exponent": 1.7761684220776122
+    },
+    {
+      "fit_alpha_freq": 9.091309247575332,
+      "fit_alpha_height": 0.4075516204784915,
+      "fit_exponent": 0.9452676143487131,
+      "seed": 78,
+      "specparam_exponent": 0.9714195475104154,
+      "true_alpha_freq": 9.06781001813681,
+      "true_alpha_height": 0.40347531467168063,
+      "true_exponent": 0.9522181856970174
+    },
+    {
+      "fit_alpha_freq": 11.418224131579738,
+      "fit_alpha_height": 0.8634706791527784,
+      "fit_exponent": 2.100860238887351,
+      "seed": 79,
+      "specparam_exponent": 2.107219195016781,
+      "true_alpha_freq": 11.35264790438632,
+      "true_alpha_height": 0.8794824790980449,
+      "true_exponent": 2.0799399516051267
+    },
+    {
+      "fit_alpha_freq": 11.806734927076917,
+      "fit_alpha_height": 0.2730840361274657,
+      "fit_exponent": 1.5851040203416082,
+      "seed": 80,
+      "specparam_exponent": 1.5802585786394199,
+      "true_alpha_freq": 11.630254186536426,
+      "true_alpha_height": 0.3029202864157767,
+      "true_exponent": 1.56392432863665
+    },
+    {
+      "fit_alpha_freq": 10.555840542121423,
+      "fit_alpha_height": 0.8650103609306569,
+      "fit_exponent": 1.918000414192678,
+      "seed": 81,
+      "specparam_exponent": 1.9279389325470062,
+      "true_alpha_freq": 10.5877981435487,
+      "true_alpha_height": 0.8884929501093133,
+      "true_exponent": 1.9211714037886767
+    },
+    {
+      "fit_alpha_freq": 11.897259524679662,
+      "fit_alpha_height": 0.7038524318381173,
+      "fit_exponent": 1.1194000660894612,
+      "seed": 82,
+      "specparam_exponent": 1.1202162219119733,
+      "true_alpha_freq": 11.845748230822934,
+      "true_alpha_height": 0.7264946499029399,
+      "true_exponent": 1.129567623473121
+    },
+    {
+      "fit_alpha_freq": 9.680068534335842,
+      "fit_alpha_height": 0.3237433383889983,
+      "fit_exponent": 1.9710647035850404,
+      "seed": 83,
+      "specparam_exponent": 1.9706104090355634,
+      "true_alpha_freq": 9.537619831225637,
+      "true_alpha_height": 0.33775705189634253,
+      "true_exponent": 1.9475707593698908
+    },
+    {
+      "fit_alpha_freq": 11.348514034098931,
+      "fit_alpha_height": 0.8014509837902967,
+      "fit_exponent": 2.135903907677588,
+      "seed": 84,
+      "specparam_exponent": 2.14109829089821,
+      "true_alpha_freq": 11.32813601200252,
+      "true_alpha_height": 0.8281828012109096,
+      "true_exponent": 2.1088450140183714
+    },
+    {
+      "fit_alpha_freq": 11.518891233089626,
+      "fit_alpha_height": 0.6807502659131937,
+      "fit_exponent": 1.5836015259420742,
+      "seed": 85,
+      "specparam_exponent": 1.5902647019088487,
+      "true_alpha_freq": 11.476427646235477,
+      "true_alpha_height": 0.6859455794430617,
+      "true_exponent": 1.6107984464154335
+    },
+    {
+      "fit_alpha_freq": 9.377384547072074,
+      "fit_alpha_height": 0.741658511014564,
+      "fit_exponent": 2.2002255856903066,
+      "seed": 86,
+      "specparam_exponent": 2.2085962673381725,
+      "true_alpha_freq": 9.360443914511126,
+      "true_alpha_height": 0.746092345211378,
+      "true_exponent": 2.182647391176546
+    },
+    {
+      "fit_alpha_freq": 9.440116948658813,
+      "fit_alpha_height": 0.5631674805855597,
+      "fit_exponent": 0.8180253084318593,
+      "seed": 87,
+      "specparam_exponent": 0.805997185741272,
+      "true_alpha_freq": 9.318004570411262,
+      "true_alpha_height": 0.5688984040104769,
+      "true_exponent": 0.830354002006568
+    },
+    {
+      "fit_alpha_freq": 11.756171682495758,
+      "fit_alpha_height": 0.5592469054596297,
+      "fit_exponent": 1.3230484155467772,
+      "seed": 88,
+      "specparam_exponent": 1.3187967185249019,
+      "true_alpha_freq": 11.806339343381316,
+      "true_alpha_height": 0.5280534013707603,
+      "true_exponent": 1.3007324061615848
+    },
+    {
+      "fit_alpha_freq": 9.374967211229169,
+      "fit_alpha_height": 0.7692544476128876,
+      "fit_exponent": 1.0741569475830195,
+      "seed": 89,
+      "specparam_exponent": 1.0811160610149377,
+      "true_alpha_freq": 9.213279484134361,
+      "true_alpha_height": 0.7813231571910917,
+      "true_exponent": 1.0469779570619546
+    },
+    {
+      "fit_alpha_freq": 9.946507806529251,
+      "fit_alpha_height": 0.9075279759553241,
+      "fit_exponent": 1.4353921971933483,
+      "seed": 90,
+      "specparam_exponent": 1.4359560200566226,
+      "true_alpha_freq": 9.907348793795602,
+      "true_alpha_height": 0.9308123492114362,
+      "true_exponent": 1.4457485641971615
+    },
+    {
+      "fit_alpha_freq": 9.476969175912055,
+      "fit_alpha_height": 0.9426237882086895,
+      "fit_exponent": 2.1727812041331847,
+      "seed": 91,
+      "specparam_exponent": 2.178887810432459,
+      "true_alpha_freq": 9.44797290104182,
+      "true_alpha_height": 0.962454704034372,
+      "true_exponent": 2.1804031439585607
+    },
+    {
+      "fit_alpha_freq": 8.016415697603057,
+      "fit_alpha_height": 0.5031316222065462,
+      "fit_exponent": 2.0181798883404993,
+      "seed": 92,
+      "specparam_exponent": 2.0269414270142,
+      "true_alpha_freq": 8.384757110781024,
+      "true_alpha_height": 0.5757092091743242,
+      "true_exponent": 1.995992590817413
+    },
+    {
+      "fit_alpha_freq": 8.630591169593242,
+      "fit_alpha_height": 0.38680207591958465,
+      "fit_exponent": 1.604979283035703,
+      "seed": 93,
+      "specparam_exponent": 1.6231316364094985,
+      "true_alpha_freq": 8.626568313738687,
+      "true_alpha_height": 0.4360659570788128,
+      "true_exponent": 1.5803782152010917
+    },
+    {
+      "fit_alpha_freq": 9.63413767001936,
+      "fit_alpha_height": 0.38853348275096694,
+      "fit_exponent": 1.5423416060208597,
+      "seed": 94,
+      "specparam_exponent": 1.552927626193537,
+      "true_alpha_freq": 9.822687196836862,
+      "true_alpha_height": 0.3658184685878249,
+      "true_exponent": 1.54474365495326
+    },
+    {
+      "fit_alpha_freq": 9.78857731622764,
+      "fit_alpha_height": 0.5008768865940438,
+      "fit_exponent": 1.926446058761942,
+      "seed": 95,
+      "specparam_exponent": 1.9235995284684289,
+      "true_alpha_freq": 10.22291494884327,
+      "true_alpha_height": 0.6089903105916371,
+      "true_exponent": 1.9352688488109329
+    },
+    {
+      "fit_alpha_freq": 8.831431011087986,
+      "fit_alpha_height": 0.6517695544573675,
+      "fit_exponent": 0.8581262929702327,
+      "seed": 96,
+      "specparam_exponent": 0.868569055220277,
+      "true_alpha_freq": 8.922069680493415,
+      "true_alpha_height": 0.6920541289958302,
+      "true_exponent": 0.8239363653403527
+    },
+    {
+      "fit_alpha_freq": 8.724359467829162,
+      "fit_alpha_height": 0.6145597111012098,
+      "fit_exponent": 1.2817448440437964,
+      "seed": 97,
+      "specparam_exponent": 1.2869573924721922,
+      "true_alpha_freq": 8.841356310808814,
+      "true_alpha_height": 0.6090468972774996,
+      "true_exponent": 1.27851454566567
+    },
+    {
+      "fit_alpha_freq": 11.674246590407325,
+      "fit_alpha_height": 0.7517206596581204,
+      "fit_exponent": 1.5356504071874773,
+      "seed": 98,
+      "specparam_exponent": 1.5305085482966787,
+      "true_alpha_freq": 11.587369794098745,
+      "true_alpha_height": 0.7997538014751971,
+      "true_exponent": 1.5022849606474251
+    },
+    {
+      "fit_alpha_freq": 8.901264401044017,
+      "fit_alpha_height": 0.5955062132537879,
+      "fit_exponent": 1.074867252942539,
+      "seed": 99,
+      "specparam_exponent": 1.0961896139483067,
+      "true_alpha_freq": 8.889113273181376,
+      "true_alpha_height": 0.6131382013762978,
+      "true_exponent": 1.0814401461771466
+    },
+    {
+      "fit_alpha_freq": 9.312993758593334,
+      "fit_alpha_height": 0.8178086885495932,
+      "fit_exponent": 0.8810036884982131,
+      "seed": 100,
+      "specparam_exponent": 0.8882380464842504,
+      "true_alpha_freq": 9.24348135218286,
+      "true_alpha_height": 0.8133930955392215,
+      "true_exponent": 0.8518841803412344
+    },
+    {
+      "fit_alpha_freq": 10.807881644458359,
+      "fit_alpha_height": 0.662107442794602,
+      "fit_exponent": 1.1949145676801185,
+      "seed": 101,
+      "specparam_exponent": 1.20752242089196,
+      "true_alpha_freq": 10.484313208206597,
+      "true_alpha_height": 0.63367650409594,
+      "true_exponent": 1.185336575177196
+    },
+    {
+      "fit_alpha_freq": 11.265279017250249,
+      "fit_alpha_height": 0.6892559292862542,
+      "fit_exponent": 2.207447335905535,
+      "seed": 102,
+      "specparam_exponent": 2.2149411370494407,
+      "true_alpha_freq": 11.07956608669959,
+      "true_alpha_height": 0.7007148987593219,
+      "true_exponent": 2.1729380241004876
+    },
+    {
+      "fit_alpha_freq": 10.047358146319688,
+      "fit_alpha_height": 0.35122394158411474,
+      "fit_exponent": 1.776765744651956,
+      "seed": 103,
+      "specparam_exponent": 1.7728397307145924,
+      "true_alpha_freq": 9.875394483431586,
+      "true_alpha_height": 0.3162759106760565,
+      "true_exponent": 1.7483545697921286
+    },
+    {
+      "fit_alpha_freq": 10.699520206561546,
+      "fit_alpha_height": 0.3465432694979801,
+      "fit_exponent": 1.482501180810488,
+      "seed": 104,
+      "specparam_exponent": 1.4836278121487345,
+      "true_alpha_freq": 10.627028454426359,
+      "true_alpha_height": 0.3997747209956624,
+      "true_exponent": 1.4647273010744966
+    },
+    {
+      "fit_alpha_freq": 8.315536986997692,
+      "fit_alpha_height": 0.6914401015350232,
+      "fit_exponent": 0.9875442525820329,
+      "seed": 105,
+      "specparam_exponent": 1.0098752953666794,
+      "true_alpha_freq": 8.27002844155599,
+      "true_alpha_height": 0.7117560114981806,
+      "true_exponent": 1.0051838729538507
+    },
+    {
+      "fit_alpha_freq": 9.513165113972592,
+      "fit_alpha_height": 0.6441552782692752,
+      "fit_exponent": 2.212254347082405,
+      "seed": 106,
+      "specparam_exponent": 2.228857192285324,
+      "true_alpha_freq": 9.489020005467317,
+      "true_alpha_height": 0.639739614402818,
+      "true_exponent": 2.187410198501313
+    },
+    {
+      "fit_alpha_freq": 9.664425604097586,
+      "fit_alpha_height": 0.7323825199997251,
+      "fit_exponent": 0.9907281704232324,
+      "seed": 107,
+      "specparam_exponent": 0.9879881017183733,
+      "true_alpha_freq": 9.637721908833694,
+      "true_alpha_height": 0.7883474285099683,
+      "true_exponent": 0.964842391127866
+    },
+    {
+      "fit_alpha_freq": 7.880430490740448,
+      "fit_alpha_height": 0.8299633807728307,
+      "fit_exponent": 1.6840026120543734,
+      "seed": 108,
+      "specparam_exponent": 1.7114549863563202,
+      "true_alpha_freq": 8.16594226536881,
+      "true_alpha_height": 0.9503183588198147,
+      "true_exponent": 1.6570686127820413
+    },
+    {
+      "fit_alpha_freq": 10.811627840168962,
+      "fit_alpha_height": 0.6195693669596359,
+      "fit_exponent": 1.4030803628586093,
+      "seed": 109,
+      "specparam_exponent": 1.4065143359167311,
+      "true_alpha_freq": 10.673586636276163,
+      "true_alpha_height": 0.6094811433111795,
+      "true_exponent": 1.395660145937564
+    },
+    {
+      "fit_alpha_freq": 10.799073250881946,
+      "fit_alpha_height": 0.31032723016068287,
+      "fit_exponent": 1.1038496469852008,
+      "seed": 110,
+      "specparam_exponent": 1.109269843536095,
+      "true_alpha_freq": 11.047442017718883,
+      "true_alpha_height": 0.3157681127888692,
+      "true_exponent": 1.0956702784045849
+    },
+    {
+      "fit_alpha_freq": 10.516206286091101,
+      "fit_alpha_height": 0.8330550969488658,
+      "fit_exponent": 1.5825466711743887,
+      "seed": 111,
+      "specparam_exponent": 1.5840141925226225,
+      "true_alpha_freq": 10.496895971944678,
+      "true_alpha_height": 0.8703610800105004,
+      "true_exponent": 1.5830564946605779
+    },
+    {
+      "fit_alpha_freq": 8.10570694366948,
+      "fit_alpha_height": 0.8342220039848885,
+      "fit_exponent": 1.5096653549577863,
+      "seed": 112,
+      "specparam_exponent": 1.5107731142279017,
+      "true_alpha_freq": 8.079262861114074,
+      "true_alpha_height": 0.8841930345837066,
+      "true_exponent": 1.5209228841891704
+    },
+    {
+      "fit_alpha_freq": 10.141909010273226,
+      "fit_alpha_height": 0.7933065851812477,
+      "fit_exponent": 1.1277619575465803,
+      "seed": 113,
+      "specparam_exponent": 1.1304422011295352,
+      "true_alpha_freq": 10.094337649814893,
+      "true_alpha_height": 0.8270656877621363,
+      "true_exponent": 1.112860221619737
+    },
+    {
+      "fit_alpha_freq": 8.971331351541767,
+      "fit_alpha_height": 0.6588245141184346,
+      "fit_exponent": 1.1483392276201934,
+      "seed": 114,
+      "specparam_exponent": 1.1518313169385002,
+      "true_alpha_freq": 8.99911102499202,
+      "true_alpha_height": 0.7155710136996389,
+      "true_exponent": 1.1017656767159962
+    },
+    {
+      "fit_alpha_freq": 8.01146826215514,
+      "fit_alpha_height": 0.5922703072690808,
+      "fit_exponent": 1.37344543220313,
+      "seed": 115,
+      "specparam_exponent": 1.4039831564620922,
+      "true_alpha_freq": 8.088163460176169,
+      "true_alpha_height": 0.5658530112749809,
+      "true_exponent": 1.3767991268627195
+    },
+    {
+      "fit_alpha_freq": 9.81536928406505,
+      "fit_alpha_height": 0.5291041554115233,
+      "fit_exponent": 1.3892959102746616,
+      "seed": 116,
+      "specparam_exponent": 1.403046990901363,
+      "true_alpha_freq": 9.844678784570752,
+      "true_alpha_height": 0.5370302230962035,
+      "true_exponent": 1.388871968277622
+    },
+    {
+      "fit_alpha_freq": 11.430738491067357,
+      "fit_alpha_height": 0.6865557403674306,
+      "fit_exponent": 1.2284101505912504,
+      "seed": 117,
+      "specparam_exponent": 1.2193704815522455,
+      "true_alpha_freq": 11.423889709390691,
+      "true_alpha_height": 0.6641361245896622,
+      "true_exponent": 1.230049640674662
+    },
+    {
+      "fit_alpha_freq": 9.36195509327786,
+      "fit_alpha_height": 0.5324004394271838,
+      "fit_exponent": 1.419498508269754,
+      "seed": 118,
+      "specparam_exponent": 1.4202754360436594,
+      "true_alpha_freq": 9.339185980387043,
+      "true_alpha_height": 0.5691998691206044,
+      "true_exponent": 1.403421490383769
+    },
+    {
+      "fit_alpha_freq": 9.891904393474364,
+      "fit_alpha_height": 0.52214802128149,
+      "fit_exponent": 1.8505724612992351,
+      "seed": 119,
+      "specparam_exponent": 1.8616946487860622,
+      "true_alpha_freq": 9.82585823469821,
+      "true_alpha_height": 0.5171051631663525,
+      "true_exponent": 1.839399798916509
+    },
+    {
+      "fit_alpha_freq": 10.342694547715544,
+      "fit_alpha_height": 0.6153624315402126,
+      "fit_exponent": 1.1886146929863317,
+      "seed": 120,
+      "specparam_exponent": 1.1987571281400842,
+      "true_alpha_freq": 10.38433350301796,
+      "true_alpha_height": 0.5894730095086187,
+      "true_exponent": 1.1594648817045219
+    },
+    {
+      "fit_alpha_freq": 8.056355256817316,
+      "fit_alpha_height": 0.741645227866079,
+      "fit_exponent": 1.4160328590532976,
+      "seed": 121,
+      "specparam_exponent": 1.4492357017407267,
+      "true_alpha_freq": 8.035664455975914,
+      "true_alpha_height": 0.7327209801904697,
+      "true_exponent": 1.3942037876247948
+    },
+    {
+      "fit_alpha_freq": 8.498699880652325,
+      "fit_alpha_height": 0.3649260872877788,
+      "fit_exponent": 2.1214194219189424,
+      "seed": 122,
+      "specparam_exponent": 2.145705084602173,
+      "true_alpha_freq": 8.376282017244876,
+      "true_alpha_height": 0.39019262399691945,
+      "true_exponent": 2.0906264302906514
+    },
+    {
+      "fit_alpha_freq": 8.810834163662262,
+      "fit_alpha_height": 0.9747961627067936,
+      "fit_exponent": 1.8229081751153984,
+      "seed": 123,
+      "specparam_exponent": 1.8301291554052475,
+      "true_alpha_freq": 8.760151596487571,
+      "true_alpha_height": 0.9899281263107442,
+      "true_exponent": 1.8342343066031257
+    },
+    {
+      "fit_alpha_freq": 11.376971354553326,
+      "fit_alpha_height": 0.3234968046817076,
+      "fit_exponent": 2.0074872886790986,
+      "seed": 124,
+      "specparam_exponent": 2.011475928191506,
+      "true_alpha_freq": 11.094283272236488,
+      "true_alpha_height": 0.33355252092262755,
+      "true_exponent": 1.992499595520167
+    },
+    {
+      "fit_alpha_freq": 9.182732022811074,
+      "fit_alpha_height": 0.4966410526117502,
+      "fit_exponent": 0.990943141620507,
+      "seed": 125,
+      "specparam_exponent": 1.0008799787323313,
+      "true_alpha_freq": 9.259699537557179,
+      "true_alpha_height": 0.4875953419647099,
+      "true_exponent": 0.9985588402174147
+    },
+    {
+      "fit_alpha_freq": 11.796134645447573,
+      "fit_alpha_height": 0.6803786716754949,
+      "fit_exponent": 0.9283308356988763,
+      "seed": 126,
+      "specparam_exponent": 0.9372613273180226,
+      "true_alpha_freq": 11.612218586326804,
+      "true_alpha_height": 0.7186735503667652,
+      "true_exponent": 0.9175619643637551
+    },
+    {
+      "fit_alpha_freq": 8.541676984198428,
+      "fit_alpha_height": 0.4296496926920749,
+      "fit_exponent": 1.2669459260403444,
+      "seed": 127,
+      "specparam_exponent": 1.2811318728753853,
+      "true_alpha_freq": 8.513746934554652,
+      "true_alpha_height": 0.4675307286370224,
+      "true_exponent": 1.2608802463795346
+    },
+    {
+      "fit_alpha_freq": 9.875899456956724,
+      "fit_alpha_height": 0.6576840699582711,
+      "fit_exponent": 1.932694363253522,
+      "seed": 128,
+      "specparam_exponent": 1.9332150064657778,
+      "true_alpha_freq": 9.976200611052047,
+      "true_alpha_height": 0.7036112328246382,
+      "true_exponent": 1.9181137557875498
+    },
+    {
+      "fit_alpha_freq": 10.22232134868335,
+      "fit_alpha_height": 0.5737238057874601,
+      "fit_exponent": 0.8803076851012404,
+      "seed": 129,
+      "specparam_exponent": 0.8799394000226665,
+      "true_alpha_freq": 10.256423424906131,
+      "true_alpha_height": 0.6011070540525465,
+      "true_exponent": 0.857179374142498
+    },
+    {
+      "fit_alpha_freq": 8.856369577138567,
+      "fit_alpha_height": 0.31756164101394835,
+      "fit_exponent": 1.4812509140656602,
+      "seed": 130,
+      "specparam_exponent": 1.48847215124613,
+      "true_alpha_freq": 8.954914723767882,
+      "true_alpha_height": 0.3364135519314286,
+      "true_exponent": 1.4805255726950899
+    },
+    {
+      "fit_alpha_freq": 10.724697504986468,
+      "fit_alpha_height": 0.290608600541764,
+      "fit_exponent": 1.8642154060906357,
+      "seed": 131,
+      "specparam_exponent": 1.8658356445104582,
+      "true_alpha_freq": 10.42692932111384,
+      "true_alpha_height": 0.3433830490698126,
+      "true_exponent": 1.863907571608847
+    },
+    {
+      "fit_alpha_freq": 8.924231925117612,
+      "fit_alpha_height": 0.5325964326080952,
+      "fit_exponent": 1.9279401903829296,
+      "seed": 132,
+      "specparam_exponent": 1.9433077920535826,
+      "true_alpha_freq": 8.958081151574747,
+      "true_alpha_height": 0.5733672172905853,
+      "true_exponent": 1.891237461993431
+    },
+    {
+      "fit_alpha_freq": 8.98496865959657,
+      "fit_alpha_height": 0.5758010738731834,
+      "fit_exponent": 0.9702582311674735,
+      "seed": 133,
+      "specparam_exponent": 0.9881511634356681,
+      "true_alpha_freq": 8.975198177958085,
+      "true_alpha_height": 0.5896721490368295,
+      "true_exponent": 0.9591400966760849
+    },
+    {
+      "fit_alpha_freq": 11.279338032212005,
+      "fit_alpha_height": 0.7324045060223078,
+      "fit_exponent": 1.7662825086849356,
+      "seed": 134,
+      "specparam_exponent": 1.753099725772348,
+      "true_alpha_freq": 11.21172624928399,
+      "true_alpha_height": 0.7622030982275312,
+      "true_exponent": 1.7518418961809399
+    },
+    {
+      "fit_alpha_freq": 9.76262709190807,
+      "fit_alpha_height": 0.8508421706087036,
+      "fit_exponent": 0.8929525406558005,
+      "seed": 135,
+      "specparam_exponent": 0.9109843628496173,
+      "true_alpha_freq": 9.689807179048518,
+      "true_alpha_height": 0.9085429914284762,
+      "true_exponent": 0.9057877679116196
+    },
+    {
+      "fit_alpha_freq": 9.618666904211642,
+      "fit_alpha_height": 0.5567687991492724,
+      "fit_exponent": 1.9533326018919395,
+      "seed": 136,
+      "specparam_exponent": 1.9593332886148247,
+      "true_alpha_freq": 9.676789641894166,
+      "true_alpha_height": 0.5512790920914984,
+      "true_exponent": 1.9239949973381156
+    },
+    {
+      "fit_alpha_freq": 8.226118917879045,
+      "fit_alpha_height": 0.6358952710220653,
+      "fit_exponent": 1.4482708746518473,
+      "seed": 137,
+      "specparam_exponent": 1.4627270038324547,
+      "true_alpha_freq": 8.520309129779477,
+      "true_alpha_height": 0.7312293838868691,
+      "true_exponent": 1.4494020747384186
+    },
+    {
+      "fit_alpha_freq": 8.338125619672546,
+      "fit_alpha_height": 1.0013789899906713,
+      "fit_exponent": 1.9233520056469142,
+      "seed": 138,
+      "specparam_exponent": 1.9281374251654022,
+      "true_alpha_freq": 8.33687681393713,
+      "true_alpha_height": 0.9886999200454762,
+      "true_exponent": 1.91923654054149
+    },
+    {
+      "fit_alpha_freq": 11.930243142327404,
+      "fit_alpha_height": 0.8641608076926192,
+      "fit_exponent": 1.289306014466775,
+      "seed": 139,
+      "specparam_exponent": 1.2801008175791293,
+      "true_alpha_freq": 11.89500033737944,
+      "true_alpha_height": 0.8547597104663724,
+      "true_exponent": 1.269166195987711
+    },
+    {
+      "fit_alpha_freq": 8.478484499962738,
+      "fit_alpha_height": 0.7383308984280325,
+      "fit_exponent": 1.6714622615092871,
+      "seed": 140,
+      "specparam_exponent": 1.7034152631211674,
+      "true_alpha_freq": 8.473457155820668,
+      "true_alpha_height": 0.7740213343706956,
+      "true_exponent": 1.6544109045817859
+    },
+    {
+      "fit_alpha_freq": 9.09503421887571,
+      "fit_alpha_height": 0.49271659457081113,
+      "fit_exponent": 1.0997557439514003,
+      "seed": 141,
+      "specparam_exponent": 1.1010345498890024,
+      "true_alpha_freq": 9.170853137625343,
+      "true_alpha_height": 0.48671988375515174,
+      "true_exponent": 1.0717060351537637
+    },
+    {
+      "fit_alpha_freq": 9.374559126638031,
+      "fit_alpha_height": 0.6980766509438747,
+      "fit_exponent": 1.8851994600000703,
+      "seed": 142,
+      "specparam_exponent": 1.8801394491562855,
+      "true_alpha_freq": 9.386059152797698,
+      "true_alpha_height": 0.688048445620846,
+      "true_exponent": 1.869824878016568
+    },
+    {
+      "fit_alpha_freq": 10.864319090429976,
+      "fit_alpha_height": 0.6048842785578324,
+      "fit_exponent": 2.1423144598314297,
+      "seed": 143,
+      "specparam_exponent": 2.1436499851589965,
+      "true_alpha_freq": 10.64688806186441,
+      "true_alpha_height": 0.6257489205559058,
+      "true_exponent": 2.1351457498073603
+    },
+    {
+      "fit_alpha_freq": 10.675429213193256,
+      "fit_alpha_height": 0.3406903408382313,
+      "fit_exponent": 1.8073439274776177,
+      "seed": 144,
+      "specparam_exponent": 1.8073671159521134,
+      "true_alpha_freq": 10.281338567408225,
+      "true_alpha_height": 0.36863604526702903,
+      "true_exponent": 1.7549156561473618
+    },
+    {
+      "fit_alpha_freq": 9.846816253442727,
+      "fit_alpha_height": 0.8870639878920178,
+      "fit_exponent": 2.195102381595181,
+      "seed": 145,
+      "specparam_exponent": 2.198566239650709,
+      "true_alpha_freq": 9.880871646419433,
+      "true_alpha_height": 0.8648031223928316,
+      "true_exponent": 2.197381960180485
+    },
+    {
+      "fit_alpha_freq": 8.335890413413422,
+      "fit_alpha_height": 0.5183794123826904,
+      "fit_exponent": 1.6133394752877719,
+      "seed": 146,
+      "specparam_exponent": 1.610927153751621,
+      "true_alpha_freq": 8.369823999102369,
+      "true_alpha_height": 0.5092925842720117,
+      "true_exponent": 1.6223692112629609
+    },
+    {
+      "fit_alpha_freq": 11.474938309595748,
+      "fit_alpha_height": 0.5634458210742158,
+      "fit_exponent": 0.8679167383733487,
+      "seed": 147,
+      "specparam_exponent": 0.842099954982937,
+      "true_alpha_freq": 11.474049658798256,
+      "true_alpha_height": 0.5448547949604008,
+      "true_exponent": 0.8593097528742205
+    },
+    {
+      "fit_alpha_freq": 11.74214205188856,
+      "fit_alpha_height": 0.3733196448389872,
+      "fit_exponent": 1.9261405584268163,
+      "seed": 148,
+      "specparam_exponent": 1.9266067022055582,
+      "true_alpha_freq": 11.736463899034785,
+      "true_alpha_height": 0.36422511170081184,
+      "true_exponent": 1.9127892667511377
+    },
+    {
+      "fit_alpha_freq": 11.810129109198424,
+      "fit_alpha_height": 0.8972719230848243,
+      "fit_exponent": 2.0706630022970467,
+      "seed": 149,
+      "specparam_exponent": 2.073065178911918,
+      "true_alpha_freq": 11.781761178686185,
+      "true_alpha_height": 0.9111433648498848,
+      "true_exponent": 2.053199562127731
+    },
+    {
+      "fit_alpha_freq": 9.99135124237987,
+      "fit_alpha_height": 0.341386543975406,
+      "fit_exponent": 1.8580012546080291,
+      "seed": 150,
+      "specparam_exponent": 1.8598432843376858,
+      "true_alpha_freq": 9.945871999593463,
+      "true_alpha_height": 0.3085690776463489,
+      "true_exponent": 1.8626770365113565
+    },
+    {
+      "fit_alpha_freq": 8.524952304892302,
+      "fit_alpha_height": 0.6988933836113265,
+      "fit_exponent": 1.6492196766748097,
+      "seed": 151,
+      "specparam_exponent": 1.6693058964928968,
+      "true_alpha_freq": 8.42010612310011,
+      "true_alpha_height": 0.7096525757575589,
+      "true_exponent": 1.6206911531388422
+    },
+    {
+      "fit_alpha_freq": 11.56892537522723,
+      "fit_alpha_height": 0.7274329335884063,
+      "fit_exponent": 1.6616198537216906,
+      "seed": 152,
+      "specparam_exponent": 1.662798690719888,
+      "true_alpha_freq": 11.528002647685248,
+      "true_alpha_height": 0.7621165006589119,
+      "true_exponent": 1.6474329488714021
+    },
+    {
+      "fit_alpha_freq": 11.059789488759598,
+      "fit_alpha_height": 0.4189890096115841,
+      "fit_exponent": 1.5129120773766846,
+      "seed": 153,
+      "specparam_exponent": 1.5176235496229031,
+      "true_alpha_freq": 10.635852984522025,
+      "true_alpha_height": 0.44553991608825216,
+      "true_exponent": 1.496189613725842
+    },
+    {
+      "fit_alpha_freq": 10.333277985203935,
+      "fit_alpha_height": 0.37604582074270154,
+      "fit_exponent": 1.9082195233476138,
+      "seed": 154,
+      "specparam_exponent": 1.9081261759946921,
+      "true_alpha_freq": 10.50345483159452,
+      "true_alpha_height": 0.36269256713978654,
+      "true_exponent": 1.9167860867393058
+    },
+    {
+      "fit_alpha_freq": 8.31331446367249,
+      "fit_alpha_height": 0.47357623784638947,
+      "fit_exponent": 1.0263210361491908,
+      "seed": 155,
+      "specparam_exponent": 1.0475150831848747,
+      "true_alpha_freq": 8.015096590506218,
+      "true_alpha_height": 0.43590921304902225,
+      "true_exponent": 1.0056807912784829
+    },
+    {
+      "fit_alpha_freq": 11.616391906909595,
+      "fit_alpha_height": 0.42492003430486697,
+      "fit_exponent": 1.7393157414174678,
+      "seed": 156,
+      "specparam_exponent": 1.7583790773696852,
+      "true_alpha_freq": 11.090056547895616,
+      "true_alpha_height": 0.6667747467125035,
+      "true_exponent": 1.731809919619967
+    },
+    {
+      "fit_alpha_freq": 8.682257157071822,
+      "fit_alpha_height": 0.4625756341144466,
+      "fit_exponent": 0.9428826193721735,
+      "seed": 157,
+      "specparam_exponent": 0.9479404655464647,
+      "true_alpha_freq": 8.785375190255296,
+      "true_alpha_height": 0.4716766021849258,
+      "true_exponent": 0.9302048916045901
+    },
+    {
+      "fit_alpha_freq": 9.334037850665654,
+      "fit_alpha_height": 0.8858705861431388,
+      "fit_exponent": 1.0198631348763598,
+      "seed": 158,
+      "specparam_exponent": 1.029258476851983,
+      "true_alpha_freq": 9.323578421282315,
+      "true_alpha_height": 0.8855461974320216,
+      "true_exponent": 1.018787001964917
+    },
+    {
+      "fit_alpha_freq": 11.342784426553294,
+      "fit_alpha_height": 0.6196837261917909,
+      "fit_exponent": 1.6554872466513977,
+      "seed": 159,
+      "specparam_exponent": 1.6481569967982144,
+      "true_alpha_freq": 11.389596504932857,
+      "true_alpha_height": 0.6150591987900682,
+      "true_exponent": 1.6578644024267
+    },
+    {
+      "fit_alpha_freq": 11.124428753399467,
+      "fit_alpha_height": 0.9467663195798333,
+      "fit_exponent": 0.8929842289366847,
+      "seed": 160,
+      "specparam_exponent": 0.8927330943304215,
+      "true_alpha_freq": 11.06422670497912,
+      "true_alpha_height": 0.9103552645391941,
+      "true_exponent": 0.8927286593332139
+    },
+    {
+      "fit_alpha_freq": 11.63861180397423,
+      "fit_alpha_height": 0.8238417838395118,
+      "fit_exponent": 0.8483084310052171,
+      "seed": 161,
+      "specparam_exponent": 0.8469515815311617,
+      "true_alpha_freq": 11.624331734584475,
+      "true_alpha_height": 0.8834852708224834,
+      "true_exponent": 0.8515557195688548
+    },
+    {
+      "fit_alpha_freq": 9.212005431575056,
+      "fit_alpha_height": 0.48829234881272554,
+      "fit_exponent": 2.077316817180734,
+      "seed": 162,
+      "specparam_exponent": 2.078405894557434,
+      "true_alpha_freq": 9.223876892217227,
+      "true_alpha_height": 0.5051881555810995,
+      "true_exponent": 2.029743241705609
+    },
+    {
+      "fit_alpha_freq": 8.596134529830007,
+      "fit_alpha_height": 0.8313721457544814,
+      "fit_exponent": 1.7488258453279553,
+      "seed": 163,
+      "specparam_exponent": 1.7564753056655351,
+      "true_alpha_freq": 8.54624821031529,
+      "true_alpha_height": 0.8006908451341586,
+      "true_exponent": 1.7426853073681796
+    },
+    {
+      "fit_alpha_freq": 10.011358540435905,
+      "fit_alpha_height": 0.5154219666511052,
+      "fit_exponent": 1.7700086331922724,
+      "seed": 164,
+      "specparam_exponent": 1.770930803800025,
+      "true_alpha_freq": 10.00647268735988,
+      "true_alpha_height": 0.5165304223545573,
+      "true_exponent": 1.7360836813957317
+    },
+    {
+      "fit_alpha_freq": 9.286204402094075,
+      "fit_alpha_height": 0.9132033769027973,
+      "fit_exponent": 1.6790147564634923,
+      "seed": 165,
+      "specparam_exponent": 1.6922170449270713,
+      "true_alpha_freq": 9.288673678269936,
+      "true_alpha_height": 0.9462105577158113,
+      "true_exponent": 1.6530899227118296
+    },
+    {
+      "fit_alpha_freq": 8.425859536067897,
+      "fit_alpha_height": 0.7940705392280406,
+      "fit_exponent": 0.9035715810260709,
+      "seed": 166,
+      "specparam_exponent": 0.9154383484881751,
+      "true_alpha_freq": 8.441754545563137,
+      "true_alpha_height": 0.7765446970861021,
+      "true_exponent": 0.937207639122806
+    },
+    {
+      "fit_alpha_freq": 11.025782734307178,
+      "fit_alpha_height": 0.7787139828965061,
+      "fit_exponent": 1.4845833453082542,
+      "seed": 167,
+      "specparam_exponent": 1.48084775362543,
+      "true_alpha_freq": 10.952129877505207,
+      "true_alpha_height": 0.760634433064564,
+      "true_exponent": 1.4734508771476613
+    },
+    {
+      "fit_alpha_freq": 9.656862515646162,
+      "fit_alpha_height": 0.5562353961794962,
+      "fit_exponent": 0.8827725354461564,
+      "seed": 168,
+      "specparam_exponent": 0.8770719746238146,
+      "true_alpha_freq": 9.581556608810484,
+      "true_alpha_height": 0.5566001411493888,
+      "true_exponent": 0.8594730170098217
+    },
+    {
+      "fit_alpha_freq": 10.99945260774411,
+      "fit_alpha_height": 0.6420761564906915,
+      "fit_exponent": 2.1724176052754354,
+      "seed": 169,
+      "specparam_exponent": 2.1724751792791754,
+      "true_alpha_freq": 10.967045520677775,
+      "true_alpha_height": 0.6872632981683655,
+      "true_exponent": 2.141477942608679
+    },
+    {
+      "fit_alpha_freq": 11.457755251227136,
+      "fit_alpha_height": 0.7337732519573464,
+      "fit_exponent": 0.8719229291088095,
+      "seed": 170,
+      "specparam_exponent": 0.8746084293827887,
+      "true_alpha_freq": 11.419061905798383,
+      "true_alpha_height": 0.7647254864134269,
+      "true_exponent": 0.8699402135446213
+    },
+    {
+      "fit_alpha_freq": 9.225869413113012,
+      "fit_alpha_height": 0.7748622370930152,
+      "fit_exponent": 1.2742055468133313,
+      "seed": 171,
+      "specparam_exponent": 1.2912492258354606,
+      "true_alpha_freq": 9.1955617467468,
+      "true_alpha_height": 0.7793617563367214,
+      "true_exponent": 1.260797704051286
+    },
+    {
+      "fit_alpha_freq": 10.349652474945467,
+      "fit_alpha_height": 0.40985938196400246,
+      "fit_exponent": 1.1264613913885864,
+      "seed": 172,
+      "specparam_exponent": 1.1290913613466946,
+      "true_alpha_freq": 10.255557412750811,
+      "true_alpha_height": 0.407954718489899,
+      "true_exponent": 1.1112611779245427
+    },
+    {
+      "fit_alpha_freq": 11.693871801474478,
+      "fit_alpha_height": 0.5566326961174191,
+      "fit_exponent": 0.8510081136253499,
+      "seed": 173,
+      "specparam_exponent": 0.859953979201696,
+      "true_alpha_freq": 11.45259306057147,
+      "true_alpha_height": 0.6230723336022469,
+      "true_exponent": 0.8187339904844972
+    },
+    {
+      "fit_alpha_freq": 8.693235303916653,
+      "fit_alpha_height": 0.6841987124794627,
+      "fit_exponent": 1.0913929056477643,
+      "seed": 174,
+      "specparam_exponent": 1.1017318929539899,
+      "true_alpha_freq": 8.435038242822305,
+      "true_alpha_height": 0.7155686278528017,
+      "true_exponent": 1.0627235779604132
+    },
+    {
+      "fit_alpha_freq": 8.115655221689332,
+      "fit_alpha_height": 0.4111585252161899,
+      "fit_exponent": 2.014468496007807,
+      "seed": 175,
+      "specparam_exponent": 2.022775577343656,
+      "true_alpha_freq": 8.482203572188208,
+      "true_alpha_height": 0.46531052325754,
+      "true_exponent": 2.041004868730276
+    },
+    {
+      "fit_alpha_freq": 11.36859799205825,
+      "fit_alpha_height": 0.5626769239060747,
+      "fit_exponent": 2.1540993763776495,
+      "seed": 176,
+      "specparam_exponent": 2.1606033613529583,
+      "true_alpha_freq": 11.161300118720986,
+      "true_alpha_height": 0.6184148634327956,
+      "true_exponent": 2.1234461953643438
+    },
+    {
+      "fit_alpha_freq": 9.585988313898401,
+      "fit_alpha_height": 0.3403775882639258,
+      "fit_exponent": 0.9120737470759152,
+      "seed": 177,
+      "specparam_exponent": 0.9405638816181401,
+      "true_alpha_freq": 9.901405724282226,
+      "true_alpha_height": 0.3856862376901602,
+      "true_exponent": 0.9165712480398605
+    },
+    {
+      "fit_alpha_freq": 11.481995636718436,
+      "fit_alpha_height": 0.39145948622779875,
+      "fit_exponent": 0.8347936420930131,
+      "seed": 178,
+      "specparam_exponent": 0.8357405464345673,
+      "true_alpha_freq": 11.442339619317217,
+      "true_alpha_height": 0.3624747055485693,
+      "true_exponent": 0.8155106026532918
+    },
+    {
+      "fit_alpha_freq": 10.78899619414341,
+      "fit_alpha_height": 0.7252101623572229,
+      "fit_exponent": 1.9539501392862821,
+      "seed": 179,
+      "specparam_exponent": 1.9573130482258767,
+      "true_alpha_freq": 10.794094444445573,
+      "true_alpha_height": 0.7128518861817108,
+      "true_exponent": 1.9281216306843934
+    },
+    {
+      "fit_alpha_freq": 9.944669578297821,
+      "fit_alpha_height": 0.5326367169544328,
+      "fit_exponent": 2.0232975733444114,
+      "seed": 180,
+      "specparam_exponent": 2.0320473124533196,
+      "true_alpha_freq": 10.060598398684762,
+      "true_alpha_height": 0.5278972330225227,
+      "true_exponent": 2.034167261009423
+    },
+    {
+      "fit_alpha_freq": 10.992090538267629,
+      "fit_alpha_height": 0.6244265791039905,
+      "fit_exponent": 1.92541764879077,
+      "seed": 181,
+      "specparam_exponent": 1.955968933661229,
+      "true_alpha_freq": 10.866380755495399,
+      "true_alpha_height": 0.6578943954305589,
+      "true_exponent": 1.9523754250833263
+    },
+    {
+      "fit_alpha_freq": 11.445686033773098,
+      "fit_alpha_height": 0.5406498543661558,
+      "fit_exponent": 1.6202716722812591,
+      "seed": 182,
+      "specparam_exponent": 1.6213837343046016,
+      "true_alpha_freq": 11.604267096038045,
+      "true_alpha_height": 0.5721168279547458,
+      "true_exponent": 1.6430045301064427
+    },
+    {
+      "fit_alpha_freq": 8.583759760153075,
+      "fit_alpha_height": 0.8308819138933163,
+      "fit_exponent": 0.8171752705075686,
+      "seed": 183,
+      "specparam_exponent": 0.8171114808396018,
+      "true_alpha_freq": 8.789008835466174,
+      "true_alpha_height": 0.9687285711441422,
+      "true_exponent": 0.8119901454834156
+    },
+    {
+      "fit_alpha_freq": 12.009745276042683,
+      "fit_alpha_height": 0.36690166322600504,
+      "fit_exponent": 1.350312785498449,
+      "seed": 184,
+      "specparam_exponent": 1.3498828630172475,
+      "true_alpha_freq": 11.535785241465366,
+      "true_alpha_height": 0.4381657614806703,
+      "true_exponent": 1.3389769161229688
+    },
+    {
+      "fit_alpha_freq": 10.558310308861108,
+      "fit_alpha_height": 0.5140883919153459,
+      "fit_exponent": 1.0614338344187564,
+      "seed": 185,
+      "specparam_exponent": 1.0577622511037186,
+      "true_alpha_freq": 10.483741258135137,
+      "true_alpha_height": 0.5777826438741605,
+      "true_exponent": 1.048118207256759
+    },
+    {
+      "fit_alpha_freq": 11.252668742942467,
+      "fit_alpha_height": 0.8916272446409371,
+      "fit_exponent": 2.1668472980610725,
+      "seed": 186,
+      "specparam_exponent": 2.166961370372362,
+      "true_alpha_freq": 11.281593313102775,
+      "true_alpha_height": 0.8933542889075816,
+      "true_exponent": 2.108089050248598
+    },
+    {
+      "fit_alpha_freq": 11.293016202984123,
+      "fit_alpha_height": 0.6958483205183239,
+      "fit_exponent": 0.8542815381908214,
+      "seed": 187,
+      "specparam_exponent": 0.8556292156871366,
+      "true_alpha_freq": 11.19295641870501,
+      "true_alpha_height": 0.700990492362058,
+      "true_exponent": 0.8696187366857978
+    },
+    {
+      "fit_alpha_freq": 10.306611287047096,
+      "fit_alpha_height": 0.8713294845290582,
+      "fit_exponent": 1.8785343448588223,
+      "seed": 188,
+      "specparam_exponent": 1.886713725189097,
+      "true_alpha_freq": 10.28100551679675,
+      "true_alpha_height": 0.9137928784280867,
+      "true_exponent": 1.8771999753382458
+    },
+    {
+      "fit_alpha_freq": 7.934228825773255,
+      "fit_alpha_height": 0.6584370480140629,
+      "fit_exponent": 2.229680263176184,
+      "seed": 189,
+      "specparam_exponent": 2.2412628506513235,
+      "true_alpha_freq": 8.121104443626137,
+      "true_alpha_height": 0.7084825672787067,
+      "true_exponent": 2.188434387557203
+    },
+    {
+      "fit_alpha_freq": 9.832023534093716,
+      "fit_alpha_height": 0.6552421218491711,
+      "fit_exponent": 1.0825354036712755,
+      "seed": 190,
+      "specparam_exponent": 1.0831000147538115,
+      "true_alpha_freq": 10.221829971201258,
+      "true_alpha_height": 0.761604361790515,
+      "true_exponent": 1.0653633017002946
+    },
+    {
+      "fit_alpha_freq": 10.227668025560623,
+      "fit_alpha_height": 0.557357369027996,
+      "fit_exponent": 1.9924751938656755,
+      "seed": 191,
+      "specparam_exponent": 1.993361381080868,
+      "true_alpha_freq": 10.330882545980607,
+      "true_alpha_height": 0.5650289541767036,
+      "true_exponent": 1.9740860792221655
+    },
+    {
+      "fit_alpha_freq": 10.726081794189517,
+      "fit_alpha_height": 0.9228073726843863,
+      "fit_exponent": 1.4278001827465545,
+      "seed": 192,
+      "specparam_exponent": 1.4320858069406508,
+      "true_alpha_freq": 11.020403587066422,
+      "true_alpha_height": 0.9916388315081512,
+      "true_exponent": 1.4054735614106528
+    },
+    {
+      "fit_alpha_freq": 11.351148312047986,
+      "fit_alpha_height": 0.6715545284072789,
+      "fit_exponent": 1.7386314970290475,
+      "seed": 193,
+      "specparam_exponent": 1.7347363196935115,
+      "true_alpha_freq": 11.041036357665188,
+      "true_alpha_height": 0.7506777060900929,
+      "true_exponent": 1.7260505180528147
+    },
+    {
+      "fit_alpha_freq": 9.36592671269327,
+      "fit_alpha_height": 0.9239749608095615,
+      "fit_exponent": 1.108124274047931,
+      "seed": 194,
+      "specparam_exponent": 1.1175958874223284,
+      "true_alpha_freq": 9.383171248823913,
+      "true_alpha_height": 0.949337637041584,
+      "true_exponent": 1.1059708443140148
+    },
+    {
+      "fit_alpha_freq": 8.859313799085124,
+      "fit_alpha_height": 0.42443912591341126,
+      "fit_exponent": 1.2960186149672412,
+      "seed": 195,
+      "specparam_exponent": 1.3096774288535333,
+      "true_alpha_freq": 8.964285530219172,
+      "true_alpha_height": 0.4975672772471905,
+      "true_exponent": 1.2736844999379073
+    },
+    {
+      "fit_alpha_freq": 9.715573533326973,
+      "fit_alpha_height": 0.6261796137607616,
+      "fit_exponent": 1.9539993881030076,
+      "seed": 196,
+      "specparam_exponent": 1.9600828169913223,
+      "true_alpha_freq": 9.393017910790938,
+      "true_alpha_height": 0.659773639423489,
+      "true_exponent": 1.9252740946496105
+    },
+    {
+      "fit_alpha_freq": 11.042408341354362,
+      "fit_alpha_height": 0.7779541537615776,
+      "fit_exponent": 2.1533949903806375,
+      "seed": 197,
+      "specparam_exponent": 2.1560695962589875,
+      "true_alpha_freq": 11.039901339826866,
+      "true_alpha_height": 0.8226231881524801,
+      "true_exponent": 2.133002069628158
+    },
+    {
+      "fit_alpha_freq": 9.662162158721703,
+      "fit_alpha_height": 0.6042880283462871,
+      "fit_exponent": 2.131080438575492,
+      "seed": 198,
+      "specparam_exponent": 2.1323302065149567,
+      "true_alpha_freq": 9.711220120350301,
+      "true_alpha_height": 0.7518452299979415,
+      "true_exponent": 2.141757897363749
+    },
+    {
+      "fit_alpha_freq": 11.374892204446665,
+      "fit_alpha_height": 0.6747676688205146,
+      "fit_exponent": 1.474829398646137,
+      "seed": 199,
+      "specparam_exponent": 1.4775455069743322,
+      "true_alpha_freq": 11.321101866070531,
+      "true_alpha_height": 0.7074681183674527,
+      "true_exponent": 1.488073028857317
+    }
+  ],
+  "specparam_agree": 200,
+  "specparam_agree_wilson": [
+    0.9811546736227335,
+    1.0
+  ],
+  "specparam_n": 200
+}
