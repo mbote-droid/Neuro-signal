@@ -13,7 +13,11 @@ authors:
 version: 0.1.1
 date-released: "2026-10-18"
 license: MIT
+doi: 10.5281/zenodo.23447346
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23447346
+    description: "Zenodo concept DOI: all versions, resolves to the latest"
   - type: doi
     value: 10.5281/zenodo.23447347
     description: "Zenodo archive of release v0.1.0"

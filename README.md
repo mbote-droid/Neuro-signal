@@ -1,6 +1,6 @@
 # NeuroSignal
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23447347.svg)](https://doi.org/10.5281/zenodo.23447347)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23447346.svg)](https://doi.org/10.5281/zenodo.23447346)
 [![CI](https://github.com/mbote-droid/Neuro-signal/actions/workflows/ci.yml/badge.svg)](https://github.com/mbote-droid/Neuro-signal/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)](pyproject.toml)
@@ -148,5 +148,6 @@ make mutation    # mutation testing of the test suite
 ## Data and citation
 
 Real data: CHB-MIT Scalp EEG Database (PhysioNet, ODC-By 1.0); cite Shoeb
-(2009) and Goldberger et al. (2000). Software citation: [CITATION.cff](CITATION.cff).
+(2009) and Goldberger et al. (2000). Software citation: [CITATION.cff](CITATION.cff); archived on Zenodo,
+[10.5281/zenodo.23447346](https://doi.org/10.5281/zenodo.23447346) (all versions).
 Licence: MIT.
