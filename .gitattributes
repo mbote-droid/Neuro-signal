@@ -1,0 +1,9 @@
+# Check out text files with LF on every platform. The result files are
+# covered by SHA-256 hashes (results/validation/MANIFEST.sha256), and
+# Windows' default CRLF conversion would change their bytes.
+* text=auto eol=lf
+
+*.png binary
+*.edf binary
+*.bdf binary
+*.npz binary
