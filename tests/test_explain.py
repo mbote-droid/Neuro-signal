@@ -11,7 +11,7 @@ import pytest
 
 from neurosignal.explain import template
 from neurosignal.explain.checker import check
-from neurosignal.explain.llm import explain_llm, metrics_for_model
+from neurosignal.explain.llm import AnthropicBackend, explain_llm, metrics_for_model
 from validation.mutants import BLIND_SPOTS, OPERATORS
 
 
@@ -119,14 +119,14 @@ def test_llm_accepted_when_checker_passes(metrics):
     """F-15."""
     good = template.explain(metrics)
     client = FakeClient([good])
-    out = explain_llm(metrics, client=client)
+    out = explain_llm(metrics, AnthropicBackend(client=client))
     assert out.check.ok and out.attempts == 1
 
 
 def test_llm_gets_one_repair_round(metrics):
     good = template.explain(metrics)
     client = FakeClient([good + " This is epilepsy.", good])
-    out = explain_llm(metrics, client=client)
+    out = explain_llm(metrics, AnthropicBackend(client=client))
     assert out.check.ok and out.attempts == 2
     repair = client.beta.messages.calls[1]["messages"][-1]["content"]
     assert "DIAGNOSTIC" in repair
@@ -134,14 +134,14 @@ def test_llm_gets_one_repair_round(metrics):
 
 def test_llm_rejected_twice_is_reported(metrics):
     bad = "research use only. 99 [[recording.n_channels]]"
-    out = explain_llm(metrics, client=FakeClient([bad, bad]))
+    out = explain_llm(metrics, AnthropicBackend(client=FakeClient([bad, bad])))
     assert not out.check.ok
 
 
 def test_model_sees_metrics_only(metrics, analysis):
     """S-03: no provenance, processing log, subject id or raw samples."""
     client = FakeClient([template.explain(metrics)])
-    explain_llm(metrics, client=client)
+    explain_llm(metrics, AnthropicBackend(client=client))
     sent = json.dumps(client.beta.messages.calls[0]["messages"], default=str)
     payload = metrics_for_model(metrics)
     assert "provenance" not in payload and "processing" not in payload
@@ -157,8 +157,8 @@ def test_api_key_never_written(tmp_path, monkeypatch, synth_pair):
     secret = "sk-ant-test-SECRET-should-never-appear"
     monkeypatch.setenv("ANTHROPIC_API_KEY", secret)
 
-    def fake_llm(m, client=None, max_attempts=2):
-        return explain_llm(m, client=FakeClient([template.explain(m)]))
+    def fake_llm(m, backend=None, max_attempts=2):
+        return explain_llm(m, AnthropicBackend(client=FakeClient([template.explain(m)])))
 
     monkeypatch.setattr("neurosignal.explain.llm.explain_llm", fake_llm)
     rec, _ = synth_pair
