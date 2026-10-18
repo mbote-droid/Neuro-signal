@@ -25,6 +25,7 @@ def cmd_report(a: argparse.Namespace) -> int:
         Path(a.out),
         _config(a.config),
         explainer=a.explainer,
+        model=a.model,
         max_bytes=int(a.max_mb * 1024 * 1024),
     )
     m = res.metrics
@@ -66,7 +67,7 @@ def cmd_explain(a: argparse.Namespace) -> int:
     from neurosignal.report.build import explain
 
     metrics = json.loads(Path(a.metrics).read_text())
-    text, result, source = explain(metrics, a.explainer)
+    text, result, source = explain(metrics, a.explainer, a.model)
     print(text)
     print(f"<!-- source: {source}; claim check {'passed' if result.ok else 'FAILED'} -->")
     return 0 if result.ok else 1
@@ -92,6 +93,18 @@ def cmd_info(a: argparse.Namespace) -> int:
     return 0
 
 
+EXPLAINERS = ["template", "llm", "anthropic", "gemini", "ollama"]
+
+
+def _explainer_args(p: argparse.ArgumentParser) -> None:
+    p.add_argument(
+        "--explainer", choices=EXPLAINERS, default="template",
+        help="template (default, offline); llm/anthropic needs ANTHROPIC_API_KEY; "
+        "gemini needs GEMINI_API_KEY; ollama needs a local Ollama server",
+    )  # fmt: skip
+    p.add_argument("--model", help="model name for the LLM explainer (backend default if omitted)")
+
+
 def parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="neurosignal", description=__doc__)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -100,7 +113,7 @@ def parser() -> argparse.ArgumentParser:
     r.add_argument("file")
     r.add_argument("--out", default="out")
     r.add_argument("--config", help="TOML file overriding PipelineConfig fields")
-    r.add_argument("--explainer", choices=["template", "llm"], default="template")
+    _explainer_args(r)
     r.add_argument("--max-mb", type=float, default=2048.0)
     r.set_defaults(func=cmd_report)
 
@@ -118,7 +131,7 @@ def parser() -> argparse.ArgumentParser:
 
     e = sub.add_parser("explain", help="explain an existing metrics.json")
     e.add_argument("metrics")
-    e.add_argument("--explainer", choices=["template", "llm"], default="template")
+    _explainer_args(e)
     e.set_defaults(func=cmd_explain)
 
     c = sub.add_parser("check", help="check an explanation against metrics.json")

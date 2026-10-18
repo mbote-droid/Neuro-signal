@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -26,15 +25,19 @@ class ReportResult:
     source: str
 
 
-def explain(metrics: dict[str, Any], explainer: str) -> tuple[str, CheckResult, str]:
-    """Returns (text, check result, source label). Falls back to the template."""
-    if explainer == "llm":
-        if not (os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")):
-            text = template.explain(metrics)
-            return text, check(text, metrics), "template (no API credentials found)"
-        from neurosignal.explain.llm import explain_llm
+def explain(
+    metrics: dict[str, Any], explainer: str, model: str | None = None
+) -> tuple[str, CheckResult, str]:
+    """Returns (text, check result, source label). Falls back to the template
+    when the backend is unavailable or its text fails the claim checker."""
+    if explainer != "template":
+        from neurosignal.explain.llm import BackendError, explain_llm, get_backend
 
-        llm = explain_llm(metrics)
+        try:
+            llm = explain_llm(metrics, get_backend(explainer, model))
+        except BackendError as e:
+            text = template.explain(metrics)
+            return text, check(text, metrics), f"template ({explainer}: {e})"
         if llm.check.ok:
             return llm.text, llm.check, f"{llm.model}, accepted after {llm.attempts} attempt(s)"
         text = template.explain(metrics)
@@ -49,6 +52,7 @@ def build_report(
     cfg: PipelineConfig | None = None,
     explainer: str = "template",
     max_bytes: int = DEFAULT_MAX_BYTES,
+    model: str | None = None,
 ) -> ReportResult:
     t0 = time.perf_counter()
     rec = read(path, max_bytes=max_bytes)
@@ -57,7 +61,7 @@ def build_report(
     t1 = time.perf_counter()
     outdir.mkdir(parents=True, exist_ok=True)
     render.write_metrics(metrics, outdir / "metrics.json")
-    text, result, source = explain(metrics, explainer)
+    text, result, source = explain(metrics, explainer, model)
     (outdir / "explanation.md").write_text(text, encoding="utf-8")
     figs = render.make_figures(an, outdir)
     render.write_markdown(metrics, text, result, source, outdir / "report.md")
