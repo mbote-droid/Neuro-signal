@@ -1,0 +1,42 @@
+{
+  "experiment": "theory_power",
+  "h6_hits": 4,
+  "h6_seizures": 7,
+  "h6_wilson": [
+    0.2504583645276572,
+    0.8417801447485302
+  ],
+  "h6_wilson_width": 0.591321780220873,
+  "hours_needed_upper_bound_le_2_per_h_power_0.8": {
+    "true_0.5": 4.4,
+    "true_1.0": 12.4,
+    "true_1.5": 56.5
+  },
+  "p_pass_point_estimate_rule_by_true_sensitivity": {
+    "0.50": 0.2265625,
+    "0.60": 0.41990399999999994,
+    "0.70": 0.6470695,
+    "0.80": 0.8519680000000001,
+    "0.90": 0.9743085
+  },
+  "provenance": {
+    "git": {
+      "commit": "d4c51ad6e81f8700b3b398c7c48b8b81c3eab147",
+      "dirty": false
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "seizures_needed_wilson_lower_ge_0.6_power_0.8": {
+    "true_0.7": 177,
+    "true_0.75": 76,
+    "true_0.8": 41,
+    "true_0.85": 25
+  }
+}

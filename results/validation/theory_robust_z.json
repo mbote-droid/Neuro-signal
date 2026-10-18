@@ -1,0 +1,67 @@
+{
+  "analytic_event_z": {
+    "eps_0.00": {
+      "classical": 6.0,
+      "robust": 6.0000089781690376
+    },
+    "eps_0.05": {
+      "classical": 3.462503413615486,
+      "robust": 5.573937934110178
+    },
+    "eps_0.10": {
+      "classical": 2.6224718283646133,
+      "robust": 5.118800204882288
+    },
+    "eps_0.20": {
+      "classical": 1.846153846153846,
+      "robust": 4.108591836704689
+    },
+    "eps_0.30": {
+      "classical": 1.4355304467517929,
+      "robust": 2.9565284506311094
+    },
+    "eps_0.40": {
+      "classical": 1.1594819275214954,
+      "robust": 1.7501434059568213
+    }
+  },
+  "experiment": "theory_robust_z",
+  "measured_event_z_by_contamination": {
+    "1_events": {
+      "classical_event_z": 2.137602861617733,
+      "eps": 0.0802675585284281,
+      "robust_event_z": 2.7556651398015033
+    },
+    "2_events": {
+      "classical_event_z": 1.5150226248989116,
+      "eps": 0.16387959866220736,
+      "robust_event_z": 2.54438347917842
+    },
+    "3_events": {
+      "classical_event_z": 1.0410357006844122,
+      "eps": 0.2491638795986622,
+      "robust_event_z": 1.5438390208892618
+    },
+    "4_events": {
+      "classical_event_z": 0.7636258364852482,
+      "eps": 0.3311036789297659,
+      "robust_event_z": 1.2103630085829649
+    }
+  },
+  "model": "background N(0,1), events N(delta,1), contamination eps; delta = 6",
+  "provenance": {
+    "git": {
+      "commit": "d4c51ad6e81f8700b3b398c7c48b8b81c3eab147",
+      "dirty": false
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "threshold": 2.5
+}

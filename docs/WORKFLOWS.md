@@ -15,6 +15,7 @@ Every workflow is one command. All `make` targets run inside the locked
 | re-tune the detector (synthetic only) | `make tune` | about 15 min |
 | full validation campaign + report | `make validate` | about 10 min (plus `make data`) |
 | mutation testing of the test suite | `make mutation` | about 5 min |
+| theory-versus-measurement checks | `make theory` | about 10 min |
 | regenerate the validation report only | `make report` | instant |
 | determinism check | `make determinism` | seconds |
 | container | `docker build -t neurosignal .` then `docker run --rm -v "$PWD:/data" neurosignal report /data/rec.edf --out /data/out` | |

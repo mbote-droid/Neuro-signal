@@ -1,0 +1,43 @@
+{
+  "effective_blink_rate_per_min": 4.614999999999999,
+  "experiment": "theory_blinks",
+  "fourier_model": "ratio peak f* = sqrt(chi/(8 pi^2 sigma^2)), sigma = 80 ms",
+  "gate_floor_hz": 2.0,
+  "hours": 3.3333333333333335,
+  "measured_fundamental_hz_iqr": [
+    1.0,
+    2.0
+  ],
+  "measured_fundamental_hz_median": 1.5,
+  "measured_long_runs_per_hour_before_gate": {
+    "gap_1s": 0.3,
+    "gap_5s": 21.9
+  },
+  "n_measured_blink_events": 73,
+  "nominal_blink_rate_per_min": 15.0,
+  "point_process_model": "Poisson blinks (15/min), each active for the measured median single-blink span; spans closer than the merge gap merge; count runs >= 10 s",
+  "predicted_long_runs_per_hour": {
+    "gap_1s": 0.07,
+    "gap_5s": 13.737
+  },
+  "predicted_long_runs_per_hour_nominal_rate": {
+    "gap_1s": 8.83,
+    "gap_5s": 76.115
+  },
+  "predicted_ratio_peak_hz_median": 1.6340846124368391,
+  "provenance": {
+    "git": {
+      "commit": "d4c51ad6e81f8700b3b398c7c48b8b81c3eab147",
+      "dirty": false
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "single_blink_span_s_median": 2.0
+}

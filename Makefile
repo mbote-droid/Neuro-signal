@@ -9,7 +9,7 @@ export OMP_NUM_THREADS ?= 1
 export OPENBLAS_NUM_THREADS ?= 1
 export MKL_NUM_THREADS ?= 1
 
-.PHONY: help setup lint typecheck test check demo data tune validate validate-quick report mutation determinism clean
+.PHONY: help setup lint typecheck test check demo data tune validate validate-quick theory report mutation determinism clean
 
 help:  ## list targets
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-16s %s\n", $$1, $$2}'
@@ -47,6 +47,10 @@ validate:  ## full validation campaign, then regenerate docs/VALIDATION_REPORT.m
 
 validate-quick:  ## smoke run of the synthetic experiments
 	for e in aperiodic h1 qc connectivity checker; do $(RUN) python validation/campaign.py $$e --quick; done
+
+theory:  ## theory-versus-measurement checks -> docs/STATISTICAL_FOUNDATIONS.md evidence
+	$(RUN) python validation/theory.py all
+	$(RUN) python validation/report.py
 
 report:  ## regenerate the validation report and manifest from result files
 	$(RUN) python validation/report.py

@@ -12,7 +12,8 @@ from validation.common import RESULTS
 
 EXPECTED = ["aperiodic", "h1_confound", "qc", "detection_synthetic", "connectivity", "checker",
             "chbmit", "chbmit_h5_registered", "chbmit_heldout", "resources", "detector_tuning",
-            "mutation"]  # fmt: skip
+            "mutation", "theory_h1_noise", "theory_wpli_bias", "theory_whittle", "theory_blinks",
+            "theory_robust_z", "theory_power"]  # fmt: skip
 
 
 def _load(name):

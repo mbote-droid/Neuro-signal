@@ -1,0 +1,35 @@
+{
+  "experiment": "theory_h1_noise",
+  "measured_fraction_within_0.05": 0.605,
+  "measured_sd_of_difference_robust": 0.05655237437738345,
+  "model": "Welch bins ~ scaled chi-squared(nu); log10 error SD sqrt(psi'(nu/2))/ln10; Hann bin correlation 0.444 (lag 1), 0.028 (lag 2); OLS sandwich covariance",
+  "model_selection": {
+    "fraction_same_peak_count": 0.37,
+    "fraction_within_0.05_same_peak_count": 0.6216216216216216,
+    "robust_sd_different_peak_count": 0.04706679688843653,
+    "robust_sd_same_peak_count": 0.06524540820515332
+  },
+  "nu": 339.1578947368421,
+  "paired_design_measured_median_abs": 0.0012766911154394323,
+  "paired_design_predicted": 0.0,
+  "per_bin_log10_sd": 0.03339941888663687,
+  "predicted_fraction_within_0.05": 0.8133834391852099,
+  "predicted_sd_of_difference_rms": 0.03806524108291431,
+  "provenance": {
+    "git": {
+      "commit": "d4c51ad6e81f8700b3b398c7c48b8b81c3eab147",
+      "dirty": false
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "recording_length_for_90pct_within_0.05_s": 282.25664784230696,
+  "refit_matches_registered_run": true,
+  "segments": 179
+}
