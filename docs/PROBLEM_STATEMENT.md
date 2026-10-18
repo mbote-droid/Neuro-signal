@@ -171,3 +171,43 @@ one-channel vote, events of at least 10 s, 1 s merge gap, and a rhythm gate
 on the fundamental of the background-normalised spectrum in 2-7.5 Hz
 (BUILD_JOURNAL ISSUE-008 to ISSUE-011). chb03 data had not been downloaded
 when this was committed.
+
+## 10. Addendum (2026-10-18): pre-registered evaluation of the LLM explainer, H7
+
+Written after release v0.1.1 and **before any live model was called**. H4
+showed that the claim checker rejects mutated explanations; it said nothing
+about how real models behave under the citation contract. H7 tests that.
+
+* **Recordings.** 30 synthetic recordings from the explanation generator
+  used for H4 (`validation/common.py: explanation_metrics`), seeds
+  100-129, disjoint from H4's seeds 0-59.
+* **Models.** Two, chosen by the author before the run and not changed
+  after seeing any output: one cloud model on Google's free Gemini API tier
+  and one small open model (3-4 billion parameters) run locally with
+  Ollama. The exact model identifiers and versions reported by each API are
+  written into the result files.
+* **Procedure.** The system prompt and citation contract of
+  `explain/llm.py` at this commit, unchanged; temperature 0; at most one
+  repair round with the checker's findings (as in the shipped explainer).
+  One run per model. A run interrupted by rate limits or network errors is
+  resumed, never restarted; only calls that failed for infrastructure
+  reasons are retried, never calls whose text the checker rejected.
+* **H7a (cloud model).** At least 24 of 30 explanations (80 %) are
+  accepted by the checker after at most one repair.
+* **H7b (local model, exploratory).** Acceptance rates are reported with
+  Wilson intervals; no threshold. A small local model is expected to break
+  the contract more often; how often is the result.
+* **H7c (blinded audit, both models).** A random sample of up to 20
+  accepted explanations per model (fixed seed), pooled and shuffled with
+  the model hidden, is read by the author against the metrics they cite.
+  An explanation fails the audit if it contains at least one statement that
+  is false or misleading given the metrics (a citation of the wrong metric
+  for the sentence, a wrong interpretation, or an invented qualitative
+  claim): the errors the checker cannot see (FINDINGS F-4). For the cloud
+  model, at most 2 of 20 audited explanations fail. The local model's rate
+  is reported. The auditor built the tool and is not independent; this is
+  stated with the result.
+* **Reported in all cases.** First-pass acceptance, acceptance after
+  repair, the checker's finding codes, and latency, per model. Whatever
+  the result, it is reported as is; prompt changes after the run need a new
+  set of recordings.
