@@ -1,5 +1,6 @@
 # NeuroSignal
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23447347.svg)](https://doi.org/10.5281/zenodo.23447347)
 [![CI](https://github.com/mbote-droid/Neuro-signal/actions/workflows/ci.yml/badge.svg)](https://github.com/mbote-droid/Neuro-signal/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)](pyproject.toml)

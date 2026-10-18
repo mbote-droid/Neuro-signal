@@ -1,6 +1,6 @@
 [project]
 name = "neurosignal"
-version = "0.1.0"
+version = "0.1.1"
 description = "Drop an EEG file, get a validated report: a deterministic, ground-truth-validated EEG pipeline with provenance-checked explanations."
 readme = "README.md"
 license = { text = "MIT" }
