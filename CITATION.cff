@@ -34,3 +34,15 @@ keywords:
   - validation
   - reproducibility
   - LLM evaluation
+references:
+  - type: article
+    title: "Validation-first EEG pipelines: how synthetic benchmarks mislead, and how pre-registration catches it"
+    authors:
+      - family-names: Mbote
+        given-names: Samuel Ngigi
+        orcid: "https://orcid.org/0009-0003-2319-8873"
+    year: 2026
+    publisher:
+      name: Zenodo
+    doi: 10.5281/zenodo.23448015
+    notes: "Preprint describing this software and its validation."
