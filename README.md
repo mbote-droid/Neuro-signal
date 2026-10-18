@@ -89,6 +89,8 @@ order.
 | document | contents |
 |---|---|
 | [TECHNICAL_REPORT](docs/TECHNICAL_REPORT.md) | the whole story with numbers: start here |
+| [DESIGN_EVOLUTION](docs/DESIGN_EVOLUTION.md) | plan vs reality in chronological order: every turning point, its evidence, and what it guarantees |
+| [STATISTICAL_FOUNDATIONS](docs/STATISTICAL_FOUNDATIONS.md) | eight probability models behind the decisions, each prediction checked against measurement |
 | [PROBLEM_STATEMENT](docs/PROBLEM_STATEMENT.md) | evidence, existing tools, pre-registered hypotheses H1-H6 |
 | [REQUIREMENTS](docs/REQUIREMENTS.md) | EARS requirements with IDs; a test fails CI if any lacks a test |
 | [ARCHITECTURE](docs/ARCHITECTURE.md) | components, boundaries, 12 ADRs |
