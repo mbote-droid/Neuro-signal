@@ -3,6 +3,16 @@
 All notable changes to this project. Format: Keep a Changelog; versions:
 semantic versioning.
 
+## [Unreleased]
+
+### Added
+- Gemini and local Ollama backends for the LLM explainer
+  (`--explainer gemini|ollama`, `--model`), over plain HTTP with no new
+  dependency; keys from the environment, sent in headers only (ADR-013).
+- Pre-registered hypothesis H7 (PROBLEM_STATEMENT §10) and its harness,
+  `validation/llm_eval.py`: resumable runs that never repeat a model call,
+  a blinded audit sheet and scoring; results go into the validation report.
+
 ## [0.1.1] - 2026-10-18
 
 ### Fixed

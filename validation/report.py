@@ -92,6 +92,62 @@ def section_hypotheses(r: dict[str, Any]) -> list[str]:
             f"| {m['hits']}/{m['seizures']} ({m['sensitivity']:.0%}, Wilson {_ci(m['sensitivity_wilson'])}) at {m['false_per_hour']:.2f}/h "
             f"| {_verdict(m['H6_accepted'])} | {_link('chbmit_heldout')} |"
         )
+    if g := r.get("llm_eval_gemini"):
+        lines.append(
+            f"| H7a LLM explainer, cloud model ({', '.join(g['models_reported'])}) "
+            f"| >= 24 of 30 accepted after at most one repair "
+            f"| {g['accepted_after_repair']}/{g['n']} ({g['accepted_first_attempt']} first attempt) "
+            f"| {_verdict(g['H7a_accepted'])} | {_link('llm_eval_gemini')} |"
+        )
+    if au := r.get("llm_audit"):
+        g = au["gemini"]
+        lines.append(
+            f"| H7c blinded audit of accepted text, cloud model | <= 2 of 20 fail "
+            f"| {g['failed']}/{g['audited']} fail (auditor not independent) "
+            f"| {_verdict(au['H7c_accepted'])} | {_link('llm_audit')} |"
+        )
+    if "llm_eval_gemini" not in r:
+        lines.append(
+            "| H7 LLM explainer (Gemini, local Ollama model) | see PROBLEM_STATEMENT §10 "
+            "| not yet run | pending | |"
+        )
+    return [*lines, ""]
+
+
+def section_llm(r: dict[str, Any]) -> list[str]:
+    runs = [r[n] for n in ("llm_eval_gemini", "llm_eval_ollama") if n in r]
+    if not runs:
+        return []
+    lines = [
+        "## LLM explainer under the citation contract (H7)",
+        "",
+        "30 synthetic recordings (seeds 100-129), temperature 0, at most one repair round with "
+        "the checker's findings; text that fails twice is replaced by the template.",
+        "",
+        "| backend | model reported | accepted first attempt | accepted after repair "
+        "| median s/call | most frequent first-attempt findings |",
+        "|---|---|---|---|---|---|",
+    ]
+    for m in runs:
+        top = sorted(m["finding_codes_first_attempt"].items(), key=lambda kv: -kv[1])[:3]
+        lines.append(
+            f"| {m['backend']} | {', '.join(m['models_reported'])} "
+            f"| {m['accepted_first_attempt']}/{m['n']} {_ci(m['accepted_first_wilson'])} "
+            f"| {m['accepted_after_repair']}/{m['n']} {_ci(m['accepted_after_repair_wilson'])} "
+            f"| {m['seconds_per_call_median']:.1f} "
+            f"| {', '.join(f'{k} ({v})' for k, v in top) or 'none'} |"
+        )
+    if au := r.get("llm_audit"):
+        lines += [
+            "",
+            "Blinded audit of accepted explanations (H7c; the auditor built the tool):",
+            "",
+        ]
+        for b in ("gemini", "ollama"):
+            a = au[b]
+            if a["audited"]:
+                lines.append(f"* {b}: {a['failed']} of {a['audited']} failed "
+                             f"(Wilson {_ci(a['failed_wilson'])})")  # fmt: skip
     return [*lines, ""]
 
 
@@ -276,7 +332,8 @@ def manifest() -> list[str]:
 def main() -> None:
     names = ["aperiodic", "h1_confound", "qc", "detection_synthetic", "connectivity", "checker",
              "chbmit_h5_registered", "chbmit", "chbmit_heldout", "resources",
-             "detector_tuning", "mutation"]  # fmt: skip
+             "detector_tuning", "mutation", "llm_eval_gemini", "llm_eval_ollama",
+             "llm_audit"]  # fmt: skip
     r = {n: d for n in names if (d := _load(n)) is not None}
     commits = sorted({str(d["provenance"]["git"]["commit"])[:10] for d in r.values()})
     dirty = any(d["provenance"]["git"]["dirty"] for d in r.values())
@@ -294,6 +351,7 @@ def main() -> None:
         *section_detection(r),
         *section_chbmit(r),
         *section_checker(r),
+        *section_llm(r),
         *section_tuning(r),
         *section_mutation(r),
         *manifest(),

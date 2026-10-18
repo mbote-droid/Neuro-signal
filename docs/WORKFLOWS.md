@@ -9,6 +9,8 @@ Every workflow is one command. All `make` targets run inside the locked
 | try it on synthetic data | `make demo` -> `out/demo/report.html` | seconds |
 | report on your own file | `uv run neurosignal report path/to/rec.edf --out out/rec` | seconds per hour of data |
 | same, with an LLM explanation | `ANTHROPIC_API_KEY=... uv run --extra llm neurosignal report rec.edf --explainer llm` | plus one or two API calls |
+| same, with Gemini or a local model | `--explainer gemini --model <name>` (needs `GEMINI_API_KEY`) or `--explainer ollama --model <name>` | seconds (cloud) to minutes (local, CPU) |
+| LLM explainer evaluation (H7) | see [LLM_EVALUATION.md](LLM_EVALUATION.md) | about 10 min (Gemini), 1-2 h (local model on CPU) |
 | check any explanation | `uv run neurosignal check explanation.md metrics.json` | instant |
 | lint, types, tests | `make check` | about 1 min |
 | download CHB-MIT subset (checksummed) | `make data` | depends on network, about 650 MB |

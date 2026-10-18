@@ -34,7 +34,7 @@ from neurosignal.explain.checker import check
 from neurosignal.features.aperiodic import fit_spectrum
 from neurosignal.features.connectivity import phase_coupling
 from neurosignal.features.spectral import band_power, welch
-from neurosignal.pipeline import analyse, build_metrics, preprocess
+from neurosignal.pipeline import analyse, preprocess
 from neurosignal.synth.eeg import (
     ChannelSpectrum,
     SynthSpec,
@@ -44,7 +44,14 @@ from neurosignal.synth.eeg import (
     random_spectrum,
     shaped_noise,
 )
-from validation.common import EVAL_SEEDS, ROOT, SNR_LEVELS_DB, detection_spec, write_result
+from validation.common import (
+    EVAL_SEEDS,
+    ROOT,
+    SNR_LEVELS_DB,
+    detection_spec,
+    explanation_metrics,
+    write_result,
+)
 from validation.mutants import BLIND_SPOTS, OPERATORS
 
 CHBMIT = ROOT / "data" / "raw" / "chbmit"
@@ -340,21 +347,7 @@ def exp_connectivity(quick: bool) -> None:
 
 
 def _checker_case(seed: int) -> dict[str, Any]:
-    g = rng(seed, 400)
-    spec = SynthSpec(
-        duration_s=float(g.choice([120.0, 300.0])),
-        n_events=int(g.integers(0, 3)),
-        snr_db=float(g.choice([3.0, 10.0])),
-        n_flat=int(g.integers(0, 2)),
-        n_noisy=int(g.integers(0, 2)),
-        blinks_per_min=10.0,
-        alpha=bool(g.random() < 0.85),
-    )
-    try:
-        rec, _ = make_recording(3000 + seed, spec)
-    except ValueError:  # too short for the events requested
-        rec, _ = make_recording(3000 + seed, SynthSpec(duration_s=300.0))
-    metrics = build_metrics(analyse(rec))
+    metrics = explanation_metrics(seed)
     text = template.explain(metrics)
     faithful_ok = check(text, metrics).ok
     out: dict[str, Any] = {"seed": seed, "faithful_ok": faithful_ok, "ops": {}, "blind": {}}

@@ -61,8 +61,16 @@ start out\demo\report.html
 
 Reads EDF/EDF+, BDF, BrainVision (`.vhdr`) and a native `.npz`. Optional
 LLM explanation (only the metrics are sent; the text is checked before it is
-shown): `uv run --extra llm neurosignal report rec.edf --explainer llm`
-with an Anthropic API key in the environment.
+shown, and replaced by the template if it fails):
+
+| backend | command | needs |
+|---|---|---|
+| Anthropic | `uv run --extra llm neurosignal report rec.edf --explainer llm` | `ANTHROPIC_API_KEY` |
+| Google Gemini | `uv run neurosignal report rec.edf --explainer gemini --model <name>` | `GEMINI_API_KEY` (free tier: public or synthetic data only) |
+| local, offline | `uv run neurosignal report rec.edf --explainer ollama --model <name>` | [Ollama](https://ollama.com) running locally |
+
+How real models behave under the citation contract is hypothesis H7; how
+to run it: [docs/LLM_EVALUATION.md](docs/LLM_EVALUATION.md).
 
 The report contains the explanation with hoverable citation chips, the
 claim-check result, four figures (spectrum with aperiodic fit, per-channel
