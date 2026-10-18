@@ -64,8 +64,9 @@ previously 8), 60 of 60 faithful accepted, same conclusion.
 Two limits remain and are stated in the report:
 * the same mutant cited `processing.1.highpass_hz` for a channel count: the
   checker verifies that every number traces to a computed value at the
-  written precision, not that the key fits the sentence. Eight mutants that
-  swapped keys with numerically equal values are counted as equivalent, but
+  written precision, not that the key fits the sentence. Mutants that
+  swapped keys with numerically equal values (3 in the latest run) are
+  counted as equivalent, but
   they are semantically wrong text;
 * numbers written as words are invisible (60 of 60 "number as words"
   mutants passed). The template and the LLM prompt write digits only.
