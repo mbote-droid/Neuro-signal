@@ -1,18 +1,20 @@
 ---
 title: "Validation-first EEG pipelines: how synthetic benchmarks mislead, and how pre-registration catches it"
 author: "Samuel Ngigi Mbote"
-date: "Draft, October 2026"
+date: "October 2026"
 ---
 
 <!--
 Status: preprint draft for arXiv (eess.SP, cross-list q-bio.NC).
-Fill before submission: affiliation, ORCID, email, funding. Software DOI
-(all versions): 10.5281/zenodo.23447346. Every number below is taken from
+Software DOI (all versions): 10.5281/zenodo.23447346. Every number below is taken from
 results/validation/*.json at release v0.1.1; see docs/VALIDATION_REPORT.md.
 -->
 
-**Affiliation:** [to be completed] · **ORCID:** [to be completed] ·
-**Contact:** [to be completed]
+::: {.affil}
+Independent Researcher, Nairobi, Kenya\
+ORCID [0009-0003-2319-8873](https://orcid.org/0009-0003-2319-8873) ·
+<mbotesamuel9@gmail.com>
+:::
 
 ## Abstract
 
@@ -200,6 +202,9 @@ and drop a citation) applied four times each to 60 faithful explanations of
 varied synthetic recordings. A mutant whose text is still true at the
 written precision is "equivalent" and excluded; equivalence is decided
 from the metric values by integer rounding, independently of the checker.
+The same principle, validating the validator with realistic wrong answers
+and mutation testing, was applied earlier to automated graders for AI
+agents on biomedical engineering tasks (Mbote 2026).
 
 ### 2.6 Testing the tests
 
@@ -430,11 +435,12 @@ License v1.0.
 
 ## Funding
 
-[to be completed]
+This research received no specific grant from any funding agency in the
+public, commercial, or not-for-profit sectors.
 
 ## Competing interests
 
-[to be completed]
+The author declares no competing interests.
 
 ## References
 
@@ -451,6 +457,10 @@ PhysioToolkit, and PhysioNet. *Circulation* 101:e215-e220.
 
 Kapoor S, Narayanan A (2023) Leakage and the reproducibility crisis in
 machine-learning-based science. *Patterns* 4:100804.
+
+Mbote SN (2026) Validating the graders: physics-aware rewards for AI agents
+on biomedical engineering tasks. Preprint, Zenodo.
+https://doi.org/10.5281/zenodo.23309911
 
 Nolte G, Bai O, Wheaton L, et al. (2004) Identifying true brain interaction
 from EEG data using the imaginary part of coherency. *Clinical

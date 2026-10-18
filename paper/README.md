@@ -7,17 +7,18 @@ changes, the matching sentence here must change with it.
 
 ## Before submission
 
-* Fill the placeholders: affiliation, ORCID, contact, funding, competing
-  interests.
 * Check every reference against the publisher's record.
 * Have one person who did not build the tool read Sections 2 and 3.
 
 ## Build a PDF
 
 ```bash
-pandoc paper/preprint.md -o paper/preprint.pdf --citeproc --pdf-engine=xelatex
-pandoc paper/preprint.md -o paper/preprint.tex --standalone   # for arXiv
+paper/build_pdf.sh                      # pandoc -> HTML -> Chromium -> paper/preprint.pdf
+CHROME=/path/to/chrome paper/build_pdf.sh
+pandoc paper/preprint.md -o paper/preprint.tex --standalone   # LaTeX source, if a venue wants it
 ```
+
+`preprint.pdf` is committed so it can be downloaded and uploaded as is.
 
 ## Venues
 

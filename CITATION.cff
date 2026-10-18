@@ -10,6 +10,8 @@ abstract: >-
 authors:
   - family-names: Mbote
     given-names: Samuel Ngigi
+    orcid: "https://orcid.org/0009-0003-2319-8873"
+    affiliation: "Independent Researcher, Nairobi, Kenya"
 version: 0.1.1
 date-released: "2026-10-18"
 license: MIT
