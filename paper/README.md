@@ -8,7 +8,7 @@ changes, the matching sentence here must change with it.
 ## Before submission
 
 * Fill the placeholders: affiliation, ORCID, contact, funding, competing
-  interests, and the Zenodo DOI (`DOI-PLACEHOLDER`).
+  interests.
 * Check every reference against the publisher's record.
 * Have one person who did not build the tool read Sections 2 and 3.
 

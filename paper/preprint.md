@@ -6,8 +6,8 @@ date: "Draft, October 2026"
 
 <!--
 Status: preprint draft for arXiv (eess.SP, cross-list q-bio.NC).
-Fill before submission: affiliation, ORCID, email, funding, the Zenodo DOI
-(search for "DOI-PLACEHOLDER"). Every number below is taken from
+Fill before submission: affiliation, ORCID, email, funding. Software DOI
+(all versions): 10.5281/zenodo.23447346. Every number below is taken from
 results/validation/*.json at release v0.1.1; see docs/VALIDATION_REPORT.md.
 -->
 
@@ -43,7 +43,7 @@ rejected all 2157 live mutated explanations once a rounding-tie defect
 found on its first run was fixed. We argue that, for methods papers, the
 benchmark itself is a researcher degree of freedom, and we give a short,
 checkable protocol to constrain it. Code, data-retrieval scripts with
-checksums and all result files: DOI-PLACEHOLDER.
+checksums and all result files: https://doi.org/10.5281/zenodo.23447346.
 
 **Keywords:** EEG, validation, pre-registration, synthetic data, aperiodic
 activity, phase-lag index, seizure detection, reproducibility, mutation
@@ -423,7 +423,7 @@ methods results harder to overstate.
 
 Source code, the synthetic generators, the data-retrieval script with
 checksums, every result file with provenance and a SHA-256 manifest, and
-the build journal are archived at DOI-PLACEHOLDER (release v0.1.1, MIT
+the build journal are archived at https://doi.org/10.5281/zenodo.23447346 (release v0.1.1, MIT
 licence) and developed at https://github.com/mbote-droid/Neuro-signal.
 CHB-MIT is available from PhysioNet under the Open Data Commons Attribution
 License v1.0.
