@@ -1,0 +1,36 @@
+{
+  "120s": {
+    "mixed_dwpli_mean": -0.00020264187040064047,
+    "mixed_wpli_mean": 0.1453201680846499,
+    "n_epochs": 60,
+    "null_dwpli_mean": 0.00025582714322308365,
+    "null_wpli_mean": 0.14546395632301226,
+    "predicted_wpli_mean": 0.1456731240789439,
+    "seeds": 20
+  },
+  "600s": {
+    "mixed_dwpli_mean": 0.00029483791756157435,
+    "mixed_wpli_mean": 0.06650704006414423,
+    "n_epochs": 300,
+    "null_dwpli_mean": 6.013005361819555e-05,
+    "null_wpli_mean": 0.0654606381070439,
+    "predicted_wpli_mean": 0.065147001587056,
+    "seeds": 20
+  },
+  "experiment": "theory_wpli_bias",
+  "model": "E[wPLI | no coupling] ~ 2/sqrt(pi*N); E[dwPLI^2 | no coupling] = 0",
+  "provenance": {
+    "git": {
+      "commit": "d4c51ad6e81f8700b3b398c7c48b8b81c3eab147",
+      "dirty": false
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "alpha_height_rmse_ls": 0.05106087318591388,
+  "alpha_height_rmse_ml": 0.05135551242594365,
+  "experiment": "theory_whittle",
+  "exponent_ls_minus_ml_median": 0.0002058303084145896,
+  "exponent_rmse_ls": 0.020877977674621774,
+  "exponent_rmse_ml": 0.02082624168823122,
+  "measured_ls_offset_bias_vs_ml": -0.0008122174879529043,
+  "n_spectra": 200,
+  "nu": 339.1578947368421,
+  "predicted_ls_offset_bias": -0.0012817667618775493,
+  "provenance": {
+    "git": {
+      "commit": "d4c51ad6e81f8700b3b398c7c48b8b81c3eab147",
+      "dirty": false
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "relative_efficiency_exponent_ml_over_ls": 0.9950501063019129
+}
