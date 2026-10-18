@@ -66,8 +66,7 @@ Two limits remain and are stated in the report:
   checker verifies that every number traces to a computed value at the
   written precision, not that the key fits the sentence. Mutants that
   swapped keys with numerically equal values (3 in the latest run) are
-  counted as equivalent, but
-  they are semantically wrong text;
+  counted as equivalent, but they are semantically wrong text;
 * numbers written as words are invisible (60 of 60 "number as words"
   mutants passed). The template and the LLM prompt write digits only.
 
