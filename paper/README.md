@@ -1,7 +1,7 @@
 # Paper
 
 `preprint.md` is the draft of the methods preprint. Numbers come from
-`results/validation/*.json` at release v0.1.0 (see
+`results/validation/*.json` at release v0.1.1 (see
 [VALIDATION_REPORT.md](../docs/VALIDATION_REPORT.md)); when a result file
 changes, the matching sentence here must change with it.
 

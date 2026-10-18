@@ -8,7 +8,7 @@ date: "Draft, October 2026"
 Status: preprint draft for arXiv (eess.SP, cross-list q-bio.NC).
 Fill before submission: affiliation, ORCID, email, funding, the Zenodo DOI
 (search for "DOI-PLACEHOLDER"). Every number below is taken from
-results/validation/*.json at release v0.1.0; see docs/VALIDATION_REPORT.md.
+results/validation/*.json at release v0.1.1; see docs/VALIDATION_REPORT.md.
 -->
 
 **Affiliation:** [to be completed] · **ORCID:** [to be completed] ·
@@ -423,7 +423,7 @@ methods results harder to overstate.
 
 Source code, the synthetic generators, the data-retrieval script with
 checksums, every result file with provenance and a SHA-256 manifest, and
-the build journal are archived at DOI-PLACEHOLDER (release v0.1.0, MIT
+the build journal are archived at DOI-PLACEHOLDER (release v0.1.1, MIT
 licence) and developed at https://github.com/mbote-droid/Neuro-signal.
 CHB-MIT is available from PhysioNet under the Open Data Commons Attribution
 License v1.0.
