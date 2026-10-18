@@ -208,7 +208,7 @@ class OllamaBackend:
         if "://" not in host:
             host = "http://" + host
         self.model = model or DEFAULT_MODELS["ollama"]
-        self._host = host.rstrip("/")
+        self.host = host.rstrip("/")
 
     def chat(self, system: str, messages: list[dict[str, Any]]) -> Reply:
         body = {
@@ -218,7 +218,7 @@ class OllamaBackend:
             # the metrics and prompt need ~2k tokens; a repair round doubles it
             "options": {"temperature": 0, "seed": 0, "num_ctx": 8192},
         }
-        out = _post_json(f"{self._host}/api/chat", body, {}, timeout=900)
+        out = _post_json(f"{self.host}/api/chat", body, {}, timeout=900)
         text = str(out.get("message", {}).get("content", ""))
         if not text:
             raise BackendError("empty response from Ollama")

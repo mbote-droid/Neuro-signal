@@ -166,3 +166,36 @@ def test_rejected_text_is_never_shown(metrics, monkeypatch):
 def test_unknown_backend():
     with pytest.raises(BackendError):
         get_backend("nope")
+
+
+def test_ollama_over_a_real_socket(metrics):
+    """The urllib path end to end, against a local server that speaks Ollama's API."""
+    import threading
+    from http.server import BaseHTTPRequestHandler, HTTPServer
+
+    good = template.explain(metrics)
+    seen = []
+
+    class Handler(BaseHTTPRequestHandler):
+        def do_POST(self):
+            seen.append(
+                (self.path, json.loads(self.rfile.read(int(self.headers["Content-Length"]))))
+            )
+            body = json.dumps({"model": "local-test", "message": {"content": good}}).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(body)
+
+        def log_message(self, *args):
+            pass
+
+    server = HTTPServer(("127.0.0.1", 0), Handler)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    try:
+        host = f"127.0.0.1:{server.server_address[1]}"
+        out = explain_llm(metrics, OllamaBackend("local-test", host=host))
+    finally:
+        server.shutdown()
+    assert out.check.ok and out.model == "local-test"
+    assert seen[0][0] == "/api/chat" and seen[0][1]["model"] == "local-test"

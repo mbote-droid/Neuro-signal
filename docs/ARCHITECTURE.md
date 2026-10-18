@@ -191,3 +191,24 @@ at chunk boundaries; not needed below about 4 GB of signal).
 Consequences: memory is about 2-3 times the signal size; recordings above
 the 2 GB file limit are refused (S-01).
 Verification: `validation/campaign.py resources` (P-01).
+
+### ADR-013 Pluggable LLM backends: Anthropic, Gemini, local Ollama
+Status: accepted (2026-10-18)
+Context: H7 evaluates real models under the citation contract. The author
+needs a free cloud option (Gemini's free API tier) and an offline one (a
+small open model served by Ollama on the 8 GB laptop).
+Decision: one explain-check-repair loop over a small `ChatBackend` protocol
+(`explain/llm.py`). Anthropic keeps its SDK (optional extra `llm`); Gemini
+and Ollama are called over plain HTTPS/HTTP with the standard library, so
+no dependency is added. The system prompt is shared and pinned by hash to
+the H7 registration. Any backend error falls back to the template with the
+reason in the report.
+Alternatives: the Google SDK (another dependency and lock churn for one
+POST request); an abstraction library over many providers (a large
+dependency for three endpoints).
+Consequences: keys come from the environment and travel in request headers
+only; error messages carry no headers. The free Gemini tier may use
+requests to improve Google's products, so it is for public or synthetic
+data only; the local backend keeps everything on the machine.
+Verification: `tests/test_llm_backends.py`, `tests/test_llm_eval.py`; H7.
+

@@ -15,6 +15,7 @@ Result files produced at commit(s) 36b7964d71, 651fe2d864, 8d2977bf67, 97e680bb0
 | H4 claim checker | all live mutants (>= 300, >= 6 operators) rejected; all faithful accepted | 2157/2157 caught; 60/60 faithful accepted | **accepted** | [`checker.json`](../results/validation/checker.json) |
 | H5 transfer to CHB-MIT chb01 (exploratory, detector v1) | >= 5 of 7 seizures at <= 2 false/h | 2/7 at 0.52/h | **rejected** | [`chbmit_h5_registered.json`](../results/validation/chbmit_h5_registered.json) |
 | H6 held-out subject chb03 (frozen detector, one run) | >= 60 % of seizures at <= 2 false/h | 4/7 (57%, Wilson [0.250, 0.842]) at 3.30/h | **rejected** | [`chbmit_heldout.json`](../results/validation/chbmit_heldout.json) |
+| H7 LLM explainer (Gemini, local Ollama model) | see PROBLEM_STATEMENT §10 | not yet run | pending | |
 
 ## Validity and performance requirements
 
