@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "NeuroSignal: a validated EEG report pipeline with provenance-checked explanations"
+title: "NeuroSignal: a validation-first EEG report pipeline with provenance-checked explanations"
 abstract: >-
   Drop an EEG file, get a validated report. A deterministic pipeline (quality
   control, zero-phase FIR filtering, aperiodic/periodic spectral
@@ -11,9 +11,9 @@ authors:
   - family-names: Mbote
     given-names: Samuel Ngigi
 version: 0.1.0
-date-released: "2026-10-12"
+date-released: "2026-10-18"
 license: MIT
-repository-code: "https://github.com/mbote-droid/neuro-signal"
+repository-code: "https://github.com/mbote-droid/Neuro-signal"
 keywords:
   - EEG
   - signal processing

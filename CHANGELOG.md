@@ -3,7 +3,15 @@
 All notable changes to this project. Format: Keep a Changelog; versions:
 semantic versioning.
 
-## [0.1.0] - 2026-10-12
+## [0.1.0] - 2026-10-18
+
+### Fixed (before release)
+- Text files are checked out with LF line endings on every platform
+  (`.gitattributes`), so the SHA-256 result manifest also verifies on Windows.
+- Explanation wording: singular/plural counts, a clearer line-noise sentence,
+  no "-0.000", an explicit note that zero detected events is not evidence of
+  absence, and a disclaimer that no longer calls the software "validated".
+  The H4 checker campaign was re-run on the new text (2157/2157).
 
 ### Added
 - `neurosignal` CLI: `report`, `synth`, `explain`, `check`, `info`.

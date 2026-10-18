@@ -41,6 +41,22 @@ make demo      # synthetic recording with known truth -> out/demo/report.html
 uv run neurosignal report path/to/recording.edf --out out/rec
 ```
 
+On a real recording: `make data` downloads a checksummed CHB-MIT subset
+(about 650 MB) into `data/raw/chbmit/`; `chb01_03.edf` contains one seizure
+(2996-3036 s in the database annotations).
+
+**Windows (PowerShell).** `make` is not needed; every target is one `uv`
+command (see the [Makefile](Makefile)):
+
+```powershell
+uv sync --frozen
+uv run --frozen pytest
+mkdir out -Force
+uv run --frozen neurosignal synth --seed 42 --out out/demo.npz --duration 300 --events 2
+uv run --frozen neurosignal report out/demo.npz --out out/demo
+start out\demo\report.html
+```
+
 Reads EDF/EDF+, BDF, BrainVision (`.vhdr`) and a native `.npz`. Optional
 LLM explanation (only the metrics are sent; the text is checked before it is
 shown): `uv run --extra llm neurosignal report rec.edf --explainer llm`
