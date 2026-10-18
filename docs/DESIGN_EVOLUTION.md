@@ -127,7 +127,9 @@ Each turning point follows the same pattern: trigger (evidence), root cause
   tie (|1 − 0.5| ≤ 0.5), the independent oracle (round half to even) did not.
 * **Decision.** Strict tie rule in both; the template never writes a tie.
   Second run: 2152/2152 caught, 60/60 faithful explanations accepted.
-  Reported as rejected on the first run, accepted on the second.
+  Reported as rejected on the first run, accepted on the second. After the
+  template wording was tidied for v0.1.0, a third run on the new text gave
+  2157/2157 (the live-mutant count depends on the text being mutated).
 * **Also learned.** The checker cannot tell whether a cited key fits the
   sentence (a channel count citing a filter cutoff passed numerically). A
   stated limit, not a fixed one.

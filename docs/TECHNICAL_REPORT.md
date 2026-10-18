@@ -13,7 +13,7 @@ before touching real data, and six hypotheses were fixed before building.
 The spectral fit recovers the aperiodic exponent with a median error of
 0.014 and agrees with specparam in 200 of 200 spectra; bad-channel detection
 had perfect recall and precision on 100 recordings; the claim checker
-rejected 2152 of 2152 live mutated explanations after a rounding-tie defect
+rejected 2157 of 2157 live mutated explanations after a rounding-tie defect
 found on its first run was fixed. Four hypotheses were rejected and are
 reported as such: canonical band power moved by at least 30 % in every case
 where only the 1/f exponent changed, but fitted peak power was too noisy
@@ -86,7 +86,7 @@ from result files with provenance and a SHA-256 manifest.
 | H1 band power vs exponent | band power changed ≥ 30 % in 100 % of cases; peak power within 0.05 log10 in 60.5 % (paired analysis: method bias 0.001) | rejected as registered |
 | H2 detection, synthetic | sensitivity 0.847 [0.803, 0.882], 1.68 false/h | rejected |
 | H3 volume conduction | wPLI p95 0.193 at 2 min, 0.095 at 10 min; dwPLI 0.021 and 0.006 | rejected at 2 min, accepted at 10 min; dwPLI accepted at both |
-| H4 claim checker | 2152/2152 live mutants, 60/60 faithful | accepted (rejected on the first run) |
+| H4 claim checker | 2157/2157 live mutants, 60/60 faithful | accepted (rejected on the first run) |
 | H5 CHB-MIT chb01, detector v1 | 2/7 at 0.52 false/h | rejected |
 | H6 CHB-MIT chb03 held out, frozen detector | 4/7 at 3.30 false/h | rejected |
 

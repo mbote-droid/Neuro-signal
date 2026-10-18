@@ -56,7 +56,10 @@ not. Both now use a strict rule, and the template adds a decimal instead of
 writing a tie. Re-run: **2152 of 2152 live mutants caught across nine
 operators, 60 of 60 faithful explanations accepted** (miss-rate 95 % upper
 bound 0.0014 by the rule of three; H4 accepted on the second run, rejected
-on the first).
+on the first). The explanation template's wording was revised for v0.1.0
+(singular/plural counts, clearer line-noise sentence); the checker campaign
+was re-run on the new text: 2157 of 2157 live mutants caught (3 equivalent,
+previously 8), 60 of 60 faithful accepted, same conclusion.
 
 Two limits remain and are stated in the report:
 * the same mutant cited `processing.1.highpass_hz` for a channel count: the
