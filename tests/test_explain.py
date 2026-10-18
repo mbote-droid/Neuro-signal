@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import json
 import random
 from types import SimpleNamespace
@@ -44,6 +45,26 @@ def test_blind_spot_documented_not_hidden(metrics):
     text = template.explain(metrics)
     m = BLIND_SPOTS["number_as_words"](text, metrics, random.Random(0))
     assert m is not None and check(m.text, metrics).ok
+
+
+def test_template_wording_edge_cases(metrics):
+    """Singular counts, no bad channels, no events and a negative zero still read
+    correctly and pass the checker."""
+    m = copy.deepcopy(metrics)
+    m["qc"].update(n_bad=0, bad_channels=[])
+    m["events"].update(n_events=0, list=[], total_duration_s=0.0)
+    m["connectivity"]["dwpli_mean"] = -0.0001
+    text = template.explain(m)
+    assert check(text, m).ok, check(text, m).findings
+    assert "found no bad channels" in text
+    assert "not evidence that none occurred" in text
+    assert "-0.000" not in text
+
+    m["qc"].update(n_bad=1, bad_channels=["Fz"])
+    text = template.explain(m)
+    assert check(text, m).ok, check(text, m).findings
+    assert "1 [[qc.n_bad]] channel as bad" in text
+    assert "it is excluded" in text
 
 
 def test_specific_codes(metrics):

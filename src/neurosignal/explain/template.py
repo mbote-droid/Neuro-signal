@@ -10,9 +10,9 @@ from __future__ import annotations
 from typing import Any
 
 DISCLAIMER = (
-    "**Research use only.** This summary was produced by validated software, "
-    "not by a clinician. It is not a medical device and makes no clinical "
-    "statements; candidate events need expert review."
+    "**Research use only.** This summary was generated automatically from the "
+    "computed metrics, not written by a clinician. It is not a medical device and "
+    "makes no clinical statements; candidate events need expert review."
 )
 
 
@@ -22,7 +22,7 @@ def _num(x: float, decimals: int) -> str:
     for d in range(decimals, 9):
         text = f"{x:.{d}f}"
         if abs(float(text) - x) < 0.5 * 10.0**-d * (1 - 1e-9):
-            return text
+            return text.removeprefix("-") if float(text) == 0 else text  # no "-0.000"
     return repr(x)
 
 
@@ -31,6 +31,11 @@ def _c(value: Any, key: str, decimals: int = 2) -> str:
     if isinstance(value, bool | str | int):
         return f"{value} [[{key}]]"
     return f"{_num(float(value), decimals)} [[{key}]]"
+
+
+def _n(count: int, key: str, noun: str) -> str:
+    """A cited count with its noun in singular or plural."""
+    return f"{_c(count, key)} {noun}{'' if count == 1 else 's'}"
 
 
 def _recording(m: dict[str, Any]) -> str:
@@ -45,20 +50,27 @@ def _recording(m: dict[str, Any]) -> str:
 
 def _quality(m: dict[str, Any]) -> str:
     q = m["qc"]
-    bad = ", ".join(q["bad_channels"]) if q["bad_channels"] else "none"
-    text = (
-        f"Quality control marked {_c(q['n_bad'], 'qc.n_bad')} channels as bad "
-        f"({bad} [[qc.bad_channels]]); they are excluded from every measure below. "
-    )
+    if q["bad_channels"]:
+        bad = ", ".join(q["bad_channels"])
+        verb = "it is" if q["n_bad"] == 1 else "they are"
+        text = (
+            f"Quality control marked {_n(q['n_bad'], 'qc.n_bad', 'channel')} as bad "
+            f"({bad} [[qc.bad_channels]]); {verb} excluded from every measure below. "
+        )
+    else:
+        text = "Quality control found no bad channels. "
     after = q["line_noise_ratio_after_median"]
     if after is not None:
         lo, hi = q["line_noise_reference_band_hz"]
         text += (
-            "The median line-noise ratio (power near mains over "
-            f"{_c(lo, 'qc.line_noise_reference_band_hz.0', 0)} to "
-            f"{_c(hi, 'qc.line_noise_reference_band_hz.1', 0)} Hz power) went from "
+            "Line noise, measured as the power at the "
+            f"{_c(m['config']['line_freq_hz'], 'config.line_freq_hz', 0)} Hz mains frequency "
+            "divided by the total power between "
+            f"{_c(lo, 'qc.line_noise_reference_band_hz.0', 0)} and "
+            f"{_c(hi, 'qc.line_noise_reference_band_hz.1', 0)} Hz (median over channels), "
+            "was "
             f"{_c(q['line_noise_ratio_before_median'], 'qc.line_noise_ratio_before_median', 4)} "
-            f"before cleaning to {_c(after, 'qc.line_noise_ratio_after_median', 4)} after."
+            f"before cleaning and {_c(after, 'qc.line_noise_ratio_after_median', 4)} after."
         )
     if q["rereferenced"]:
         text += " Channels were re-referenced to the common average of good channels."
@@ -81,8 +93,9 @@ def _spectrum(m: dict[str, Any]) -> str:
     if ap["n_poor_fits"]:
         names = ", ".join(ap["poor_fit_channels"])
         text += (
-            f"{_c(ap['n_poor_fits'], 'aperiodic.n_poor_fits')} channels had an unreliable fit "
-            f"({names} [[aperiodic.poor_fit_channels]]) and are left out of these averages. "
+            f"{_n(ap['n_poor_fits'], 'aperiodic.n_poor_fits', 'channel')} had an unreliable "
+            f"fit ({names} [[aperiodic.poor_fit_channels]]) and "
+            f"{'is' if ap['n_poor_fits'] == 1 else 'are'} left out of these averages. "
         )
     if m["spectral"]["event_windows_excluded"]:
         text += "Windows inside detected events were excluded, so these describe the background. "
@@ -95,8 +108,9 @@ def _alpha(m: dict[str, Any]) -> str:
     if n_alpha:
         freq, power = ap["alpha_peak_freq_hz"]["mean"], ap["alpha_peak_power"]["mean"]
         text = (
-            f"An alpha peak was found in {_c(n_alpha, 'aperiodic.n_channels_with_alpha')} "
-            f"channels, at {_c(freq, 'aperiodic.alpha_peak_freq_hz.mean', 1)} Hz on average, "
+            "An alpha peak was found in "
+            f"{_n(n_alpha, 'aperiodic.n_channels_with_alpha', 'channel')}, "
+            f"at {_c(freq, 'aperiodic.alpha_peak_freq_hz.mean', 1)} Hz on average, "
             f"rising {_c(power, 'aperiodic.alpha_peak_power.mean')} log10 units above the "
             "aperiodic fit. "
         )
@@ -137,18 +151,22 @@ def _coupling(m: dict[str, Any]) -> str:
 
 def _events(m: dict[str, Any]) -> str:
     e = m["events"]
-    found = f"The line-length detector found {_c(e['n_events'], 'events.n_events')} rhythmic"
     if e["n_events"] == 0:
-        return found + " seizure-like events."
+        return (
+            f"The line-length detector found {_c(0, 'events.n_events')} rhythmic seizure-like "
+            "events. This is not evidence that none occurred: the detector misses events that "
+            "are short, focal, or slower or faster than its rhythm band."
+        )
+    found = _n(e["n_events"], "events.n_events", "rhythmic seizure-like event")
     total = _c(e["total_duration_s"], "events.total_duration_s", 0)
-    text = f"{found} seizure-like events, {total} s in total:"
+    text = f"The line-length detector found {found}, {total} s in total:"
     for i, ev in enumerate(e["list"]):
         k = f"events.list.{i}"
         text += (
             f"\n- from {_c(ev['onset_s'], k + '.onset_s', 0)} s to "
             f"{_c(ev['offset_s'], k + '.offset_s', 0)} s, dominant rhythm "
             f"{_c(ev['dominant_freq_hz'], k + '.dominant_freq_hz', 1)} Hz "
-            f"({_c(ev['n_channels'], k + '.n_channels')} channels involved)"
+            f"({_n(ev['n_channels'], k + '.n_channels', 'channel')} involved)"
         )
     return text + "\n\nThese are candidates for expert review, not findings."
 
