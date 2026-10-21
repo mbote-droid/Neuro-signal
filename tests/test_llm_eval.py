@@ -70,6 +70,13 @@ def test_run_resumes_without_repeating_calls(harness):
     assert out["models_reported"] == ["fake-1.0"]
 
 
+def test_run_stops_at_the_first_outage(harness):
+    _tmp, backend = harness
+    backend.outage_seed = 100
+    assert llm_eval.cmd_run(Namespace(backend="gemini", model="fake-1", pace=None)) == 1
+    assert backend.calls == [100]  # no attempt on the later recordings
+
+
 def test_audit_is_blinded_and_scored(harness, monkeypatch):
     tmp, backend = harness
     backend.outage_seed = None
