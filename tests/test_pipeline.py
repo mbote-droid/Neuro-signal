@@ -66,3 +66,15 @@ def test_html_escapes_untrusted_explanation(metrics):
 
     out = _md_to_html("<script>alert(1)</script> [[qc.n_bad]]", metrics)
     assert "<script>" not in out and "&lt;script&gt;" in out
+
+
+def test_model_markdown_headings_and_bullets_render(metrics):
+    """LLMs write '##' headings and '*' bullets; neither may show as raw markdown."""
+    from neurosignal.report.render import _md_to_html
+
+    out = _md_to_html("## Summary\n### Quality\n#### Detail\n* one\n- two\n#hashtag", metrics)
+    assert "<h3>Summary</h3>" in out and "<h3>Quality</h3>" in out
+    assert "<h4>Detail</h4>" in out
+    assert "<li>one</li>" in out and "<li>two</li>" in out
+    assert "##" not in out
+    assert "<p>#hashtag</p>" in out  # no space after '#': not a heading

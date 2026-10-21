@@ -51,7 +51,7 @@ def _md_to_html(text: str, metrics: dict[str, Any]) -> str:
     for raw in html.escape(text, quote=False).splitlines():
         line = CITATION.sub(chip, raw)
         line = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", line)
-        if line.startswith("- "):
+        if line.startswith(("- ", "* ")):  # LLMs use either bullet
             if not in_list:
                 out.append("<ul>")
                 in_list = True
@@ -60,8 +60,11 @@ def _md_to_html(text: str, metrics: dict[str, Any]) -> str:
         if in_list:
             out.append("</ul>")
             in_list = False
-        if line.startswith("### "):
-            out.append(f"<h3>{line[4:]}</h3>")
+        if heading := re.match(r"(#{1,6})\s+(.*)", line):
+            # explanation headings sit under the page's h2; any '#' depth (models
+            # write '##' as often as the template's '###') becomes h3, deeper h4
+            level = 3 if len(heading.group(1)) <= 3 else 4
+            out.append(f"<h{level}>{heading.group(2)}</h{level}>")
         elif line.strip():
             out.append(f"<p>{line}</p>")
     if in_list:
