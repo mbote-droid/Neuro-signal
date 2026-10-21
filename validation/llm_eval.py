@@ -43,7 +43,7 @@ H7_SEEDS = range(100, 130)
 AUDIT_SAMPLE = 20
 AUDIT_SEED = 7
 DIR = RESULTS / "llm_eval"
-PACE_S = {"gemini": 5.0, "ollama": 0.0}  # stay inside the free tier's requests per minute
+PACE_S = {"gemini": 13.0, "ollama": 0.0}  # the free tier allows 5 requests per minute
 
 
 class RecordingBackend:
@@ -93,16 +93,20 @@ def cmd_run(a: argparse.Namespace) -> int:
     cache = DIR / f"{a.backend}_calls.jsonl"
     inner = get_backend(a.backend, a.model)
     pace = PACE_S[a.backend] if a.pace is None else a.pace
-    cases, failed = [], []
+    cases = []
     for seed in H7_SEEDS:
         metrics = explanation_metrics(seed)
         backend = RecordingBackend(inner, cache, seed, pace)
         try:
             out = explain_llm(metrics, backend)
         except BackendError as e:
-            failed.append(seed)
-            print(f"seed {seed}: {e} (will be retried on the next run)")
-            continue
+            # quota and outages persist: stop instead of failing every remaining seed
+            done = len(cases)
+            print(f"seed {seed}: {e}")
+            print(f"stopped after {done} of {len(H7_SEEDS)} recordings; every reply so far is "
+                  "saved. Run the same command again later (for a daily quota, tomorrow) "
+                  "to continue.")  # fmt: skip
+            return 1
         cases.append({
             "seed": seed, "model": out.model, "attempts": out.attempts,
             "accepted_first": not out.trace[0].codes, "accepted": out.check.ok,
@@ -110,9 +114,6 @@ def cmd_run(a: argparse.Namespace) -> int:
         })  # fmt: skip
         print(f"seed {seed}: {'accepted' if out.check.ok else 'REJECTED'} "
               f"after {out.attempts} attempt(s)")  # fmt: skip
-    if failed:
-        print(f"{len(failed)} recording(s) incomplete; run the same command again to resume.")
-        return 1
     _summarise(a.backend, cases, cache)
     return 0
 

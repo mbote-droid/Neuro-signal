@@ -50,16 +50,21 @@ uv run --frozen pytest
    The report's "Claim check" line says which model wrote the text, or why
    the template was used instead.
 
-4. The evaluation (30 recordings, one call every 5 s to stay inside the
-   free tier, about 10 minutes):
+4. The evaluation: 30 recordings and 30-60 calls (a repair round adds a
+   call), one call every 13 s to stay inside the free tier's 5 requests per
+   minute. On a free tier with 20 requests per day this takes two or three
+   days:
 
    ```powershell
    uv run --frozen python validation/llm_eval.py run --backend gemini --model gemini-2.5-flash
    ```
 
-   If it stops early (daily quota, network), run the same command again
-   later. Every reply is saved before it is checked, so no call is ever
-   repeated; only failed calls are retried.
+   When the day's quota is used up, the run stops with a quota message
+   (HTTP 429). Run the same command again the next day; it continues where
+   it stopped. Every reply is saved before it is checked, so no call is
+   ever repeated; only failed calls are retried. Keep other apps that use
+   the same Google project from calling Gemini while the run is spread over
+   these days, so they do not use up its quota.
 
 ## 3. Local model with Ollama
 
