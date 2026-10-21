@@ -27,7 +27,7 @@ from neurosignal.explain.checker import CheckResult, check
 
 MODEL = "claude-opus-5-5"
 MAX_TOKENS = 8000
-DEFAULT_MODELS = {"anthropic": MODEL, "gemini": "gemini-2.5-flash", "ollama": "qwen2.5:3b"}
+DEFAULT_MODELS = {"anthropic": MODEL, "gemini": "gemini-3.8-flash", "ollama": "qwen2.5:3b"}
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta"
 OLLAMA_HOST = "http://localhost:11434"
 RETRY_STATUS = {429, 500, 502, 503, 504}
