@@ -211,3 +211,9 @@ about how real models behave under the citation contract. H7 tests that.
   repair, the checker's finding codes, and latency, per model. Whatever
   the result, it is reported as is; prompt changes after the run need a new
   set of recordings.
+
+**Models chosen for H7 (2026-10-21, before any H7 call).** Cloud:
+`gemini-3.8-flash` on the Gemini API free tier (5 requests per minute,
+20 per day, so the run is resumed over several days as §10 allows). Local:
+`qwen2.5:3b` served by Ollama 0.40.1, model ID `357c53fb659c` (4-bit,
+1.9 GB). The local model is within the registered 3-4 billion parameters.

@@ -15,7 +15,7 @@ after seeing output. Pick them now and write them down (or commit them on
 a branch, which dates the choice):
 
 * **Cloud:** a model listed under the free tier in Google AI Studio. Use
-  the exact name the API expects (for example `gemini-2.5-flash`).
+  the exact name the API expects (for example `gemini-3.8-flash`).
 * **Local:** a 3-4 billion parameter instruction-tuned model from
   <https://ollama.com/library>, for example `qwen2.5:3b` or `llama3.2:3b`.
   These need about 2-3 GB of RAM and run on the CPU.
@@ -44,7 +44,7 @@ uv run --frozen pytest
    recordings, so it does not count):
 
    ```powershell
-   uv run --frozen neurosignal report out\demo.npz --out out\gemini-demo --explainer gemini --model gemini-2.5-flash
+   uv run --frozen neurosignal report out\demo.npz --out out\gemini-demo --explainer gemini --model gemini-3.8-flash
    ```
 
    The report's "Claim check" line says which model wrote the text, or why
@@ -56,7 +56,7 @@ uv run --frozen pytest
    days:
 
    ```powershell
-   uv run --frozen python validation/llm_eval.py run --backend gemini --model gemini-2.5-flash
+   uv run --frozen python validation/llm_eval.py run --backend gemini --model gemini-3.8-flash
    ```
 
    When the day's quota is used up, the run stops with a quota message
