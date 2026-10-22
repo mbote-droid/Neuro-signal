@@ -36,11 +36,26 @@ Status: ✅ done · 🔄 in progress · ⏭ next · 💤 later
 |---|---|---|
 | Issue #21: sign flips written with a typographic minus passed the checker; fixed, new mutation operator, H4 re-run (2386/2386) | ✅ 2026-10-22 | BUILD_JOURNAL ISSUE-012 |
 
+## Bug hunt (after H7, before preprint v2)
+
+Issue #21 showed that the tests only catch the errors their authors
+imagined. A systematic search, before the paper's claims are frozen; every
+finding becomes a test and a BUILD_JOURNAL entry.
+
+| item | status | notes |
+|---|---|---|
+| Fuzz the claim checker: random Unicode, number formats (decimal commas, thin spaces, superscripts, percentages), citation placement | ⏭ | Hypothesis property tests; known: a decimal comma reads as two numbers (rejects correct text) |
+| Fuzz the file readers: corrupted, truncated and unusual EDF/BDF/BrainVision files | ⏭ | must refuse cleanly, never crash or hang |
+| Edge-case recordings through the whole pipeline: one channel, all channels bad, very short, unusual sampling rates, flat or saturated signals | ⏭ | |
+| Structured correctness and security review of the code | ⏭ | report escaping, file limits, keys, dependencies |
+| Second look at the mutation sets (H4 operators, test-suite mutants): what errors are still missing? | ⏭ | the lesson of ISSUE-012 |
+
 ## Publication
 
 | item | status | notes |
 |---|---|---|
-| Fold H7 into FINDINGS, the technical report and preprint v2 | ⏭ | after the runs and the audit |
+| Fold H7 into FINDINGS, the technical report and preprint v2 | ⏭ | after the runs, the audit and the bug hunt |
+| Preprint v2 also reports ISSUE-012: ten H4 operators, the H7 amendment, and acknowledges the outside report (#21) | ⏭ | |
 | Post preprint v2 (Zenodo new version; one other preprint server optional) | ⏭ | |
 | Submit to Journal of Neuroscience Methods | ⏭ | ends active work on the 0.1 line |
 | Respond to reviewers | 💤 | weeks to months after submission |
