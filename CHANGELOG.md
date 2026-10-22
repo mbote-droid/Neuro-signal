@@ -13,6 +13,13 @@ semantic versioning.
   `validation/llm_eval.py`: resumable runs that never repeat a model call,
   a blinded audit sheet and scoring; results go into the validation report.
 
+### Fixed
+- The claim checker missed sign flips written with a typographic minus or
+  en dash (issue #21, reported by neowalter); a range dash after a citation
+  no longer reads as a minus; scientific notation reads as one number. New
+  mutation operator `typographic_minus` (H4: 2386/2386). H7 keeps the
+  registered checker and reports the corrected one as a secondary analysis.
+
 ## [0.1.1] - 2026-10-18
 
 ### Fixed

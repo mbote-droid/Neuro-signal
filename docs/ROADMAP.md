@@ -28,6 +28,13 @@ Status: ✅ done · 🔄 in progress · ⏭ next · 💤 later
 | Gemini run (30 recordings, over several days of free quota) | 🔄 | `results/validation/llm_eval_gemini.json` |
 | Local Ollama run (30 recordings) | 🔄 | `results/validation/llm_eval_ollama.json` |
 | Blinded audit of accepted explanations (H7c) | ⏭ | `results/validation/llm_audit.json` |
+| Secondary analysis with the corrected checker (`recheck`) | ⏭ | `results/validation/llm_recheck.json` |
+
+## Maintenance and outside reports
+
+| item | status | evidence |
+|---|---|---|
+| Issue #21: sign flips written with a typographic minus passed the checker; fixed, new mutation operator, H4 re-run (2386/2386) | ✅ 2026-10-22 | BUILD_JOURNAL ISSUE-012 |
 
 ## Publication
 

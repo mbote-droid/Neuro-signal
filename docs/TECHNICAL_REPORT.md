@@ -13,7 +13,7 @@ before touching real data, and six hypotheses were fixed before building.
 The spectral fit recovers the aperiodic exponent with a median error of
 0.014 and agrees with specparam in 200 of 200 spectra; bad-channel detection
 had perfect recall and precision on 100 recordings; the claim checker
-rejected 2157 of 2157 live mutated explanations after a rounding-tie defect
+rejected 2386 of 2386 live mutated explanations after a rounding-tie defect
 found on its first run was fixed. Four hypotheses were rejected and are
 reported as such: canonical band power moved by at least 30 % in every case
 where only the 1/f exponent changed, but fitted peak power was too noisy
@@ -73,7 +73,7 @@ Unit, property-based (linearity, time-shift equivariance), metamorphic
 under volume conduction, detector without its rhythm gate); a determinism
 job; resource budget; mutation testing of the explanation checker (nine
 operators, equivalence decided independently of the checker) and of the
-test suite (seventeen code mutants). Intervals: Wilson for proportions,
+test suite (eighteen code mutants). Intervals: Wilson for proportions,
 rule of three for zero failures, a Wilson-Hilferty Poisson bound for
 false-detection rates. Seed sets are disjoint between tuning and
 evaluation. Evidence: [VALIDATION_REPORT.md](VALIDATION_REPORT.md), generated
@@ -86,7 +86,7 @@ from result files with provenance and a SHA-256 manifest.
 | H1 band power vs exponent | band power changed ≥ 30 % in 100 % of cases; peak power within 0.05 log10 in 60.5 % (paired analysis: method bias 0.001) | rejected as registered |
 | H2 detection, synthetic | sensitivity 0.847 [0.803, 0.882], 1.68 false/h | rejected |
 | H3 volume conduction | wPLI p95 0.193 at 2 min, 0.095 at 10 min; dwPLI 0.021 and 0.006 | rejected at 2 min, accepted at 10 min; dwPLI accepted at both |
-| H4 claim checker | 2157/2157 live mutants, 60/60 faithful | accepted (rejected on the first run) |
+| H4 claim checker | 2386/2386 live mutants (ten operators), 60/60 faithful | accepted (rejected on the first run) |
 | H5 CHB-MIT chb01, detector v1 | 2/7 at 0.52 false/h | rejected |
 | H6 CHB-MIT chb03 held out, frozen detector | 4/7 at 3.30 false/h | rejected |
 
@@ -107,13 +107,15 @@ citation of the wrong key).
 
 ## 8. Issues and mitigations
 
-Eleven dated issues in [BUILD_JOURNAL.md](BUILD_JOURNAL.md), among them:
+Twelve dated issues in [BUILD_JOURNAL.md](BUILD_JOURNAL.md), among them:
 wPLI bias (ISSUE-001); muscle as the only false-alarm source before
 band-limiting (002); negative exponents from an event inside the spectrum
 window, found by looking at a figure (004); a circular definition of
 "equivalent mutant" caught before it produced a result (006); the rhythm
 gate's aperiodic trap (008); an infeasible tuning constraint, revised to
-H2's own limit and recorded (010); blink trains merged into "rhythms" (011).
+H2's own limit and recorded (010); blink trains merged into "rhythms" (011);
+a sign flip written with a typographic minus, reported by an outside reader
+and fixed with a new mutation operator (012).
 
 ## 9. Limitations and threats to validity
 
