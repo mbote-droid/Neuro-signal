@@ -20,6 +20,24 @@ a branch, which dates the choice):
   <https://ollama.com/library>, for example `qwen2.5:3b` or `llama3.2:3b`.
   These need about 2-3 GB of RAM and run on the CPU.
 
+### What the model identifiers mean
+
+* **Parameters** are all the numbers a network learned in training: the
+  weights each layer multiplies its inputs by, the biases it adds, and the
+  embedding tables. `qwen2.5:3b` has about 3 billion.
+* **Quantisation** stores each parameter in fewer bits. At 16 bits, 3
+  billion parameters take about 6 GB; Ollama's default 4-bit version takes
+  1.9 GB, with a small loss of precision. Running it needs about 2.5-3 GB
+  of RAM including the 8,192-token context this evaluation requests.
+* **The Ollama ID** (`357c53fb659c` for the H7 model) is the start of a
+  SHA-256 fingerprint of the model's manifest: the weight file, prompt
+  template and default settings. Its characters carry no meaning on their
+  own (hexadecimal, 0-9 and a-f); any change to a single weight gives a
+  completely different ID. It identifies the exact model the way a lot
+  number identifies a batch, and `validation/llm_eval.py` records it.
+* **Cloud model names** such as `gemini-3.8-flash` can be updated by the
+  provider; the version the API reports for each reply is recorded instead.
+
 ## 1. Get the code and check it
 
 ```powershell
@@ -132,3 +150,22 @@ git push -u origin results/h7-llm-eval
 Then open the pull request on GitHub. The result files hold the model
 names and versions as reported by each API, every reply, and the audit
 verdicts. They contain no API key.
+
+## Troubleshooting
+
+* **A new VS Code terminal runs `Set-ExecutionPolicy ... Activate.ps1` by
+  itself.** That is VS Code's Python extension activating the project's
+  `.venv` (setting `python.terminal.activateEnvironment`). The policy
+  change applies to that window only. Harmless; untick the setting to stop
+  it.
+* **`ollama --list` fails.** It is a command, not a flag: `ollama list`.
+* **"cannot reach http://localhost:11434".** Ollama is not running: start
+  it from the Start menu.
+* **The Gemini run stops with HTTP 429.** The day's free quota is used up;
+  run the same command the next day.
+* **Two runs at once.** Gemini and Ollama can run in two terminals at the
+  same time; they write separate files. Set `GEMINI_API_KEY` in the Gemini
+  terminal. Running Ollama inside WSL is not faster: the Windows Ollama
+  server already does the work.
+* **`ollama ps`** shows whether the model runs on the CPU or a GPU, and
+  that no other model is loaded.
