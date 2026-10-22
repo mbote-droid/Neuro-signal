@@ -59,7 +59,11 @@ bound 0.0014 by the rule of three; H4 accepted on the second run, rejected
 on the first). The explanation template's wording was revised for v0.1.0
 (singular/plural counts, clearer line-noise sentence); the checker campaign
 was re-run on the new text: 2157 of 2157 live mutants caught (3 equivalent,
-previously 8), 60 of 60 faithful accepted, same conclusion.
+previously 8), 60 of 60 faithful accepted, same conclusion. After an outside
+report (issue #21, ISSUE-012) a tenth operator writes sign flips with a
+typographic minus or en dash, which the original checker missed; with the
+corrected checker: **2386 of 2386 live mutants caught across ten operators**
+(14 equivalent), 60 of 60 faithful accepted.
 
 Two limits remain and are stated in the report:
 * the same mutant cited `processing.1.highpass_hz` for a channel count: the
@@ -69,6 +73,10 @@ Two limits remain and are stated in the report:
   counted as equivalent, but they are semantically wrong text;
 * numbers written as words are invisible (60 of 60 "number as words"
   mutants passed). The template and the LLM prompt write digits only.
+
+A third limit was found from outside and fixed: signs written with
+typographic dashes (ISSUE-012). It shows the checker is only as complete as
+the error model behind its mutation set.
 
 ## F-5 The detector rebuilt the H1 confound (H5)
 
@@ -148,4 +156,5 @@ survived the first run:
   quick runs (an equivalent mutant); replaced by a random run id, which the
   determinism test catches.
 
-Final run: **17 of 17 mutants killed.**
+Final run: **17 of 17 mutants killed**; 18 of 18 after a mutant that
+restores the ASCII-only sign (ISSUE-012) was added.

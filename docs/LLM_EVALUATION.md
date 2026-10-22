@@ -139,7 +139,11 @@ uv run --frozen python validation/llm_eval.py audit-score
 
 ## 5. Report and commit
 
+First the secondary analysis (PROBLEM_STATEMENT §10, amendment): the
+corrected checker applied to every saved reply, with no model calls:
+
 ```powershell
+uv run --frozen python validation/llm_eval.py recheck
 uv run --frozen python validation/report.py
 git checkout -b results/h7-llm-eval
 git add results/validation docs/VALIDATION_REPORT.md

@@ -6,13 +6,13 @@
       "caught": 0
     }
   },
-  "caught": 2157,
-  "equivalent_mutants": 3,
+  "caught": 2386,
+  "equivalent_mutants": 14,
   "experiment": "checker",
   "faithful_accepted": 60,
   "false_reject_upper95": 0.05,
-  "live_mutants": 2157,
-  "miss_rate_upper95": 0.0013908205841446453,
+  "live_mutants": 2386,
+  "miss_rate_upper95": 0.0012573344509639564,
   "n_explanations": 60,
   "operators": {
     "diagnostic": {
@@ -57,6 +57,12 @@
       "live": 237,
       "mutants": 240
     },
+    "typographic_minus": {
+      "caught": 229,
+      "equivalent": 11,
+      "live": 229,
+      "mutants": 240
+    },
     "uncited_number": {
       "caught": 240,
       "equivalent": 0,
@@ -72,14 +78,14 @@
   },
   "provenance": {
     "git": {
-      "commit": "8d2977bf6742e441a1c5d6b40c10de7af6d6d17f",
+      "commit": "f18adf3651ac6b1acf7076d2419afc1a8b21d961",
       "dirty": false
     },
     "python": "3.12.3",
     "versions": {
       "matplotlib": "3.11.2",
       "mne": "1.13.2",
-      "neurosignal": "0.1.0",
+      "neurosignal": "0.1.1",
       "numpy": "2.5.4",
       "scipy": "1.18.1"
     }

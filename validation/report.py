@@ -137,6 +137,20 @@ def section_llm(r: dict[str, Any]) -> list[str]:
             f"| {m['seconds_per_call_median']:.1f} "
             f"| {', '.join(f'{k} ({v})' for k, v in top) or 'none'} |"
         )
+    if rc := r.get("llm_recheck"):
+        lines += [
+            "",
+            "Secondary analysis: the saved replies under the corrected checker "
+            "(ISSUE-012; primary verdicts above use the registered checker):",
+            "",
+        ]
+        for b in ("gemini", "ollama"):
+            if x := rc.get(b):
+                lines.append(
+                    f"* {b}: {x['calls_with_typographic_sign']} of {x['calls']} replies wrote a "
+                    f"typographic minus before a digit; {len(x['verdict_changes'])} verdicts "
+                    f"change; {x['accepted_texts_now_rejected']} accepted texts would be rejected"
+                )
     if au := r.get("llm_audit"):
         lines += [
             "",
@@ -333,7 +347,7 @@ def main() -> None:
     names = ["aperiodic", "h1_confound", "qc", "detection_synthetic", "connectivity", "checker",
              "chbmit_h5_registered", "chbmit", "chbmit_heldout", "resources",
              "detector_tuning", "mutation", "llm_eval_gemini", "llm_eval_ollama",
-             "llm_audit"]  # fmt: skip
+             "llm_audit", "llm_recheck"]  # fmt: skip
     r = {n: d for n in names if (d := _load(n)) is not None}
     commits = sorted({str(d["provenance"]["git"]["commit"])[:10] for d in r.values()})
     dirty = any(d["provenance"]["git"]["dirty"] for d in r.values())

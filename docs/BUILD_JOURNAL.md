@@ -198,3 +198,30 @@ and evaluation recording in five is now event-free, so false detections on
 clean background are part of the objective.
 Lesson: include the null case in every tuning set; a detector tuned only on
 recordings that contain events learns to call everything an event.
+
+### ISSUE-012 A sign written with a typographic minus was invisible   (2026-10-22)
+Phase: after release (external report, GitHub issue #21, by neowalter)
+Symptom: with a metric equal to 0.30, "-0.30 [[key]]" was rejected
+(VALUE_MISMATCH) but "−0.30 [[key]]" (U+2212) and "–0.30 [[key]]" (en dash)
+passed: a sign flip, the most consequential error for a signed metric such
+as debiased wPLI, counted as traced.
+Root cause: the number pattern accepted only the ASCII hyphen as a sign, and
+the mutation set (H4) had no operator writing other dashes, so the gap was
+outside what the checker was tested against. The template writes ASCII; a
+language model may not.
+Mitigation: any dash a writer uses as a minus is a sign when it follows a
+space, an opening bracket or the start; a dash after a digit or a citation
+stays a range separator ("8 [[a]]–12 [[b]]" was also misread as −12 with an
+ASCII hyphen, a false rejection, now fixed). Scientific notation reads as one
+number. Text is deliberately not NFKC-normalised: that turns "µV²" into
+"μV2" and invents a number. New H4 operator `typographic_minus` (caught
+229/229 live, 11 equivalent near zero) and a test-suite mutant that undoes
+the fix (killed). H4 re-run: 2386/2386 across ten operators.
+Effect on H7: the H7 registration (§10) predates the report, so its runs
+use a frozen, hash-pinned copy of the registered checker; the corrected
+checker is applied to the saved replies as a secondary analysis
+(`llm_eval.py recheck`), which also answers how often models write
+typographic signs.
+Lesson: a mutation set is a hypothesis about what can go wrong; an outside
+reader with a different model of the writer found an operator we had not
+imagined. Give the checker's input alphabet its own test.

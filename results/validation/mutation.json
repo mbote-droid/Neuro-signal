@@ -1,18 +1,18 @@
 {
   "experiment": "mutation",
-  "killed": 17,
-  "mutants": 17,
+  "killed": 18,
+  "mutants": 18,
   "not_applied": [],
   "provenance": {
     "git": {
-      "commit": "36b7964d71f5251ba9b0e2ea6240d032ddf72c00",
+      "commit": "f18adf3651ac6b1acf7076d2419afc1a8b21d961",
       "dirty": true
     },
     "python": "3.12.3",
     "versions": {
       "matplotlib": "3.11.2",
       "mne": "1.13.2",
-      "neurosignal": "0.1.0",
+      "neurosignal": "0.1.1",
       "numpy": "2.5.4",
       "scipy": "1.18.1"
     }
@@ -143,6 +143,17 @@
     {
       "file": "explain/checker.py",
       "id": "checker_ignores_precision",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_explain.py"
+      ]
+    },
+    {
+      "file": "explain/checker.py",
+      "id": "checker_ascii_minus_only",
       "pytest": [
         "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
       ],

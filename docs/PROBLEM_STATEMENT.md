@@ -217,3 +217,12 @@ about how real models behave under the citation contract. H7 tests that.
 20 per day, so the run is resumed over several days as §10 allows). Local:
 `qwen2.5:3b` served by Ollama 0.40.1, model ID `357c53fb659c` (4-bit,
 1.9 GB). The local model is within the registered 3-4 billion parameters.
+
+**Amendment (2026-10-22, before any H7 result existed).** After H7 was
+registered, an outside report (issue #21, BUILD_JOURNAL ISSUE-012) showed
+that the checker missed sign flips written with a typographic minus. The
+shipped checker was corrected. H7's primary verdicts (H7a-c) still use the
+checker as registered, kept as a hash-pinned copy
+(`validation/h7_registered_checker.py`); the corrected checker is applied
+to the same saved replies as a secondary analysis, reported alongside
+(`llm_eval.py recheck`). No model call is repeated for it.

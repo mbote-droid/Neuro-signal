@@ -208,7 +208,8 @@ Each turning point follows the same pattern: trigger (evidence), root cause
 Seventeen deliberate one-line bugs were run against the test suite; three
 survived: a double filter pass (no test measured the output at the cutoff), a
 biased wPLI² (indistinguishable under the null), and a random value in
-`metrics.json`. Three tests were added; final run 17/17 caught.
+`metrics.json`. Three tests were added; final run 17/17 caught (18/18 after
+a mutant that undoes the T15 fix was added).
 
 ### T14. Theory versus measurement (2026-10-18)
 
@@ -225,6 +226,17 @@ efficient as maximum likelihood, 0.995). Two corrected our understanding:
 * Power analysis: H6's 7 seizures gave a 42 % chance of passing even for a
   detector with exactly 60 % true sensitivity. A decisive test needs about
   76 seizures.
+
+### T15. An outside reader finds an unimagined error (2026-10-22)
+
+A GitHub issue (#21) showed that a sign flip written with a typographic
+minus passed the checker: the mutation set only ever wrote ASCII hyphens.
+The checker now treats every dash used as a minus as a sign (and a dash
+after a digit or citation as a range); a new mutation operator and a
+test-suite mutant keep it fixed (H4: 2386/2386, ten operators; mutation
+18/18). H7 had already been registered, so its runs keep the registered
+checker and report the corrected one as a secondary analysis
+(BUILD_JOURNAL ISSUE-012).
 
 ## Part 4. Changes that no bug forced
 
@@ -286,7 +298,7 @@ that fails if it returns:
 | thresholds drifting from the tuning record | `test_config_thresholds_come_from_the_tuning_result` |
 | nondeterministic output | `test_metrics_byte_identical_across_processes` |
 
-Mutation testing (17/17) shows these tests catch the bugs they target.
+Mutation testing (18/18) shows these tests catch the bugs they target.
 
 **2. Known operating characteristics.** A user knows the expected
 behaviour, with uncertainty: sensitivity 0.71-0.96 on synthetic data
