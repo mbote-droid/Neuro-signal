@@ -25,9 +25,28 @@ from typing import Any
 from neurosignal.pipeline import flatten
 
 CITATION = re.compile(r"\[\[([^\[\]]+)\]\]")
+# Characters a writer (or a model) may use as a minus sign: hyphen-minus, hyphen,
+# non-breaking hyphen, figure dash, en dash, minus sign, small and fullwidth
+# hyphen-minus (BUILD_JOURNAL ISSUE-012, issue #21). Text is not NFKC-normalised
+# instead: that would turn "µV²" into "μV2" and invent a number.
+MINUS = "-\u2010\u2011\u2012\u2013\u2212\ufe63\uff0d"
 # A number is any digit run not glued to a preceding letter (so "T7", "log10"
 # and "FT10" are not numbers, but "8-12", "30s" and "10Hz" expose every number).
-NUMBER = re.compile(r"(?<![\w.])-?\d+(?:\.\d+)?")
+# A dash is its sign only at the start or after a space or opening punctuation,
+# so the dash in "8-12" or "8 [[a]]–12 [[b]]" is a range, not a minus; an
+# optional exponent reads "1.2e-3" as one number.
+NUMBER = re.compile(
+    rf"(?:(?<![^\s(\[{{=:;,/])[{MINUS}])?(?<![\w.])\d+(?:\.\d+)?(?:[eE][+{MINUS}]?\d+)?"
+)
+_TO_ASCII = str.maketrans(dict.fromkeys(MINUS, "-"))
+_BLANK = "\x00"
+
+
+def number_value(written: str) -> float:
+    """The value of a NUMBER match, whatever dash it uses as its sign."""
+    return float(written.translate(_TO_ASCII))
+
+
 _ELECTRODE = r"(?:[A-Z][A-Za-z]{0,3}\d{1,2}|[A-Z][A-Za-z]{0,2}[zZ])"
 CHANNEL = re.compile(rf"(?<![\w\-]){_ELECTRODE}(?:-{_ELECTRODE})?(?![\w\-])")
 NOT_CHANNELS = frozenset({"Hz", "kHz", "MHz"})
@@ -64,13 +83,13 @@ def _matches(written: str, value: float) -> bool:
     """Strictly less than half a unit in the last written place. An exact tie
     (0.5 written as 0 or 1) is ambiguous between rounding conventions and is
     rejected: write one more decimal (BUILD_JOURNAL ISSUE-007)."""
-    decimals = len(written.split(".")[1]) if "." in written else 0
-    half = 0.5 * 10.0**-decimals
-    return abs(float(written) - value) < half - 1e-12 * max(1.0, abs(value))
+    mantissa, _, exponent = written.translate(_TO_ASCII).lower().partition("e")
+    decimals = len(mantissa.split(".")[1]) if "." in mantissa else 0
+    half = 0.5 * 10.0 ** (int(exponent or 0) - decimals)
+    return abs(number_value(written) - value) < half - 1e-12 * max(1.0, abs(value))
 
 
-def _numeric(key: str, segment: str, value: float) -> tuple[Finding | None, bool]:
-    numbers = list(NUMBER.finditer(segment))
+def _numeric(key: str, numbers: list[re.Match[str]], value: float) -> tuple[Finding | None, bool]:
     if not numbers:
         return Finding("MISSING_VALUE", f"{key}: no number before citation"), False
     written = numbers[-1].group()
@@ -91,12 +110,14 @@ def _textual(key: str, segment: str, value: Any) -> Finding | None:
     return Finding("MISSING_VALUE", f"{key}: {value!r} not stated")
 
 
-def _check_citation(key: str, segment: str, value: Any) -> tuple[Finding | None, bool]:
+def _check_citation(
+    key: str, segment: str, numbers: list[re.Match[str]], value: Any
+) -> tuple[Finding | None, bool]:
     """Returns (finding, whether the segment's last number was used by this citation)."""
     if value is None:
         return None, False
     if isinstance(value, int | float) and not isinstance(value, bool):
-        return _numeric(key, segment, value)
+        return _numeric(key, numbers, value)
     if isinstance(value, bool | str | list):
         return _textual(key, segment, value), False
     return Finding("MISSING_VALUE", f"{key}: cannot cite a {type(value).__name__}"), False
@@ -113,16 +134,17 @@ def _citations(text: str, flat: dict[str, Any]) -> tuple[list[Finding], set[int]
         start = prev_end
         segment = text[start : m.start()]
         prev_end = m.end()
-        numbers = list(NUMBER.finditer(segment))
+        # search the full text so a sign's lookbehind sees what precedes the segment
+        numbers = list(NUMBER.finditer(text, start, m.start()))
         if key not in flat:
             findings.append(Finding("UNKNOWN_KEY", key))
             used = bool(numbers)  # the number is attributed, wrongly; don't double-report
         else:
-            finding, used = _check_citation(key, segment, flat[key])
+            finding, used = _check_citation(key, segment, numbers, flat[key])
             if finding:
                 findings.append(finding)
         if used and numbers:
-            consumed.add(start + numbers[-1].start())
+            consumed.add(numbers[-1].start())
     return findings, consumed, len(cites)
 
 
@@ -140,11 +162,14 @@ def check(text: str, metrics: dict[str, Any]) -> CheckResult:
     flat = flatten(metrics)
     channels = {c.lower() for c in metrics.get("recording", {}).get("channels", [])}
     findings, consumed, n_cites = _citations(text, flat)
-    stripped = CITATION.sub(lambda mm: " " * len(mm.group()), text)
+    # citations are blanked with a character that, like "]", is not a sign context,
+    # so every number is read here exactly as it was read next to its citation
+    stripped = CITATION.sub(lambda mm: _BLANK * len(mm.group()), text)
     numbers = list(NUMBER.finditer(stripped))
     for n in numbers:
         if n.start() not in consumed:
-            context = stripped[max(0, n.start() - 30) : n.end() + 10].strip()
+            context = stripped[max(0, n.start() - 30) : n.end() + 10]
+            context = context.replace(_BLANK, " ").strip()
             findings.append(Finding("UNCITED_NUMBER", f"{n.group()} in '...{context}...'"))
     findings += _lexical(stripped, channels)
     if not DISCLAIMER.search(text):

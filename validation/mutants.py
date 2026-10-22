@@ -28,10 +28,16 @@ class Mutant:
 Mutator = Callable[[str, dict[str, Any], random.Random], Mutant | None]
 
 
+# Dashes a model may write as a minus sign; listed here, not imported from the
+# checker, so the equivalence oracle stays independent of the code it tests.
+_ASCII_SIGN = str.maketrans(dict.fromkeys("\u2010\u2011\u2012\u2013\u2212\ufe63\uff0d", "-"))
+
+
 def true_at_precision(written: str, value: float) -> bool:
     """Independent of the checker's code: is `written` within (strictly) half a
     unit of its last decimal place from the metric value? Integer arithmetic on
     scaled values avoids sharing the checker's floating-point path."""
+    written = written.translate(_ASCII_SIGN)
     d = len(written.split(".")[1]) if "." in written else 0
     scale = 10**d
     w_units = int(written.replace(".", "").replace("-", "")) * (
@@ -159,6 +165,21 @@ def fake_channel(text: str, metrics: dict[str, Any], rng: random.Random) -> Muta
     return None
 
 
+def typographic_minus(text: str, metrics: dict[str, Any], rng: random.Random) -> Mutant | None:
+    """A sign flip written with a typographic minus or en dash (issue #21)."""
+    pairs = [
+        (n, c) for n, c in _cited_numbers(text)
+        if n.group()[0].isdigit() and (n.start() == 0 or text[n.start() - 1] in " (")
+    ]  # fmt: skip
+    if not pairs:
+        return None
+    num, cite = rng.choice(pairs)
+    dash = rng.choice(("\u2212", "\u2013"))
+    value = flatten(metrics)[cite.group(1)]
+    equivalent = true_at_precision("-" + num.group(), float(value))  # e.g. 0.000
+    return Mutant(text[: num.start()] + dash + text[num.start() :], equivalent)
+
+
 def number_as_words(text: str, metrics: dict[str, Any], rng: random.Random) -> Mutant | None:
     """Out of contract: a wrong count written in words is invisible to the checker."""
     return Mutant(text.rstrip() + " Seven channels showed clear slowing.\n")
@@ -174,5 +195,6 @@ OPERATORS: dict[str, Mutator] = {
     "diagnostic": diagnostic,
     "no_disclaimer": no_disclaimer,
     "fake_channel": fake_channel,
+    "typographic_minus": typographic_minus,
 }
 BLIND_SPOTS: dict[str, Mutator] = {"number_as_words": number_as_words}

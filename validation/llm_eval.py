@@ -9,6 +9,7 @@ models need a Gemini API key or a local Ollama server):
     uv run python validation/llm_eval.py audit-sheet  # blinded sheet for H7c
     #   ... fill results/validation/llm_eval/audit.csv ...
     uv run python validation/llm_eval.py audit-score
+    uv run python validation/llm_eval.py recheck      # corrected checker, secondary
 
 Every model reply is cached in results/validation/llm_eval/<backend>_calls.jsonl
 before it is checked, so an interrupted run resumes without repeating a call:
@@ -23,6 +24,7 @@ import csv
 import hashlib
 import json
 import random
+import re
 import statistics
 import sys
 import time
@@ -35,8 +37,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from neurosignal.core.stats import wilson
 from neurosignal.explain import llm
-from neurosignal.explain.checker import CITATION
+from neurosignal.explain.checker import CITATION, check
 from neurosignal.explain.llm import BackendError, ChatBackend, Reply, explain_llm, get_backend
+from validation import h7_registered_checker as registered
 from validation.common import RESULTS, explanation_metrics, write_result
 
 H7_SEEDS = range(100, 130)
@@ -98,7 +101,8 @@ def cmd_run(a: argparse.Namespace) -> int:
         metrics = explanation_metrics(seed)
         backend = RecordingBackend(inner, cache, seed, pace)
         try:
-            out = explain_llm(metrics, backend)
+            # primary verdicts use the checker as registered (ISSUE-012)
+            out = explain_llm(metrics, backend, checker=registered.check)
         except BackendError as e:
             # quota and outages persist: stop instead of failing every remaining seed
             done = len(cases)
@@ -227,6 +231,42 @@ def cmd_audit_score(a: argparse.Namespace) -> int:
     return 0
 
 
+TYPOGRAPHIC_SIGN = re.compile("[\u2010\u2011\u2012\u2013\u2212\ufe63\uff0d](?=\\d)")
+
+
+def cmd_recheck(a: argparse.Namespace) -> int:
+    """Secondary analysis (ISSUE-012): every saved reply, judged by the registered
+    checker and by the corrected one. No model is called."""
+    payload: dict[str, Any] = {"registered_checker": "validation/h7_registered_checker.py"}
+    for backend in ("gemini", "ollama"):
+        cache = DIR / f"{backend}_calls.jsonl"
+        if not cache.exists():
+            continue
+        rows = [json.loads(x) for x in cache.read_text("utf-8").splitlines()]
+        final = _final_texts(backend)
+        changes = []
+        for r in rows:
+            metrics = explanation_metrics(r["seed"])
+            before, after = registered.check(r["text"], metrics), check(r["text"], metrics)
+            if before.ok != after.ok:
+                changes.append({"seed": r["seed"], "call": r["call"], "registered_ok": before.ok,
+                                "corrected_ok": after.ok,
+                                "corrected_codes": sorted(after.codes())})  # fmt: skip
+        payload[backend] = {
+            "calls": len(rows),
+            "calls_with_typographic_sign": sum(bool(TYPOGRAPHIC_SIGN.search(r["text"])) for r in rows),
+            "verdict_changes": changes,
+            "accepted_texts_now_rejected": sum(
+                1 for c in changes
+                if c["registered_ok"] and final.get(c["seed"]) is not None
+                and c["call"] == max(r["call"] for r in rows if r["seed"] == c["seed"])
+            ),
+        }  # fmt: skip
+    path = write_result("llm_recheck", payload)
+    print(f"wrote {path}")
+    return 0
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -239,6 +279,8 @@ def main() -> int:
         func=cmd_audit_sheet)  # fmt: skip
     sub.add_parser("audit-score", help="score the filled audit.csv").set_defaults(
         func=cmd_audit_score)  # fmt: skip
+    sub.add_parser("recheck", help="saved replies under the corrected checker").set_defaults(
+        func=cmd_recheck)  # fmt: skip
     a = p.parse_args()
     return int(a.func(a))
 

@@ -100,3 +100,43 @@ def test_audit_is_blinded_and_scored(harness, monkeypatch):
     assert llm_eval.cmd_audit_score(Namespace()) == 0
     score = json.loads((tmp / "llm_audit.json").read_text())
     assert score["gemini"]["audited"] == 3 and score["H7c_accepted"] is True
+
+
+def test_registered_checker_is_a_frozen_copy():
+    """H7's primary verdicts use the checker as registered (ISSUE-012)."""
+    import hashlib
+    from pathlib import Path
+
+    from validation import h7_registered_checker as registered
+
+    lines = Path(registered.__file__).read_text("utf-8").splitlines(keepends=True)
+    body = "".join(lines[next(i for i, x in enumerate(lines) if not x.startswith("#")) :])
+    assert hashlib.sha256(body.encode()).hexdigest() == (
+        "cedae866bf1e06eec8ab9459d4526598aef17d7c4afe073c025de6df15f189b4"
+    )
+    flip = "research use only. 0.30 [[x.p]] then −0.30 [[x.p]]"
+    metrics = {"recording": {"channels": []}, "x": {"p": 0.30}}
+    assert registered.check(flip, metrics).ok  # the registered bug, kept on record
+
+
+def test_run_uses_registered_checker_and_recheck_flags_the_difference(harness, monkeypatch):
+    tmp, backend = harness
+    backend.outage_seed = None
+    real_chat = backend.chat
+
+    def chat(system, messages):
+        reply = real_chat(system, messages)
+        if backend.current_seed == 100:  # a sign flip with a typographic minus
+            text = reply.text.replace("lasts ", "lasts −", 1)
+            return Reply(text, text, reply.model)
+        return reply
+
+    monkeypatch.setattr(backend, "chat", chat)
+    assert llm_eval.cmd_run(Namespace(backend="gemini", model="fake-1", pace=None)) == 0
+    out = json.loads((tmp / "llm_eval_gemini.json").read_text())
+    assert out["accepted_first_attempt"] == 2  # 100 accepted as registered; 101 needs repair
+    assert llm_eval.cmd_recheck(Namespace()) == 0
+    re_ = json.loads((tmp / "llm_recheck.json").read_text())["gemini"]
+    assert re_["calls_with_typographic_sign"] == 1
+    assert re_["accepted_texts_now_rejected"] == 1
+    assert re_["verdict_changes"][0]["corrected_codes"] == ["VALUE_MISMATCH"]

@@ -169,3 +169,39 @@ def test_api_key_never_written(tmp_path, monkeypatch, synth_pair):
     for f in (tmp_path / "out").rglob("*"):
         if f.is_file():
             assert secret.encode() not in f.read_bytes()
+
+
+# ---- signs and number forms (BUILD_JOURNAL ISSUE-012, issue #21) --------------
+
+
+SIGN_METRICS = {"recording": {"channels": []}, "x": {"pos": 0.30, "neg": -3, "a": 8, "b": 12,
+                                                   "small": 0.0012}}  # fmt: skip
+
+
+@pytest.mark.parametrize("dash", ["-", "−", "–", "‒", "﹣", "－"])
+def test_a_sign_flip_is_caught_whatever_dash_writes_it(dash):
+    text = f"research use only. The change was {dash}0.30 [[x.pos]]."
+    assert check(text, SIGN_METRICS).codes() == {"VALUE_MISMATCH"}
+
+
+@pytest.mark.parametrize("dash", ["-", "−", "–"])
+def test_a_true_negative_value_passes_with_any_dash(dash):
+    assert check(f"research use only. It was {dash}3 [[x.neg]].", SIGN_METRICS).ok
+
+
+@pytest.mark.parametrize("sep", ["–", "-", " – ", " to "])
+def test_a_range_dash_after_a_citation_is_not_a_sign(sep):
+    text = f"research use only. The band was 8 [[x.a]]{sep}12 [[x.b]] Hz."
+    assert check(text, SIGN_METRICS).ok
+
+
+def test_scientific_notation_is_one_number():
+    assert check("research use only. Ratio 1.2e-3 [[x.small]].", SIGN_METRICS).ok
+    assert check("research use only. Ratio 1.2e−3 [[x.small]].", SIGN_METRICS).ok
+    wrong = check("research use only. Ratio 1.3e-3 [[x.small]].", SIGN_METRICS)
+    assert wrong.codes() == {"VALUE_MISMATCH"}
+
+
+def test_no_unicode_normalisation_invents_numbers():
+    """NFKC would turn the superscript in µV² into a digit; the checker must not."""
+    assert check("research use only. Power in µV² was 0.30 [[x.pos]].", SIGN_METRICS).ok

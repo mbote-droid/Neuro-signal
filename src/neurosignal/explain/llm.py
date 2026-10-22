@@ -20,6 +20,7 @@ import os
 import time
 import urllib.error
 import urllib.request
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any, Protocol
 
@@ -244,8 +245,13 @@ def get_backend(name: str, model: str | None = None) -> ChatBackend:
 
 
 def explain_llm(
-    metrics: dict[str, Any], backend: ChatBackend | None = None, max_attempts: int = 2
+    metrics: dict[str, Any],
+    backend: ChatBackend | None = None,
+    max_attempts: int = 2,
+    checker: Callable[[str, dict[str, Any]], CheckResult] = check,
 ) -> LLMExplanation:
+    """`checker` is the shipped claim checker; an evaluation may pass the version
+    it registered (H7 does, `validation/h7_registered_checker.py`)."""
     if backend is None:
         backend = AnthropicBackend()
     payload = json.dumps(metrics_for_model(metrics), sort_keys=True)
@@ -259,7 +265,7 @@ def explain_llm(
         start = time.perf_counter()
         reply = backend.chat(SYSTEM_PROMPT, messages)
         text, model = reply.text, reply.model
-        result = check(text, metrics)
+        result = checker(text, metrics)
         codes = tuple(f.code for f in result.findings)
         trace.append(Attempt(text, codes, round(time.perf_counter() - start, 2)))
         if result.ok:
