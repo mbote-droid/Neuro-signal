@@ -70,7 +70,8 @@ shown, and replaced by the template if it fails):
 | local, offline | `uv run neurosignal report rec.edf --explainer ollama --model <name>` | [Ollama](https://ollama.com) running locally |
 
 How real models behave under the citation contract is hypothesis H7; how
-to run it: [docs/LLM_EVALUATION.md](docs/LLM_EVALUATION.md).
+to run it: [docs/LLM_EVALUATION.md](docs/LLM_EVALUATION.md). What is built and what
+comes next: [docs/ROADMAP.md](docs/ROADMAP.md).
 
 The report contains the explanation with hoverable citation chips, the
 claim-check result, four figures (spectrum with aperiodic fit, per-channel
