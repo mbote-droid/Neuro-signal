@@ -162,6 +162,10 @@ verdicts. They contain no API key.
   `.venv` (setting `python.terminal.activateEnvironment`). The policy
   change applies to that window only. Harmless; untick the setting to stop
   it.
+* **"model 'gemini-3.8-flash' not found" from localhost:11434.** The
+  Gemini model name was given to the Ollama backend. Use `--backend gemini`
+  with the Gemini name and `--backend ollama` with `qwen2.5:3b`. A resumed
+  run with a different model than its saved replies is refused.
 * **`ollama --list` fails.** It is a command, not a flag: `ollama list`.
 * **"cannot reach http://localhost:11434".** Ollama is not running: start
   it from the Start menu.

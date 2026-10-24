@@ -94,6 +94,14 @@ def _ollama_digest(model: str) -> str | None:
 def cmd_run(a: argparse.Namespace) -> int:
     DIR.mkdir(parents=True, exist_ok=True)
     cache = DIR / f"{a.backend}_calls.jsonl"
+    # a resumed run must use the model the saved replies came from; otherwise
+    # replayed and new replies would mix two models in one result
+    rows = cache.read_text("utf-8").splitlines() if cache.exists() else []
+    saved = {json.loads(x)["model"] for x in rows}
+    if other := sorted(m for m in saved if not m.startswith(a.model)):
+        print(f"refused: the saved {a.backend} replies come from {', '.join(other)}, "
+              f"not {a.model}. Run again with --model {other[0]}.")  # fmt: skip
+        return 2
     inner = get_backend(a.backend, a.model)
     pace = PACE_S[a.backend] if a.pace is None else a.pace
     cases = []
