@@ -70,6 +70,17 @@ def test_run_resumes_without_repeating_calls(harness):
     assert out["models_reported"] == ["fake-1.0"]
 
 
+def test_resume_with_another_model_is_refused(harness):
+    _tmp, backend = harness
+    backend.outage_seed = 101
+    args = Namespace(backend="ollama", model="fake-1", pace=None)
+    assert llm_eval.cmd_run(args) == 1  # seed 100 saved, then an outage
+    backend.calls.clear()
+    wrong = Namespace(backend="ollama", model="gemini-3.8-flash", pace=None)
+    assert llm_eval.cmd_run(wrong) == 2
+    assert backend.calls == []  # refused before any replay or call
+
+
 def test_run_stops_at_the_first_outage(harness):
     _tmp, backend = harness
     backend.outage_seed = 100
