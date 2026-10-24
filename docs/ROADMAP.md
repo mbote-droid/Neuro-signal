@@ -49,6 +49,7 @@ finding becomes a test and a BUILD_JOURNAL entry.
 | Edge-case recordings through the whole pipeline: one channel, all channels bad, very short, unusual sampling rates, flat or saturated signals | ⏭ | |
 | Structured correctness and security review of the code | ⏭ | report escaping, file limits, keys, dependencies |
 | Second look at the mutation sets (H4 operators, test-suite mutants): what errors are still missing? | ⏭ | the lesson of ISSUE-012 |
+| Adversarial artifacts for the detector: synthetic chewing, electrode movement, delta-shaped blink trains and sweat drift built to look like rhythmic events | ⏭ | extends the realistic negatives (FINDINGS F-6); may move to v0.2 if the generator needs new models |
 
 ## Publication
 
@@ -66,6 +67,7 @@ finding becomes a test and a BUILD_JOURNAL entry.
 | item | status | notes |
 |---|---|---|
 | Idea 3: a local model writes realistic, subtly wrong explanations to measure the checker's semantic blind spot (FINDINGS F-4) | 💤 | reuses the H7 harness; may also answer reviewers |
+| An AI judge tested, not trusted: give the H7 explanations to an LLM judge (single, or an optimist-versus-sceptic debate) and measure its agreement with the blinded H7c audit | 💤 | asks whether a judge catches the semantic errors the checker cannot; the human audit is the ground truth |
 | Idea 1: an offline small model plus a mechanical verifier for lab-result summaries in low-connectivity clinics | 💤 | a follow-on project in its own repository, reusing this method |
 
 ## Version 0.2 research (one pull request each)
