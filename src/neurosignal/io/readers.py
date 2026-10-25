@@ -39,7 +39,16 @@ def read(path: str | Path, max_bytes: int = DEFAULT_MAX_BYTES) -> Recording:
     size = path.stat().st_size
     if size > max_bytes:
         raise RefusedFile(f"file is {size} bytes, above the {max_bytes}-byte limit")
-    rec = READERS.get(ext)(path)
+    try:
+        rec = READERS.get(ext)(path)
+    except RefusedFile:
+        raise
+    except MemoryError:
+        raise RefusedFile(f"not enough memory to read {path.name}") from None
+    except Exception as exc:  # a damaged file must be refused, not crash (ISSUE-014)
+        raise RefusedFile(f"could not read {ext} file {path.name}: {exc}") from exc
+    if not np.isfinite(rec.data).all():
+        raise RefusedFile(f"{path.name} contains non-finite samples (NaN or infinity)")
     digest = sha256_file(path)
     return rec.evolve(
         {"stage": "read", "format": ext, "bytes": size},
