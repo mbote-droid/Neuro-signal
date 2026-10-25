@@ -205,3 +205,24 @@ def test_scientific_notation_is_one_number():
 def test_no_unicode_normalisation_invents_numbers():
     """NFKC would turn the superscript in µV² into a digit; the checker must not."""
     assert check("research use only. Power in µV² was 0.30 [[x.pos]].", SIGN_METRICS).ok
+
+
+# ---- bug hunt regressions (BUILD_JOURNAL ISSUE-013) ----------------------------
+
+
+def test_a_huge_exponent_is_a_mismatch_not_a_crash():
+    assert check("research use only. It was 1e309 [[x.pos]].", SIGN_METRICS).codes() == {
+        "VALUE_MISMATCH"
+    }
+
+
+def test_a_leading_decimal_point_is_a_number():
+    assert check("research use only. It was .30 [[x.pos]].", SIGN_METRICS).ok
+    assert "UNCITED_NUMBER" in check("research use only. About .9 of it.", SIGN_METRICS).codes()
+
+
+def test_a_zero_width_character_cannot_change_a_number():
+    """'1‍.500' displays as 1.500 but used to be read as 1."""
+    metrics = {"recording": {"channels": []}, "x": {"v": 1.0}}
+    result = check("research use only. It was 1‍.500 [[x.v]].", metrics)
+    assert "INVISIBLE_CHARACTER" in result.codes()
