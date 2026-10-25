@@ -14,11 +14,14 @@ The checker uses no model. It reports one finding per violation:
   UNKNOWN_CHANNEL    an electrode-like token not in the recording
   DIAGNOSTIC         diagnostic language (the tool is research use only)
   NO_DISCLAIMER      the research-use-only notice is missing
+  INVISIBLE_CHARACTER a zero-width or control character, which could make the
+                     text display a number the checker does not read
 """
 
 from __future__ import annotations
 
 import re
+import unicodedata
 from dataclasses import dataclass
 from typing import Any
 
@@ -34,9 +37,11 @@ MINUS = "-\u2010\u2011\u2012\u2013\u2212\ufe63\uff0d"
 # and "FT10" are not numbers, but "8-12", "30s" and "10Hz" expose every number).
 # A dash is its sign only at the start or after a space or opening punctuation,
 # so the dash in "8-12" or "8 [[a]]–12 [[b]]" is a range, not a minus; an
-# optional exponent reads "1.2e-3" as one number.
+# optional exponent reads "1.2e-3" as one number; a leading decimal point
+# (".5") is a number too (BUILD_JOURNAL ISSUE-013).
 NUMBER = re.compile(
-    rf"(?:(?<![^\s(\[{{=:;,/])[{MINUS}])?(?<![\w.])\d+(?:\.\d+)?(?:[eE][+{MINUS}]?\d+)?"
+    rf"(?:(?<![^\s(\[{{=:;,/])[{MINUS}])?(?<![\w.])(?:\d+(?:\.\d+)?|\.\d+)"
+    rf"(?:[eE][+{MINUS}]?\d+)?"
 )
 _TO_ASCII = str.maketrans(dict.fromkeys(MINUS, "-"))
 _BLANK = "\x00"
@@ -85,7 +90,10 @@ def _matches(written: str, value: float) -> bool:
     rejected: write one more decimal (BUILD_JOURNAL ISSUE-007)."""
     mantissa, _, exponent = written.translate(_TO_ASCII).lower().partition("e")
     decimals = len(mantissa.split(".")[1]) if "." in mantissa else 0
-    half = 0.5 * 10.0 ** (int(exponent or 0) - decimals)
+    try:
+        half = 0.5 * 10.0 ** (int(exponent or 0) - decimals)
+    except OverflowError:  # "1e309": no metric is that large (ISSUE-013)
+        return False
     return abs(number_value(written) - value) < half - 1e-12 * max(1.0, abs(value))
 
 
@@ -148,6 +156,12 @@ def _citations(text: str, flat: dict[str, Any]) -> tuple[list[Finding], set[int]
     return findings, consumed, len(cites)
 
 
+def _invisible(char: str) -> bool:
+    """Zero-width, formatting and control characters (Unicode Cf and Cc), except
+    the ordinary line breaks and tabs."""
+    return unicodedata.category(char) in {"Cf", "Cc"} and char not in "\n\r\t"
+
+
 def _lexical(stripped: str, channels: set[str]) -> list[Finding]:
     findings = [
         Finding("UNKNOWN_CHANNEL", c.group())
@@ -172,6 +186,9 @@ def check(text: str, metrics: dict[str, Any]) -> CheckResult:
             context = context.replace(_BLANK, " ").strip()
             findings.append(Finding("UNCITED_NUMBER", f"{n.group()} in '...{context}...'"))
     findings += _lexical(stripped, channels)
+    invisible = sorted({f"U+{ord(c):04X}" for c in text if _invisible(c)})
+    if invisible:
+        findings.append(Finding("INVISIBLE_CHARACTER", ", ".join(invisible)))
     if not DISCLAIMER.search(text):
         findings.append(Finding("NO_DISCLAIMER", "missing 'research use only'"))
     return CheckResult(tuple(findings), n_citations=n_cites, n_numbers=len(numbers))
