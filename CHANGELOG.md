@@ -9,11 +9,22 @@ semantic versioning.
 - Gemini and local Ollama backends for the LLM explainer
   (`--explainer gemini|ollama`, `--model`), over plain HTTP with no new
   dependency; keys from the environment, sent in headers only (ADR-013).
+- Fuzz tests for the checker and readers; four H4 operators (3334/3334);
+  five test-suite mutants (23/23); synthetic adversarial artifacts and an
+  exploratory experiment (chewing: 6.0 false detections per hour).
 - Pre-registered hypothesis H7 (PROBLEM_STATEMENT §10) and its harness,
   `validation/llm_eval.py`: resumable runs that never repeat a model call,
   a blinded audit sheet and scoring; results go into the validation report.
 
 ### Fixed
+- Bug hunt (BUILD_JOURNAL ISSUE-013 to 021): the checker rejects invisible
+  characters, reads leading-dot numbers and signs after markup, survives huge
+  exponents, and masks the recording's channel names; damaged files are
+  refused instead of crashing; .npz decompression bombs are refused; flat
+  edges are no longer measured twice; one ECG channel no longer overturns the
+  montage decision and non-EEG channels are left out of the average; the LLM
+  fallback survives missing packages, SDK errors and non-JSON replies;
+  recordings under 10 s are refused; report.md escapes HTML.
 - The claim checker missed sign flips written with a typographic minus or
   en dash (issue #21, reported by neowalter); a range dash after a citation
   no longer reads as a minus; scientific notation reads as one number. New

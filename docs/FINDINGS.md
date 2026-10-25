@@ -63,7 +63,9 @@ previously 8), 60 of 60 faithful accepted, same conclusion. After an outside
 report (issue #21, ISSUE-012) a tenth operator writes sign flips with a
 typographic minus or en dash, which the original checker missed; with the
 corrected checker: **2386 of 2386 live mutants caught across ten operators**
-(14 equivalent), 60 of 60 faithful accepted.
+(14 equivalent), 60 of 60 faithful accepted. The bug hunt (ISSUE-013 and
+015) added four more operators; current result: **3334 of 3334 live
+mutants across fourteen operators** (26 equivalent), 60 of 60 faithful.
 
 Two limits remain and are stated in the report:
 * the same mutant cited `processing.1.highpass_hz` for a channel count: the
@@ -157,4 +159,26 @@ survived the first run:
   determinism test catches.
 
 Final run: **17 of 17 mutants killed**; 18 of 18 after a mutant that
-restores the ASCII-only sign (ISSUE-012) was added.
+restores the ASCII-only sign (ISSUE-012) was added, and 23 of 23 after the
+bug hunt added a mutant undoing each of its fixes.
+
+## F-9 A deliberate bug hunt found nine issues; no result changed
+
+Fuzzing, edge cases, an independent code review and adversarial artifacts
+(BUILD_JOURNAL ISSUE-013 to 021). The most consequential: three further ways
+a wrong number could pass the claim checker (a zero-width character inside
+a number, a leading decimal point, and a minus inside bold markup, the last
+a regression introduced by the issue #21 fix); damaged files crashing
+instead of being refused; and a montage decision that one ECG channel could
+overturn. QC, H2, H4, H5 and H6 were re-run: identical results. The checker
+is now tested with fourteen error operators (3334/3334 caught) and the test
+suite with 23 code mutants (23/23 killed).
+
+## F-10 Chewing imitates a rhythmic event (exploratory)
+
+On event-free synthetic recordings with artifacts built to look like events,
+chewing at 1-3 Hz on temporal channels raised false detections from 2.40 to
+6.00 per hour (16 of 60 episodes reported); eye flutter and electrode pops
+added little, sweat drift nothing. Like the blink trains of F-6, a
+plausible artifact inside the rhythm gate's band passes the one-channel
+vote. Not acted on; an EMG cue joins the spatial cue in v0.2.

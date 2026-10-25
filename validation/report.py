@@ -168,6 +168,31 @@ def section_llm(r: dict[str, Any]) -> list[str]:
     return [*lines, ""]
 
 
+def section_adversarial(r: dict[str, Any]) -> list[str]:
+    a = r.get("adversarial")
+    if not a:
+        return []
+    lines = [
+        "## Adversarial artifacts (exploratory, not pre-registered)",
+        "",
+        "Event-free 10-minute recordings with the realistic negatives of the H2 benchmark, plus "
+        "artifacts built to imitate rhythmic events (BUILD_JOURNAL ISSUE-021). Every detection "
+        "is false; 'on artifact' counts detections overlapping an artifact episode.",
+        "",
+        "| artifact | recordings | false detections | per hour (95 % upper) | on artifact / episodes |",
+        "|---|---|---|---|---|",
+    ]
+    for kind, s in a["summary"].items():
+        lines.append(
+            f"| {kind} | {s['recordings']} | {s['false_detections']} "
+            f"| {s['false_per_hour']:.2f} ({s['false_per_hour_upper95']:.2f}) "
+            f"| {s['on_artifact_episodes']} / {s['episodes']} |"
+        )
+    note = ("Sweat drift spans each whole recording, so every detection overlaps it; "
+            "compare its rate with the baseline.")  # fmt: skip
+    return [*lines, "", note, "", f"Evidence: {_link('adversarial')}", ""]
+
+
 def section_requirements(r: dict[str, Any]) -> list[str]:
     lines = [
         "## Validity and performance requirements",
@@ -350,7 +375,7 @@ def main() -> None:
     names = ["aperiodic", "h1_confound", "qc", "detection_synthetic", "connectivity", "checker",
              "chbmit_h5_registered", "chbmit", "chbmit_heldout", "resources",
              "detector_tuning", "mutation", "llm_eval_gemini", "llm_eval_ollama",
-             "llm_audit", "llm_recheck"]  # fmt: skip
+             "llm_audit", "llm_recheck", "adversarial"]  # fmt: skip
     r = {n: d for n in names if (d := _load(n)) is not None}
     commits = sorted({str(d["provenance"]["git"]["commit"])[:10] for d in r.values()})
     dirty = any(d["provenance"]["git"]["dirty"] for d in r.values())
@@ -367,6 +392,7 @@ def main() -> None:
         *section_requirements(r),
         *section_detection(r),
         *section_chbmit(r),
+        *section_adversarial(r),
         *section_checker(r),
         *section_llm(r),
         *section_tuning(r),

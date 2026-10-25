@@ -238,6 +238,18 @@ test-suite mutant keep it fixed (H4: 2386/2386, ten operators; mutation
 checker and report the corrected one as a secondary analysis
 (BUILD_JOURNAL ISSUE-012).
 
+### T16. A deliberate bug hunt (2026-10-26)
+
+Before freezing the paper's claims, the code was searched on purpose:
+fuzzing, edge cases, an independent review, adversarial artifacts. Nine
+issues (BUILD_JOURNAL ISSUE-013 to 021), among them three more ways a wrong
+number could pass the checker (one a regression introduced by the T15 fix),
+damaged files crashing instead of being refused, and a montage decision that
+one ECG channel could overturn. No reported result changed. The adversarial
+run found a new weakness: chewing raises false detections from 2.4 to 6.0
+per hour. H4 now uses fourteen operators (3334/3334); the test-suite
+mutation campaign 23 mutants (23/23).
+
 ## Part 4. Changes that no bug forced
 
 | driver | what changed | why it is better than the plan |
@@ -298,7 +310,7 @@ that fails if it returns:
 | thresholds drifting from the tuning record | `test_config_thresholds_come_from_the_tuning_result` |
 | nondeterministic output | `test_metrics_byte_identical_across_processes` |
 
-Mutation testing (18/18) shows these tests catch the bugs they target.
+Mutation testing (23/23) shows these tests catch the bugs they target.
 
 **2. Known operating characteristics.** A user knows the expected
 behaviour, with uncertainty: sensitivity 0.71-0.96 on synthetic data

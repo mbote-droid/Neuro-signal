@@ -2,7 +2,7 @@
   "experiment": "adversarial",
   "provenance": {
     "git": {
-      "commit": "e82264bb36856ad8973861ff06d4a488e3c4c820",
+      "commit": "ac45137ca22e5567b34d4fbc826a46e641828023",
       "dirty": false
     },
     "python": "3.12.3",
