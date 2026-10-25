@@ -352,6 +352,22 @@ def _add_adversarial(
     0.4-2 s on one channel, 10-30 s), eye flutter (blinks repeating every
     0.35-0.6 s, frontal and symmetric, 8-20 s) and sweat drift (0.05-0.3 Hz,
     the whole recording). Returns (kind, onset, offset) for each episode."""
+    return [
+        *_add_chewing(data, t, seed, spec, channels, background_rms),
+        *_add_electrode_pops(data, t, seed, spec, channels),
+        *_add_eye_flutter(data, t, seed, spec, channels),
+        *_add_sweat(data, t, seed, spec, channels),
+    ]
+
+
+def _add_chewing(
+    data: FloatArray,
+    t: FloatArray,
+    seed: int,
+    spec: SynthSpec,
+    channels: tuple[str, ...],
+    background_rms: FloatArray,
+) -> list[tuple[str, float, float]]:
     out: list[tuple[str, float, float]] = []
     n, fs = data.shape[1], spec.sfreq
     g = rng(seed, 8)
@@ -368,6 +384,14 @@ def _add_adversarial(
             k = channels.index(ch)
             data[k, ep] += g.uniform(2.0, 5.0) * background_rms[k] * wave
         out.append(("chewing", float(t[ep.start]), float(t[ep.stop - 1])))
+    return out
+
+
+def _add_electrode_pops(
+    data: FloatArray, t: FloatArray, seed: int, spec: SynthSpec, channels: tuple[str, ...]
+) -> list[tuple[str, float, float]]:
+    out: list[tuple[str, float, float]] = []
+    n, fs = data.shape[1], spec.sfreq
     g = rng(seed, 9)
     for _ in range(g.poisson(spec.electrode_pops_per_min * spec.duration_s / 60)):
         ep = _episode(g, n, fs, 10.0, 30.0)
@@ -379,27 +403,39 @@ def _add_adversarial(
             data[k, i:] += g.choice((-1, 1)) * g.uniform(100, 300) * np.exp(-tail / tau)
             i += int(g.uniform(0.4, 2.0) * fs)
         out.append(("electrode_pops", float(t[ep.start]), float(t[ep.stop - 1])))
+    return out
+
+
+def _add_eye_flutter(
+    data: FloatArray, t: FloatArray, seed: int, spec: SynthSpec, channels: tuple[str, ...]
+) -> list[tuple[str, float, float]]:
+    out: list[tuple[str, float, float]] = []
+    n, fs = data.shape[1], spec.sfreq
     g = rng(seed, 10)
     gains = {"Fp1": 1.0, "Fp2": 1.0, "F7": 0.4, "F3": 0.4, "Fz": 0.4, "F4": 0.4, "F8": 0.4}
+    rows = [(channels.index(ch), w) for ch, w in gains.items() if ch in channels]
     for _ in range(g.poisson(spec.eye_flutter_per_min * spec.duration_s / 60)):
         ep = _episode(g, n, fs, 8.0, 20.0)
         period = g.uniform(0.35, 0.6)
-        centres = np.arange(t[ep.start], t[ep.stop - 1], period)
-        for c in centres:
+        for c in np.arange(t[ep.start], t[ep.stop - 1], period):
             bump = g.uniform(60, 150) * np.exp(-((t - c) ** 2) / (2 * 0.08**2))
-            for ch, w in gains.items():
-                if ch in channels:
-                    data[channels.index(ch)] += w * bump
+            for k, w in rows:
+                data[k] += w * bump
         out.append(("eye_flutter", float(t[ep.start]), float(t[ep.stop - 1])))
-    if spec.sweat_uv > 0:
-        g = rng(seed, 11)
-        for k in range(len(channels)):
-            f = g.uniform(0.05, 0.3)
-            data[k] += (
-                spec.sweat_uv * g.uniform(0.5, 1.0) * np.sin(2 * np.pi * f * t + g.uniform(0, 6.3))
-            )
-        out.append(("sweat", 0.0, float(t[-1])))
     return out
+
+
+def _add_sweat(
+    data: FloatArray, t: FloatArray, seed: int, spec: SynthSpec, channels: tuple[str, ...]
+) -> list[tuple[str, float, float]]:
+    if spec.sweat_uv <= 0:
+        return []
+    g = rng(seed, 11)
+    for k in range(len(channels)):
+        f = g.uniform(0.05, 0.3)
+        amp = spec.sweat_uv * g.uniform(0.5, 1.0)
+        data[k] += amp * np.sin(2 * np.pi * f * t + g.uniform(0, 6.3))
+    return [("sweat", 0.0, float(t[-1]))]
 
 
 def _add_bad_channels(
