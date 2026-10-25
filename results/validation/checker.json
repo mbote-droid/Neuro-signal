@@ -6,13 +6,13 @@
       "caught": 0
     }
   },
-  "caught": 2386,
-  "equivalent_mutants": 14,
+  "caught": 3334,
+  "equivalent_mutants": 26,
   "experiment": "checker",
   "faithful_accepted": 60,
   "false_reject_upper95": 0.05,
-  "live_mutants": 2386,
-  "miss_rate_upper95": 0.0012573344509639564,
+  "live_mutants": 3334,
+  "miss_rate_upper95": 0.0008998200359928015,
   "n_explanations": 60,
   "operators": {
     "diagnostic": {
@@ -33,6 +33,12 @@
       "live": 240,
       "mutants": 240
     },
+    "markup_sign_flip": {
+      "caught": 230,
+      "equivalent": 10,
+      "live": 230,
+      "mutants": 240
+    },
     "no_disclaimer": {
       "caught": 240,
       "equivalent": 0,
@@ -51,6 +57,12 @@
       "live": 240,
       "mutants": 240
     },
+    "swap_citations": {
+      "caught": 238,
+      "equivalent": 2,
+      "live": 238,
+      "mutants": 240
+    },
     "swap_key": {
       "caught": 237,
       "equivalent": 3,
@@ -61,6 +73,12 @@
       "caught": 229,
       "equivalent": 11,
       "live": 229,
+      "mutants": 240
+    },
+    "uncited_leading_dot": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
       "mutants": 240
     },
     "uncited_number": {
@@ -74,11 +92,17 @@
       "equivalent": 0,
       "live": 240,
       "mutants": 240
+    },
+    "zero_width_decimal": {
+      "caught": 240,
+      "equivalent": 0,
+      "live": 240,
+      "mutants": 240
     }
   },
   "provenance": {
     "git": {
-      "commit": "f18adf3651ac6b1acf7076d2419afc1a8b21d961",
+      "commit": "13484c498d8d0d065e67a45f12b5a0ce0259746c",
       "dirty": false
     },
     "python": "3.12.3",
