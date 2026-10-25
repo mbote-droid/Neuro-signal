@@ -1,0 +1,383 @@
+{
+  "H7a_accepted": true,
+  "accepted_after_repair": 30,
+  "accepted_after_repair_wilson": [
+    0.8864866068260312,
+    0.9999999999999999
+  ],
+  "accepted_first_attempt": 24,
+  "accepted_first_wilson": [
+    0.6269430358685175,
+    0.9049489282271013
+  ],
+  "backend": "gemini",
+  "calls": 36,
+  "calls_sha256": "0eef5701adb323f82798ba0301ed1d4856047999db8e577c5de0a15db69a9047",
+  "cases": [
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 100
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 101
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 102
+    },
+    {
+      "accepted": true,
+      "accepted_first": false,
+      "attempts": 2,
+      "codes": [
+        [
+          "UNCITED_NUMBER"
+        ],
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 103
+    },
+    {
+      "accepted": true,
+      "accepted_first": false,
+      "attempts": 2,
+      "codes": [
+        [
+          "UNCITED_NUMBER",
+          "UNCITED_NUMBER",
+          "UNCITED_NUMBER",
+          "UNCITED_NUMBER"
+        ],
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 104
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 105
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 106
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 107
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 108
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 109
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 110
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 111
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 112
+    },
+    {
+      "accepted": true,
+      "accepted_first": false,
+      "attempts": 2,
+      "codes": [
+        [
+          "VALUE_MISMATCH",
+          "UNCITED_NUMBER",
+          "UNCITED_NUMBER",
+          "UNCITED_NUMBER"
+        ],
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 113
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 114
+    },
+    {
+      "accepted": true,
+      "accepted_first": false,
+      "attempts": 2,
+      "codes": [
+        [
+          "VALUE_MISMATCH",
+          "UNCITED_NUMBER",
+          "UNCITED_NUMBER"
+        ],
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 115
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 116
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 117
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 118
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 119
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 120
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 121
+    },
+    {
+      "accepted": true,
+      "accepted_first": false,
+      "attempts": 2,
+      "codes": [
+        [
+          "MISSING_VALUE",
+          "UNCITED_NUMBER",
+          "UNCITED_NUMBER",
+          "UNCITED_NUMBER",
+          "UNCITED_NUMBER"
+        ],
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 122
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 123
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 124
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 125
+    },
+    {
+      "accepted": true,
+      "accepted_first": false,
+      "attempts": 2,
+      "codes": [
+        [
+          "UNKNOWN_CHANNEL",
+          "UNKNOWN_CHANNEL"
+        ],
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 126
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 127
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 128
+    },
+    {
+      "accepted": true,
+      "accepted_first": true,
+      "attempts": 1,
+      "codes": [
+        []
+      ],
+      "model": "gemini-3.8-flash",
+      "seed": 129
+    }
+  ],
+  "experiment": "llm_eval_gemini",
+  "fell_back_to_template": 0,
+  "finding_codes_first_attempt": {
+    "MISSING_VALUE": 1,
+    "UNCITED_NUMBER": 14,
+    "UNKNOWN_CHANNEL": 2,
+    "VALUE_MISMATCH": 2
+  },
+  "finding_codes_repair_attempt": {},
+  "models_reported": [
+    "gemini-3.8-flash"
+  ],
+  "n": 30,
+  "ollama_digest": null,
+  "prompt_sha256": "c96529342eab6d832c9cec49859d7c8bfcfa4625ce24ced15b22fe95554a5c4b",
+  "provenance": {
+    "git": {
+      "commit": "601ace31ded677e5998f951a073e5e9d247f84fe",
+      "dirty": false
+    },
+    "python": "3.12.13",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.1",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "seconds_per_call_median": 105.545,
+  "seeds": [
+    100,
+    129
+  ]
+}
