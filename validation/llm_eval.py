@@ -209,8 +209,10 @@ def cmd_audit_sheet(a: argparse.Namespace) -> int:
         metrics = explanation_metrics(seed)
         cited = sorted({m.group(1) for m in CITATION.finditer(text)})
         rows = [f"| `{k}` | {json.dumps(_lookup(metrics, k))} |" for k in cited]
-        md += [f"## {item_id}", "", text.strip(), "", "| cited key | value |", "|---|---|",
-               *rows, ""]  # fmt: skip
+        # the explanation as a quote, so its own headings stay inside the item
+        quoted = [f"> {line}" if line else ">" for line in text.strip().splitlines()]
+        md += [f"## {item_id}", "", *quoted, "", f"Cited values for {item_id}:", "",
+               "| cited key | value |", "|---|---|", *rows, ""]  # fmt: skip
     (DIR / "audit_items.md").write_text("\n".join(md), encoding="utf-8", newline="\n")
     (DIR / "audit_key.json").write_text(json.dumps(key, indent=2) + "\n", newline="\n")
     with (DIR / "audit.csv").open("w", newline="", encoding="utf-8") as f:

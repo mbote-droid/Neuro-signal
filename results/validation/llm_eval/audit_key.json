@@ -1,0 +1,82 @@
+{
+  "A01": {
+    "backend": "gemini",
+    "seed": 102
+  },
+  "A02": {
+    "backend": "gemini",
+    "seed": 112
+  },
+  "A03": {
+    "backend": "gemini",
+    "seed": 114
+  },
+  "A04": {
+    "backend": "gemini",
+    "seed": 111
+  },
+  "A05": {
+    "backend": "gemini",
+    "seed": 101
+  },
+  "A06": {
+    "backend": "gemini",
+    "seed": 123
+  },
+  "A07": {
+    "backend": "gemini",
+    "seed": 127
+  },
+  "A08": {
+    "backend": "gemini",
+    "seed": 116
+  },
+  "A09": {
+    "backend": "gemini",
+    "seed": 117
+  },
+  "A10": {
+    "backend": "gemini",
+    "seed": 122
+  },
+  "A11": {
+    "backend": "gemini",
+    "seed": 106
+  },
+  "A12": {
+    "backend": "gemini",
+    "seed": 110
+  },
+  "A13": {
+    "backend": "gemini",
+    "seed": 118
+  },
+  "A14": {
+    "backend": "gemini",
+    "seed": 124
+  },
+  "A15": {
+    "backend": "gemini",
+    "seed": 125
+  },
+  "A16": {
+    "backend": "gemini",
+    "seed": 103
+  },
+  "A17": {
+    "backend": "gemini",
+    "seed": 120
+  },
+  "A18": {
+    "backend": "gemini",
+    "seed": 104
+  },
+  "A19": {
+    "backend": "gemini",
+    "seed": 119
+  },
+  "A20": {
+    "backend": "gemini",
+    "seed": 126
+  }
+}
