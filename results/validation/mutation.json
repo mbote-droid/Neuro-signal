@@ -1,12 +1,12 @@
 {
   "experiment": "mutation",
-  "killed": 18,
-  "mutants": 18,
+  "killed": 23,
+  "mutants": 23,
   "not_applied": [],
   "provenance": {
     "git": {
-      "commit": "f18adf3651ac6b1acf7076d2419afc1a8b21d961",
-      "dirty": true
+      "commit": "7565026feaf545d0833fbd21481b376b0cc7d20e",
+      "dirty": false
     },
     "python": "3.12.3",
     "versions": {
@@ -72,6 +72,61 @@
       "status": "KILLED",
       "tests": [
         "tests/test_reference.py"
+      ]
+    },
+    {
+      "file": "preprocessing/qc.py",
+      "id": "flat_edges_reflected",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_qc.py"
+      ]
+    },
+    {
+      "file": "preprocessing/reference.py",
+      "id": "car_includes_non_eeg",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_reference.py"
+      ]
+    },
+    {
+      "file": "explain/checker.py",
+      "id": "checker_ignores_invisible",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_explain.py"
+      ]
+    },
+    {
+      "file": "explain/checker.py",
+      "id": "checker_no_channel_mask",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_explain.py"
+      ]
+    },
+    {
+      "file": "io/readers.py",
+      "id": "reader_crash_escapes",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_fuzz_readers.py"
       ]
     },
     {
