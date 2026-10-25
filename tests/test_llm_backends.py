@@ -199,3 +199,31 @@ def test_ollama_over_a_real_socket(metrics):
         server.shutdown()
     assert out.check.ok and out.model == "local-test"
     assert seen[0][0] == "/api/chat" and seen[0][1]["model"] == "local-test"
+
+
+def test_a_non_json_reply_falls_back_to_the_template(metrics, monkeypatch):
+    """An HTML error page from a proxy or server used to escape as JSONDecodeError."""
+
+    def html(request, timeout):
+        return io.BytesIO(b"<html><body>502 Bad Gateway</body></html>")
+
+    monkeypatch.setattr(llm.urllib.request, "urlopen", html)
+    text, result, source = build.explain(metrics, "ollama", "m")
+    assert result.ok and text == template.explain(metrics)
+    assert "did not return JSON" in source
+
+
+def test_missing_anthropic_package_falls_back(metrics, monkeypatch):
+    import builtins
+
+    real_import = builtins.__import__
+
+    def no_anthropic(name, *args, **kwargs):
+        if name == "anthropic":
+            raise ImportError(name)
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-test")
+    monkeypatch.setattr(builtins, "__import__", no_anthropic)
+    _text, result, source = build.explain(metrics, "llm")
+    assert result.ok and "not installed" in source

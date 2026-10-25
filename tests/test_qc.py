@@ -71,3 +71,18 @@ def test_bad_channel_recall_and_precision_on_synthetic_recordings():
         fn += len(truth - found)
     assert tp / (tp + fn) >= 0.95
     assert tp / (tp + fp) >= 0.95
+
+
+def test_a_flat_stretch_at_the_edge_is_not_doubled():
+    """The filters reflect at the ends: a 3 s flat start was measured as 6 s and
+    the channel marked bad (ISSUE-016)."""
+    from neurosignal.preprocessing.qc import longest_flat_run_s
+
+    fs = 256
+    x = np.random.default_rng(0).normal(0, 20, fs * 60)
+    start, end, middle = x.copy(), x.copy(), x.copy()
+    start[: 3 * fs] = 0
+    end[-3 * fs :] = 0
+    middle[20 * fs : 23 * fs] = 0
+    for signal in (start, end, middle):
+        assert longest_flat_run_s(signal, fs, 0.5) < 3.1

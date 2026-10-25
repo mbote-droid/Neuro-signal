@@ -70,4 +70,5 @@ def band_power(spec: Spectrum, band: tuple[float, float]) -> FloatArray:
 def relative_band_power(
     spec: Spectrum, band: tuple[float, float], total: tuple[float, float] = (1.0, 45.0)
 ) -> FloatArray:
-    return band_power(spec, band) / band_power(spec, total)
+    with np.errstate(invalid="ignore", divide="ignore"):  # a flat channel: 0/0 -> NaN
+        return band_power(spec, band) / band_power(spec, total)

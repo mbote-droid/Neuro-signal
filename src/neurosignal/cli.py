@@ -10,6 +10,7 @@ from pathlib import Path
 from neurosignal.core.config import PipelineConfig
 from neurosignal.explain.checker import check
 from neurosignal.io.readers import RefusedFile, read, write_npz
+from neurosignal.pipeline import TooShort
 from neurosignal.synth.eeg import SynthSpec, make_recording
 
 
@@ -149,7 +150,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
         return int(args.func(args))
-    except RefusedFile as exc:
+    except (RefusedFile, TooShort) as exc:
         print(f"refused: {exc}", file=sys.stderr)
         return 2
 

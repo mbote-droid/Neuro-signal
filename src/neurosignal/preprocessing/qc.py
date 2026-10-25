@@ -20,6 +20,15 @@ def robust_sd(x: FloatArray, axis: int = -1) -> FloatArray:
     return np.asarray(MAD_TO_SD * np.median(np.abs(x - med), axis=axis), dtype=np.float64)
 
 
+def _flat_window(x: FloatArray, w: int, tolerance: float) -> bool:
+    """Is any window of w samples lying wholly inside the signal flat? The
+    filters reflect the signal at its ends, so windows that overhang an end are
+    discarded: a 3 s flat start would otherwise mirror into 6 s (ISSUE-016)."""
+    span = ndimage.maximum_filter1d(x, w) - ndimage.minimum_filter1d(x, w)
+    inside = span[w // 2 : x.size - (w - 1) // 2]
+    return bool(np.any(inside <= 2 * tolerance))
+
+
 def longest_flat_run_s(x: FloatArray, sfreq: float, tolerance: float) -> float:
     """Longest stretch (s) over which the signal stays inside a 2*tolerance band.
 
@@ -30,8 +39,7 @@ def longest_flat_run_s(x: FloatArray, sfreq: float, tolerance: float) -> float:
     best = 0
     w = max(2, int(0.5 * sfreq))
     while w <= n:
-        span = ndimage.maximum_filter1d(x, w) - ndimage.minimum_filter1d(x, w)
-        if not np.any(span <= 2 * tolerance):
+        if not _flat_window(x, w, tolerance):
             break
         best = w
         w *= 2
@@ -40,8 +48,7 @@ def longest_flat_run_s(x: FloatArray, sfreq: float, tolerance: float) -> float:
     lo, hi = best, min(2 * best, n)  # refine between best and the failing size
     while hi - lo > 1:
         mid = (lo + hi) // 2
-        span = ndimage.maximum_filter1d(x, mid) - ndimage.minimum_filter1d(x, mid)
-        if np.any(span <= 2 * tolerance):
+        if _flat_window(x, mid, tolerance):
             lo = mid
         else:
             hi = mid

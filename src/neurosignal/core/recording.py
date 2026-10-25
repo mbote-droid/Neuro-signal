@@ -16,7 +16,13 @@ from numpy.typing import NDArray
 
 FloatArray = NDArray[np.float64]
 
-_BIPOLAR = re.compile(r"^[A-Za-z0-9']+-[A-Za-z0-9']+$")
+# a derivation "A-B", optionally with MNE's duplicate suffix ("T8-P8-0")
+_BIPOLAR = re.compile(r"^(?P<a>[A-Za-z0-9']+)-(?P<b>[A-Za-z0-9']+)(?:-\d+)?$")
+# channels that are not scalp EEG, and placeholders such as "-" or "--0"
+_NOT_EEG = re.compile(
+    r"^(?:-+\d*|.*\b(?:ECG|EKG|EMG|EOG|VNS|RESP|LOC|ROC|SPO2|PULSE|STI|STATUS|TRIG\w*)\b.*)$",
+    re.IGNORECASE,
+)
 
 
 @dataclass(frozen=True)
@@ -80,9 +86,22 @@ class Recording:
         return tuple(c for c in self.channels if c not in self.bad_channels)
 
     @property
+    def eeg_channels(self) -> tuple[str, ...]:
+        """Channel names that are scalp EEG (not ECG, VNS, placeholders...)."""
+        return tuple(c for c in self.channels if not _NOT_EEG.match(c))
+
+    @property
     def is_bipolar(self) -> bool:
-        """True when every channel name looks like a derivation `A-B`."""
-        return all(_BIPOLAR.match(c) for c in self.channels)
+        """True when every EEG channel is a derivation `A-B` between varying
+        electrodes. Non-EEG channels (ECG, VNS, "-" placeholders) are ignored,
+        and names that all share one or two second electrodes ("Fp1-A1",
+        "Cz-REF") are a referential montage, not a bipolar one (ISSUE-017)."""
+        eeg = self.eeg_channels
+        matches = [_BIPOLAR.match(c) for c in eeg]
+        if not eeg or not all(matches):
+            return False
+        second = {m.group("b").upper() for m in matches if m}
+        return len(second) > 2 or len(eeg) <= 2
 
     def index(self, names: tuple[str, ...] | list[str]) -> list[int]:
         return [self.channels.index(n) for n in names]

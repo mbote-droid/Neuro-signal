@@ -6,6 +6,8 @@ import json
 import subprocess
 import sys
 
+import numpy as np
+
 from neurosignal.io.readers import write_npz
 from neurosignal.report.build import build_report
 
@@ -78,3 +80,25 @@ def test_model_markdown_headings_and_bullets_render(metrics):
     assert "<li>one</li>" in out and "<li>two</li>" in out
     assert "##" not in out
     assert "<p>#hashtag</p>" in out  # no space after '#': not a heading
+
+
+def test_too_short_recordings_are_refused_cleanly(tmp_path):
+    """ISSUE-020: 2-3 s recordings crashed inside the detector or coupling."""
+    from neurosignal.cli import main
+    from neurosignal.core.recording import Recording
+    from neurosignal.io.readers import write_npz
+
+    rec = Recording(data=np.zeros((3, 512)) + 1.0, sfreq=256.0, channels=("Fz", "Cz", "Pz"))
+    path = tmp_path / "short.npz"
+    write_npz(rec, path)
+    assert main(["report", str(path), "--out", str(tmp_path / "out")]) == 2
+
+
+def test_markdown_report_escapes_untrusted_html(tmp_path, metrics):
+    from neurosignal.explain.checker import check
+    from neurosignal.report.render import write_markdown
+
+    text = "research use only. <img src=x onerror=alert(1)>"
+    write_markdown(metrics, text, check(text, metrics), "template", tmp_path / "r.md")
+    out = (tmp_path / "r.md").read_text()
+    assert "<img" not in out and "&lt;img" in out
