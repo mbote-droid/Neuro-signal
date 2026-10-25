@@ -62,5 +62,7 @@ def write_result(name: str, payload: dict[str, Any], **prov: Any) -> Path:
     RESULTS.mkdir(parents=True, exist_ok=True)
     path = RESULTS / f"{name}.json"
     record = {"experiment": name, "provenance": provenance.collect(**prov), **payload}
-    path.write_text(json.dumps(record, indent=2, sort_keys=True, default=float) + "\n")
+    # LF on every platform, so files written on Windows match their committed form
+    text = json.dumps(record, indent=2, sort_keys=True, default=float) + "\n"
+    path.write_text(text, newline="\n")
     return path

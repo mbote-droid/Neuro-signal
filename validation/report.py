@@ -330,7 +330,7 @@ def manifest() -> list[str]:
     lines = []
     for p in sorted(RESULTS.glob("*.json")):
         lines.append(f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}")
-    (RESULTS / "MANIFEST.sha256").write_text("\n".join(lines) + "\n")
+    (RESULTS / "MANIFEST.sha256").write_text("\n".join(lines) + "\n", newline="\n")
     return [
         "## Manifest",
         "",
@@ -370,7 +370,7 @@ def main() -> None:
         *section_mutation(r),
         *manifest(),
     ]
-    OUT.write_text("\n".join(out))
+    OUT.write_text("\n".join(out), newline="\n")
     print(f"wrote {OUT}")
 
 
