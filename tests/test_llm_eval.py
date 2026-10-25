@@ -151,3 +151,10 @@ def test_run_uses_registered_checker_and_recheck_flags_the_difference(harness, m
     assert re_["calls_with_typographic_sign"] == 1
     assert re_["accepted_texts_now_rejected"] == 1
     assert re_["verdict_changes"][0]["corrected_codes"] == ["VALUE_MISMATCH"]
+
+
+def test_calls_checksum_ignores_windows_line_endings(tmp_path):
+    lf, crlf = tmp_path / "lf.jsonl", tmp_path / "crlf.jsonl"
+    lf.write_bytes(b'{"a": 1}\n{"b": 2}\n')
+    crlf.write_bytes(b'{"a": 1}\r\n{"b": 2}\r\n')
+    assert llm_eval.lf_sha256(lf) == llm_eval.lf_sha256(crlf)

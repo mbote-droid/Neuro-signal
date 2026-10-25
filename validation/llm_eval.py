@@ -74,9 +74,15 @@ class RecordingBackend:
         reply = self.inner.chat(system, messages)
         row = {"seed": key[0], "call": key[1], "model": reply.model, "text": reply.text,
                "seconds": round(time.perf_counter() - start, 2)}  # fmt: skip
-        with self.cache.open("a", encoding="utf-8") as f:
+        with self.cache.open("a", encoding="utf-8", newline="\n") as f:
             f.write(json.dumps(row) + "\n")
         return reply
+
+
+def lf_sha256(path: Path) -> str:
+    """SHA-256 of a text file with LF line endings, so the checksum is the same
+    on Windows (CRLF) and after Git stores the file with LF (.gitattributes)."""
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def _ollama_digest(model: str) -> str | None:
@@ -154,7 +160,7 @@ def _summarise(backend: str, cases: list[dict[str, Any]], cache: Path) -> None:
         "finding_codes_repair_attempt": dict(codes[1]),
         "seconds_per_call_median": statistics.median(c["seconds"] for c in calls),
         "calls": len(calls),
-        "calls_sha256": hashlib.sha256(cache.read_bytes()).hexdigest(),
+        "calls_sha256": lf_sha256(cache),
         "cases": cases,
     }
     if backend == "gemini":
@@ -205,10 +211,10 @@ def cmd_audit_sheet(a: argparse.Namespace) -> int:
         rows = [f"| `{k}` | {json.dumps(_lookup(metrics, k))} |" for k in cited]
         md += [f"## {item_id}", "", text.strip(), "", "| cited key | value |", "|---|---|",
                *rows, ""]  # fmt: skip
-    (DIR / "audit_items.md").write_text("\n".join(md), encoding="utf-8")
-    (DIR / "audit_key.json").write_text(json.dumps(key, indent=2) + "\n")
+    (DIR / "audit_items.md").write_text("\n".join(md), encoding="utf-8", newline="\n")
+    (DIR / "audit_key.json").write_text(json.dumps(key, indent=2) + "\n", newline="\n")
     with (DIR / "audit.csv").open("w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(["id", "fails", "notes"])
         w.writerows([[k, "", ""] for k in key])
     print(f"{len(items)} items: read {DIR / 'audit_items.md'}, fill {DIR / 'audit.csv'}")
