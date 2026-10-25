@@ -226,3 +226,27 @@ def test_a_zero_width_character_cannot_change_a_number():
     metrics = {"recording": {"channels": []}, "x": {"v": 1.0}}
     result = check("research use only. It was 1‍.500 [[x.v]].", metrics)
     assert "INVISIBLE_CHARACTER" in result.codes()
+
+
+@pytest.mark.parametrize("before", ["**", "≈", "~", "'", "“", "*"])
+def test_a_minus_after_markup_or_symbols_is_a_sign(before):
+    """'**-1.23**' renders bold and negative; it used to be read as 1.23 (ISSUE-015)."""
+    text = f"research use only. Exponent {before}-1.23 [[x.e]]."
+    metrics = {"recording": {"channels": []}, "x": {"e": 1.23}}
+    assert check(text, metrics).codes() == {"VALUE_MISMATCH"}
+
+
+def test_channel_names_with_digits_or_prefixes_are_not_numbers_or_unknown():
+    metrics = {
+        "recording": {"channels": ["EEG 7", "EEG Fp1", "Cz"]},
+        "c": {"a": "EEG 7", "b": "EEG Fp1", "w": 0.12},
+    }
+    text = "research use only. Pair EEG 7 [[c.a]] and EEG Fp1 [[c.b]] (dwPLI 0.12 [[c.w]]); Fp1."
+    assert check(text, metrics).ok
+    assert "UNCITED_NUMBER" in check("research use only. EEG 7 had 12 spikes.", metrics).codes()
+    assert "UNKNOWN_CHANNEL" in check("research use only. Look at T9.", metrics).codes()
+
+
+@pytest.mark.parametrize("word", ["postictal", "preictal", "Ictal", "ictus", "interictal"])
+def test_ictal_family_is_diagnostic(word):
+    assert "DIAGNOSTIC" in check(f"research use only. Some {word} activity.", SIGN_METRICS).codes()

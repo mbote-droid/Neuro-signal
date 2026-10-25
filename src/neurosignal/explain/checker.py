@@ -35,12 +35,14 @@ CITATION = re.compile(r"\[\[([^\[\]]+)\]\]")
 MINUS = "-\u2010\u2011\u2012\u2013\u2212\ufe63\uff0d"
 # A number is any digit run not glued to a preceding letter (so "T7", "log10"
 # and "FT10" are not numbers, but "8-12", "30s" and "10Hz" expose every number).
-# A dash is its sign only at the start or after a space or opening punctuation,
-# so the dash in "8-12" or "8 [[a]]–12 [[b]]" is a range, not a minus; an
+# A dash is a sign unless it follows a word character, a decimal point, a closing
+# bracket, a percent sign or a blanked citation, so the dash in "8-12" or
+# "8 [[a]]–12 [[b]]" is a range while "**-1.23**", "≈-1.2" and "'-1.2'" are
+# negative (ISSUE-015); an
 # optional exponent reads "1.2e-3" as one number; a leading decimal point
 # (".5") is a number too (BUILD_JOURNAL ISSUE-013).
 NUMBER = re.compile(
-    rf"(?:(?<![^\s(\[{{=:;,/])[{MINUS}])?(?<![\w.])(?:\d+(?:\.\d+)?|\.\d+)"
+    rf"(?:(?<![\w.\])%\x00])[{MINUS}])?(?<![\w.])(?:\d+(?:\.\d+)?|\.\d+)"
     rf"(?:[eE][+{MINUS}]?\d+)?"
 )
 _TO_ASCII = str.maketrans(dict.fromkeys(MINUS, "-"))
@@ -57,7 +59,7 @@ CHANNEL = re.compile(rf"(?<![\w\-]){_ELECTRODE}(?:-{_ELECTRODE})?(?![\w\-])")
 NOT_CHANNELS = frozenset({"Hz", "kHz", "MHz"})
 DIAGNOSTIC = re.compile(
     r"\b(epilep\w*|diagnos\w*|patholog\w*|abnormal\w*|normal\s+EEG|lesions?|tumou?rs?|"
-    r"encephalopath\w*|ictal|interictal|status\s+epilepticus|seizures?(?!-like)|"
+    r"encephalopath\w*|\w*ictal|ictus|status\s+epilepticus|seizures?(?!-like)|"
     r"disorders?|diseases?)\b",
     re.IGNORECASE,
 )
@@ -131,7 +133,7 @@ def _check_citation(
     return Finding("MISSING_VALUE", f"{key}: cannot cite a {type(value).__name__}"), False
 
 
-def _citations(text: str, flat: dict[str, Any]) -> tuple[list[Finding], set[int], int]:
+def _citations(text: str, masked: str, flat: dict[str, Any]) -> tuple[list[Finding], set[int], int]:
     """Check every citation; return findings, offsets of numbers used, and the count."""
     findings: list[Finding] = []
     consumed: set[int] = set()
@@ -143,7 +145,7 @@ def _citations(text: str, flat: dict[str, Any]) -> tuple[list[Finding], set[int]
         segment = text[start : m.start()]
         prev_end = m.end()
         # search the full text so a sign's lookbehind sees what precedes the segment
-        numbers = list(NUMBER.finditer(text, start, m.start()))
+        numbers = list(NUMBER.finditer(masked, start, m.start()))
         if key not in flat:
             findings.append(Finding("UNKNOWN_KEY", key))
             used = bool(numbers)  # the number is attributed, wrongly; don't double-report
@@ -172,13 +174,32 @@ def _lexical(stripped: str, channels: set[str]) -> list[Finding]:
     return findings
 
 
+def _mask_channels(text: str, names: list[str]) -> str:
+    """Blank the recording's own channel names, so the digits in "EEG 7" or the
+    electrode inside "EEG Fp1" are neither numbers nor unknown channels
+    (ISSUE-015). Names without a letter ("1", "2") are left alone: masking them
+    would hide every such number."""
+    names = sorted({n for n in names if any(c.isalpha() for c in n)}, key=len, reverse=True)
+    if not names:
+        return text
+    pattern = re.compile(
+        r"(?<![\w\-])(?:" + "|".join(map(re.escape, names)) + r")(?![\w\-])", re.IGNORECASE
+    )
+    return pattern.sub(lambda mm: _BLANK * len(mm.group()), text)
+
+
 def check(text: str, metrics: dict[str, Any]) -> CheckResult:
     flat = flatten(metrics)
-    channels = {c.lower() for c in metrics.get("recording", {}).get("channels", [])}
-    findings, consumed, n_cites = _citations(text, flat)
+    names = [str(c) for c in metrics.get("recording", {}).get("channels", [])]
+    # the channel names, plus the electrodes inside them ("Fp1" in "EEG Fp1" or in
+    # the derivation "FP1-F7"): naming an electrode of the montage invents nothing
+    channels = {c.lower() for c in names}
+    channels |= {e.lower() for c in names for e in re.findall(_ELECTRODE, c)}
+    masked = _mask_channels(text, names)  # same length as text: offsets line up
+    findings, consumed, n_cites = _citations(text, masked, flat)
     # citations are blanked with a character that, like "]", is not a sign context,
     # so every number is read here exactly as it was read next to its citation
-    stripped = CITATION.sub(lambda mm: _BLANK * len(mm.group()), text)
+    stripped = CITATION.sub(lambda mm: _BLANK * len(mm.group()), masked)
     numbers = list(NUMBER.finditer(stripped))
     for n in numbers:
         if n.start() not in consumed:
