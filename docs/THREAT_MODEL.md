@@ -20,7 +20,7 @@ limits, authentication, retention, ephemeral storage).
 
 | STRIDE | threat | mitigation | verified by | residual risk |
 |---|---|---|---|---|
-| Tampering / DoS (A2) | malformed or huge file exhausts memory or triggers a parser bug | size limit before parsing (S-01); extension allowlist, no content sniffing (F-02); mature MNE parsers; finite-value check in every stage | `test_size_limit_checked_before_parsing`, `test_unknown_extension_refused` | a crafted EDF within the size limit could still hit an MNE/NumPy bug; run untrusted files in a container (`Dockerfile`, non-root user) |
+| Tampering / DoS (A2) | malformed or huge file exhausts memory or triggers a parser bug | size limit before parsing (S-01); extension allowlist, no content sniffing (F-02); mature MNE parsers; finite-value check in every stage | `test_size_limit_checked_before_parsing`, `test_unknown_extension_refused`; fuzzing in `tests/test_fuzz_readers.py`: any parser failure is a clean refusal, .npz arrays are sized from their headers before decompression (ISSUE-014, 018) | a crafted EDF within the size limit could still hit an MNE/NumPy bug; run untrusted files in a container (`Dockerfile`, non-root user) |
 | Elevation (A2) | pickle payload in a `.npz` | `np.load(allow_pickle=False)`; object arrays refused (S-05) | `test_npz_with_object_array_refused` | none known |
 | Information disclosure (A1) | patient name or dates leak into outputs, logs or figures | reader drops header identity fields; pseudonymous id from the file hash (S-02) | `test_identifying_header_fields_never_cross_the_boundary` | EDF+ annotation text is kept and could contain identifiers |
 | Information disclosure (A1) | data sent to a third party | LLM explainer is opt-in and receives metrics only, no signal, no id, no provenance (S-03) | `test_model_sees_metrics_only` | channel names and summary numbers do leave the machine when the LLM is used |
@@ -38,3 +38,5 @@ limits, authentication, retention, ephemeral storage).
 Research use only. Not a medical device; not validated for clinical use;
 makes no diagnostic statements and is designed to refuse them. IEC 62304
 and ISO 14971 were used only as design references for the FMEA.
+| Spoofing (A3) | invisible characters make a report display a number the checker did not read | text with zero-width or control characters is rejected (ISSUE-013) | `test_a_zero_width_character_cannot_change_a_number`, `tests/test_fuzz_checker.py` | visually similar digits from other scripts are read by their numeric value |
+| Tampering (A1) | HTML in channel names or model text runs in a Markdown viewer | report.md escapes it; report.html already did (ISSUE-020) | `test_markdown_report_escapes_untrusted_html`, `test_html_escapes_untrusted_explanation` | explanation.md keeps the checked text unescaped, as data |

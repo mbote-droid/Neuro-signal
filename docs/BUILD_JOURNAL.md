@@ -225,3 +225,114 @@ typographic signs.
 Lesson: a mutation set is a hypothesis about what can go wrong; an outside
 reader with a different model of the writer found an operator we had not
 imagined. Give the checker's input alphabet its own test.
+
+## Bug hunt (2026-10-26)
+
+A planned search before preprint v2 (ROADMAP): property-based fuzzing of the
+claim checker and the readers, edge-case recordings through the pipeline, an
+independent read-only code review, a second look at the mutation sets, and
+adversarial artifacts. Every finding below has a regression test, and the
+test-suite mutation campaign gained a mutant that undoes each fix (23/23
+killed). QC, H2, H4, H5 and H6 were re-run after the fixes: every result is
+identical apart from machine runtimes.
+
+### ISSUE-013 Three ways a number escaped the checker   (2026-10-26)
+Phase: bug hunt (fuzzing)
+Symptom: (1) "1e309 [[key]]" raised OverflowError, which would crash report
+generation instead of falling back to the template; (2) a number with a
+leading decimal point (".5") was invisible, so an uncited ".9" passed;
+(3) "1<zero-width joiner>.500 [[key]]" displays as 1.500 but was read as 1,
+so a wrong value passed.
+Root cause: the precision unit was computed as a float power without a
+bound; the number pattern required a digit before the decimal point; the
+checker read text that differs from what a reader sees.
+Mitigation: an overflowing exponent is a mismatch; ".5" is a number; text
+containing zero-width or control characters is rejected
+(INVISIBLE_CHARACTER). None of the 96 H7 replies contained either form.
+Lesson: check what the reader sees, not what the parser sees.
+
+### ISSUE-014 Damaged files crashed instead of being refused   (2026-10-26)
+Phase: bug hunt (fuzzing)
+Symptom: truncated or byte-damaged EDF files, headers lying about record
+count or channel count, and random bytes made MNE raise ValueError and
+similar errors that reached the user as tracebacks.
+Mitigation: any parser failure becomes RefusedFile with the reason; a
+MemoryError is refused; a recording with NaN or infinite samples (possible
+in .npz) is refused. An EDF with degenerate scaling (digital minimum equal
+to maximum) is read with finite but implausible amplitudes: recorded as a
+limitation, because BioSemi BDF files legitimately carry large offsets.
+
+### ISSUE-015 A sign in markup, channel names with digits, ictal words   (2026-10-26)
+Phase: bug hunt (code review)
+Symptom: (1) "**-1.23** [[key]]" passed for a metric of 1.23: the ISSUE-012
+fix had made a dash a sign only after whitespace or opening punctuation, so
+markup (which models use for numbers) hid it. The original checker caught
+this case: the fix introduced the regression, and the review found it.
+(2) Recordings named "EEG 7" or "EEG Fp1" failed the template's own check
+(UNCITED_NUMBER, UNKNOWN_CHANNEL). (3) "postictal" and "preictal" passed.
+Mitigation: a dash is a sign unless it follows a word character, a decimal
+point, a closing bracket, a percent sign or a citation; the recording's own
+channel names are masked before the number and electrode scans, and
+electrodes inside channel names count as known; the diagnostic list covers
+the ictal family.
+Lesson: a fix needs the same mutation test as the code it fixes.
+
+### ISSUE-016 A flat start was measured twice   (2026-10-26)
+Phase: bug hunt (code review)
+Symptom: a 3 s flat stretch at the start or end of a channel (amplifier
+settling) was measured as 6 s and the channel marked bad (limit 5 s).
+Root cause: the sliding max/min filters reflect the signal at its ends.
+Mitigation: only windows wholly inside the signal count.
+
+### ISSUE-017 One ECG channel switched a bipolar montage to referential   (2026-10-26)
+Phase: bug hunt (code review)
+Symptom: a single non-derivation channel (ECG, VNS, a "-" placeholder, or
+MNE's renamed duplicate "T8-P8-0") made a bipolar montage "referential", and
+an average reference was applied to bipolar derivations (F-07). Names such
+as "Fp1-A1" or "Cz-REF", a referential montage, were taken as bipolar.
+Effect on reported results: none; all 20 CHB-MIT files used for H5 and H6
+are correctly bipolar. Other CHB-MIT subjects carry ECG and VNS channels,
+so a confirmatory test on more subjects would have been affected.
+Mitigation: non-EEG channels are ignored for the montage decision and
+excluded from the average; duplicate suffixes are accepted; derivations
+sharing one or two second electrodes are referential.
+Open: non-EEG channels still enter spectra, coupling and the detector's
+channel vote (v0.2, before more CHB-MIT subjects are used).
+
+### ISSUE-018 A compressed .npz could exceed the size limit in memory   (2026-10-26)
+Phase: bug hunt (code review)
+Symptom: the size limit was checked on disk; a 1000:1 compressible array
+in a 0.5 MB file loaded as 560 MB.
+Mitigation: array sizes are read from the .npy headers inside the archive,
+without decompressing, and refused above the limit.
+
+### ISSUE-019 The LLM fallback could crash   (2026-10-26)
+Phase: bug hunt (code review)
+Symptom: with an API key but no anthropic package, with SDK errors, or with
+a server returning an HTML page instead of JSON, report generation crashed
+instead of falling back to the template.
+Mitigation: every such failure is a BackendError, which falls back.
+
+### ISSUE-020 Very short recordings crashed   (2026-10-26)
+Phase: bug hunt (edge cases)
+Symptom: 2-3 s recordings raised raw ValueErrors inside the detector or the
+coupling estimate.
+Mitigation: recordings under 10 s (the shortest event the detector reports)
+are refused with a clear message (CLI exit 2). report.md now escapes
+untrusted HTML (channel names, model text); explanation.md keeps the
+checked text as is.
+
+### ISSUE-021 Chewing imitates a rhythmic event   (2026-10-26)
+Phase: bug hunt (adversarial artifacts, exploratory)
+Symptom: on 20 event-free 10-minute recordings per artifact type (seeds
+2000-2019), chewing raised false detections from 2.40 to 6.00 per hour; 16
+of 60 chewing episodes were reported as events. Eye flutter added 4 of 60,
+electrode pops 1 of 63; sweat drift had no effect (removed by the 0.5 Hz
+high-pass).
+Root cause: chewing at 2-3 Hz carries a jaw potential inside the rhythm
+gate's 2-7.5 Hz band on temporal channels, and the one-channel vote lets a
+temporal artifact pass.
+Mitigation: none yet; recorded as a limitation. An EMG cue (20-60 Hz power
+locked to the rhythm) is a v0.2 item, beside the spatial cue for blinks.
+Lesson: the realistic negatives of ISSUE-009 and ISSUE-011 were the ones we
+had met; artifacts we had not met still pass.

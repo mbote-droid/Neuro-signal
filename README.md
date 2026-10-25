@@ -33,7 +33,7 @@ checks. Three errors recur even when the code runs:
 |---|---|---|
 | a change in band power read as a change in an oscillation, when the 1/f exponent moved | reports peak power above the aperiodic fit next to band power, with the warning | H1: exponent alone moved 8-12 Hz band power by ≥ 30 % in 200/200 cases |
 | volume conduction read as connectivity | reports debiased wPLI; PLV only as a contrast | H3: PLV > 0.3 in 92 % of pairs with no coupling at all; debiased wPLI 95th percentile 0.006-0.021 |
-| a narrative that states values never computed, or a diagnosis | citation contract + mechanical claim checker; failed text is replaced and the failure shown | H4: 2386/2386 mutated explanations rejected, 60/60 faithful accepted |
+| a narrative that states values never computed, or a diagnosis | citation contract + mechanical claim checker; failed text is replaced and the failure shown | H4: 3334/3334 mutated explanations rejected, 60/60 faithful accepted |
 
 ## Quick start
 
@@ -87,8 +87,8 @@ Generated from result files with provenance: [VALIDATION_REPORT.md](docs/VALIDAT
 | aperiodic exponent, 200 synthetic spectra | median error 0.014; agrees with specparam in 200/200 |
 | alpha peak frequency | median error 0.067 Hz |
 | bad-channel detection, 100 recordings | recall 1.00, precision 1.00 |
-| claim checker (H4) | 2386/2386 live mutants caught across 10 operators |
-| test suite | 18/18 code mutants killed |
+| claim checker (H4) | 3334/3334 live mutants caught across 14 operators |
+| test suite | 23/23 code mutants killed; checker and readers fuzz-tested |
 | 1 h, 32 channels, 256 Hz, one core | 12.7 s, 1.5 GB peak memory |
 | determinism | byte-identical `metrics.json` across processes (CI) |
 

@@ -44,12 +44,12 @@ finding becomes a test and a BUILD_JOURNAL entry.
 
 | item | status | notes |
 |---|---|---|
-| Fuzz the claim checker: random Unicode, number formats (decimal commas, thin spaces, superscripts, percentages), citation placement | ⏭ | Hypothesis property tests; known: a decimal comma reads as two numbers (rejects correct text) |
-| Fuzz the file readers: corrupted, truncated and unusual EDF/BDF/BrainVision files | ⏭ | must refuse cleanly, never crash or hang |
-| Edge-case recordings through the whole pipeline: one channel, all channels bad, very short, unusual sampling rates, flat or saturated signals | ⏭ | |
-| Structured correctness and security review of the code | ⏭ | report escaping, file limits, keys, dependencies |
-| Second look at the mutation sets (H4 operators, test-suite mutants): what errors are still missing? | ⏭ | the lesson of ISSUE-012 |
-| Adversarial artifacts for the detector: synthetic chewing, electrode movement, delta-shaped blink trains and sweat drift built to look like rhythmic events | ⏭ | extends the realistic negatives (FINDINGS F-6); may move to v0.2 if the generator needs new models |
+| Fuzz the claim checker: random Unicode, number formats, citation placement | ✅ 2026-10-26 | three bypasses fixed (ISSUE-013); a decimal comma still reads as two numbers (rejects correct text, safe) |
+| Fuzz the file readers: corrupted, truncated and unusual files | ✅ 2026-10-26 | damaged files refused cleanly; .npz bombs refused (ISSUE-014, 018) |
+| Edge-case recordings through the whole pipeline | ✅ 2026-10-26 | short recordings refused; channel-name and NaN handling fixed (ISSUE-015, 020) |
+| Structured correctness and security review of the code | ✅ 2026-10-26 | independent review: 11 findings, 10 fixed, 1 documented (coupling memory) |
+| Second look at the mutation sets | ✅ 2026-10-26 | H4: four operators, 3334/3334; test suite: five mutants, 23/23 |
+| Adversarial artifacts for the detector | ✅ 2026-10-26 | exploratory: chewing 6.0 false/h vs 2.4 baseline (ISSUE-021) |
 
 ## Publication
 
@@ -77,4 +77,8 @@ finding becomes a test and a BUILD_JOURNAL entry.
 | Spatial cue (frontal, symmetric) to separate blinks from slow ictal delta, then lower the rhythm-gate floor | 💤 | FINDINGS F-7 |
 | Detector with hidden states (HSMM fitted by EM) compared with the threshold detector | 💤 | |
 | Spectral fit aware of excluded event windows | 💤 | |
+| Leave non-EEG channels (ECG, VNS) out of spectra, coupling and the detector's channel vote | 💤 | ISSUE-017; needed before more CHB-MIT subjects |
+| EMG cue against chewing (20-60 Hz power locked to the rhythm) | 💤 | ISSUE-021, FINDINGS F-10 |
+| Absolute amplitude plausibility and clipping detection | 💤 | ISSUE-014 |
+| Coupling memory linear in the channel count | 💤 | about 2.5 GB at 128 channels today |
 | Confirmatory test sized by the power analysis (about 76 seizures), pre-registered on OSF | 💤 | STATISTICAL_FOUNDATIONS §7 |
