@@ -180,6 +180,64 @@ def typographic_minus(text: str, metrics: dict[str, Any], rng: random.Random) ->
     return Mutant(text[: num.start()] + dash + text[num.start() :], equivalent)
 
 
+def swap_citations(text: str, metrics: dict[str, Any], rng: random.Random) -> Mutant | None:
+    """Two numbers trade citations, e.g. 'before' and 'after' swapped (bug hunt)."""
+    flat = flatten(metrics)
+    pairs = [(n, c) for n, c in _cited_numbers(text) if _is_number(flat.get(c.group(1)))]
+    if len(pairs) < 2:
+        return None
+    (n1, c1), (n2, c2) = sorted(rng.sample(pairs, 2), key=lambda p: p[1].start())
+    k1, k2 = c1.group(1), c2.group(1)
+    if k1 == k2:
+        return None
+    out = text[: c1.start()] + f"[[{k2}]]" + text[c1.end() : c2.start()] + f"[[{k1}]]"
+    out += text[c2.end() :]
+    equivalent = true_at_precision(n1.group(), float(flat[k2])) and true_at_precision(
+        n2.group(), float(flat[k1])
+    )
+    return Mutant(out, equivalent)
+
+
+def markup_sign_flip(text: str, metrics: dict[str, Any], rng: random.Random) -> Mutant | None:
+    """A sign flip inside bold markup, as models write numbers: '**-1.23**'."""
+    pairs = [(n, c) for n, c in _cited_numbers(text) if n.group()[0].isdigit()]
+    if not pairs:
+        return None
+    num, cite = rng.choice(pairs)
+    value = float(flatten(metrics)[cite.group(1)])
+    new = f"**-{num.group()}**"
+    return Mutant(text[: num.start()] + new + text[num.end() :],
+                  true_at_precision("-" + num.group(), value))  # fmt: skip
+
+
+def zero_width_decimal(text: str, metrics: dict[str, Any], rng: random.Random) -> Mutant | None:
+    """An integer gains a decimal behind a zero-width joiner: '1<ZWJ>.5' shows 1.5."""
+    pairs = [(n, c) for n, c in _cited_numbers(text) if n.group().isdigit()]
+    if not pairs:
+        return None
+    num, cite = rng.choice(pairs)
+    digit = rng.randint(1, 9)
+    value = float(flatten(metrics)[cite.group(1)])
+    shown = f"{num.group()}.{digit}"
+    return Mutant(text[: num.end()] + f"\u200d.{digit}" + text[num.end() :],
+                  true_at_precision(shown, value))  # fmt: skip
+
+
+def uncited_leading_dot(text: str, metrics: dict[str, Any], rng: random.Random) -> Mutant | None:
+    """An uncited number written with a leading decimal point ('.8')."""
+    sentence = rng.choice(
+        ("Roughly .8 of the epochs were clean.", "About .25 of channels drifted.")
+    )
+    paras = text.split("\n\n")
+    i = rng.randrange(1, len(paras)) if len(paras) > 1 else 0
+    paras[i] = paras[i] + " " + sentence
+    return Mutant("\n\n".join(paras))
+
+
+def _is_number(value: Any) -> bool:
+    return isinstance(value, int | float) and not isinstance(value, bool)
+
+
 def number_as_words(text: str, metrics: dict[str, Any], rng: random.Random) -> Mutant | None:
     """Out of contract: a wrong count written in words is invisible to the checker."""
     return Mutant(text.rstrip() + " Seven channels showed clear slowing.\n")
@@ -196,5 +254,9 @@ OPERATORS: dict[str, Mutator] = {
     "no_disclaimer": no_disclaimer,
     "fake_channel": fake_channel,
     "typographic_minus": typographic_minus,
+    "swap_citations": swap_citations,
+    "markup_sign_flip": markup_sign_flip,
+    "zero_width_decimal": zero_width_decimal,
+    "uncited_leading_dot": uncited_leading_dot,
 }
 BLIND_SPOTS: dict[str, Mutator] = {"number_as_words": number_as_words}
