@@ -25,10 +25,10 @@ Status: ✅ done · 🔄 in progress · ⏭ next · 💤 later
 | H7 pre-registered before any model call | ✅ 2026-10-18 | [PROBLEM_STATEMENT.md](PROBLEM_STATEMENT.md) §10 |
 | Gemini and local Ollama backends; evaluation harness | ✅ 2026-10-18 | ADR-013, `validation/llm_eval.py` |
 | Models recorded before the run (`gemini-3.8-flash`, `qwen2.5:3b`) | ✅ 2026-10-21 | PROBLEM_STATEMENT §10 |
-| Gemini run (30 recordings, over several days of free quota) | 🔄 | `results/validation/llm_eval_gemini.json` |
-| Local Ollama run (30 recordings) | 🔄 | `results/validation/llm_eval_ollama.json` |
-| Blinded audit of accepted explanations (H7c) | ⏭ | `results/validation/llm_audit.json` |
-| Secondary analysis with the corrected checker (`recheck`) | ⏭ | `results/validation/llm_recheck.json` |
+| Gemini run (30 recordings, over several days of free quota): 30/30 accepted, 24 first time; H7a accepted | ✅ 2026-10-25 | `results/validation/llm_eval_gemini.json` |
+| Local Ollama run (30 recordings): 0/30 accepted | ✅ 2026-10-25 | `results/validation/llm_eval_ollama.json` |
+| Secondary analysis with the corrected checker (`recheck`): no typographic signs, no verdict changes | ✅ 2026-10-25 | `results/validation/llm_recheck.json` |
+| Blinded audit of accepted explanations (H7c): sheet of 20 items ready | 🔄 | `results/validation/llm_eval/audit.csv` |
 
 ## Maintenance and outside reports
 

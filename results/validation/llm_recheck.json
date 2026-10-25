@@ -1,0 +1,30 @@
+{
+  "experiment": "llm_recheck",
+  "gemini": {
+    "accepted_texts_now_rejected": 0,
+    "calls": 36,
+    "calls_with_typographic_sign": 0,
+    "verdict_changes": []
+  },
+  "ollama": {
+    "accepted_texts_now_rejected": 0,
+    "calls": 60,
+    "calls_with_typographic_sign": 0,
+    "verdict_changes": []
+  },
+  "provenance": {
+    "git": {
+      "commit": "189d7f4b5e9d16b15ed80561e32b168544b30e90",
+      "dirty": false
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.1",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "registered_checker": "validation/h7_registered_checker.py"
+}

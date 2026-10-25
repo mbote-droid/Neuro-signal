@@ -162,6 +162,9 @@ def section_llm(r: dict[str, Any]) -> list[str]:
             if a["audited"]:
                 lines.append(f"* {b}: {a['failed']} of {a['audited']} failed "
                              f"(Wilson {_ci(a['failed_wilson'])})")  # fmt: skip
+        if not au["ollama"]["audited"]:
+            lines.append("* The local model had no accepted explanation, so every audited item "
+                         "came from the cloud model and hiding the model had no effect.")  # fmt: skip
     return [*lines, ""]
 
 
