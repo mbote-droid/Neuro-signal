@@ -23,7 +23,10 @@ class CommonAverage(Stage):
         self.applied = False
 
     def process(self, rec: Recording) -> Recording:
-        good = rec.index(list(rec.good_channels))
+        # the average is taken over good EEG channels only: an ECG channel would
+        # leak the heartbeat into every channel (ISSUE-017)
+        eeg = set(rec.eeg_channels)
+        good = rec.index([c for c in rec.good_channels if c in eeg])
         self.applied = not rec.is_bipolar and len(good) >= 3
         if not self.applied:
             return rec
@@ -32,7 +35,7 @@ class CommonAverage(Stage):
 
     def params(self) -> dict[str, Any]:
         return {
-            "method": "common average (good channels)"
+            "method": "common average (good EEG channels)"
             if self.applied
             else "none (bipolar or <3 good channels)",
             "applied": self.applied,

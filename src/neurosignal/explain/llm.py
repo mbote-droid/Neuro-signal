@@ -113,19 +113,32 @@ class AnthropicBackend:
         self._client = client
 
     def chat(self, system: str, messages: list[dict[str, Any]]) -> Reply:
-        if self._client is None:
+        # every SDK failure becomes a BackendError, so the report falls back to
+        # the template instead of crashing (ISSUE-019)
+        try:
             import anthropic
-
+        except ImportError:
+            if self._client is None:
+                raise BackendError(
+                    "the 'anthropic' package is not installed (extra 'llm')"
+                ) from None
+            api_error: type[Exception] = RuntimeError  # a test double needs no SDK
+        else:
+            api_error = anthropic.APIError
+        if self._client is None:
             self._client = anthropic.Anthropic()
-        response = self._client.beta.messages.create(
-            model=self.model,
-            max_tokens=MAX_TOKENS,
-            system=system,
-            messages=messages,
-            output_config={"effort": "medium"},
-            betas=["server-side-fallback-2026-07-01"],
-            fallbacks="default",
-        )
+        try:
+            response = self._client.beta.messages.create(
+                model=self.model,
+                max_tokens=MAX_TOKENS,
+                system=system,
+                messages=messages,
+                output_config={"effort": "medium"},
+                betas=["server-side-fallback-2026-07-01"],
+                fallbacks="default",
+            )
+        except api_error as exc:
+            raise BackendError(f"Anthropic API error: {type(exc).__name__}") from None
         if getattr(response, "stop_reason", None) == "refusal":
             raise BackendError("the model declined to write a summary")
         text = "".join(b.text for b in response.content if getattr(b, "type", "") == "text")
@@ -146,8 +159,14 @@ def _post_json(
     for attempt in range(retries + 1):
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response:
-                result: dict[str, Any] = json.loads(response.read())
-                return result
+                raw = response.read()
+            try:
+                result = json.loads(raw)
+            except ValueError:  # an HTML error page or a proxy reply (ISSUE-019)
+                raise BackendError(f"{url} did not return JSON") from None
+            if not isinstance(result, dict):
+                raise BackendError(f"{url} returned unexpected JSON")
+            return result
         except urllib.error.HTTPError as e:
             if e.code not in RETRY_STATUS or attempt == retries:
                 detail = e.read().decode(errors="replace")[:300]

@@ -9,6 +9,7 @@ before any parser touches the file (F-02, S-01).
 from __future__ import annotations
 
 import re
+import zipfile
 from collections.abc import Callable
 from pathlib import Path
 
@@ -40,6 +41,10 @@ def read(path: str | Path, max_bytes: int = DEFAULT_MAX_BYTES) -> Recording:
     if size > max_bytes:
         raise RefusedFile(f"file is {size} bytes, above the {max_bytes}-byte limit")
     try:
+        if ext == ".npz" and (inflated := _npz_inflated_bytes(path)) > max_bytes:
+            raise RefusedFile(
+                f"{path.name} expands to {inflated} bytes, above the {max_bytes}-byte limit"
+            )
         rec = READERS.get(ext)(path)
     except RefusedFile:
         raise
@@ -55,6 +60,25 @@ def read(path: str | Path, max_bytes: int = DEFAULT_MAX_BYTES) -> Recording:
         source_sha256=digest,
         subject_id=f"rec-{digest[:12]}",
     )
+
+
+def _npz_inflated_bytes(path: Path) -> int:
+    """Bytes the arrays of an .npz occupy once loaded, from each .npy header and
+    without decompressing the data: a small compressed file can expand a
+    thousandfold, past the size limit checked on disk (ISSUE-018)."""
+    total = 0
+    with zipfile.ZipFile(path) as archive:
+        for info in archive.infolist():
+            with archive.open(info) as member:
+                version = np.lib.format.read_magic(member)
+                if version == (1, 0):
+                    shape, _, dtype = np.lib.format.read_array_header_1_0(member)
+                elif version == (2, 0):
+                    shape, _, dtype = np.lib.format.read_array_header_2_0(member)
+                else:
+                    raise RefusedFile(f"unsupported .npy version {version} in {path.name}")
+                total += int(np.prod(shape, dtype=np.int64)) * dtype.itemsize
+    return total
 
 
 def _from_mne(raw: object) -> Recording:

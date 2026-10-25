@@ -171,9 +171,12 @@ def write_markdown(
         "",
         "> **Research use only.** Not a medical device. No clinical statements.",
         "",
-        f"Claim check {status} ({result.n_citations} citations; explanation source: {source}).",
+        f"Claim check {status} ({result.n_citations} citations; "
+        f"explanation source: {html.escape(source, quote=False)}).",
         "",
-        explanation,
+        # model text and channel names are untrusted: Markdown viewers render raw
+        # HTML, so it is escaped here (explanation.md keeps the checked text as is)
+        html.escape(explanation, quote=False),
         "## Figures",
         "",
         "![spectrum](figures/spectrum.png)",

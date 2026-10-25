@@ -75,8 +75,26 @@ def preprocess(rec: Recording, cfg: PipelineConfig) -> Recording:
     return chain(rec)
 
 
+MIN_DURATION_S = 10.0  # the shortest event the detector reports (ISSUE-020)
+
+
+class TooShort(ValueError):
+    """The recording is too short for the analysis."""
+
+
+def _nanmedian(x: np.ndarray) -> float:
+    """Median ignoring NaN; NaN (written as null) when nothing is finite, without
+    numpy's all-NaN warning (all channels flat, or mains above Nyquist)."""
+    finite = x[np.isfinite(x)]
+    return float(np.median(finite)) if finite.size else math.nan
+
+
 def analyse(rec: Recording, cfg: PipelineConfig | None = None) -> Analysis:
     cfg = cfg or PipelineConfig()
+    if rec.duration_s < MIN_DURATION_S:
+        raise TooShort(
+            f"recording is {rec.duration_s:.1f} s; at least {MIN_DURATION_S:.0f} s are needed"
+        )
     clean = preprocess(rec, cfg)
     # events first: background spectra and coupling are measured outside them
     events = detect(clean, detector_params(cfg))
@@ -196,8 +214,8 @@ def build_metrics(an: Analysis, input_sha256: str | None = None) -> dict[str, An
             "noisy": hist.get("qc_amplitude", {}).get("noisy_channels", {}),
             "low": hist.get("qc_amplitude", {}).get("low_channels", {}),
             "line_noise_reference_band_hz": list(LINE_REFERENCE_BAND_HZ),
-            "line_noise_ratio_before_median": float(np.nanmedian(an.line_noise_before)),
-            "line_noise_ratio_after_median": float(np.nanmedian(an.line_noise_after[gidx]))
+            "line_noise_ratio_before_median": _nanmedian(an.line_noise_before),
+            "line_noise_ratio_after_median": _nanmedian(an.line_noise_after[gidx])
             if good
             else None,
             "rereferenced": bool(hist.get("reference", {}).get("applied", False)),

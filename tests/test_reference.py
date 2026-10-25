@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import numpy as np
+import pytest
 
 from neurosignal.core.recording import Recording
 from neurosignal.preprocessing.reference import CommonAverage
@@ -39,3 +40,28 @@ def test_bipolar_montage_left_unchanged():
     out = CommonAverage()(rec)
     np.testing.assert_array_equal(out.data, rec.data)
     assert out.history[-1]["applied"] is False
+
+
+@pytest.mark.parametrize(
+    ("names", "bipolar"),
+    [
+        (["FP1-F7", "F7-T7", "T7-P7", "ECG"], True),  # a non-EEG channel is ignored
+        (["FP1-F7", "F7-T7", "T7-P7", "-", "--0"], True),  # placeholders too
+        (["FP1-F7", "F7-T7", "T8-P8-0", "T8-P8-1"], True),  # MNE's duplicate suffix
+        (["Fp1-A1", "Fp2-A2", "C3-A1", "C4-A2"], False),  # common ear references
+        (["Fp1-REF", "Fp2-REF", "Cz-REF"], False),
+        (["Fp1", "Fp2", "Cz"], False),
+    ],
+)
+def test_montage_detection(names, bipolar):
+    """ISSUE-017: one ECG channel used to make a bipolar montage 'referential'."""
+    rec = Recording(data=np.zeros((len(names), 10)), sfreq=256.0, channels=tuple(names))
+    assert rec.is_bipolar is bipolar
+
+
+def test_average_reference_excludes_non_eeg_channels():
+    data = np.zeros((4, 256))
+    data[3] = 1000.0  # a large ECG channel must not leak into the average
+    rec = Recording(data=data, sfreq=256.0, channels=("Fp1", "Cz", "O1", "ECG"))
+    out = CommonAverage().process(rec)
+    assert np.allclose(out.data[:3], 0.0)

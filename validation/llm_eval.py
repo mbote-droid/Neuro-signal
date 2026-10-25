@@ -207,7 +207,7 @@ def cmd_audit_sheet(a: argparse.Namespace) -> int:
         item_id = f"A{i:02d}"
         key[item_id] = {"backend": backend, "seed": seed}
         metrics = explanation_metrics(seed)
-        cited = sorted({m.group(1) for m in CITATION.finditer(text)})
+        cited = sorted({m.group(1).strip() for m in CITATION.finditer(text)})
         rows = [f"| `{k}` | {json.dumps(_lookup(metrics, k))} |" for k in cited]
         # the explanation as a quote, so its own headings stay inside the item
         quoted = [f"> {line}" if line else ">" for line in text.strip().splitlines()]

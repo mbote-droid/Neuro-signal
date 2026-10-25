@@ -132,3 +132,19 @@ def test_npz_with_nan_samples_is_refused(tmp_path):
     arrays["data"][0, 100] = np.nan
     np.savez(path, **arrays)
     assert _outcome(path) == "refused"
+
+
+def test_npz_decompression_bomb_is_refused_before_loading(tmp_path):
+    """A 1000:1 compressible array: small on disk, large in memory (ISSUE-018)."""
+    path = tmp_path / "bomb.npz"
+    np.savez_compressed(
+        path, data=np.zeros((4, 4_000_000)), sfreq=np.array(256.0), channels=np.array(["a"] * 4)
+    )
+    size = path.stat().st_size
+    assert size < 1_000_000
+    try:
+        read(path, max_bytes=10 * size)
+    except RefusedFile as exc:
+        assert "expands to" in str(exc)
+    else:
+        raise AssertionError("bomb accepted")
