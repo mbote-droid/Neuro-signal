@@ -10,6 +10,7 @@ pre-registered in docs/PROBLEM_STATEMENT.md §4.
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import random
 import re
 import subprocess
@@ -292,6 +293,53 @@ def exp_detection(quick: bool) -> None:
             "rows": rows,
         },
     )
+
+
+# ---------------------------------------------------- adversarial (exploratory)
+
+ADVERSARIAL_SEEDS = range(2000, 2020)  # disjoint from tuning, H2, H4 and H7 seeds
+ADVERSARIAL = {
+    "baseline": {},
+    "chewing": {"chewing_per_min": 0.3},
+    "electrode_pops": {"electrode_pops_per_min": 0.3},
+    "eye_flutter": {"eye_flutter_per_min": 0.3},
+    "sweat": {"sweat_uv": 150.0},
+}
+
+
+def _adversarial_case(args: tuple[str, int]) -> dict[str, Any]:
+    kind, seed = args
+    spec = dataclasses.replace(detection_spec(seed), n_events=0, **ADVERSARIAL[kind])
+    rec, gt = make_recording(seed, spec)
+    an = analyse(rec)
+    episodes = [(a[1], a[2]) for a in gt.artifacts]
+    on_artifact = sum(
+        any(e.onset_s < off and e.offset_s > on for on, off in episodes) for e in an.events
+    )
+    return {"kind": kind, "seed": seed, "hours": rec.duration_s / 3600,
+            "false": len(an.events), "on_artifact": on_artifact,
+            "episodes": len(episodes)}  # fmt: skip
+
+
+def exp_adversarial(quick: bool) -> None:
+    """Exploratory (not pre-registered): false detections per hour on event-free
+    recordings with artifacts built to imitate rhythmic events (ISSUE-021)."""
+    seeds = list(ADVERSARIAL_SEEDS)[: 5 if quick else None]
+    jobs = [(kind, s) for kind in ADVERSARIAL for s in seeds]
+    with ProcessPoolExecutor(WORKERS) as ex:
+        rows = list(ex.map(_adversarial_case, jobs))
+    summary = {}
+    for kind in ADVERSARIAL:
+        sub = [r for r in rows if r["kind"] == kind]
+        false, hours = sum(r["false"] for r in sub), sum(r["hours"] for r in sub)
+        summary[kind] = {
+            "recordings": len(sub), "hours": hours, "false_detections": false,
+            "false_per_hour": false / hours, "false_per_hour_upper95": poisson_upper(false, hours),
+            "on_artifact_episodes": sum(r["on_artifact"] for r in sub),
+            "episodes": sum(r["episodes"] for r in sub),
+        }  # fmt: skip
+    payload = {"seeds": [seeds[0], seeds[-1]], "settings": ADVERSARIAL, "summary": summary}
+    write_result("adversarial", {**payload, "rows": rows})
 
 
 # --------------------------------------------------------------------- H3
@@ -581,6 +629,7 @@ EXPERIMENTS = {
     "chbmit": exp_chbmit,
     "chbmit_heldout": exp_chbmit_heldout,
     "resources": exp_resources,
+    "adversarial": exp_adversarial,
 }
 
 

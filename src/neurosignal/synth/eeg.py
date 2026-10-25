@@ -70,6 +70,7 @@ class GroundTruth:
     bad_channels: dict[str, str] = field(default_factory=dict)  # name -> "flat" | "noisy"
     events: tuple[Event, ...] = ()
     line_noise_uv: float = 0.0
+    artifacts: tuple[tuple[str, float, float], ...] = ()  # (kind, onset s, offset s)
 
 
 def shaped_noise(
@@ -156,6 +157,11 @@ class SynthSpec:
     muscle_per_min: float = 0.0
     alpha_bursts_per_min: float = 0.0
     alpha: bool = True
+    # adversarial artifacts built to look like rhythmic events (bug hunt); off by default
+    chewing_per_min: float = 0.0
+    electrode_pops_per_min: float = 0.0
+    eye_flutter_per_min: float = 0.0
+    sweat_uv: float = 0.0
 
 
 def make_recording(seed: int, spec: SynthSpec | None = None) -> tuple[Recording, GroundTruth]:
@@ -187,6 +193,7 @@ def make_recording(seed: int, spec: SynthSpec | None = None) -> tuple[Recording,
     _add_blinks(data, t, seed, spec, channels)
     _add_muscle(data, seed, spec, channels, background_rms)
     _add_alpha_bursts(data, seed, spec, channels, background_rms)
+    artifacts = _add_adversarial(data, t, seed, spec, channels, background_rms)
     if spec.line_noise_uv > 0:
         phase = rng(seed, 4).uniform(0, 2 * np.pi)
         data += spec.line_noise_uv * np.sin(2 * np.pi * 50.0 * t + phase)
@@ -199,7 +206,11 @@ def make_recording(seed: int, spec: SynthSpec | None = None) -> tuple[Recording,
         subject_id=f"synth-{seed}",
     )
     return rec, GroundTruth(
-        spectra=spectra, bad_channels=bad, events=tuple(events), line_noise_uv=spec.line_noise_uv
+        spectra=spectra,
+        bad_channels=bad,
+        events=tuple(events),
+        line_noise_uv=spec.line_noise_uv,
+        artifacts=tuple(artifacts),
     )
 
 
@@ -319,6 +330,76 @@ def _add_alpha_bursts(
         for ch in central if spindle else posterior:
             k = channels.index(ch)
             data[k, i0 : i0 + dur] += g.uniform(1.5, 4.0) * background_rms[k] * burst
+
+
+def _episode(g: np.random.Generator, n: int, sfreq: float, lo_s: float, hi_s: float) -> slice:
+    dur = min(int(g.uniform(lo_s, hi_s) * sfreq), n - 1)
+    i0 = int(g.uniform(0, n - dur))
+    return slice(i0, i0 + dur)
+
+
+def _add_adversarial(
+    data: FloatArray,
+    t: FloatArray,
+    seed: int,
+    spec: SynthSpec,
+    channels: tuple[str, ...],
+    background_rms: FloatArray,
+) -> list[tuple[str, float, float]]:
+    """Artifacts built to imitate rhythmic events (BUILD_JOURNAL ISSUE-021):
+    chewing (EMG bursts with a jaw potential at 1-3 Hz, temporal sites, 10-30 s),
+    electrode pops (a loose electrode: steps with exponential decay every
+    0.4-2 s on one channel, 10-30 s), eye flutter (blinks repeating every
+    0.35-0.6 s, frontal and symmetric, 8-20 s) and sweat drift (0.05-0.3 Hz,
+    the whole recording). Returns (kind, onset, offset) for each episode."""
+    out: list[tuple[str, float, float]] = []
+    n, fs = data.shape[1], spec.sfreq
+    g = rng(seed, 8)
+    temporal = [c for c in ("T7", "T8", "F7", "F8") if c in channels]
+    emg_band = signal.butter(4, [20.0 / (fs / 2), min(60.0, 0.45 * fs) / (fs / 2)], "band")
+    for _ in range(g.poisson(spec.chewing_per_min * spec.duration_s / 60)):
+        ep = _episode(g, n, fs, 10.0, 30.0)
+        rate = g.uniform(1.0, 3.0)
+        phase = np.sin(2 * np.pi * rate * (t[ep] - t[ep.start]))
+        chew = np.clip(phase, 0, None) ** 4  # one burst per chew
+        emg = signal.filtfilt(*emg_band, g.normal(0, 1, ep.stop - ep.start))
+        wave = chew * (emg / max(float(np.std(emg)), 1e-12)) + 0.5 * phase
+        for ch in temporal:
+            k = channels.index(ch)
+            data[k, ep] += g.uniform(2.0, 5.0) * background_rms[k] * wave
+        out.append(("chewing", float(t[ep.start]), float(t[ep.stop - 1])))
+    g = rng(seed, 9)
+    for _ in range(g.poisson(spec.electrode_pops_per_min * spec.duration_s / 60)):
+        ep = _episode(g, n, fs, 10.0, 30.0)
+        k = int(g.integers(len(channels)))
+        i = ep.start
+        while i < ep.stop:
+            tau = g.uniform(0.3, 1.5)
+            tail = np.arange(n - i) / fs
+            data[k, i:] += g.choice((-1, 1)) * g.uniform(100, 300) * np.exp(-tail / tau)
+            i += int(g.uniform(0.4, 2.0) * fs)
+        out.append(("electrode_pops", float(t[ep.start]), float(t[ep.stop - 1])))
+    g = rng(seed, 10)
+    gains = {"Fp1": 1.0, "Fp2": 1.0, "F7": 0.4, "F3": 0.4, "Fz": 0.4, "F4": 0.4, "F8": 0.4}
+    for _ in range(g.poisson(spec.eye_flutter_per_min * spec.duration_s / 60)):
+        ep = _episode(g, n, fs, 8.0, 20.0)
+        period = g.uniform(0.35, 0.6)
+        centres = np.arange(t[ep.start], t[ep.stop - 1], period)
+        for c in centres:
+            bump = g.uniform(60, 150) * np.exp(-((t - c) ** 2) / (2 * 0.08**2))
+            for ch, w in gains.items():
+                if ch in channels:
+                    data[channels.index(ch)] += w * bump
+        out.append(("eye_flutter", float(t[ep.start]), float(t[ep.stop - 1])))
+    if spec.sweat_uv > 0:
+        g = rng(seed, 11)
+        for k in range(len(channels)):
+            f = g.uniform(0.05, 0.3)
+            data[k] += (
+                spec.sweat_uv * g.uniform(0.5, 1.0) * np.sin(2 * np.pi * f * t + g.uniform(0, 6.3))
+            )
+        out.append(("sweat", 0.0, float(t[-1])))
+    return out
 
 
 def _add_bad_channels(
