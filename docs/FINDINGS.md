@@ -182,3 +182,20 @@ chewing at 1-3 Hz on temporal channels raised false detections from 2.40 to
 added little, sweat drift nothing. Like the blink trains of F-6, a
 plausible artifact inside the rhythm gate's band passes the one-channel
 vote. Not acted on; an EMG cue joins the spatial cue in v0.2.
+
+## F-11 Language models under the citation contract (H7)
+
+gemini-3.8-flash (free cloud tier) was accepted on 30 of 30 recordings after
+at most one repair, 24 at the first attempt: **H7a accepted**. None of its
+six rejected first replies stated a wrong value; the findings came from
+format (LaTeX "R^2" and "µV^2", whose exponent reads as an uncited number;
+correct values in scientific notation split in two by the registered
+checker; two replies cut off mid-sentence; a channel pair written "C3-P7";
+an incompletely stated channel list). qwen2.5:3b (local, 4-bit) was
+accepted on none of 30 (H7b, exploratory): about 23 uncited numbers per
+reply, and repair did not help. Every one of its explanations was replaced
+by the template, so no faulty text reached a report. The corrected checker
+(ISSUE-012 to 015) changes no verdict: none of the 96 replies wrote a
+typographic minus, a zero-width character or a leading-dot number. The
+blinded audit of accepted text (H7c) is pending; with no accepted local
+explanation, all 20 audit items come from the cloud model.

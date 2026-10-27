@@ -45,6 +45,7 @@ from neurosignal.synth.eeg import (
     random_spectrum,
     shaped_noise,
 )
+from validation import h7_registered_checker as registered
 from validation.common import (
     EVAL_SEEDS,
     ROOT,
@@ -406,7 +407,9 @@ def _checker_case(seed: int) -> dict[str, Any]:
             m = op(text, metrics, r)
             if m is None:
                 continue
-            res.append({"equivalent": m.equivalent, "caught": not check(m.text, metrics).ok})
+            res.append({"equivalent": m.equivalent, "caught": not check(m.text, metrics).ok,
+                        # the checker as first released (H7 registration), for comparison
+                        "caught_registered": not registered.check(m.text, metrics).ok})  # fmt: skip
         out["ops"][name] = res
     for name, op in BLIND_SPOTS.items():
         m = op(text, metrics, r)
@@ -426,7 +429,8 @@ def exp_checker(quick: bool) -> None:
         eq = sum(x["equivalent"] for x in res)
         live = [x for x in res if not x["equivalent"]]
         c = sum(x["caught"] for x in live)
-        per_op[name] = {"mutants": len(res), "equivalent": eq, "live": len(live), "caught": c}
+        per_op[name] = {"mutants": len(res), "equivalent": eq, "live": len(live), "caught": c,
+                        "caught_by_registered_checker": sum(x["caught_registered"] for x in live)}  # fmt: skip
         total += len(live)
         caught += c
         equivalent += eq
