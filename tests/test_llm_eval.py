@@ -101,6 +101,10 @@ def test_audit_is_blinded_and_scored(harness, monkeypatch):
     path = tmp / "llm_eval" / "audit.csv"
     rows = list(csv.DictReader(path.open()))
     assert len(rows) == 6
+    assert llm_eval.cmd_audit_guide(Namespace()) == 0
+    guide = (tmp / "llm_eval" / "audit_guide.md").read_text("utf-8")
+    assert "see docs/ICD.md" not in guide  # every cited metric has a note
+    assert "`recording.n_channels` = " in guide
     assert llm_eval.cmd_audit_score(Namespace()) == 1  # not filled in yet
     for r in rows:
         r["fails"] = "0"

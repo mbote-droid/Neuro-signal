@@ -223,6 +223,166 @@ def cmd_audit_sheet(a: argparse.Namespace) -> int:
     return 0
 
 
+# Plain-words notes for the audit reading guide: what each metric measures and
+# what it cannot tell. The same note for every item; no item is judged here.
+GLOSSARY: list[tuple[str, str]] = [
+    (r"recording\.n_channels", "number of EEG channels in the file."),
+    (r"recording\.duration_s", "length of the recording in seconds."),
+    (r"recording\.sfreq_hz", "sampling rate: samples per second (Hz)."),
+    (
+        r"recording\.montage",
+        "'referential' = each channel against a reference; "
+        "'bipolar' = each channel is the difference of two neighbours.",
+    ),
+    (r"recording\.channels", "the channel names in the file."),
+    (
+        r"qc\.n_bad",
+        "channels rejected by quality control (flat, noisy or too quiet); "
+        "they are left out of everything else.",
+    ),
+    (r"qc\.n_good", "channels kept after quality control."),
+    (
+        r"qc\.flat\.",
+        "this channel stayed flat (no signal) for this many seconds; more than 5 s marks it bad.",
+    ),
+    (
+        r"qc\.noisy\.",
+        "this channel's amplitude spread divided by the median channel's; "
+        "above 5 marks it noisy (bad). It is a ratio, not microvolts.",
+    ),
+    (
+        r"qc\.line_noise_ratio_before",
+        "50 Hz mains power divided by total 1-45 Hz power, "
+        "median over channels, BEFORE cleaning. Smaller after cleaning = noise removed.",
+    ),
+    (r"qc\.line_noise_ratio_after", "the same ratio AFTER the 50 Hz notch filter."),
+    (
+        r"spectral\.n_segments",
+        "number of 2-second windows averaged for the spectrum "
+        "(windows inside detected events are left out).",
+    ),
+    (
+        r"spectral\.alpha_band_power",
+        "raw power in 8-12 Hz (µV²). It MIXES the alpha "
+        "rhythm with the 1/f background, so it is NOT a clean oscillation measure.",
+    ),
+    (
+        r"spectral\.relative_alpha_power",
+        "8-12 Hz power as a fraction of all 1-45 Hz power "
+        "(0 to 1). Also mixes rhythm and background.",
+    ),
+    (
+        r"aperiodic\.exponent",
+        "steepness of the 1/f background slope (typical 1-2). Not an oscillation.",
+    ),
+    (r"aperiodic\.offset", "overall height (log10 power) of the 1/f background."),
+    (
+        r"aperiodic\.r_squared",
+        "how well the background-plus-peaks model fits the spectrum "
+        "(1 = perfect; below 0.8 the channel counts as a poor fit).",
+    ),
+    (r"aperiodic\.n_poor_fits", "channels whose model fit was unreliable and left out."),
+    (
+        r"aperiodic\.n_channels_with_alpha",
+        "channels where an alpha peak (7-14 Hz) rises above the 1/f background.",
+    ),
+    (r"aperiodic\.alpha_peak_freq_hz", "frequency (Hz) of the alpha peak."),
+    (
+        r"aperiodic\.alpha_peak_power",
+        "height of the alpha peak ABOVE the 1/f background, "
+        "in log10 units: the CLEAN measure of the alpha oscillation.",
+    ),
+    (
+        r"connectivity\.n_epochs",
+        "number of 2-second pieces used to estimate coupling; more epochs = more reliable.",
+    ),
+    (
+        r"connectivity\.plv_mean",
+        "phase-locking value averaged over channel pairs. "
+        "INFLATED by volume conduction: cannot show true connectivity on its own.",
+    ),
+    (
+        r"connectivity\.wpli_mean",
+        "plain wPLI averaged over pairs. Ignores zero-lag sync but "
+        "is biased UPWARD with few epochs (about 0.15 even with no coupling at 60 epochs).",
+    ),
+    (
+        r"connectivity\.dwpli_mean",
+        "debiased wPLI averaged over pairs: the trustworthy "
+        "coupling measure. Near 0 (it can be slightly negative) = no real coupling.",
+    ),
+    (
+        r"connectivity\.top_pairs\.\d+\.dwpli",
+        "debiased wPLI of this pair; pairs are ranked by it. Values below about 0.1 are weak.",
+    ),
+    (r"connectivity\.top_pairs\.\d+\.plv", "PLV of this pair (inflated by volume conduction)."),
+    (r"connectivity\.top_pairs\.\d+\.[ab]", "a channel of this pair."),
+    (
+        r"events\.n_events",
+        "number of seizure-like event CANDIDATES the detector found. "
+        "Zero means none were found, not that none happened; candidates are not diagnoses.",
+    ),
+    (r"events\.rate_per_hour", "candidates per hour of recording."),
+    (r"events\.total_duration_s", "total seconds covered by candidates."),
+    (r"events\.list\.\d+\.onset_s", "when this candidate starts (seconds from the start)."),
+    (r"events\.list\.\d+\.offset_s", "when this candidate ends (seconds)."),
+    (r"events\.list\.\d+\.duration_s", "how long this candidate lasts (seconds)."),
+    (
+        r"events\.list\.\d+\.dominant_freq_hz",
+        "main rhythm of the candidate (Hz), read "
+        "against the background; the detector only keeps 2-7.5 Hz.",
+    ),
+    (r"events\.list\.\d+\.n_channels", "channels where the candidate was seen."),
+    (r"events\.list\.\d+\.channels", "names of those channels."),
+    (
+        r"events\.list\.\d+\.peak_z",
+        "how far line length rose above the channel's usual "
+        "level (robust z-score); higher = more pronounced, not more dangerous.",
+    ),
+]
+
+
+def _note(key: str) -> str:
+    stem = re.sub(r"\.(mean|min|max)$", "", key)
+    for pattern, note in GLOSSARY:
+        if re.match(pattern, stem):
+            suffix = {"mean": " (average over channels)", "min": " (lowest channel)",
+                      "max": " (highest channel)"}.get(key.rsplit(".", 1)[-1], "")  # fmt: skip
+            return note + suffix
+    return "see docs/ICD.md for this metric."
+
+
+def cmd_audit_guide(a: argparse.Namespace) -> int:
+    """A reading copy of the audit sheet: every sentence with a cited number is
+    followed by what each cited metric measures. Explains; judges nothing."""
+    key = json.loads((DIR / "audit_key.json").read_text())
+    texts = {b: _final_texts(b) for b in {v["backend"] for v in key.values()}}
+    md = ["# H7c audit: reading guide", "",
+          "The same items as audit_items.md, in the same order. Under each sentence that "
+          "cites a number: the cited value and what that metric measures. The notes are "
+          "identical for every item and say nothing about whether a sentence is right; the "
+          "verdicts (0 or 1 in audit.csv) are yours.", ""]  # fmt: skip
+    for item_id, v in key.items():
+        metrics = explanation_metrics(v["seed"])
+        md += [f"## {item_id}", ""]
+        for line in texts[v["backend"]][v["seed"]].strip().splitlines():
+            if not line.strip():
+                continue
+            for sentence in re.split(r"(?<=[.!?])\s+(?=[A-Z#*])", line):
+                md.append(f"> {sentence}")
+                cited = list(dict.fromkeys(m.group(1).strip() for m in CITATION.finditer(sentence)))
+                for k in cited:
+                    try:
+                        value = json.dumps(_lookup(metrics, k))
+                    except (KeyError, IndexError, ValueError):
+                        value = "(not in the metrics)"
+                    md.append(f"- `{k}` = {value}: {_note(k)}")
+                md.append("")
+    (DIR / "audit_guide.md").write_text("\n".join(md), encoding="utf-8", newline="\n")
+    print(f"wrote {DIR / 'audit_guide.md'}")
+    return 0
+
+
 def cmd_audit_score(a: argparse.Namespace) -> int:
     key = json.loads((DIR / "audit_key.json").read_text())
     # utf-8-sig: Excel adds a byte-order mark when it saves a CSV
@@ -293,6 +453,8 @@ def main() -> int:
     r.set_defaults(func=cmd_run)
     sub.add_parser("audit-sheet", help="blinded sheet of accepted texts").set_defaults(
         func=cmd_audit_sheet)  # fmt: skip
+    sub.add_parser("audit-guide", help="reading guide for the audit sheet").set_defaults(
+        func=cmd_audit_guide)  # fmt: skip
     sub.add_parser("audit-score", help="score the filled audit.csv").set_defaults(
         func=cmd_audit_score)  # fmt: skip
     sub.add_parser("recheck", help="saved replies under the corrected checker").set_defaults(

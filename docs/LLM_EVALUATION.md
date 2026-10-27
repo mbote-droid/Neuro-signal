@@ -118,6 +118,10 @@ This writes three files to `results\validation\llm_eval\`:
   **1** if the explanation contains at least one statement that is false or
   misleading given the cited values, otherwise **0**. Use `notes` for what
   was wrong.
+* `audit_guide.md` (made by `uv run --frozen python validation/llm_eval.py
+  audit-guide`): the same items, with every cited value and a plain-words
+  note on what that metric measures under each sentence. The notes are the
+  same for every item and judge nothing.
 * `audit_key.json`: which model wrote which item. **Do not open it** until
   `audit.csv` is complete.
 
