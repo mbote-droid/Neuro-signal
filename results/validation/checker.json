@@ -17,84 +17,98 @@
   "operators": {
     "diagnostic": {
       "caught": 240,
+      "caught_by_registered_checker": 240,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
     },
     "drop_citation": {
       "caught": 240,
+      "caught_by_registered_checker": 240,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
     },
     "fake_channel": {
       "caught": 240,
+      "caught_by_registered_checker": 240,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
     },
     "markup_sign_flip": {
       "caught": 230,
+      "caught_by_registered_checker": 230,
       "equivalent": 10,
       "live": 230,
       "mutants": 240
     },
     "no_disclaimer": {
       "caught": 240,
+      "caught_by_registered_checker": 240,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
     },
     "perturb_number": {
       "caught": 240,
+      "caught_by_registered_checker": 240,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
     },
     "scale_1000": {
       "caught": 240,
+      "caught_by_registered_checker": 240,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
     },
     "swap_citations": {
       "caught": 238,
+      "caught_by_registered_checker": 238,
       "equivalent": 2,
       "live": 238,
       "mutants": 240
     },
     "swap_key": {
       "caught": 237,
+      "caught_by_registered_checker": 237,
       "equivalent": 3,
       "live": 237,
       "mutants": 240
     },
     "typographic_minus": {
       "caught": 229,
+      "caught_by_registered_checker": 0,
       "equivalent": 11,
       "live": 229,
       "mutants": 240
     },
     "uncited_leading_dot": {
       "caught": 240,
+      "caught_by_registered_checker": 0,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
     },
     "uncited_number": {
       "caught": 240,
+      "caught_by_registered_checker": 240,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
     },
     "unknown_key": {
       "caught": 240,
+      "caught_by_registered_checker": 240,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
     },
     "zero_width_decimal": {
       "caught": 240,
+      "caught_by_registered_checker": 0,
       "equivalent": 0,
       "live": 240,
       "mutants": 240
@@ -102,7 +116,7 @@
   },
   "provenance": {
     "git": {
-      "commit": "13484c498d8d0d065e67a45f12b5a0ce0259746c",
+      "commit": "4711f89b7cfd4bdbf89f9121606e509dc378eecc",
       "dirty": false
     },
     "python": "3.12.3",
