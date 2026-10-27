@@ -241,6 +241,14 @@ GLOSSARY: list[tuple[str, str]] = [
         "they are left out of everything else.",
     ),
     (r"qc\.n_good", "channels kept after quality control."),
+    (r"qc\.bad_channels", "names of the rejected channels."),
+    (
+        r"qc\.line_noise_reference_band_hz",
+        "edges (Hz) of the 1-45 Hz band the line-noise ratio divides by.",
+    ),
+    (r"config\.line_freq_hz", "mains frequency the notch filter removes (50 Hz in Kenya)."),
+    (r"config\.alpha_band_hz", "edges (Hz) of the canonical alpha band used for band power."),
+    (r"aperiodic\.poor_fit_channels", "names of the channels with an unreliable fit."),
     (
         r"qc\.flat\.",
         "this channel stayed flat (no signal) for this many seconds; more than 5 s marks it bad.",
