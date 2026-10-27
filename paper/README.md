@@ -31,3 +31,10 @@ pandoc paper/preprint.md -o paper/preprint.tex --standalone   # LaTeX source, if
 | bioRxiv (Neuroscience) | PDF; methods papers accepted |
 | Journal of Neuroscience Methods | Elsevier format; needs highlights (3-5 bullets of at most 85 characters), a graphical abstract is optional; check the guide for authors for current declarations |
 | JOSS (software paper) | a short `paper.md` with its own template; expects evidence of use by others |
+
+## Journal submission
+
+`jnm/` holds the Journal of Neuroscience Methods package: highlights, a
+structured abstract, a cover letter and a submission checklist. Every
+`H7C-PENDING` in the paper and the package is filled from
+`results/validation/llm_audit.json` after the audit.

@@ -1,13 +1,14 @@
 ---
 title: "Validation-first EEG pipelines: how synthetic benchmarks mislead, and how pre-registration catches it"
 author: "Samuel Ngigi Mbote"
-date: "October 2026"
+date: "Version 2, October 2026"
 ---
 
 <!--
-Status: preprint draft for arXiv (eess.SP, cross-list q-bio.NC).
-Software DOI (all versions): 10.5281/zenodo.23447346. Every number below is taken from
-results/validation/*.json at release v0.1.1; see docs/VALIDATION_REPORT.md.
+Version 2: adds the pre-registered evaluation of language-model explainers (H7), an outside
+report and a deliberate bug hunt. Software DOI (all versions): 10.5281/zenodo.23447346.
+Every number below is taken from results/validation/*.json; see docs/VALIDATION_REPORT.md.
+H7C-PENDING marks the blinded-audit results to be filled from results/validation/llm_audit.json.
 -->
 
 ::: {.affil}
@@ -28,7 +29,7 @@ a validation-first protocol: six hypotheses with numeric pass thresholds
 were committed to version control before the code or the data they concern
 existed, every method was tested against synthetic ground truth, and the
 test suite and the explanation checker were themselves mutation-tested.
-Four of the six hypotheses were rejected. The protocol's value lay in how
+Four of the first six hypotheses were rejected. The protocol's value lay in how
 they failed. A synthetic detection benchmark on which the detector passed
 (sensitivity 0.955 at 0.69 false detections per hour) hid four failure
 modes that only appeared on real recordings or on deliberately harder
@@ -40,11 +41,18 @@ discharges, normal alpha and spindle bursts, and blink trains merged into
 held-out subject of the CHB-MIT database it found 4 of 7 seizures at 3.3
 false detections per hour. The pre-registered estimator thresholds also
 exposed the small-sample bias of plain wPLI (95th percentile 0.19 under
-pure volume conduction at two minutes), and a mechanical claim checker
-rejected all 2157 live mutated explanations once a rounding-tie defect
-found on its first run was fixed. We argue that, for methods papers, the
-benchmark itself is a researcher degree of freedom, and we give a short,
-checkable protocol to constrain it. Code, data-retrieval scripts with
+pure volume conduction at two minutes). A seventh, pre-registered
+hypothesis tested language models as explainers under a citation contract
+checked mechanically: a free cloud model (gemini-3.8-flash) was accepted on
+30 of 30 recordings after at most one repair, and a small local model
+(qwen2.5:3b) on 0 of 30, every faulty reply being caught and replaced. The
+checker's own error model proved incomplete in the same way as the
+detector's benchmark: an outside report and a deliberate bug hunt found
+sign flips and invisible characters that the original checker passed (it
+caught 2625 of 3334 mutated explanations; the corrected one, all 3334). We
+argue that, for methods papers, the benchmark and the error model are both
+researcher degrees of freedom, and we give a short, checkable protocol to
+constrain them. Code, data-retrieval scripts with
 checksums and all result files: https://doi.org/10.5281/zenodo.23447346.
 
 **Keywords:** EEG, validation, pre-registration, synthetic data, aperiodic
@@ -83,9 +91,13 @@ Our contributions are:
    failure (Section 3.2);
 2. evidence that pre-registering the *estimator*, not only the measure,
    matters, from the small-sample bias of wPLI (Section 3.3);
-3. a citation contract for generated explanations, and a mutation-testing
-   evaluation of the checker that enforces it (Section 3.5);
-4. a short protocol for validation-first methods work that a reviewer can
+3. a citation contract for generated explanations, a mutation-testing
+   evaluation of the checker that enforces it, and evidence that the
+   checker's error model, like a benchmark, encodes its author's blind spots
+   (Sections 3.5 and 3.8);
+4. a pre-registered evaluation of a cloud and a small local language model
+   writing under that contract (Section 3.7);
+5. a short protocol for validation-first methods work that a reviewer can
    check from a repository (Section 4.1).
 
 ## 2. Methods
@@ -144,13 +156,21 @@ the measure and the numeric threshold:
 | H4 | explanation faithfulness | checker rejects every live mutant (≥ 300 from ≥ 6 operators) and accepts every faithful explanation |
 | H5 | transfer (exploratory) | CHB-MIT chb01: ≥ 5 of 7 seizures at ≤ 2 false/h, thresholds from synthetic data only |
 | H6 | held-out subject | CHB-MIT chb03, frozen detector, one run: ≥ 60 % of seizures at ≤ 2 false/h |
+| H7a | cloud language model as explainer | ≥ 24 of 30 explanations accepted by the checker after at most one repair |
+| H7b | small local model (exploratory) | acceptance reported with Wilson intervals; no threshold |
+| H7c | blinded audit of accepted text | ≤ 2 of 20 audited cloud-model explanations contain a false or misleading statement |
 
 A rejected hypothesis is reported as rejected; changes made after a result
 are described as exploratory and, where they affected a later test, that
 test was re-registered on new data. One deviation is recorded: the tuning
 rule's false-detection constraint was relaxed from 1 to 2 per hour, H2's
 own limit, after no grid point met it; the infeasible grid is kept as a
-result file.
+result file. H7 was registered after release v0.1.1 and before any model
+call (`821682b`); the two models were recorded before the runs (`3878ea7`).
+When an outside report later showed a checker defect (Section 3.8), an
+amendment kept H7's primary verdicts on the checker as registered, frozen
+as a hash-pinned copy, and added the corrected checker as a secondary
+analysis of the same saved replies.
 
 ### 2.3 Synthetic ground truth
 
@@ -195,25 +215,45 @@ citation, a channel name is not in the recording, diagnostic vocabulary
 appears, or the research-use notice is missing. Rejected text is replaced
 by the template and the failure is shown in the report.
 
-The checker was evaluated by mutation: nine operators (perturb a number,
-scale it by 1000, swap a citation for another key, cite a non-existent key,
-add an uncited number, invent a channel, add a diagnosis, drop the notice,
-and drop a citation) applied four times each to 60 faithful explanations of
-varied synthetic recordings. A mutant whose text is still true at the
+The checker was evaluated by mutation (H4): first nine operators (perturb a
+number, scale it by 1000, swap a citation for another key, cite a
+non-existent key, add an uncited number, invent a channel, add a
+diagnosis, drop the notice, and drop a citation), later fourteen (a sign
+flip written with a typographic minus, a sign flip inside bold markup, two
+numbers trading citations, a zero-width character that adds a decimal, and
+an uncited number with a leading decimal point; Section 3.8), each applied
+four times to 60 faithful explanations of varied synthetic recordings. A mutant whose text is still true at the
 written precision is "equivalent" and excluded; equivalence is decided
 from the metric values by integer rounding, independently of the checker.
 The same principle, validating the validator with realistic wrong answers
 and mutation testing, was applied earlier to automated graders for AI
 agents on biomedical engineering tasks (Mbote 2026).
 
+Language models were evaluated as explainers in H7 on 30 further synthetic
+recordings (seeds disjoint from H4's), with the system prompt of the
+released explainer (pinned by hash), temperature 0 and at most one repair
+round in which the checker's findings are returned to the model. The cloud
+model was gemini-3.8-flash on Google's free API tier; the local model was
+qwen2.5:3b (4-bit, 1.9 GB, served by Ollama on the 8 GB laptop). Every reply
+was saved before it was checked, so runs interrupted by the free tier's
+daily quota resumed without repeating a call. Up to 20 accepted
+explanations per model were sampled for a blinded audit by the author,
+who judged each for statements false or misleading given the metrics they
+cite: the semantic errors the checker cannot see.
+
 ### 2.6 Testing the tests
 
 Beyond unit, property-based (linearity, time-shift equivariance),
 metamorphic (Parseval), differential (specparam) and ground-truth tests,
-seventeen one-line code mutants (for example, a causal filter, a
-forward-backward second pass, plain instead of debiased wPLI², a
-nondeterministic value in the output) were run against the test suite; a
-surviving mutant marks a blind spot.
+one-line code mutants (seventeen at release, twenty-three after the bug
+hunt; for example, a causal filter, a forward-backward second pass, plain
+instead of debiased wPLI², a nondeterministic value in the output) were run
+against the test suite; a surviving mutant marks a blind spot. Before this
+version, a deliberate bug hunt added property-based fuzzing of the checker
+(arbitrary Unicode, number forms) and of the file readers (truncated,
+damaged and lying files), edge-case recordings, an independent read-only
+code review, and synthetic artifacts built to imitate rhythmic events
+(chewing, electrode pops, eye flutter, sweat drift; exploratory).
 
 ### 2.7 Statistics and theory checks
 
@@ -239,9 +279,12 @@ memory.
 | H1 | band power changed ≥ 30 % in 200/200 cases (median −68 %); peak power within 0.05 log10 in 60.5 % | rejected |
 | H2 | sensitivity 0.847 [0.803, 0.882] (271/320 events), 1.68 false/h (56 in 33.3 h) | rejected |
 | H3 | PLV > 0.3 in 92 % of pairs; wPLI p95 0.193 at 2 min, 0.095 at 10 min; lagged pair 0.998 | rejected at 2 min, accepted at 10 min |
-| H4 | 2157/2157 live mutants rejected, 60/60 faithful accepted | accepted (rejected on the first run) |
+| H4 | 3334/3334 live mutants rejected (fourteen operators), 60/60 faithful accepted | accepted (rejected on the first run) |
 | H5 | 2/7 seizures, 0.52 false/h | rejected |
 | H6 | 4/7 seizures (Wilson [0.25, 0.84]), 3.30 false/h (upper bound 4.6) | rejected |
+| H7a | gemini-3.8-flash: 30/30 accepted after at most one repair (24/30 first time) | accepted |
+| H7b | qwen2.5:3b: 0/30 accepted (Wilson [0.00, 0.11]); all 30 replaced by the template | exploratory |
+| H7c | H7C-PENDING | H7C-PENDING |
 
 Engineering requirements were met: aperiodic exponent median absolute error
 0.014 on 200 synthetic spectra, agreement with specparam in 200/200,
@@ -336,8 +379,11 @@ escape wrote "1" while citing a metric equal to 0.5: the checker accepted
 the tie, and the independent equivalence oracle (round half to even) did
 not. Both now use a strict rule, and the template adds a decimal rather
 than write a tie. After the fix, 2152/2152 were rejected, and after a later
-revision of the template wording 2157/2157 (miss-rate upper bound 0.0014),
-with 60/60 faithful explanations accepted. Two limits remain. The checker
+revision of the template wording 2157/2157, with 60/60 faithful
+explanations accepted. With the fourteen operators of Section 3.8 the
+current checker rejects 3334/3334 (26 equivalent; miss-rate upper bound
+0.0009), while the checker as first released rejects 2625: it misses every
+typographic-minus, zero-width and leading-dot mutant. Two limits remain. The checker
 verifies that each number traces to a computed value, not that the cited
 key fits the sentence: a channel count citing a filter cutoff of the same
 value passes. And numbers written as words are outside the contract (60/60
@@ -349,7 +395,57 @@ Three of seventeen code mutants survived the first run: a forward-backward
 second filter pass (no test measured the output at the cutoff), plain
 instead of debiased wPLI² (both are small under the null), and a
 timestamp in the output that rounding made identical across quick runs.
-Each led to a new test; the final run killed 17 of 17.
+Each led to a new test; the run at release killed 17 of 17, and with one
+mutant undoing each later fix, 23 of 23.
+
+### 3.7 Language models under the citation contract (H7)
+
+| | gemini-3.8-flash (cloud) | qwen2.5:3b (local) |
+|---|---|---|
+| accepted at the first attempt | 24/30 [0.63, 0.90] | 0/30 [0.00, 0.11] |
+| accepted after at most one repair | 30/30 [0.89, 1.00] | 0/30 [0.00, 0.11] |
+| first-attempt findings | uncited numbers 14, value mismatch 2 (scientific notation split), unknown channel 2, missing value 1 | uncited numbers 709, missing notice 21, unknown channel 21, diagnostic word 1 |
+| median seconds per call | 106 | 307 |
+
+The cloud model met the registered threshold (H7a). None of its six
+rejected first replies stated a wrong value; every finding came from
+format: LaTeX notation ("R^2", "µV^2") whose exponent the checker counts as
+an uncited number (three replies), correct values in scientific notation
+that the registered checker split into two numbers (two), replies cut off
+mid-sentence (two), a channel pair written as "C3-P7" and read as an
+unknown bipolar channel (one), and an incompletely stated channel list
+(one). Each was repaired in one round. The small local model never satisfied the contract: its replies
+averaged about 23 uncited numbers, and repair did not help (728 uncited
+numbers in the second attempts). Every one of its 30 explanations was
+therefore replaced by the deterministic template, which is the behaviour
+the design intends: no faulty text reached a report. The corrected
+checker (Section 3.8) changed no verdict: none of the 96 replies wrote a
+typographic minus, a zero-width character or a leading-dot number.
+
+H7C-PENDING: blinded audit. Because the local model had no accepted
+explanation, all audited items came from the cloud model, and hiding the
+model had no effect.
+
+### 3.8 The error model is a researcher degree of freedom too
+
+After release, an outside reader reported that the checker read
+"−0.30 [[key]]", written with a typographic minus, as 0.30: a sign flip
+passed as traced. The mutation set had only ever written ASCII hyphens, so
+the gap lay outside everything H4 had tested. A deliberate bug hunt then
+found three more ways a wrong number could pass (a zero-width character
+inside a number, which displays 1.500 while the checker read 1; a number
+with a leading decimal point, which was invisible; and a minus inside bold
+markup, a regression introduced by the first fix and caught by the
+independent review), as well as defects outside the checker: damaged files
+crashing instead of being refused, a flat recording start measured twice,
+and a montage decision that one ECG channel could overturn. Each finding
+has a regression test and a mutant that undoes it; the H2, H4 (template),
+H5 and H6 results and the quality-control validation were re-run and are
+unchanged. Synthetic artifacts built to imitate rhythmic events exposed a
+new weakness of the detector: chewing at 1-3 Hz on temporal channels
+raised false detections from 2.40 to 6.00 per hour on event-free
+recordings (16 of 60 episodes reported; exploratory), while eye flutter
+(4 of 60), electrode pops (1 of 63) and sweat drift (none) did little.
 
 ## 4. Discussion
 
@@ -371,7 +467,19 @@ unambiguous. Without a committed threshold, the wPLI bias and the H1
 tolerance would have read as "acceptable" results, and the chb01 numbers
 after redesign (6/7) would have been reported as a test. Third, the
 cheapest controls caught the most: event-free recordings, a held-out subject
-named before download, and mutants of the tests themselves.
+named before download, and mutants of the tests themselves. Fourth, the
+same holds one level up: a mutation set is a hypothesis about how text can
+be wrong, and the checker passed every error its author had imagined while
+missing 709 of 3334 that an outside reader and a deliberate search
+supplied. Validation of a validator is only as complete as its error
+model, which should be versioned and reported like a benchmark.
+
+The language-model results support a narrow conclusion. A capable cloud
+model can follow a citation contract almost unaided, and a small local
+model cannot; in both cases the mechanical checker decided what a reader
+saw, so the small model's failures cost fluency, not correctness. Whether
+accepted text is also right in meaning is what the checker cannot judge
+(H7C-PENDING).
 
 ### 4.1 A checkable protocol
 
@@ -388,7 +496,9 @@ partly synthetic. Each item can be verified from a repository.
    informed a design change relabelled as development.
 5. Theory-based predictions for the key estimators, compared with
    simulation.
-6. Mutation testing of the test suite and of any automated checker.
+6. Mutation testing of the test suite and of any automated checker, with
+   the error model versioned, extended by fuzzing, and open to outside
+   reports.
 7. Rejected hypotheses reported as rejected; deviations listed.
 
 ### 4.2 Limitations
@@ -401,25 +511,32 @@ reviewed. The real-data base is small (two paediatric subjects, about 20 hours,
 14 seizures, one used for development). With seven seizures, H6 was close
 to a coin flip by design: a detector with true sensitivity 0.60 passes its
 rule with probability 0.42. Showing a lower bound above 0.6 with 80 % power
-would take about 76 seizures if the true sensitivity were 0.75. The synthetic generator lacks sleep
-stages, interictal spikes and evolving ictal frequency content. The
-language-model explainer was implemented but not evaluated against a live
-model in this version, so H4 concerns the checker, not a model's behaviour.
+would take about 76 seizures if the true sensitivity were 0.75. The
+synthetic generator lacks sleep stages, interictal spikes and evolving
+ictal frequency content, and chewing remains a source of false detections.
+Non-EEG channels such as ECG are excluded from the montage decision and the
+average reference but still enter spectra and the detector's channel vote.
+H7 used two models, one run each, at temperature 0, on synthetic metrics
+only; its audit was done by the tool's author, not an independent rater.
 The tool is for research use only and is not a medical device.
 
 ### 4.3 Future work
 
 A spatial cue to separate frontal, symmetric blinks from slow ictal delta,
-which would allow a lower gate floor; a confirmatory test sized by the
-power analysis on further CHB-MIT subjects; and an evaluation of
-language-model explanations, measuring first-pass acceptance and repair
-rates under the checker.
+which would allow a lower gate floor, and an EMG cue against chewing; a
+confirmatory test sized by the power analysis on further CHB-MIT subjects,
+pre-registered externally; a local model used to generate realistic,
+subtly wrong explanations, to measure the checker's semantic blind spot at
+scale; and a language-model judge evaluated against the human audit.
 
 ## 5. Conclusion
 
 Building an EEG pipeline against pre-registered thresholds rejected four of
 six hypotheses and exposed four failures that a synthetic benchmark had
-hidden, including the exact confound the project was designed to avoid.
+hidden, including the exact confound the project was designed to avoid. The
+checker that guards its language-model explanations showed the same
+pattern one level up, and real models showed why it matters: the one that
+broke the contract every time never reached a reader.
 None of these would have been visible in a conventional benchmark-and-report
 workflow. Validation-first development costs little computation and makes
 methods results harder to overstate.
@@ -428,10 +545,14 @@ methods results harder to overstate.
 
 Source code, the synthetic generators, the data-retrieval script with
 checksums, every result file with provenance and a SHA-256 manifest, and
-the build journal are archived at https://doi.org/10.5281/zenodo.23447346 (release v0.1.1, MIT
-licence) and developed at https://github.com/mbote-droid/Neuro-signal.
+the build journal are archived at https://doi.org/10.5281/zenodo.23447346 (MIT licence;
+version 1 of this preprint used release v0.1.1, version 2 the release that adds H7 and the bug
+hunt) and developed at https://github.com/mbote-droid/Neuro-signal.
 CHB-MIT is available from PhysioNet under the Open Data Commons Attribution
 License v1.0.
+
+<!-- Acknowledgements: thank the GitHub user who reported issue #21, once they have said how they
+wish to be named. -->
 
 ## Funding
 

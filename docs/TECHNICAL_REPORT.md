@@ -21,7 +21,10 @@ across separate 3-minute recordings to meet the registered bound (H1); plain
 wPLI was biased at 2 minutes (H3, the debiased estimator passed); the event
 detector reached sensitivity 0.85 at 1.7 false detections per hour on a
 realistic synthetic benchmark (H2), and on a held-out CHB-MIT subject found
-4 of 7 seizures at 3.3 false detections per hour (H6). A 1-hour,
+4 of 7 seizures at 3.3 false detections per hour (H6). Under a citation
+contract checked by rule, a cloud language model wrote acceptable
+explanations for 30 of 30 recordings and a small local model for none, its
+faulty text never reaching a report (H7). A 1-hour,
 32-channel recording is processed in 13 s with 1.5 GB peak memory on one
 core.
 
@@ -89,6 +92,9 @@ from result files with provenance and a SHA-256 manifest.
 | H4 claim checker | 3334/3334 live mutants (fourteen operators), 60/60 faithful | accepted (rejected on the first run) |
 | H5 CHB-MIT chb01, detector v1 | 2/7 at 0.52 false/h | rejected |
 | H6 CHB-MIT chb03 held out, frozen detector | 4/7 at 3.30 false/h | rejected |
+| H7a cloud language model as explainer | gemini-3.8-flash: 30/30 accepted after at most one repair (24 first time) | accepted |
+| H7b small local model | qwen2.5:3b: 0/30 accepted; every faulty reply replaced by the template | exploratory |
+| H7c blinded audit of accepted text | pending (author's audit of 20 items) | pending |
 
 Requirements V-01 to V-04 and P-01 pass (exponent median error 0.014,
 alpha frequency 0.067 Hz, specparam agreement 200/200, bad channels 100 %

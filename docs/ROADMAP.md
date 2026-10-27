@@ -55,8 +55,10 @@ finding becomes a test and a BUILD_JOURNAL entry.
 
 | item | status | notes |
 |---|---|---|
-| Fold H7 into FINDINGS, the technical report and preprint v2 | ⏭ | after the runs, the audit and the bug hunt |
-| Preprint v2 also reports ISSUE-012: ten H4 operators, the H7 amendment, and acknowledges the outside report (#21) | ⏭ | |
+| Fold H7a, H7b and the bug hunt into FINDINGS (F-11), the technical report and preprint v2 | ✅ 2026-10-27 | `paper/preprint.md`; H7c placeholders marked `H7C-PENDING` |
+| Audit reading guide | ✅ 2026-10-27 | `results/validation/llm_eval/audit_guide.md` |
+| Journal package drafts: highlights, structured abstract, cover letter, checklist | ✅ 2026-10-27 | `paper/jnm/` |
+| Fill H7c into the paper; acknowledge the outside report (#21) once the reporter says how to be named | ⏭ | after the audit |
 | Post preprint v2 (Zenodo new version; one other preprint server optional) | ⏭ | |
 | Submit to Journal of Neuroscience Methods | ⏭ | ends active work on the 0.1 line |
 | Respond to reviewers | 💤 | weeks to months after submission |
