@@ -1,0 +1,39 @@
+{
+  "H7c_accepted": false,
+  "auditor_independent": false,
+  "experiment": "llm_audit",
+  "gemini": {
+    "audited": 20,
+    "failed": 3,
+    "failed_wilson": [
+      0.052368745896216595,
+      0.36041886474075696
+    ],
+    "notes": {
+      "A01": "n_channels_with_alpha labelled 'clean channels'; spectral modeling scoped to alpha-peak count",
+      "A03": "peak_z (line-length z-score) called a 'peak amplitude statistic'",
+      "A07": "'robust aperiodic fitting across 18 channels' cites n_channels_with_alpha, not fitting coverage"
+    }
+  },
+  "ollama": {
+    "audited": 0,
+    "failed": 0,
+    "failed_wilson": null,
+    "notes": {}
+  },
+  "provenance": {
+    "git": {
+      "commit": "39d7453628b829fead5cbb10197f04743fcad21a",
+      "dirty": true
+    },
+    "python": "3.12.13",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.1",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "sample_seed": 7
+}
