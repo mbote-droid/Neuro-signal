@@ -1,6 +1,6 @@
 # NeuroSignal: technical report
 
-*Samuel Ngigi Mbote. Version 0.1.1, 2026-10-18.*
+*Samuel Ngigi Mbote. Version 0.1.2, 2026-10-28.*
 
 ## 1. Abstract
 

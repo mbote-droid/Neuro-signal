@@ -12,8 +12,8 @@ authors:
     given-names: Samuel Ngigi
     orcid: "https://orcid.org/0009-0003-2319-8873"
     affiliation: "Independent Researcher, Nairobi, Kenya"
-version: 0.1.1
-date-released: "2026-10-18"
+version: 0.1.2
+date-released: "2026-10-28"
 license: MIT
 doi: 10.5281/zenodo.23447346
 identifiers:

@@ -60,6 +60,7 @@ finding becomes a test and a BUILD_JOURNAL entry.
 | Journal package drafts: highlights, structured abstract, cover letter, checklist | ✅ 2026-10-27 | `paper/jnm/` |
 | Fill H7c into the paper, FINDINGS F-11, the technical report and the journal package | ✅ 2026-10-27 | `paper/preprint.md` §3.7 |
 | Acknowledge the outside report (#21) once the reporter says how to be named | ⏭ | |
+| Release v0.1.2 (H7 and the bug hunt), archived on Zenodo | 🔄 | `CHANGELOG.md` |
 | Post preprint v2 (Zenodo new version; one other preprint server optional) | ⏭ | |
 | Submit to Journal of Neuroscience Methods | ⏭ | ends active work on the 0.1 line |
 | Respond to reviewers | 💤 | weeks to months after submission |

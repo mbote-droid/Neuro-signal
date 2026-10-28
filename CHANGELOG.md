@@ -5,6 +5,18 @@ semantic versioning.
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-10-28
+
+### Results
+- H7 (pre-registered language-model explainers): gemini-3.8-flash accepted
+  on 30/30 recordings after at most one repair (H7a accepted); qwen2.5:3b on
+  0/30, every reply replaced by the template (H7b); blinded audit of 20
+  accepted explanations: 3 misleading, above the limit of 2 (H7c rejected).
+- H4 re-run with fourteen operators: 3334/3334 caught; the checker as first
+  released caught 2625/3334.
+- Preprint version 2 and Journal of Neuroscience Methods package
+  (`paper/`).
+
 ### Added
 - Gemini and local Ollama backends for the LLM explainer
   (`--explainer gemini|ollama`, `--model`), over plain HTTP with no new
