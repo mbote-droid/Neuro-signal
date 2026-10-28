@@ -565,8 +565,8 @@ methods results harder to overstate.
 Source code, the synthetic generators, the data-retrieval script with
 checksums, every result file with provenance and a SHA-256 manifest, and
 the build journal are archived at https://doi.org/10.5281/zenodo.23447346 (MIT licence;
-version 1 of this preprint used release v0.1.1, version 2 release v0.1.2, which adds H7 and the bug
-hunt) and developed at https://github.com/mbote-droid/Neuro-signal.
+version 1 of this preprint used release v0.1.1, version 2 release v0.1.2, doi:10.5281/zenodo.23716723, which adds H7 and
+the bug hunt) and developed at https://github.com/mbote-droid/Neuro-signal.
 CHB-MIT is available from PhysioNet under the Open Data Commons Attribution
 License v1.0.
 

@@ -7,6 +7,8 @@ semantic versioning.
 
 ## [0.1.2] - 2026-10-28
 
+Archived on Zenodo: [10.5281/zenodo.23716723](https://doi.org/10.5281/zenodo.23716723).
+
 ### Results
 - H7 (pre-registered language-model explainers): gemini-3.8-flash accepted
   on 30/30 recordings after at most one repair (H7a accepted); qwen2.5:3b on
@@ -44,6 +46,8 @@ semantic versioning.
   registered checker and reports the corrected one as a secondary analysis.
 
 ## [0.1.1] - 2026-10-18
+
+Archived on Zenodo: [10.5281/zenodo.23447670](https://doi.org/10.5281/zenodo.23447670).
 
 ### Fixed
 - Text files are checked out with LF line endings on every platform

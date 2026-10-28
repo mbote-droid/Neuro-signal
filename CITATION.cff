@@ -23,6 +23,12 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.23447347
     description: "Zenodo archive of release v0.1.0"
+  - type: doi
+    value: 10.5281/zenodo.23447670
+    description: "Zenodo archive of release v0.1.1"
+  - type: doi
+    value: 10.5281/zenodo.23716723
+    description: "Zenodo archive of release v0.1.2"
 repository-code: "https://github.com/mbote-droid/Neuro-signal"
 keywords:
   - EEG
