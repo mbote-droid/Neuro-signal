@@ -2,7 +2,6 @@
 
 Journal of Neuroscience Methods asks research articles for an abstract under
 the headings below; check the current word limit in the Guide for Authors.
-H7C-PENDING marks the audit result.
 
 **Background.** EEG analysis pipelines are usually evaluated on benchmarks
 their authors design, with outcome measures chosen after the results, and
@@ -25,7 +24,9 @@ per hour. A cloud language model met the citation contract on 30 of 30
 recordings and a small local model on 0 of 30, with every faulty text
 blocked. The checker as first released missed 709 of 3334 mutated
 explanations that an outside report and a bug hunt supplied; the corrected
-checker caught all. H7C-PENDING.
+checker caught all. A blinded audit found 3 of 20 accepted explanations
+misleading, above the registered limit of 2: correct numbers attached to
+the wrong concept, which a value check cannot see.
 
 **Comparison with existing methods.** Patient-specific seizure detectors
 reach far higher sensitivity; the contribution is a protocol and an

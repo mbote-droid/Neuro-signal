@@ -28,7 +28,7 @@ Status: ✅ done · 🔄 in progress · ⏭ next · 💤 later
 | Gemini run (30 recordings, over several days of free quota): 30/30 accepted, 24 first time; H7a accepted | ✅ 2026-10-25 | `results/validation/llm_eval_gemini.json` |
 | Local Ollama run (30 recordings): 0/30 accepted | ✅ 2026-10-25 | `results/validation/llm_eval_ollama.json` |
 | Secondary analysis with the corrected checker (`recheck`): no typographic signs, no verdict changes | ✅ 2026-10-25 | `results/validation/llm_recheck.json` |
-| Blinded audit of accepted explanations (H7c): sheet of 20 items ready | 🔄 | `results/validation/llm_eval/audit.csv` |
+| Blinded audit of accepted explanations (H7c): 3/20 misleading, H7c rejected | ✅ 2026-10-27 | `results/validation/llm_audit.json` |
 
 ## Maintenance and outside reports
 
@@ -58,7 +58,8 @@ finding becomes a test and a BUILD_JOURNAL entry.
 | Fold H7a, H7b and the bug hunt into FINDINGS (F-11), the technical report and preprint v2 | ✅ 2026-10-27 | `paper/preprint.md`; H7c placeholders marked `H7C-PENDING` |
 | Audit reading guide | ✅ 2026-10-27 | `results/validation/llm_eval/audit_guide.md` |
 | Journal package drafts: highlights, structured abstract, cover letter, checklist | ✅ 2026-10-27 | `paper/jnm/` |
-| Fill H7c into the paper; acknowledge the outside report (#21) once the reporter says how to be named | ⏭ | after the audit |
+| Fill H7c into the paper, FINDINGS F-11, the technical report and the journal package | ✅ 2026-10-27 | `paper/preprint.md` §3.7 |
+| Acknowledge the outside report (#21) once the reporter says how to be named | ⏭ | |
 | Post preprint v2 (Zenodo new version; one other preprint server optional) | ⏭ | |
 | Submit to Journal of Neuroscience Methods | ⏭ | ends active work on the 0.1 line |
 | Respond to reviewers | 💤 | weeks to months after submission |
@@ -82,5 +83,6 @@ finding becomes a test and a BUILD_JOURNAL entry.
 | Leave non-EEG channels (ECG, VNS) out of spectra, coupling and the detector's channel vote | 💤 | ISSUE-017; needed before more CHB-MIT subjects |
 | EMG cue against chewing (20-60 Hz power locked to the rhythm) | 💤 | ISSUE-021, FINDINGS F-10 |
 | Absolute amplitude plausibility and clipping detection | 💤 | ISSUE-014 |
+| Section-scoped citation rules: each report section may cite only its own metrics, with short descriptions the model must not contradict | 💤 | the error H7c found (FINDINGS F-11); a new explainer version needs a new registration |
 | Coupling memory linear in the channel count | 💤 | about 2.5 GB at 128 channels today |
 | Confirmatory test sized by the power analysis (about 76 seizures), pre-registered on OSF | 💤 | STATISTICAL_FOUNDATIONS §7 |

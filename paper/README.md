@@ -35,6 +35,6 @@ pandoc paper/preprint.md -o paper/preprint.tex --standalone   # LaTeX source, if
 ## Journal submission
 
 `jnm/` holds the Journal of Neuroscience Methods package: highlights, a
-structured abstract, a cover letter and a submission checklist. Every
-`H7C-PENDING` in the paper and the package is filled from
-`results/validation/llm_audit.json` after the audit.
+structured abstract, a cover letter and a submission checklist. The H7c
+figures in the paper and the package come from
+`results/validation/llm_audit.json`.

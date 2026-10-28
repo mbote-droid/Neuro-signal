@@ -5,7 +5,7 @@ of submission; requirements change.
 
 | item | status | file or note |
 |---|---|---|
-| H7c audit done and filled into the paper | pending | `results/validation/llm_audit.json`; replace every `H7C-PENDING` |
+| H7c audit done and filled into the paper | done | `results/validation/llm_audit.json`: 3/20, rejected |
 | Preprint v2 posted (Zenodo new version of 10.5281/zenodo.23448015) | pending | after H7c |
 | Software release containing H7 and the bug hunt, cited in the paper | pending | new GitHub release; Zenodo archives it |
 | Manuscript in the journal's format (title page, structured abstract, sections, references in journal style) | to do | from `paper/preprint.md` |

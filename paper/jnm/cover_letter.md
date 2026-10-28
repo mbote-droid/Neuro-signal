@@ -19,7 +19,8 @@ the estimator rather than only the measure needs pre-registering, and how
 the error model behind an automated checker is a researcher degree of
 freedom in the same way as a benchmark. A pre-registered evaluation of a
 cloud and a small local language model writing under the citation contract
-is included.
+is included; its blinded audit rejected the hypothesis that accepted text
+is also right in meaning, and the paper reports why.
 
 We believe the work fits the journal's interest in the validation and
 reproducibility of computational methods for neural data. All code,

@@ -8,7 +8,7 @@ date: "Version 2, October 2026"
 Version 2: adds the pre-registered evaluation of language-model explainers (H7), an outside
 report and a deliberate bug hunt. Software DOI (all versions): 10.5281/zenodo.23447346.
 Every number below is taken from results/validation/*.json; see docs/VALIDATION_REPORT.md.
-H7C-PENDING marks the blinded-audit results to be filled from results/validation/llm_audit.json.
+H7c results are from results/validation/llm_audit.json.
 -->
 
 ::: {.affil}
@@ -45,7 +45,10 @@ pure volume conduction at two minutes). A seventh, pre-registered
 hypothesis tested language models as explainers under a citation contract
 checked mechanically: a free cloud model (gemini-3.8-flash) was accepted on
 30 of 30 recordings after at most one repair, and a small local model
-(qwen2.5:3b) on 0 of 30, every faulty reply being caught and replaced. The
+(qwen2.5:3b) on 0 of 30, every faulty reply being caught and replaced. A
+blinded audit of 20 accepted cloud explanations found 3 that were
+misleading although every number in them was correct, above the
+registered limit of 2. The
 checker's own error model proved incomplete in the same way as the
 detector's benchmark: an outside report and a deliberate bug hunt found
 sign flips and invisible characters that the original checker passed (it
@@ -284,7 +287,7 @@ memory.
 | H6 | 4/7 seizures (Wilson [0.25, 0.84]), 3.30 false/h (upper bound 4.6) | rejected |
 | H7a | gemini-3.8-flash: 30/30 accepted after at most one repair (24/30 first time) | accepted |
 | H7b | qwen2.5:3b: 0/30 accepted (Wilson [0.00, 0.11]); all 30 replaced by the template | exploratory |
-| H7c | H7C-PENDING | H7C-PENDING |
+| H7c | 3/20 audited cloud explanations misleading (Wilson [0.05, 0.36]); all three attach a correct number to the wrong concept | rejected |
 
 Engineering requirements were met: aperiodic exponent median absolute error
 0.014 on 200 synthetic spectra, agreement with specparam in 200/200,
@@ -422,9 +425,21 @@ the design intends: no faulty text reached a report. The corrected
 checker (Section 3.8) changed no verdict: none of the 96 replies wrote a
 typographic minus, a zero-width character or a leading-dot number.
 
-H7C-PENDING: blinded audit. Because the local model had no accepted
-explanation, all audited items came from the cloud model, and hiding the
-model had no effect.
+The blinded audit (H7c) rejected the hypothesis: 3 of 20 accepted cloud
+explanations contained a misleading statement (Wilson [0.05, 0.36]), above
+the registered limit of 2. All three had the same shape: a correct number,
+correctly cited, attached to the wrong concept. Twice the count of channels
+with an alpha peak was presented as the number of clean channels or as the
+coverage of the aperiodic fit ("robust aperiodic fitting across 18
+channels"); the counts coincide when every good channel has an alpha peak,
+so the value matched and the checker accepted it. Once the detector's
+line-length z-score was called a "peak amplitude statistic". No audited
+explanation invented a finding, misread PLV as evidence of coupling or
+used diagnostic language. The checker verifies that a number equals the
+metric it cites, not that the metric is the one the sentence is about;
+this is the residual error it leaves to a reader. Because the local model
+had no accepted explanation, all audited items came from the cloud model,
+and hiding the model had no effect.
 
 ### 3.8 The error model is a researcher degree of freedom too
 
@@ -477,9 +492,11 @@ model, which should be versioned and reported like a benchmark.
 The language-model results support a narrow conclusion. A capable cloud
 model can follow a citation contract almost unaided, and a small local
 model cannot; in both cases the mechanical checker decided what a reader
-saw, so the small model's failures cost fluency, not correctness. Whether
-accepted text is also right in meaning is what the checker cannot judge
-(H7C-PENDING).
+saw, so the small model's failures cost fluency, not correctness. Accepted text
+was not always right in meaning: 3 of 20 audited explanations labelled a
+correct number with the wrong concept, which a value check cannot see.
+Constraining which metrics a sentence may cite, for example by section, is
+a mechanical step towards closing that gap.
 
 ### 4.1 A checkable protocol
 
@@ -517,7 +534,9 @@ ictal frequency content, and chewing remains a source of false detections.
 Non-EEG channels such as ECG are excluded from the montage decision and the
 average reference but still enter spectra and the detector's channel vote.
 H7 used two models, one run each, at temperature 0, on synthetic metrics
-only; its audit was done by the tool's author, not an independent rater.
+only; its audit was done by a single rater, the tool's author, not an
+independent one, who read the items with a guide giving the same fixed
+description of each metric under every sentence.
 The tool is for research use only and is not a medical device.
 
 ### 4.3 Future work
@@ -527,7 +546,7 @@ which would allow a lower gate floor, and an EMG cue against chewing; a
 confirmatory test sized by the power analysis on further CHB-MIT subjects,
 pre-registered externally; a local model used to generate realistic,
 subtly wrong explanations, to measure the checker's semantic blind spot at
-scale; and a language-model judge evaluated against the human audit.
+scale; section-scoped citation rules aimed at the error H7c found; and a language-model judge evaluated against the human audit.
 
 ## 5. Conclusion
 

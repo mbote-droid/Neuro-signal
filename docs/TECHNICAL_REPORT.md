@@ -94,7 +94,7 @@ from result files with provenance and a SHA-256 manifest.
 | H6 CHB-MIT chb03 held out, frozen detector | 4/7 at 3.30 false/h | rejected |
 | H7a cloud language model as explainer | gemini-3.8-flash: 30/30 accepted after at most one repair (24 first time) | accepted |
 | H7b small local model | qwen2.5:3b: 0/30 accepted; every faulty reply replaced by the template | exploratory |
-| H7c blinded audit of accepted text | pending (author's audit of 20 items) | pending |
+| H7c blinded audit of accepted text | 3/20 misleading (Wilson [0.05, 0.36]): correct numbers attached to the wrong concept | rejected |
 
 Requirements V-01 to V-04 and P-01 pass (exponent median error 0.014,
 alpha frequency 0.067 Hz, specparam agreement 200/200, bad channels 100 %

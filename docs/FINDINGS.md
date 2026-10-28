@@ -197,5 +197,14 @@ reply, and repair did not help. Every one of its explanations was replaced
 by the template, so no faulty text reached a report. The corrected checker
 (ISSUE-012 to 015) changes no verdict: none of the 96 replies wrote a
 typographic minus, a zero-width character or a leading-dot number. The
-blinded audit of accepted text (H7c) is pending; with no accepted local
-explanation, all 20 audit items come from the cloud model.
+blinded audit of accepted text (H7c) was rejected: 3 of 20 accepted cloud
+explanations were misleading (Wilson [0.05, 0.36]; limit 2). All three put
+a correct, correctly cited number on the wrong concept: twice the count of
+channels with an alpha peak given as the number of clean channels or as the
+coverage of the aperiodic fit (the counts coincide when every good channel
+has an alpha peak), once the line-length z-score called a "peak amplitude
+statistic". None invented a finding, read PLV as coupling or used
+diagnostic words. The checker verifies that a value equals its key, not
+that the key is what the sentence is about. With no accepted local
+explanation, all 20 audit items came from the cloud model, so hiding the
+model had no effect; the single rater was the author.
