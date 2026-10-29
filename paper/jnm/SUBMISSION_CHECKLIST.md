@@ -19,7 +19,7 @@ Submit as a Research Article.
 | item | rule in the guide | status |
 |---|---|---|
 | Title page | title, given and family names, affiliation, corresponding author's e-mail | done |
-| Abstract | at most 250 words, stands alone, abbreviations defined | done (249 words) |
+| Abstract | at most 250 words, stands alone, abbreviations defined | done (246 words with headings, as the form counts) |
 | Keywords | 1-7 | done (6) |
 | Tables | editable, cited in the text, captions, no vertical rules or shading | done (Tables 1-3) |
 | Ethics statement for human data | required for studies involving human participants; if no approval was sought, explain why | done (section 2.4: public, de-identified CHB-MIT data, secondary analysis); confirm no Kenyan rule requires more |
