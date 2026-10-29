@@ -6,7 +6,7 @@ of submission; requirements change.
 | item | status | file or note |
 |---|---|---|
 | H7c audit done and filled into the paper | done | `results/validation/llm_audit.json`: 3/20, rejected |
-| Preprint v2 posted (Zenodo new version of 10.5281/zenodo.23448015) | pending | after H7c |
+| Preprint v2 posted (Zenodo new version of 10.5281/zenodo.23448015) | done | 10.5281/zenodo.23750975 |
 | Software release containing H7 and the bug hunt, cited in the paper | done | v0.1.2, 10.5281/zenodo.23716723 |
 | Manuscript in the journal's format (title page, structured abstract, sections, references in journal style) | to do | from `paper/preprint.md` |
 | Highlights (3-5 bullets, max 85 characters each) | drafted | `highlights.md` |

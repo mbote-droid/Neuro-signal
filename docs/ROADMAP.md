@@ -61,7 +61,7 @@ finding becomes a test and a BUILD_JOURNAL entry.
 | Fill H7c into the paper, FINDINGS F-11, the technical report and the journal package | ✅ 2026-10-27 | `paper/preprint.md` §3.7 |
 | Acknowledge the outside report (#21) once the reporter says how to be named | ⏭ | |
 | Release v0.1.2 (H7 and the bug hunt), archived on Zenodo | ✅ 2026-10-28 | [10.5281/zenodo.23716723](https://doi.org/10.5281/zenodo.23716723) |
-| Post preprint v2 (Zenodo new version; one other preprint server optional) | ⏭ | |
+| Post preprint v2 (Zenodo new version) | ✅ 2026-10-29 | [10.5281/zenodo.23750975](https://doi.org/10.5281/zenodo.23750975) |
 | Submit to Journal of Neuroscience Methods | ⏭ | ends active work on the 0.1 line |
 | Respond to reviewers | 💤 | weeks to months after submission |
 | JOSS software paper | 💤 | once others use the tool |
