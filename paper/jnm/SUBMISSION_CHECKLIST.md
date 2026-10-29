@@ -1,7 +1,7 @@
 # Journal of Neuroscience Methods: submission checklist
 
 Checked against the journal's Guide for Authors (copy of 28 October 2026).
-Submit as a Research Article.
+Submitted on 29 October 2026 as a Research Paper (subscription route).
 
 ## Files to upload
 

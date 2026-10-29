@@ -63,7 +63,8 @@ finding becomes a test and a BUILD_JOURNAL entry.
 | Release v0.1.2 (H7 and the bug hunt), archived on Zenodo | ✅ 2026-10-28 | [10.5281/zenodo.23716723](https://doi.org/10.5281/zenodo.23716723) |
 | Post preprint v2 (Zenodo new version) | ✅ 2026-10-29 | [10.5281/zenodo.23750975](https://doi.org/10.5281/zenodo.23750975) |
 | Manuscript in the journal's format: Word file (double-spaced, line-numbered), five figures from the result files, 248-word structured abstract, comparison with existing methods | ✅ 2026-10-29 | `paper/jnm/manuscript.md`, `paper/jnm/build.sh` |
-| Submit to Journal of Neuroscience Methods | ⏭ | ends active work on the 0.1 line |
+| Submit to Journal of Neuroscience Methods (Research Paper) | ✅ 2026-10-29 | submitted 16:02; subscription route; ends active work on the 0.1 line |
+| Editorial decision and peer review | 🔄 | weeks to months; do not submit elsewhere meanwhile |
 | Respond to reviewers | 💤 | weeks to months after submission |
 | JOSS software paper | 💤 | once others use the tool |
 
