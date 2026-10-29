@@ -23,10 +23,16 @@ is included; its blinded audit rejected the hypothesis that accepted text
 is also right in meaning, and the paper reports why.
 
 We believe the work fits the journal's interest in the validation and
-reproducibility of computational methods for neural data. All code,
+reproducibility of computational methods for neural data. Although part of
+the evaluation reanalyses a public dataset and the pipeline is released as
+software, the contribution is methodological: a pre-registered benchmarking
+and comparison of methods (band power against aperiodic parameterisation,
+wPLI against its debiased form, synthetic against held-out real data), with
+every negative result reported. All code,
 synthetic generators, result files with provenance and checksums, and the
-build journal are openly available (https://doi.org/10.5281/zenodo.23447346).
-A preprint is available at https://doi.org/10.5281/zenodo.23448015.
+build journal are openly available (release v0.1.2:
+https://doi.org/10.5281/zenodo.23716723). A preprint is available at
+https://doi.org/10.5281/zenodo.23448015.
 
 The manuscript is not under consideration elsewhere. The author declares
 no competing interests, and the work received no specific funding.
