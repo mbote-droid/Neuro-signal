@@ -1,5 +1,6 @@
 """Format a pandoc .docx for submission: Times New Roman 12 pt, double line
-spacing, continuous line numbers, A4 with 2.5 cm margins and page numbers.
+spacing, continuous line numbers, A4 with 2.5 cm margins, page numbers and no
+underlining.
 
     python3 paper/jnm/docx_format.py paper/jnm/manuscript.docx
 """
@@ -37,6 +38,8 @@ def styles(xml: str) -> str:
     xml = re.sub(r"<w:rFonts [^>]*/>", "", xml)
     xml = re.sub(r"<w:spacing [^>]*/>", "", xml)
     xml = re.sub(r"<w:color [^>]*/>", "", xml)
+    # the journal asks for no underline formatting (pandoc underlines hyperlinks)
+    xml = re.sub(r"<w:u [^>]*/>", "", xml)
 
     def size(m: re.Match) -> str:
         block = m.group(0)

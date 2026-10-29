@@ -36,11 +36,12 @@ pandoc paper/preprint.md -o paper/preprint.tex --standalone   # LaTeX source, if
 
 `jnm/` holds the Journal of Neuroscience Methods package: the manuscript
 (`manuscript.md`, built into a double-spaced, line-numbered `manuscript.docx`
-and a review copy `manuscript.pdf`), five figures, highlights, the structured
-abstract, a cover letter and a submission checklist. The H7c figures come from
+and a review copy `manuscript.pdf`), five figures and a graphical abstract,
+`highlights.docx`, the structured abstract, a cover letter and a submission
+checklist checked against the journal's Guide for Authors. The H7c figures come from
 `results/validation/llm_audit.json`.
 
 ```
 uv run --frozen python paper/jnm/make_figures.py   # figures/*.pdf, *.tiff, *.png from the result files
-CHROME=/path/to/chrome paper/jnm/build.sh          # manuscript.docx and manuscript.pdf
+CHROME=/path/to/chrome paper/jnm/build.sh          # manuscript.docx, manuscript.pdf, highlights.docx
 ```

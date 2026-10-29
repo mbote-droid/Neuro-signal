@@ -19,12 +19,13 @@ E-mail: mbotesamuel9@gmail.com
 
 **Background:** EEG analysis pipelines are usually evaluated on benchmarks
 their authors design, with outcome measures chosen after the results, and
-language models now summarise such output with no check on the numbers they
+language models summarise such output with no check on the numbers they
 state.
 
 **New method:** An open, deterministic scalp-EEG pipeline (quality control,
 zero-phase filtering, aperiodic and periodic spectral parameterisation,
-debiased wPLI, an unsupervised rhythmic-event detector) was built under a
+debiased weighted phase-lag index, an unsupervised rhythmic-event detector)
+was built under a
 validation-first protocol: hypotheses with numeric thresholds were committed
 before the code or data they concern, methods were tested against synthetic
 ground truth, and every number in a plain-language summary must cite a
@@ -32,8 +33,8 @@ computed metric, which a rule-based checker verifies.
 
 **Results:** Four of six initial hypotheses were rejected. A synthetic
 benchmark on which the detector passed hid four failure modes, including the
-1/f confound the project set out to avoid; on a held-out CHB-MIT subject the
-frozen detector found 4 of 7 seizures at 3.3 false detections per hour. A
+1/f confound the project set out to avoid; on a held-out subject of the
+public CHB-MIT database the frozen detector found 4 of 7 seizures at 3.3 false detections per hour. A
 cloud language model met the citation contract on 30 of 30 recordings and a
 small local model on 0 of 30, with all faulty text blocked. The checker as
 first released missed 709 of 3334 mutated explanations; the corrected
@@ -41,8 +42,8 @@ checker caught all. A blinded audit found 3 of 20 accepted explanations
 misleading (limit 2): correct numbers attached to the wrong concept.
 
 **Comparison with existing methods:** Patient-specific seizure detectors
-reach far higher sensitivity; the contribution is a protocol and an evidence
-trail that make such claims checkable, not a better detector.
+reach far higher sensitivity; the contribution is a protocol that makes such
+claims checkable, not a better detector.
 
 **Conclusions:** Benchmarks and error models are researcher degrees of
 freedom; pre-registration and mutation testing make their failures visible.
@@ -126,7 +127,8 @@ coupling is reported as the debiased squared weighted phase-lag index
 (dwPLI; Vinck et al., 2011), with the phase-locking value (PLV) shown only
 as a contrast.
 
-The output is a JSON file of metrics that is byte-identical across runs, a
+The software (Mbote, 2026b) is open source. The output is a JSON file of
+metrics that is byte-identical across runs, a
 set of figures, and an HTML report with a plain-language explanation
 (Section 2.5).
 
@@ -195,6 +197,14 @@ subject chb03 (7 seizures, 10 h) was the held-out H6 test. Detections were
 scored with the any-overlap rule (Ziyabari et al., 2017); false detections
 per hour are reported with a Poisson upper bound.
 
+Ethics statement: this study used only the publicly available, de-identified
+CHB-MIT Scalp EEG Database (Shoeb and Guttag, 2010), distributed by
+PhysioNet under the Open Data Commons Attribution License v1.0. The
+recordings were collected and de-identified by the database's creators
+(Shoeb, 2009); no new data were collected from human participants and no
+participant can be identified, so no further ethical approval was sought for
+this secondary analysis.
+
 ### 2.5 Explanations and the claim checker
 
 The plain-language summary is written either by a deterministic template
@@ -220,7 +230,7 @@ written precision is "equivalent" and excluded; equivalence is decided
 from the metric values by integer rounding, independently of the checker.
 The same principle, validating the validator with realistic wrong answers
 and mutation testing, was applied earlier to automated graders for AI
-agents on biomedical engineering tasks (Mbote, 2026).
+agents on biomedical engineering tasks (Mbote, 2026a).
 
 Language models were evaluated as explainers in H7 on 30 further synthetic
 recordings (seeds disjoint from H4's), with the system prompt of the
@@ -266,6 +276,8 @@ memory.
 ## 3. Results
 
 ### 3.1 Confirmatory outcomes
+
+Table 2 lists the outcome of every pre-registered hypothesis.
 
 | | result | verdict |
 |----|------------------------------|----------|
@@ -394,6 +406,8 @@ Each led to a new test; the run at release killed 17 of 17, and with one
 mutant undoing each later fix, 23 of 23.
 
 ### 3.7 Language models under the citation contract (H7)
+
+Table 3 summarises both runs.
 
 | | gemini-3.8-flash (cloud) | qwen2.5:3b (local) |
 |----------|---------------|---------------|
@@ -608,40 +622,55 @@ they have said how they wish to be named. -->
 
 ## References
 
-Donoghue, T., Haller, M., Peterson, E.J., et al., 2020. Parameterizing
-neural power spectra into periodic and aperiodic components. Nat. Neurosci.
-23, 1655–1665.
+Donoghue, T., Haller, M., Peterson, E.J., Varma, P., Sebastian, P., Gao, R.,
+Noto, T., Lara, A.H., Wallis, J.D., Knight, R.T., Shestyuk, A., Voytek, B.,
+2020. Parameterizing neural power spectra into periodic and aperiodic
+components. Nat. Neurosci. 23, 1655–1665.
+https://doi.org/10.1038/s41593-020-00744-x
 
 Esteller, R., Echauz, J., Tcheng, T., Litt, B., Pless, B., 2001. Line
 length: an efficient feature for seizure onset detection. In: Proceedings
 of the 23rd Annual International Conference of the IEEE Engineering in
 Medicine and Biology Society.
 
-Goldberger, A.L., Amaral, L.A.N., Glass, L., et al., 2000. PhysioBank,
-PhysioToolkit, and PhysioNet: components of a new research resource for
-complex physiologic signals. Circulation 101, e215–e220.
+Goldberger, A.L., Amaral, L.A.N., Glass, L., Hausdorff, J.M., Ivanov, P.Ch.,
+Mark, R.G., Mietus, J.E., Moody, G.B., Peng, C.-K., Stanley, H.E., 2000.
+PhysioBank, PhysioToolkit, and PhysioNet: components of a new research
+resource for complex physiologic signals. Circulation 101, e215–e220.
+https://doi.org/10.1161/01.CIR.101.23.e215
 
 Kapoor, S., Narayanan, A., 2023. Leakage and the reproducibility crisis in
 machine-learning-based science. Patterns 4, 100804.
+https://doi.org/10.1016/j.patter.2023.100804
 
-Mbote, S.N., 2026. Validating the graders: physics-aware rewards for AI
-agents on biomedical engineering tasks. Preprint, Zenodo.
+Mbote, S.N., 2026a. Validating the graders: physics-aware rewards for AI
+agents on biomedical engineering tasks [preprint]. Zenodo.
 https://doi.org/10.5281/zenodo.23309911
 
-Nolte, G., Bai, O., Wheaton, L., et al., 2004. Identifying true brain
-interaction from EEG data using the imaginary part of coherency. Clin.
-Neurophysiol. 115, 2292–2307.
+Mbote, S.N., 2026b. NeuroSignal: a validation-first EEG report pipeline
+with provenance-checked explanations, version 0.1.2 [software]. Zenodo.
+https://doi.org/10.5281/zenodo.23716723
+
+Nolte, G., Bai, O., Wheaton, L., Mari, Z., Vorbach, S., Hallett, M., 2004.
+Identifying true brain interaction from EEG data using the imaginary part
+of coherency. Clin. Neurophysiol. 115, 2292–2307.
+https://doi.org/10.1016/j.clinph.2004.04.029
 
 Nosek, B.A., Ebersole, C.R., DeHaven, A.C., Mellor, D.T., 2018. The
 preregistration revolution. Proc. Natl. Acad. Sci. U. S. A. 115, 2600–2606.
+https://doi.org/10.1073/pnas.1708274114
 
 Robbins, K.A., Touryan, J., Mullen, T., Kothe, C., Bigdely-Shamlo, N.,
 2020. How sensitive are EEG results to preprocessing methods: a
 benchmarking study. IEEE Trans. Neural Syst. Rehabil. Eng. 28, 1081–1090.
+https://doi.org/10.1109/TNSRE.2020.2980223
 
 Shoeb, A.H., 2009. Application of machine learning to epileptic seizure
 onset detection and treatment. PhD thesis, Massachusetts Institute of
 Technology.
+
+[dataset] Shoeb, A., Guttag, J., 2010. CHB-MIT Scalp EEG Database, version
+1.0.0. PhysioNet. https://doi.org/10.13026/C2K01R
 
 Trübutschek, D., Yang, Y.F., Gianelli, C., et al., 2024. EEGManyPipes: a
 large-scale, grassroots multi-analyst study of electroencephalography
@@ -651,19 +680,20 @@ Vinck, M., Oostenveld, R., van Wingerden, M., Battaglia, F., Pennartz,
 C.M.A., 2011. An improved index of phase-synchronization for
 electrophysiological data in the presence of volume-conduction, noise and
 sample-size bias. NeuroImage 55, 1548–1565.
+https://doi.org/10.1016/j.neuroimage.2011.01.055
 
 Widmann, A., Schröger, E., Maess, B., 2015. Digital filter design for
 electrophysiological data: a practical approach. J. Neurosci. Methods 250,
-34–46.
+34–46. https://doi.org/10.1016/j.jneumeth.2014.08.002
 
 Ziyabari, S., Shah, V., Golmohammadi, M., Obeid, I., Picone, J., 2017.
-Objective evaluation metrics for automatic classification of EEG events.
-arXiv:1712.10107.
+Objective evaluation metrics for automatic classification of EEG events
+[preprint]. arXiv:1712.10107. https://doi.org/10.48550/arXiv.1712.10107
 
 ## Figure captions
 
 ![](figures/fig1_workflow.png){width=100%}\
-**Fig. 1.** Overview. (A) The pipeline: each stage writes into a metrics
+**Fig. 1.** Pipeline, citation contract and validation protocol. (A) The pipeline: each stage writes into a metrics
 file that is byte-identical across runs. (B) The citation contract: an
 explanation, from the template or a language model that sees only the
 metrics, must cite a metric for every number; a rule-based checker accepts
@@ -671,7 +701,7 @@ it or returns its findings for one repair round, after which rejected text
 is replaced by the template. (C) The validation-first protocol around both.
 
 ![](figures/fig2_detector.png){width=100%}\
-**Fig. 2.** Detector performance. (A) Sensitivity against false detections
+**Fig. 2.** Detector performance on synthetic and real recordings. (A) Sensitivity against false detections
 per hour for the first and final synthetic benchmarks and the two CHB-MIT
 subjects. Vertical bars: Wilson 95 % intervals; dotted horizontal lines:
 one-sided 95 % Poisson upper bounds on the false-detection rate. The shaded
@@ -682,7 +712,7 @@ benchmark (200 recordings, 320 events), with Wilson 95 % intervals and hit
 counts.
 
 ![](figures/fig3_wpli_bias.png){width=50%}\
-**Fig. 3.** Small-sample bias of plain wPLI under pure volume conduction (six
+**Fig. 3.** Small-sample bias of plain wPLI. Pure volume conduction (six
 independent sources mixed into 19 sensors, no coupling). Each point is the
 95th percentile over sensor pairs for one of 50 simulated recordings; black
 bars are medians. Dotted lines: the theoretical mean of wPLI without
@@ -697,7 +727,8 @@ conditions (as registered) and with the same noise in both (paired, the
 method's own bias). Shaded: the registered ± 0.05 log10 tolerance.
 
 ![](figures/fig5_checker_llm.png){width=100%}\
-**Fig. 5.** The claim checker and language models. (A) Fraction of live
+**Fig. 5.** Claim checker under mutation, and language models under the
+citation contract. (A) Fraction of live
 mutants rejected per mutation operator (60 faithful explanations, four
 mutants each), by the checker as first released and by the corrected
 checker. (B) Explanations accepted by the checker for a cloud

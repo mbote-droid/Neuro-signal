@@ -1,22 +1,40 @@
 # Journal of Neuroscience Methods: submission checklist
 
-Check each item against the journal's current Guide for Authors on the day
-of submission; requirements change.
+Checked against the journal's Guide for Authors (copy of 28 October 2026).
+Submit as a Research Article.
 
-| item | status | file or note |
+## Files to upload
+
+| file | rule in the guide | status |
 |---|---|---|
-| H7c audit done and filled into the paper | done | `results/validation/llm_audit.json`: 3/20, rejected |
-| Preprint v2 posted (Zenodo new version of 10.5281/zenodo.23448015) | done | 10.5281/zenodo.23750975 |
-| Software release containing H7 and the bug hunt, cited in the paper | done | v0.1.2, 10.5281/zenodo.23716723 |
-| Manuscript in the journal's format (title page, structured abstract, sections, references in journal style) | done | `manuscript.docx` (double-spaced, line-numbered) and `manuscript.pdf`, built from `manuscript.md` by `build.sh`; check the reference details (pages, DOIs) against the originals |
-| Highlights (3-5 bullets, max 85 characters each) | drafted | `highlights.md` |
-| Structured abstract (Background, New method, Results, Comparison with existing methods, Conclusions) | done | 248 words; `structured_abstract.md` |
-| Cover letter | drafted | `cover_letter.md` |
-| Graphical abstract | optional | `figures/fig1_workflow` can serve |
-| Figures as separate files at the required resolution | done | `figures/`: vector PDF and 600 dpi TIFF, made by `make_figures.py` from the result files |
-| Data availability statement | in the paper | Zenodo DOIs and PhysioNet |
-| Funding and competing-interest declarations | in the paper | |
-| Author's ORCID | in the paper | |
-| Acknowledgement of the reporter of issue #21 | pending | ask how they wish to be named |
-| Declarations requested by the submission form | at submission | answer the form's questions as they appear |
-| Suggested reviewers (if requested) | to do | researchers in EEG methods and reproducibility, no conflicts |
+| `manuscript.docx` | editable .docx, single column, no underline or strikethrough; numbered sections; abstract not numbered | done (double-spaced, line-numbered) |
+| `highlights.docx` | separate editable file named with "highlights"; 3-5 bullets of at most 85 characters | done (5 bullets, 70-78 characters) |
+| `figures/fig1`-`fig5` (`.pdf` or `.tiff`) | artwork as separate files; vector PDF with embedded fonts, or raster at 300 dpi or more; every figure cited and captioned with a brief title | done (vector PDF and 600 dpi TIFF; text 7 pt or larger) |
+| `figures/graphical_abstract` (`.tiff` or `.pdf`) | encouraged; at least 1328 px wide, landscape, readable at 13 cm | done (2499 px wide) |
+| cover letter (`cover_letter.md`, paste or upload) | not required by the guide; addresses the scope rule on reanalysed public data and software | done |
+| competing-interest declaration (Word file from Elsevier's declarations tool) | "should always be completed"; choose "I have nothing to declare" | to do at submission |
+
+## Content of the manuscript
+
+| item | rule in the guide | status |
+|---|---|---|
+| Title page | title, given and family names, affiliation, corresponding author's e-mail | done |
+| Abstract | at most 250 words, stands alone, abbreviations defined | done (249 words) |
+| Keywords | 1-7 | done (6) |
+| Tables | editable, cited in the text, captions, no vertical rules or shading | done (Tables 1-3) |
+| Ethics statement for human data | required for studies involving human participants; if no approval was sought, explain why | done (section 2.4: public, de-identified CHB-MIT data, secondary analysis); confirm no Kenyan rule requires more |
+| CRediT statement | required | done |
+| Funding | the journal's exact sentence when there is no funding | done |
+| Data | Option C: deposit, cite and link the data | done (software and CHB-MIT cited as references; data availability section) |
+| References | name-year style, LTWA abbreviations, DOIs where available, every reference real and complete | done; click every DOI once, and add pages or DOIs for Esteller et al. (2001) and Trübutschek et al. (2024), and the full author list for the latter |
+| Language | British or American English, not both | British throughout (proper names and CRediT terms excepted) |
+| Acknowledgements | separate section before the references | add once the reporter of issue #21 says how to be named, or omit |
+| Declaration of generative AI use | the guide requires a statement before the references when AI tools were used in preparing the manuscript (not for grammar or spelling tools) | the author's decision; not added |
+
+## Other steps
+
+| item | status |
+|---|---|
+| H7c audit, preprint v2 (10.5281/zenodo.23750975), release v0.1.2 (10.5281/zenodo.23716723) | done |
+| Suggested reviewers, if the form asks | to do |
+| Spelling and grammar check of the Word file | to do |

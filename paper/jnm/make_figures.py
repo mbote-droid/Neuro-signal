@@ -31,12 +31,12 @@ MM = 1 / 25.4  # Elsevier widths: 90 mm (single), 140 mm (1.5), 190 mm (double)
 plt.rcParams.update(
     {
         "font.family": "DejaVu Sans",
-        "font.size": 7,
-        "axes.titlesize": 8,
-        "axes.labelsize": 7,
-        "xtick.labelsize": 6.5,
-        "ytick.labelsize": 6.5,
-        "legend.fontsize": 6.5,
+        "font.size": 8,
+        "axes.titlesize": 9,
+        "axes.labelsize": 8,
+        "xtick.labelsize": 7.5,
+        "ytick.labelsize": 7.5,
+        "legend.fontsize": 7.5,
         "axes.edgecolor": MUTED,
         "axes.labelcolor": INK,
         "xtick.color": MUTED,
@@ -65,7 +65,7 @@ def save(fig: plt.Figure, name: str) -> None:
 
 
 def panel(ax: plt.Axes, letter: str) -> None:
-    ax.text(-0.16, 1.04, letter, transform=ax.transAxes, fontsize=9, fontweight="bold")
+    ax.text(-0.16, 1.04, letter, transform=ax.transAxes, fontsize=10, fontweight="bold")
 
 
 def fig1_workflow() -> None:
@@ -75,7 +75,7 @@ def fig1_workflow() -> None:
     ax.set_ylim(0, 84)
     ax.axis("off")
 
-    def box(x, y, w, h, text, edge=INK, fill="white", bold=False, size=6.3):
+    def box(x, y, w, h, text, edge=INK, fill="white", bold=False, size=7):
         ax.add_patch(
             FancyBboxPatch(
                 (x, y), w, h, boxstyle="round,pad=0,rounding_size=2", fc=fill, ec=edge, lw=0.8
@@ -112,24 +112,24 @@ def fig1_workflow() -> None:
     xs = [1 + i * (w + gap) for i in range(6)]
     stages = [
         "EEG file\nEDF, BDF,\nBrainVision",
-        "Quality control\nflat, noisy and\nlow channels",
-        "Zero-phase FIR\nfilters; average\nreference",
-        "Event detector\nline length and\nrhythm gate",
-        "Spectra outside\nevents; aperiodic\nfit; dwPLI",
+        "Quality control:\nflat, noisy and\nlow channels",
+        "Zero-phase\nFIR filters;\nre-reference",
+        "Event detector:\nline length and\nrhythm gate",
+        "Spectra outside\nevents; 1/f fit;\ndwPLI",
         "metrics.json\nbyte-identical\nacross runs",
     ]
     ya = 56
-    ax.text(1, 77, "A  Pipeline", fontsize=8, fontweight="bold", color=INK)
+    ax.text(1, 77, "A  Pipeline", fontsize=9, fontweight="bold", color=INK)
     for i, (x, t) in enumerate(zip(xs, stages, strict=True)):
         box(x, ya, w, h, t, fill="#eef4fc" if i in (0, 5) else "white", bold=i == 5)
         if i:
             arrow(x - gap, ya + h / 2, x, ya + h / 2)
 
     yb = 22
-    ax.text(xs[3], 44, "B  Citation contract", fontsize=8, fontweight="bold", color=INK)
+    ax.text(xs[3], 44, "B  Citation contract", fontsize=9, fontweight="bold", color=INK)
     box(xs[3], yb, w, h, "Report\nHTML and\nMarkdown", fill="#eef4fc")
-    box(xs[4], yb, w, h, "Explainer\ntemplate, or LLM\n(metrics only)")
-    box(xs[5], yb, w, h, "Claim checker\nrules, no model:\nvalue [[metric.key]]")
+    box(xs[4], yb, w, h, "Explainer:\ntemplate or LLM\n(metrics only)")
+    box(xs[5], yb, w, h, "Claim checker:\nrules, no model;\nvalue [[key]]")
     arrow(xs[5] + w / 2, ya, xs[5] + w / 2, yb + h)
     arrow(xs[4] + w, yb + h * 0.7, xs[5], yb + h * 0.7)
     arrow(xs[5], yb + h * 0.3, xs[4] + w, yb + h * 0.3, color=ORANGE, ls="--")
@@ -138,25 +138,17 @@ def fig1_workflow() -> None:
         xs[4] + w / 2,
         yb - 4,
         "rejected text: one repair round, then the template",
-        fontsize=5.8,
+        fontsize=7,
         color=ORANGE,
         ha="center",
     )
-    ax.text(
-        xs[4] + w / 2,
-        yb + h + 2,
-        "accepted text goes to the report",
-        fontsize=5.8,
-        color=BLUE,
-        ha="center",
-    )
 
-    ax.text(1, 44, "C  Validation-first protocol", fontsize=8, fontweight="bold", color=INK)
+    ax.text(1, 44, "C  Validation-first protocol", fontsize=9, fontweight="bold", color=INK)
     items = [
-        "Hypotheses H1-H7 with\nnumeric thresholds, committed\nbefore the code and data",
+        "Hypotheses H1-H7,\nnumeric thresholds,\ncommitted before code",
         "Synthetic ground truth;\ndisjoint tuning and\nevaluation seeds",
-        "Held-out CHB-MIT subject\nnamed before download;\nfrozen detector, one run",
-        "Mutation testing of the\ntest suite and the checker;\nfuzzing; outside reports",
+        "Held-out CHB-MIT\nsubject named before\ndownload; one run",
+        "Mutation testing of\ntests and checker;\nfuzzing; outside reports",
     ]
     bw = (xs[3] - 2 * gap - xs[0]) / 2
     for i, t in enumerate(items):
@@ -171,11 +163,11 @@ def fig2_detector() -> None:
     )
     a.axhspan(0.9, 1.15, xmin=0, xmax=2 / 4, color="#eef4fc", lw=0)
     a.text(
-        1.95, 1.135, "H2 pass region (≥ 0.90, ≤ 2/h)", fontsize=6, color=BLUE, ha="right", va="top"
+        1.95, 1.135, "H2 pass region (≥ 0.90, ≤ 2/h)", fontsize=7, color=BLUE, ha="right", va="top"
     )
     a.axvline(2, color=GRID, lw=0.8, ls="--")
     a.axhline(0.6, xmin=0, xmax=2 / 4, color=MUTED, lw=0.8, ls=":")
-    a.text(0.08, 0.615, "H6: ≥ 0.60 at ≤ 2/h", fontsize=6, color=MUTED)
+    a.text(0.08, 0.615, "H6: ≥ 0.60 at ≤ 2/h", fontsize=7, color=MUTED)
     pts = [
         ("Synthetic, first benchmark\n(commit 19198f7)", 0.955, None, 0.69, None, BLUE, "o"),
         (
@@ -218,7 +210,7 @@ def fig2_detector() -> None:
             (f, s),
             xytext=(dx, dy),
             textcoords="offset points",
-            fontsize=6,
+            fontsize=7,
             color=INK,
             ha="right" if dx < 0 else "left",
         )
@@ -246,9 +238,9 @@ def fig2_detector() -> None:
     )
     for xi, k in zip(x, snr, strict=True):
         n = syn["by_snr_db"][k]
-        b.text(xi, 0.04, f"{n['hits']}/{n['n']}", ha="center", fontsize=6, color="white")
+        b.text(xi, 0.04, f"{n['hits']}/{n['n']}", ha="center", fontsize=7, color="white")
     b.axhline(0.9, color=MUTED, lw=0.8, ls="--")
-    b.text(-0.45, 0.915, "H2 threshold 0.90", fontsize=6, color=MUTED)
+    b.text(-0.45, 0.915, "H2 threshold 0.90", fontsize=7, color=MUTED)
     b.set_xticks(x, [f"{float(k):g}" for k in snr])
     b.set_xlabel("Event SNR (dB), final synthetic benchmark")
     b.set_ylabel("Sensitivity")
@@ -276,7 +268,7 @@ def fig3_wpli() -> None:
         p = th[dur]["predicted_wpli_mean"]
         ax.plot([i - 0.3, i + 0.3], [p, p], color=MUTED, lw=0.8, ls=":")
     ax.axhline(0.15, color=MUTED, lw=0.8, ls="--")
-    ax.text(3.45, 0.155, "H3 threshold 0.15", fontsize=6, color=MUTED, ha="right")
+    ax.text(3.45, 0.155, "H3 threshold 0.15", fontsize=7, color=MUTED, ha="right")
     ax.set_xticks(range(4), [g[2] for g in groups])
     ax.set_xlim(-0.6, 3.6)
     ax.set_ylabel("95th percentile over sensor pairs\n(no true coupling; 50 seeds)")
@@ -292,7 +284,7 @@ def fig4_aperiodic() -> None:
     a.hist(bp, bins=np.arange(-90, -40, 2.5), color=BLUE, ec="white", lw=0.5)
     a.axvline(-30, color=MUTED, lw=0.8, ls="--")
     a.text(
-        -31.5, a.get_ylim()[1] * 0.92, "H1: |change| ≥ 30 %", fontsize=6, color=MUTED, ha="right"
+        -31.5, a.get_ylim()[1] * 0.92, "H1: |change| ≥ 30 %", fontsize=7, color=MUTED, ha="right"
     )
     a.set_xlim(-92, -25)
     a.set_xlabel("8-12 Hz band power change (%)")
@@ -313,7 +305,7 @@ def fig4_aperiodic() -> None:
         label="paired noise (method bias)",
     )
     b.axvspan(-0.05, 0.05, color=GRID, alpha=0.5, lw=0, zorder=0)
-    b.text(-0.29, b.get_ylim()[1] * 0.45, "shaded: ± 0.05\ntolerance (H1)", fontsize=6, color=MUTED)
+    b.text(-0.29, b.get_ylim()[1] * 0.45, "shaded: ± 0.05\ntolerance (H1)", fontsize=7, color=MUTED)
     b.set_xlabel("Fitted alpha peak power change (log10)")
     b.set_ylabel("Recordings")
     b.legend(frameon=False, loc="upper right")
@@ -355,22 +347,77 @@ def fig5_checker() -> None:
                 val + 0.02,
                 f"{round(val * 30)}/30",
                 ha="center",
-                fontsize=6,
+                fontsize=7,
                 color=INK,
             )
     b.axhline(0.8, color=MUTED, lw=0.8, ls="--")
-    b.text(1.55, 0.82, "H7a: 24/30", fontsize=6, color=MUTED, ha="right")
+    b.text(1.55, 0.82, "H7a: 24/30", fontsize=7, color=MUTED, ha="right")
     b.set_xticks(x, labels)
-    b.set_ylim(0, 1.12)
+    b.set_ylim(0, 1.25)
+    b.set_yticks(np.linspace(0, 1, 6))
     b.set_ylabel("Explanations accepted (fraction of 30)")
-    b.legend(frameon=False, loc="upper left")
+    b.legend(frameon=False, loc="upper left", ncol=2)
     panel(b, "B")
     fig.tight_layout(w_pad=3)
     save(fig, "fig5_checker_llm")
 
 
+def graphical_abstract() -> None:
+    """Landscape summary, readable at the journal's 13 cm display width."""
+    fig, ax = plt.subplots(figsize=(130 * MM, 76 * MM))
+    ax.set_xlim(0, 130)
+    ax.set_ylim(0, 76)
+    ax.axis("off")
+    steps = [
+        ("1  Commit hypotheses\nwith numeric thresholds\nbefore code and data", "#eef4fc"),
+        ("2  Build and tune on\nsynthetic ground truth", "white"),
+        ("3  Test on a held-out\nreal subject; mutate\nthe tests and the checker", "white"),
+    ]
+    for i, (t, fill) in enumerate(steps):
+        y = 56 - i * 22
+        ax.add_patch(
+            FancyBboxPatch(
+                (2, y), 50, 16, boxstyle="round,pad=0,rounding_size=2", fc=fill, ec=INK, lw=0.8
+            )
+        )
+        ax.text(27, y + 8, t, ha="center", va="center", fontsize=8, color=INK, linespacing=1.3)
+        if i:
+            ax.add_patch(
+                FancyArrowPatch(
+                    (27, y + 19),
+                    (27, y + 15),
+                    arrowstyle="-|>",
+                    mutation_scale=8,
+                    color=INK,
+                    lw=0.8,
+                )
+            )
+    ax.add_patch(
+        FancyArrowPatch((54, 39), (62, 39), arrowstyle="-|>", mutation_scale=10, color=INK, lw=1.0)
+    )
+    ax.text(64, 72, "What it exposed", fontsize=9, fontweight="bold", color=INK, va="top")
+    facts = [
+        ("4 of 6", "initial hypotheses rejected", ORANGE),
+        ("4", "detector failures the synthetic\nbenchmark hid", ORANGE),
+        ("709 of 3334", "wrong explanations the first\nchecker missed; now 0", ORANGE),
+        ("30/30 vs 0/30", "cloud vs small local model\nmeeting the citation contract", BLUE),
+    ]
+    for i, (big, small, c) in enumerate(facts):
+        y = 64 - i * 16
+        ax.text(64, y, big, fontsize=10, fontweight="bold", color=c, va="top")
+        ax.text(64, y - 4.6, small, fontsize=7.5, color=INK, va="top", linespacing=1.2)
+    save(fig, "graphical_abstract")
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
-    for f in (fig1_workflow, fig2_detector, fig3_wpli, fig4_aperiodic, fig5_checker):
+    for f in (
+        fig1_workflow,
+        fig2_detector,
+        fig3_wpli,
+        fig4_aperiodic,
+        fig5_checker,
+        graphical_abstract,
+    ):
         f()
     print(f"wrote {OUT}")
