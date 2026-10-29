@@ -164,5 +164,7 @@ Real data: CHB-MIT Scalp EEG Database (PhysioNet, ODC-By 1.0); cite Shoeb
 Paper: Mbote SN (2026) *Validation-first EEG pipelines: how synthetic
 benchmarks mislead, and how pre-registration catches it.* Preprint, Zenodo.
 [10.5281/zenodo.23448015](https://doi.org/10.5281/zenodo.23448015)
-(source: [paper/](paper/)).
+(all versions; version 2:
+[10.5281/zenodo.23750975](https://doi.org/10.5281/zenodo.23750975);
+source: [paper/](paper/)).
 Licence: MIT.
