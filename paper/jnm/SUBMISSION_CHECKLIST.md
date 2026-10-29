@@ -7,7 +7,7 @@ of submission; requirements change.
 |---|---|---|
 | H7c audit done and filled into the paper | done | `results/validation/llm_audit.json`: 3/20, rejected |
 | Preprint v2 posted (Zenodo new version of 10.5281/zenodo.23448015) | pending | after H7c |
-| Software release containing H7 and the bug hunt, cited in the paper | pending | new GitHub release; Zenodo archives it |
+| Software release containing H7 and the bug hunt, cited in the paper | done | v0.1.2, 10.5281/zenodo.23716723 |
 | Manuscript in the journal's format (title page, structured abstract, sections, references in journal style) | to do | from `paper/preprint.md` |
 | Highlights (3-5 bullets, max 85 characters each) | drafted | `highlights.md` |
 | Structured abstract (Background, New method, Results, Comparison with existing methods, Conclusions) | drafted | `structured_abstract.md`; trim to the word limit after adding H7c |
