@@ -180,7 +180,7 @@ def power() -> None:
             "seeds": [seeds[0], seeds[-1]],
             "summary": summary,
             "rows": rows,
-        },  # fmt: skip
+        },
     )
     for k, v in summary.items():
         print(
