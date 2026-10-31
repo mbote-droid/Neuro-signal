@@ -349,3 +349,26 @@ Mitigation: none yet; recorded as a limitation. An EMG cue (20-60 Hz power
 locked to the rhythm) is a v0.2 item, beside the spatial cue for blinks.
 Lesson: the realistic negatives of ISSUE-009 and ISSUE-011 were the ones we
 had met; artifacts we had not met still pass.
+
+### ISSUE-022 The detector's false-alarm rate depends on the montage   (2026-10-31)
+Phase: v0.2 development (§11 tuning)
+Symptom: rendering the synthetic tuning recordings in CHB-MIT's 18-derivation
+bipolar montage raised the frozen detector's false detections from 1.90 to
+2.60 per hour (standard benchmark) and 3.00 (slowed discharges), above H2's
+own 2/h limit. H2 measured only the referential montage.
+Effect on reported results: none; H2 is a referential result and stands. It
+is consistent with H6's 3.30/h on bipolar chb03.
+Open: must be addressed, with its own registration, before the confirmatory
+test on CHB-MIT subjects (ROADMAP step 2b).
+
+### ISSUE-023 A pre-registered definition capped the quantity it measured   (2026-10-31)
+Phase: v0.2 development (§11, before tuning)
+Symptom: the blink cue's "excess" divided an event's RMS by the RMS of the
+whole recording, which contains the event; a textbook blink field scored a
+frontality of 2.2 instead of about 4. Found by a unit test with a
+constructed signal.
+Mitigation: excess is measured against each channel's median RMS over 2 s
+windows (`robust_rms`), recorded as a dated amendment to §11 (commit
+4f4049e) before any tuning or evaluation ran. The mutant that restores the
+old definition first survived; a test with a sustained bilateral frontal
+slow wave now kills it.

@@ -5,6 +5,22 @@ semantic versioning.
 
 ## [Unreleased]
 
+### Added
+- A spatial blink cue in the detector (PROBLEM_STATEMENT §11), **off by
+  default and not adopted**: its pre-registered tuning triggered the stop
+  rule (FINDINGS F-12). The detector is unchanged.
+- Synthetic generator options for the discharge frequency range and centre
+  electrodes (defaults byte-identical), and a rendering in CHB-MIT's
+  bipolar montage.
+- `validation/blink_cue.py`: the registered tuning and evaluation; the
+  validation report shows the full grid.
+- Three code mutants for the cue (28 total, all killed).
+
+### Found
+- The frozen detector's false-alarm rate depends on the montage: 1.90/h
+  referential vs 2.60/h bipolar on the same synthetic signals
+  (BUILD_JOURNAL ISSUE-022). H2 stands as a referential result.
+
 ### Changed
 - Non-EEG channels (ECG, VNS, respiration, placeholders) no longer enter any
   measurement: the robust amplitude reference, spectra and aperiodic fits,

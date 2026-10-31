@@ -116,8 +116,8 @@
   },
   "provenance": {
     "git": {
-      "commit": "44de5749cc041d569f610c1413ef02e290894254",
-      "dirty": true
+      "commit": "6ebd0fc42838533771213059b9c7544f9acbcdd0",
+      "dirty": false
     },
     "python": "3.12.3",
     "versions": {

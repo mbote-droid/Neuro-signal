@@ -208,3 +208,44 @@ diagnostic words. The checker verifies that a value equals its key, not
 that the key is what the sentence is about. With no accepted local
 explanation, all 20 audit items came from the cloud model, so hiding the
 model had no effect; the single rater was the author.
+
+## F-12 A pre-registered blink cue was not adopted; the montage was the real gap
+
+PROBLEM_STATEMENT §11 registered a spatial cue to let the rhythm gate reach
+below 2 Hz, where the three seizures missed on chb03 lay (F-7): an event
+below 2 Hz is kept unless its field is blink-like (frontopolar and
+symmetric). Tuning on synthetic seeds 0-59, rendered in the referential and
+in CHB-MIT's bipolar montage, **triggered the stop rule: no setting kept the
+pooled false-detection rate at or below 2 per hour, so the cue is not
+adopted, the 2 Hz floor stays, and D1-D6 were not run.** Three things were
+learned.
+
+* **The detector frozen for H6 already exceeds its limit in a bipolar
+  montage.** With the cue off, the same synthetic signals produced 1.90
+  false detections per hour in the referential montage but 2.60 in the
+  bipolar one (3.00 with slowed discharges). H2 only ever measured the
+  referential montage, so this was never seen; it is consistent with the
+  3.30/h on bipolar chb03 (H6). A confirmatory test on CHB-MIT, which is
+  bipolar, has to deal with this first.
+* **The cue does recover slow seizures.** Opening the band down to 1.0 Hz
+  raised the slowed discharges found from 14 of 192 to 114-118 of 192
+  (0.59-0.61), at about 3.1 false detections per hour.
+* **Blinks were not what the extra false detections were** (exploratory,
+  post hoc). Changing the frontality threshold from 1.5 to 4 moved the
+  result by at most four discharges and 0.15/h. The false candidates below
+  2 Hz had a frontality near 1 (not frontal) and lasted a median of 12-13 s,
+  just above the 10 s minimum; true slowed discharges lasted a median of
+  40 s. The synthetic blinks themselves rarely reach the gate: band-limited
+  to 1-20 Hz they barely raise line length, which the 1 s merge gap
+  already handles (ISSUE-011). A minimum duration for slow-band events is
+  the obvious next idea, and because it came from looking at these results
+  it needs its own registration and fresh tuning.
+
+Two process notes. A unit test with a constructed blink field found an
+error in the registered definition (the whole-recording RMS contains the
+event and caps its excess) before any tuning ran, and the fix was recorded
+as a dated amendment rather than edited in. And the mutation campaign found
+that no test exercised that fix through the detector itself: the mutant
+survived until a test with a sustained bilateral frontal slow wave was
+added. The cue stays in the code, switched off by default and covered by
+tests, so a later registration can reuse it.
