@@ -226,3 +226,89 @@ checker as registered, kept as a hash-pinned copy
 (`validation/h7_registered_checker.py`); the corrected checker is applied
 to the same saved replies as a secondary analysis, reported alongside
 (`llm_eval.py recheck`). No model call is repeated for it.
+
+## 11. Addendum (2026-10-31): development criteria for a spatial blink cue (v0.2)
+
+Written before any code for the cue exists and before any measurement of
+it. This is a **development step**, not a confirmatory test: its purpose is
+to decide whether the cue enters the detector that will later be frozen for
+a confirmatory test on new subjects (ROADMAP, step 4). **chb03 is not used
+in any form**: it was the one-shot held-out test of H6 and is spent. chb01
+is a development set; anything measured on it is optimistic by
+construction.
+
+**Motivation (FINDINGS F-7).** All three seizures missed on chb03 passed the
+line-length stage but had fundamentals of 1.0-1.5 Hz, below the rhythm
+gate's 2 Hz floor. The floor exists to reject blink trains (F-6, ISSUE-011),
+which band-limited to 1-20 Hz look like a 1.5-2 Hz rhythm. Blinks have a
+field that slow ictal rhythms usually lack: frontopolar, bilateral and
+symmetric. If that field can be measured, the floor can come down below
+2 Hz for events that do not have it.
+
+**The cue (fixed now).** For a candidate event, using the detector's
+band-limited signal (1-20 Hz) and only analysed channels:
+
+* the *anterior electrode* of a channel is its name in a referential
+  montage, and the first electrode `A` of a derivation `A-B`;
+* *frontopolar* channels are those whose anterior electrode is Fp1, Fp2,
+  Fpz, AF3, AF4, AF7, AF8 or AFz (case-insensitive); *left* are Fp1, AF3,
+  AF7 and *right* Fp2, AF4, AF8; all other analysed channels are *other*;
+* per channel, *excess* = RMS of the event segment / RMS of the whole
+  recording;
+* *frontality* = median excess over frontopolar channels / median excess
+  over other channels;
+* *symmetry* = min(mean left excess, mean right excess) / max of the two;
+* an event is *blink-like* when frontality >= F* and symmetry >= S*.
+
+**The gate (fixed now).** An event is kept, as today, when its fundamental
+lies in 2-7.5 Hz. In addition, an event whose fundamental lies in
+[f_low, 2 Hz) is kept when the cue is available and the event is not
+blink-like. The cue is unavailable when no left, no right or no other
+channel is analysed (frontopolar electrodes missing or marked bad); such
+events are rejected below 2 Hz, exactly as today. Events at 2 Hz and above
+are never affected by the cue.
+
+**Tuning (fixed now), on synthetic tuning seeds 0-59 only.** Three
+populations, each rendered in the referential montage (as generated) and in
+the 18-derivation longitudinal bipolar montage of CHB-MIT (derived from
+the same signals): (a) the standard benchmark recordings; (b) the same with
+the discharges slowed to a fundamental gliding within 1.0-1.8 Hz. Grid:
+f_low in {1.0, 1.5} Hz; F* in {1.5, 2, 3, 4}; S* in {0.5, 0.7}. The other
+detector thresholds stay as frozen for H6. **Rule:** among settings with at
+most 2 false detections per hour over all tuning recordings in both
+montages, choose the highest sensitivity on the slowed discharges; break
+ties towards the setting that admits less (higher f_low, then lower F*,
+then lower S*). The full grid is saved whatever the outcome.
+
+**Stop rule.** If no setting meets the false-detection constraint, or the
+selected setting finds fewer than half of the slowed discharges on the
+tuning seeds, the cue is not adopted, the 2 Hz floor stays, and the result
+is reported as negative.
+
+**Evaluation (fixed now), once, on evaluation seeds 1000-1199** (never used
+for tuning), with the selected setting and with the cue off as a baseline:
+
+* **D1 (no regression).** Standard benchmark, referential: sensitivity at
+  least 0.847 (the H2 result) and at most 2 false detections per hour.
+* **D2 (slow discharges).** Slowed benchmark, both montages pooled:
+  sensitivity at least 0.70 with a Wilson 95 % lower bound of at least
+  0.60.
+* **D3 (bipolar montage).** Standard benchmark, bipolar: at most 2 false
+  detections per hour.
+* **D4 (artifacts).** On the event-free adversarial recordings (seeds
+  2000-2019: baseline, eye flutter, chewing, electrode pops, sweat), false
+  detections per hour with the cue are at most the cue-off rate plus
+  0.5 per hour for each artifact.
+* **D5 (the cost of the veto, reported).** Discharges centred on Fp1, Fp2,
+  F7 or F8, at normal and slowed frequency: sensitivity with and without
+  the cue. Normal-frequency sensitivity must be identical (the cue does not
+  act at 2 Hz and above); slowed frontal sensitivity is reported as the
+  cue's known cost, with no threshold. A bilateral, symmetric frontopolar
+  slow seizure is blink-like by this definition and would be rejected.
+* **D6 (chb01, development, reported).** Seizures found and false
+  detections per hour, with and without the cue. Not a test.
+
+**Decision.** The cue is switched on in the shipped detector only if D1-D4
+all pass. Otherwise it stays off and the result is reported as negative.
+Either way, any later change to the detector needs the confirmatory test
+on untouched subjects (ROADMAP step 4) before a detection claim is made.
