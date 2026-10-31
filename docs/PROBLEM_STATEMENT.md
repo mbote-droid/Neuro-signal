@@ -312,3 +312,15 @@ for tuning), with the selected setting and with the cue off as a baseline:
 all pass. Otherwise it stays off and the result is reported as negative.
 Either way, any later change to the detector needs the confirmatory test
 on untouched subjects (ROADMAP step 4) before a detection claim is made.
+
+**Amendment to §11 (2026-10-31, before any tuning or evaluation run).**
+*Excess* is redefined as the RMS of the event segment over the channel's
+**median RMS across non-overlapping 2 s windows**, instead of over the RMS of
+the whole recording. A unit test with a constructed signal showed the
+registered definition was wrong: the whole-recording RMS contains the event
+it is compared with, which caps a strong event's excess near
+sqrt(recording length / event length). A textbook blink field (Fp1 = Fp2 =
+1, frontal row 0.4) scored a frontality of 2.2 in a 120 s recording instead
+of about 4. Nothing else changes: the gate, the grid, the tuning rule, the
+stop rule and D1-D6 stand as registered. No tuning, evaluation or real
+recording had been run with either definition.
