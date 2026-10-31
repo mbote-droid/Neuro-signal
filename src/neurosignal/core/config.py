@@ -55,6 +55,8 @@ class PipelineConfig:
     blink_slow_floor_hz: float = 2.0
     blink_frontality: float = 3.0
     blink_symmetry: float = 0.5
+    # baseline outside active windows (PROBLEM_STATEMENT §12); false = H6 detector
+    ll_quiet_baseline: bool = False
     # reproducibility
     seed: int = 0
 

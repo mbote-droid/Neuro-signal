@@ -63,6 +63,7 @@ def detector_params(cfg: PipelineConfig) -> DetectorParams:
         slow_floor_hz=cfg.blink_slow_floor_hz,
         blink_frontality=cfg.blink_frontality,
         blink_symmetry=cfg.blink_symmetry,
+        quiet_baseline=cfg.ll_quiet_baseline,
     )
 
 

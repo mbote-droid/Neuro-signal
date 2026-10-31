@@ -248,3 +248,93 @@ def test_a_sustained_bilateral_frontal_slow_wave_is_rejected():
         x[REF.index(ch)] += g * wave
     rec = Recording(data=x, sfreq=sfreq, channels=REF)
     assert detect(rec, replace(DetectorParams(), slow_floor_hz=1.0)) == []
+
+
+# ------------------------------------------------- baseline outside events (§12)
+
+
+def test_the_default_z_score_is_bit_for_bit_the_h6_one():
+    """§12 refactor: whole-recording z, computed exactly as frozen for H6."""
+    from neurosignal.detection.seizure import line_length_z
+    from neurosignal.preprocessing.qc import MAD_TO_SD
+
+    x = np.random.default_rng(3).normal(0.0, 10.0, (4, 256 * 60))
+    win, step = 512, 256
+    diff = np.abs(np.diff(x, axis=-1))
+    csum = np.concatenate([np.zeros((4, 1)), np.cumsum(diff, axis=-1)], axis=-1)
+    starts = np.arange(0, diff.shape[-1] - win + 1, step)
+    log_ll = np.log(np.maximum((csum[:, starts + win] - csum[:, starts]) / win, 1e-12))
+    med = np.median(log_ll, axis=-1, keepdims=True)
+    spread = MAD_TO_SD * np.median(np.abs(log_ll - med), axis=-1, keepdims=True)
+    expected = (log_ll - med) / np.maximum(spread, 1e-6)
+    np.testing.assert_array_equal(line_length_z(x, 256.0, 2.0, 1.0), expected)
+
+
+def test_the_quiet_baseline_ignores_a_long_burst():
+    """§12: a burst covering a fifth of the recording widens the whole-recording
+    spread; the quiet baseline measures the background as if it were absent."""
+    from neurosignal.detection.seizure import quiet_baseline_z, robust_z
+
+    rng = np.random.default_rng(4)
+    background = rng.normal(0.0, 0.2, (3, 600))
+    with_burst = background.copy()
+    with_burst[:, 200:320] += 1.5
+    z_whole = robust_z(with_burst)
+    z_quiet = quiet_baseline_z(with_burst, 2.5, 0.05)
+    z_none = robust_z(background)
+    quiet_part = np.r_[0:190, 330:600]
+    # without the burst the background's z-scores are what the quiet baseline gives
+    np.testing.assert_allclose(z_quiet[:, quiet_part], z_none[:, quiet_part], atol=0.15)
+    # the whole-recording baseline shrinks them (the false-alarm suppression)
+    assert np.std(z_whole[:, quiet_part]) < 0.9 * np.std(z_none[:, quiet_part])
+
+
+def test_a_mostly_active_recording_keeps_the_whole_recording_baseline():
+    from neurosignal.detection.seizure import quiet_baseline_z, robust_z
+
+    rng = np.random.default_rng(5)
+    x = rng.normal(0.0, 0.01, (3, 300))
+    x[:, ::3] += 1.0  # every third window active: widened, they cover everything
+    z1 = robust_z(x)
+    assert ((z1 > 2.5).mean(axis=0) >= 0.05)[::3].all()
+    np.testing.assert_array_equal(quiet_baseline_z(x, 2.5, 0.05), z1)
+
+
+def test_active_windows_are_widened_by_one_step():
+    """A 2 s window moving in 1 s steps: the windows next to an active one
+    contain part of the event and must not enter the baseline, even when they
+    stay below the threshold themselves."""
+    from neurosignal.detection.seizure import quiet_baseline_z, robust_z
+
+    x = np.random.default_rng(6).normal(0.0, 0.2, (1, 200))
+    x[0, 100] = 5.0  # one active window
+    x[0, 99] = x[0, 101] = 0.45  # its neighbours: raised, but below z = 2.5
+    z1 = robust_z(x)
+    assert (z1[0, [99, 101]] < 2.5).all()
+    # independent formulation: active windows dilated by a 3-wide box
+    quiet = np.convolve((z1[0] > 2.5).astype(float), np.ones(3), mode="same") == 0
+    assert not quiet[99:102].any()
+    np.testing.assert_array_equal(quiet_baseline_z(x, 2.5, 0.05), robust_z(x, quiet))
+
+
+def test_the_quiet_baseline_makes_the_spread_blind_to_discharges():
+    """§12 E4 on one recording: the same background with and without its
+    discharges gets the same per-channel spread (median ratio near 1)."""
+    import dataclasses
+
+    from neurosignal.detection.seizure import band_limit, log_line_length, quiet_baseline_z
+
+    p = detector_params(PipelineConfig())
+    spec = SynthSpec(duration_s=600.0, n_events=2, snr_db=6.0)
+
+    def spreads(spec_):
+        rec, _ = make_recording(41, spec_)
+        clean = preprocess(rec, PipelineConfig())
+        chans = clean.analysed_channels
+        x = band_limit(clean.data[clean.index(list(chans))], clean.sfreq, p.band_hz)
+        ll = log_line_length(x, clean.sfreq, p.window_s, p.step_s)
+        z = quiet_baseline_z(ll, p.z_threshold, p.channel_fraction)
+        return np.std(ll, axis=-1) / np.std(z, axis=-1)  # = the spread used
+
+    ratio = np.median(spreads(spec) / spreads(dataclasses.replace(spec, n_events=0)))
+    assert 0.95 <= ratio <= 1.05

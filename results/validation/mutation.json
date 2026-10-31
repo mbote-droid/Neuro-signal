@@ -1,11 +1,11 @@
 {
   "experiment": "mutation",
-  "killed": 28,
-  "mutants": 28,
+  "killed": 31,
+  "mutants": 31,
   "not_applied": [],
   "provenance": {
     "git": {
-      "commit": "4f4049e0dd66649a14e89a1d6d9522dfaf789697",
+      "commit": "59abd62baf7423ebbbf8046521dc204f833f1ea4",
       "dirty": true
     },
     "python": "3.12.3",
@@ -143,6 +143,39 @@
     {
       "file": "detection/seizure.py",
       "id": "blink_cue_whole_recording_background",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "quiet_baseline_not_widened",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "quiet_baseline_no_fallback",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "quiet_baseline_uses_all_windows",
       "pytest": [
         "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
       ],

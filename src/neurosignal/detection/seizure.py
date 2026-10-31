@@ -73,13 +73,15 @@ class DetectorParams:
     slow_floor_hz: float = 2.0
     blink_frontality: float = 3.0  # blink-like at or above this frontality...
     blink_symmetry: float = 0.5  # ...and at or above this left/right symmetry
+    # baseline measured outside active windows (PROBLEM_STATEMENT §12); off = H6
+    quiet_baseline: bool = False
 
     def to_dict(self) -> dict[str, Any]:
         return {k: list(v) if isinstance(v, tuple) else v for k, v in self.__dict__.items()}
 
 
-def line_length_z(x: FloatArray, sfreq: float, window_s: float, step_s: float) -> FloatArray:
-    """Robust z-score of log line length; x is (n_channels, n_samples)."""
+def log_line_length(x: FloatArray, sfreq: float, window_s: float, step_s: float) -> FloatArray:
+    """Log line length per channel and window; x is (n_channels, n_samples)."""
     win = round(window_s * sfreq)
     step = round(step_s * sfreq)
     diff = np.abs(np.diff(x, axis=-1))
@@ -88,10 +90,54 @@ def line_length_z(x: FloatArray, sfreq: float, window_s: float, step_s: float) -
     csum = np.concatenate([np.zeros((x.shape[0], 1)), np.cumsum(diff, axis=-1)], axis=-1)
     starts = np.arange(0, diff.shape[-1] - win + 1, step)
     ll = (csum[:, starts + win] - csum[:, starts]) / win
-    log_ll = np.log(np.maximum(ll, 1e-12))
-    med = np.median(log_ll, axis=-1, keepdims=True)
-    spread = MAD_TO_SD * np.median(np.abs(log_ll - med), axis=-1, keepdims=True)
+    return np.asarray(np.log(np.maximum(ll, 1e-12)), dtype=np.float64)
+
+
+def robust_z(log_ll: FloatArray, baseline: np.ndarray | None = None) -> FloatArray:
+    """(value - median) / (1.4826 MAD) per channel, the median and MAD taken over
+    the windows in `baseline` (a boolean mask), or over all windows."""
+    ref = log_ll if baseline is None else log_ll[:, baseline]
+    med = np.median(ref, axis=-1, keepdims=True)
+    spread = MAD_TO_SD * np.median(np.abs(ref - med), axis=-1, keepdims=True)
     return np.asarray((log_ll - med) / np.maximum(spread, 1e-6), dtype=np.float64)
+
+
+def line_length_z(x: FloatArray, sfreq: float, window_s: float, step_s: float) -> FloatArray:
+    """Robust z-score of log line length over the whole recording (the detector
+    frozen for H6); x is (n_channels, n_samples)."""
+    return robust_z(log_line_length(x, sfreq, window_s, step_s))
+
+
+def quiet_baseline_z(log_ll: FloatArray, z_threshold: float, channel_fraction: float) -> FloatArray:
+    """Robust z-score with each channel's baseline measured outside the windows
+    where the detector is active (PROBLEM_STATEMENT §12).
+
+    Over the whole recording, the baseline contains the discharges it is used
+    to find: they widen the spread (by a median factor of 1.31 when a common
+    average carries them into every channel) and make every other burst look
+    smaller, so a recording's false-alarm rate fell with the number of its
+    seizures. Pass 1 finds the active windows with the whole-recording z;
+    each is widened by one step on each side, since a window spans more than
+    one step; pass 2 measures median and MAD outside them. A recording with
+    fewer than half its windows quiet keeps pass 1."""
+    z1 = robust_z(log_ll)
+    active = (z1 > z_threshold).mean(axis=0) >= channel_fraction
+    widened = active.copy()
+    widened[1:] |= active[:-1]
+    widened[:-1] |= active[1:]
+    quiet = ~widened
+    if quiet.sum() < 0.5 * quiet.size:
+        return z1
+    return robust_z(log_ll, quiet)
+
+
+def detector_z(x: FloatArray, sfreq: float, p: DetectorParams) -> FloatArray:
+    """The z-scores `detect` thresholds; shared with tuning so the two cannot drift."""
+    if p.quiet_baseline:
+        return quiet_baseline_z(
+            log_line_length(x, sfreq, p.window_s, p.step_s), p.z_threshold, p.channel_fraction
+        )
+    return line_length_z(x, sfreq, p.window_s, p.step_s)
 
 
 def _runs(active: np.ndarray) -> list[tuple[int, int]]:
@@ -109,7 +155,7 @@ def detect(rec: Recording, params: DetectorParams | None = None) -> list[Detecte
     if not chans:
         return []
     x = band_limit(rec.data[rec.index(list(chans))], rec.sfreq, p.band_hz)
-    z = line_length_z(x, rec.sfreq, p.window_s, p.step_s)
+    z = detector_z(x, rec.sfreq, p)
     return rhythm_gate(events_from_z(z, chans, p), x, chans, rec.sfreq, p)
 
 
