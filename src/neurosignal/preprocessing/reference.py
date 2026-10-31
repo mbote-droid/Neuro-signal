@@ -25,8 +25,7 @@ class CommonAverage(Stage):
     def process(self, rec: Recording) -> Recording:
         # the average is taken over good EEG channels only: an ECG channel would
         # leak the heartbeat into every channel (ISSUE-017)
-        eeg = set(rec.eeg_channels)
-        good = rec.index([c for c in rec.good_channels if c in eeg])
+        good = rec.index(list(rec.analysed_channels))
         self.applied = not rec.is_bipolar and len(good) >= 3
         if not self.applied:
             return rec

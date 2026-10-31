@@ -296,8 +296,21 @@ so a confirmatory test on more subjects would have been affected.
 Mitigation: non-EEG channels are ignored for the montage decision and
 excluded from the average; duplicate suffixes are accepted; derivations
 sharing one or two second electrodes are referential.
-Open: non-EEG channels still enter spectra, coupling and the detector's
-channel vote (v0.2, before more CHB-MIT subjects are used).
+Closed (2026-10-31, v0.2): non-EEG channels are now excluded from the robust
+amplitude reference, the spectra and aperiodic fits, the coupling matrix, the
+detector's channel vote and the "before" line-noise median, as well as from
+the montage decision and the average reference. `Recording.analysed_channels`
+(EEG and not bad) is the single definition every measurement uses, and
+`recording.non_eeg_channels` reports what was left out. Effect on reported
+results: none. Every synthetic recording is all-EEG, so `analysed_channels`
+equals `good_channels` and the code path is unchanged (H1, H2, H3, QC,
+aperiodic, resources, adversarial), and H4 is unchanged at 3334/3334. The
+new metric `recording.non_eeg_channels` is a list, so it adds no key the
+`swap_key` operator can draw and the mutation sequence is untouched; a
+redundant numeric count was dropped for exactly that reason. chb01 and chb03 carry no non-EEG channels, and
+H5/H6 were not re-run in any case: they are one-shot results of a detector
+frozen at v0.1.2. The CHB-MIT runner now records `non_eeg_channels` per file,
+so the next run shows this rather than asserting it.
 
 ### ISSUE-018 A compressed .npz could exceed the size limit in memory   (2026-10-26)
 Phase: bug hunt (code review)

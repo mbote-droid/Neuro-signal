@@ -102,3 +102,29 @@ def test_markdown_report_escapes_untrusted_html(tmp_path, metrics):
     write_markdown(metrics, text, check(text, metrics), "template", tmp_path / "r.md")
     out = (tmp_path / "r.md").read_text()
     assert "<img" not in out and "&lt;img" in out
+
+
+def test_a_non_eeg_channel_changes_no_measurement(synth_pair):
+    """ISSUE-017: ECG, VNS, respiration and placeholder channels carry no
+    cortical signal. They are excluded from the robust amplitude reference, the
+    average reference, the spectra, the coupling matrix and the detector's
+    channel vote, so adding one must leave every measurement unchanged."""
+    from neurosignal.core.recording import Recording
+    from neurosignal.pipeline import analyse, build_metrics
+
+    rec, _ = synth_pair
+    rng = np.random.default_rng(0)
+    # amplitudes far outside the EEG range, as a real ECG trace has
+    extra = rng.normal(0.0, 500.0, (2, rec.n_samples))
+    noisy = Recording(
+        data=np.vstack([rec.data, extra]),
+        sfreq=rec.sfreq,
+        channels=(*rec.channels, "ECG", "VNS"),
+        annotations=rec.annotations,
+    )
+    before, after = build_metrics(analyse(rec)), build_metrics(analyse(noisy))
+
+    assert after["recording"]["non_eeg_channels"] == ["ECG", "VNS"]
+    assert before["recording"]["non_eeg_channels"] == []
+    for section in ("qc", "spectral", "aperiodic", "connectivity", "events"):
+        assert before[section] == after[section], section

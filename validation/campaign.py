@@ -505,6 +505,10 @@ def _chb_case(name: str) -> dict[str, Any]:
         "false": sc.false_detections,
         "latencies_s": list(sc.onset_latencies_s),
         "bad_channels": list(an.clean.bad_channels),
+        # recorded so a later run can show which channels were excluded as
+        # non-EEG, instead of the claim resting on the dataset's documentation
+        "non_eeg_channels": list(an.clean.non_eeg_channels),
+        "n_channels": an.clean.n_channels,
         "runtime_s": time.perf_counter() - t0,
     }
 

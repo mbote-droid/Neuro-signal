@@ -5,6 +5,19 @@ semantic versioning.
 
 ## [Unreleased]
 
+### Changed
+- Non-EEG channels (ECG, VNS, respiration, placeholders) no longer enter any
+  measurement: the robust amplitude reference, spectra and aperiodic fits,
+  the coupling matrix, the detector's channel vote and the "before"
+  line-noise median all use `Recording.analysed_channels` (EEG and not bad),
+  the same set the average reference already used (BUILD_JOURNAL ISSUE-017).
+  Needed before a confirmatory test on CHB-MIT subjects that carry ECG and
+  VNS channels. `metrics.json` gains `recording.non_eeg_channels`.
+- No validation result changes: every synthetic recording is all-EEG, so
+  `analysed_channels` equals `good_channels` and the code path is identical.
+- Two code mutants added (26 total, all killed): the detector voting on
+  non-EEG channels, and the amplitude reference including them.
+
 ## [0.1.2] - 2026-10-28
 
 Archived on Zenodo: [10.5281/zenodo.23716723](https://doi.org/10.5281/zenodo.23716723).

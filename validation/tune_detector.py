@@ -49,7 +49,7 @@ def main() -> None:
     for seed in TUNING_SEEDS:
         rec, gt = make_recording(seed, detection_spec(seed))
         clean = preprocess(rec, cfg)
-        chans = clean.good_channels
+        chans = clean.analysed_channels
         x = band_limit(clean.data[clean.index(list(chans))], clean.sfreq, DetectorParams().band_hz)
         z = line_length_z(x, clean.sfreq, 2.0, 1.0)
         truth = [Interval(e.onset_s, e.offset_s) for e in gt.events]

@@ -93,7 +93,7 @@ def _runs(active: np.ndarray) -> list[tuple[int, int]]:
 
 def detect(rec: Recording, params: DetectorParams | None = None) -> list[DetectedEvent]:
     p = params or DetectorParams()
-    chans = rec.good_channels
+    chans = rec.analysed_channels  # EEG only: an ECG channel must not vote (ISSUE-017)
     if not chans:
         return []
     x = band_limit(rec.data[rec.index(list(chans))], rec.sfreq, p.band_hz)

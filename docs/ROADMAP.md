@@ -76,16 +76,25 @@ finding becomes a test and a BUILD_JOURNAL entry.
 | An AI judge tested, not trusted: give the H7 explanations to an LLM judge (single, or an optimist-versus-sceptic debate) and measure its agreement with the blinded H7c audit | 💤 | asks whether a judge catches the semantic errors the checker cannot; the human audit is the ground truth |
 | Idea 1: an offline small model plus a mechanical verifier for lab-result summaries in low-connectivity clinics | 💤 | a follow-on project in its own repository, reusing this method |
 
+## Confirmatory detector test (the v0.2 headline)
+
+One pre-registered test of the frozen detector on subjects never used before,
+sized by the power analysis. Steps 1-3 are developed on synthetic data and
+chb01 (development) only; chb03 is spent and cannot be reused.
+
+| step | item | status | notes |
+|---|---|---|---|
+| 1 | Non-EEG channels out of every measurement | ✅ 2026-10-31 | ISSUE-017 closed; `Recording.analysed_channels`; prerequisite, since other subjects carry ECG and VNS |
+| 2 | Spatial cue (frontal, symmetric) for blinks, then lower the rhythm-gate floor | ⏭ | FINDINGS F-7; 3 of 7 chb03 misses had fundamentals of 1.0-1.5 Hz, below a floor that exists only to reject blinks |
+| 3 | EMG cue against chewing (20-60 Hz power locked to the rhythm) | 💤 | ISSUE-021, FINDINGS F-10; chewing raised false detections from 2.40 to 6.00/h |
+| 4 | Freeze the detector, pre-register on OSF, download new subjects, run once | 💤 | about 76 seizures for 80 % power (STATISTICAL_FOUNDATIONS §7); further CHB-MIT subjects and/or Siena |
+
 ## Version 0.2 research (one pull request each)
 
 | item | status | notes |
 |---|---|---|
-| Spatial cue (frontal, symmetric) to separate blinks from slow ictal delta, then lower the rhythm-gate floor | 💤 | FINDINGS F-7 |
 | Detector with hidden states (HSMM fitted by EM) compared with the threshold detector | 💤 | |
 | Spectral fit aware of excluded event windows | 💤 | |
-| Leave non-EEG channels (ECG, VNS) out of spectra, coupling and the detector's channel vote | 💤 | ISSUE-017; needed before more CHB-MIT subjects |
-| EMG cue against chewing (20-60 Hz power locked to the rhythm) | 💤 | ISSUE-021, FINDINGS F-10 |
 | Absolute amplitude plausibility and clipping detection | 💤 | ISSUE-014 |
 | Section-scoped citation rules: each report section may cite only its own metrics, with short descriptions the model must not contradict | 💤 | the error H7c found (FINDINGS F-11); a new explainer version needs a new registration |
 | Coupling memory linear in the channel count | 💤 | about 2.5 GB at 128 channels today |
-| Confirmatory test sized by the power analysis (about 76 seizures), pre-registered on OSF | 💤 | STATISTICAL_FOUNDATIONS §7 |

@@ -116,14 +116,14 @@
   },
   "provenance": {
     "git": {
-      "commit": "4711f89b7cfd4bdbf89f9121606e509dc378eecc",
-      "dirty": false
+      "commit": "44de5749cc041d569f610c1413ef02e290894254",
+      "dirty": true
     },
     "python": "3.12.3",
     "versions": {
       "matplotlib": "3.11.2",
       "mne": "1.13.2",
-      "neurosignal": "0.1.1",
+      "neurosignal": "0.1.2",
       "numpy": "2.5.4",
       "scipy": "1.18.1"
     }

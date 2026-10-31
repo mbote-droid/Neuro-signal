@@ -123,7 +123,10 @@ class AmplitudeChannels(Stage):
     def process(self, rec: Recording) -> Recording:
         sd = robust_sd(rec.data)
         self.mad = {c: float(v) for c, v in zip(rec.channels, sd, strict=True)}
-        ref_idx = [i for i, c in enumerate(rec.channels) if c not in rec.bad_channels]
+        # EEG only: an ECG or respiration channel has its own amplitude scale and
+        # would shift the median every other channel is compared with (ISSUE-017)
+        analysed = set(rec.analysed_channels)
+        ref_idx = [i for i, c in enumerate(rec.channels) if c in analysed]
         reference = float(np.median(sd[ref_idx])) if ref_idx else float("nan")
         self.noisy, self.low = {}, {}
         for i in ref_idx:
