@@ -358,8 +358,14 @@ bipolar montage raised the frozen detector's false detections from 1.90 to
 own 2/h limit. H2 measured only the referential montage.
 Effect on reported results: none; H2 is a referential result and stands. It
 is consistent with H6's 3.30/h on bipolar chb03.
-Open: must be addressed, with its own registration, before the confirmatory
-test on CHB-MIT subjects (ROADMAP step 2b).
+Diagnosed (2026-10-31, step 2b): the gap appears only with discharges
+present. They widened each channel's robust line-length baseline by x1.31
+in the referential montage (the common average carries them into every
+channel) and x1.09 in the bipolar one, lowering false alarms unequally
+(FINDINGS F-13). A baseline measured outside active windows removes it
+(x1.004 and x1.013 on evaluation seeds); with re-tuned thresholds the gap
+shrank from 0.63 to 0.39/h. Not adopted: the event-free criterion E1 failed
+(PROBLEM_STATEMENT §12). Implemented, off by default.
 
 ### ISSUE-023 A pre-registered definition capped the quantity it measured   (2026-10-31)
 Phase: v0.2 development (§11, before tuning)
@@ -372,3 +378,20 @@ windows (`robust_rms`), recorded as a dated amendment to §11 (commit
 4f4049e) before any tuning or evaluation ran. The mutant that restores the
 old definition first survived; a test with a sustained bilateral frontal
 slow wave now kills it.
+
+### ISSUE-024 A benchmark flattered by its own discharges   (2026-10-31)
+Phase: v0.2 development (step 2b diagnosis)
+Symptom: the published H2 false-alarm rate, 1.68 per hour, pools event-free
+recordings (2.85/h) with recordings whose discharges widen the detector's
+robust baseline (1.39/h). Four recordings in five contain discharges, so
+the pooled figure understates what a seizure-free recording would see.
+Effect on reported results: the H2 verdict does not change (it was already
+rejected on sensitivity); the event-free rate is now reported alongside.
+Mitigation available: the quiet baseline (§12), off by default.
+
+### ISSUE-025 A pipe hid a failing check   (2026-10-31)
+Phase: v0.2 development
+Symptom: `make check | tail -1` returned tail's exit code, so a lint error
+was committed and pushed (7698b19); fixed in the next commit (0bcc0db).
+Mitigation: checks are run as `make check > log; echo $?` and the exit code
+is read before any commit. The same mistake is listed in the build rules.

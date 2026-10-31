@@ -17,6 +17,14 @@ semantic versioning.
 - Three code mutants for the cue (28 total, all killed).
 
 ### Found
+- The benchmark's discharges lowered its own false-alarm rate: they widen
+  each channel's robust baseline (x1.31 referential, x1.09 bipolar), so the
+  published H2 rate of 1.68/h pools 2.85/h on event-free recordings with
+  1.39/h on the rest (FINDINGS F-13, ISSUE-024). A baseline measured
+  outside active windows (PROBLEM_STATEMENT §12, `quiet_baseline`, off by
+  default) removes the effect and, re-tuned, beat the frozen detector on
+  every measure, but missed the registered event-free criterion, so it is
+  not adopted.
 - The frozen detector's false-alarm rate depends on the montage: 1.90/h
   referential vs 2.60/h bipolar on the same synthetic signals
   (BUILD_JOURNAL ISSUE-022). H2 stands as a referential result.

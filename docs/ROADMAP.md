@@ -86,7 +86,8 @@ chb01 (development) only; chb03 is spent and cannot be reused.
 |---|---|---|---|
 | 1 | Non-EEG channels out of every measurement | ✅ 2026-10-31 | ISSUE-017 closed; `Recording.analysed_channels`; prerequisite, since other subjects carry ECG and VNS |
 | 2 | Spatial cue (frontal, symmetric) for blinks, then lower the rhythm-gate floor | ❌ 2026-10-31 | pre-registered (§11); stop rule triggered at tuning, cue not adopted (FINDINGS F-12). It recovers slow discharges (14 → about 117 of 192) but no setting met 2 false/h; the extra false alarms were not blinks |
-| 2b | Montage-dependent false alarms: bipolar 2.60/h vs referential 1.90/h on the same synthetic signals | ⏭ | ISSUE-022, F-12; CHB-MIT is bipolar, so this comes before the confirmatory test; needs its own registration |
+| 2b | Montage-dependent false alarms: bipolar 2.60/h vs referential 1.90/h on the same synthetic signals | ❌ 2026-10-31 | diagnosed: discharges widened the baseline (F-13). Quiet baseline (§12) better than the frozen detector on every measure, gap 0.63 → 0.39/h, but not adopted: event-free E1 failed (2.70 and 3.15/h). Implemented, off |
+| 2d | Normal alpha and spindle bursts: the dominant false-alarm source on event-free recordings (4.0/h) | ⏭ | F-13 ablation; register before tuning; decide first whether the adoption criterion is improvement over the frozen detector or an absolute bar, on fresh evaluation seeds |
 | 2c | Slow-band events: a minimum duration (false ones lasted 12-13 s, true ones 40 s) | 💤 | exploratory hint from F-12; register before tuning; may reuse the cue, which is in the code, off |
 | 3 | EMG cue against chewing (20-60 Hz power locked to the rhythm) | 💤 | ISSUE-021, FINDINGS F-10; chewing raised false detections from 2.40 to 6.00/h |
 | 4 | Freeze the detector, pre-register on OSF, download new subjects, run once | 💤 | about 76 seizures for 80 % power (STATISTICAL_FOUNDATIONS §7); further CHB-MIT subjects and/or Siena |
