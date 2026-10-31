@@ -324,3 +324,76 @@ sqrt(recording length / event length). A textbook blink field (Fp1 = Fp2 =
 of about 4. Nothing else changes: the gate, the grid, the tuning rule, the
 stop rule and D1-D6 stand as registered. No tuning, evaluation or real
 recording had been run with either definition.
+
+## 12. Addendum (2026-10-31): a baseline that excludes the events it measures (v0.2, step 2b)
+
+Written before the change exists in the detector and before the detector has
+been run with it. A development step: it decides whether the change enters
+the detector that will later be frozen for the confirmatory test (ROADMAP
+step 4). chb03 is not used; chb01 is development.
+
+**What the exploratory diagnosis found** (`results/validation/montage_diagnosis.json`,
+`montage_power.json`; synthetic tuning seeds and fresh seeds 5000-5199, never
+used for tuning or evaluation):
+
+* With one source of negatives at a time and no discharges, the frozen
+  detector's false-alarm rate does not depend on the montage (full set: 4.50
+  vs 4.30 per hour). Normal alpha and spindle bursts cause most of it (4.0/h).
+* On 200 fresh benchmark recordings the bipolar rendering raised false alarms
+  from 1.80 to 2.67 per hour (more on 30 recordings, fewer on 8; sign test
+  p = 0.0005), but the same recordings with their discharges removed gave
+  4.17 and 4.65 per hour (p = 0.15).
+* The mechanism: each channel's robust z-score is scaled by the spread of log
+  line length over the whole recording, which contains the discharges. They
+  widen it by a median factor of 1.31 in the referential montage, where the
+  common average carries a discharge into every channel, and 1.09 in the
+  bipolar one. Every other burst then looks less extreme, more so in the
+  referential montage. The benchmark's false-alarm rate is therefore lowered
+  by its own discharges: in the published H2 rows, event-free recordings
+  ran at 2.85 per hour against 1.39 with discharges.
+* Measuring the baseline outside the windows where the detector is active
+  removed the effect: median factors 1.002 (referential) and 1.006
+  (bipolar).
+
+**The change (fixed now).** The z-score is computed in two passes. Pass 1 is
+today's: per channel, median and MAD of log line length over all windows. A
+window is *active* when at least `channel_fraction` of the channels exceed
+`z_threshold` in pass 1; each active window is widened by one step on each
+side. Pass 2 recomputes each channel's median and MAD over the windows that
+are not active, and the final z-scores use them. If fewer than half of the
+windows are left, pass 1 is kept (a recording that is mostly active has no
+quiet baseline to measure). No new threshold is introduced.
+
+**Tuning (fixed now), synthetic tuning seeds 0-59 only.** Because the
+discharges no longer lower the false-alarm rate, the detector's thresholds
+are re-chosen with the rule and grids already used for H2
+(`validation/tune_detector.py`): among settings with at most 2 false
+detections per hour, the highest sensitivity, ties broken towards the more
+conservative setting. The false-alarm constraint and the sensitivity are
+pooled over the standard benchmark rendered in both the referential and the
+CHB-MIT bipolar montage. The blink cue (§11) stays off. The full grid is
+saved whatever the outcome.
+
+**Stop rule.** If no setting meets the constraint, the change is not adopted
+and the detector frozen for H6 stays; the result is reported as the honest
+false-alarm rate of a detector that the benchmark had flattered.
+
+**Evaluation (fixed now), once, on evaluation seeds 1000-1199**, with the
+selected setting, both montages:
+
+* **E1 (false alarms).** At most 2 false detections per hour in each montage,
+  over all recordings and over the event-free recordings separately.
+* **E2 (montage).** Bipolar false alarms at most 0.5 per hour above
+  referential.
+* **E3 (sensitivity).** At least 0.80 in each montage.
+* **E4 (mechanism).** On the recordings with discharges, the median ratio of
+  each channel's spread with and without its discharges lies within
+  0.95-1.05 in both montages.
+* **E5 (chb01, development, reported).** Seizures found and false detections
+  per hour, frozen detector against the new one. Not a test.
+* **Reported in all cases:** the frozen detector's rates on the same
+  recordings, overall and event-free, in both montages.
+
+**Decision.** The change and the re-tuned thresholds enter the shipped
+detector only if E1-E4 all pass. Results measured with the frozen detector
+(H2, H5, H6) are not re-labelled: they stay the results of that detector.
