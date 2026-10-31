@@ -1,11 +1,11 @@
 {
   "experiment": "mutation",
-  "killed": 25,
-  "mutants": 25,
+  "killed": 28,
+  "mutants": 28,
   "not_applied": [],
   "provenance": {
     "git": {
-      "commit": "44de5749cc041d569f610c1413ef02e290894254",
+      "commit": "4f4049e0dd66649a14e89a1d6d9522dfaf789697",
       "dirty": true
     },
     "python": "3.12.3",
@@ -116,6 +116,39 @@
       "status": "KILLED",
       "tests": [
         "tests/test_pipeline.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "blink_cue_ignores_symmetry",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "blink_cue_unavailable_admits",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "blink_cue_whole_recording_background",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
       ]
     },
     {

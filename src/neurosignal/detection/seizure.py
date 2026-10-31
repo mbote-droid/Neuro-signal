@@ -17,6 +17,14 @@ frequencies because of the 1/f background (the H1 confound; BUILD_JOURNAL
 ISSUE-008), and the largest ratio peak is often a harmonic (ISSUE-010).
 Blinks and drift put the ratio peak near 1 Hz, muscle near 20 Hz.
 
+Below the gate's floor a spatial cue can still admit an event
+(PROBLEM_STATEMENT §11): blinks are frontopolar, bilateral and symmetric,
+and slow ictal delta usually is not. An event whose fundamental lies in
+[slow_floor_hz, rhythm_hz[0]) is kept when the cue is available and the
+event is not blink-like. With slow_floor_hz equal to rhythm_hz[0] (the
+default) the slow band is empty and the detector is exactly the one frozen
+for H6.
+
 The detector is unsupervised: it never sees labels. Its thresholds were
 chosen on synthetic tuning seeds only (validation/tune_detector.py).
 """
@@ -61,6 +69,10 @@ class DetectorParams:
     merge_gap_s: float = 1.0
     band_hz: tuple[float, float] = (1.0, 20.0)
     rhythm_hz: tuple[float, float] = (2.0, 7.5)
+    # spatial blink cue (§11); slow_floor_hz == rhythm_hz[0] switches it off
+    slow_floor_hz: float = 2.0
+    blink_frontality: float = 3.0  # blink-like at or above this frontality...
+    blink_symmetry: float = 0.5  # ...and at or above this left/right symmetry
 
     def to_dict(self) -> dict[str, Any]:
         return {k: list(v) if isinstance(v, tuple) else v for k, v in self.__dict__.items()}
@@ -148,6 +160,7 @@ def rhythm_gate(
         return kept
     nper = int(2 * sfreq)
     bg = background if background is not None else background_spectra(x, sfreq)
+    bg_rms: FloatArray | None = None  # computed only if an event falls in the slow band
     for e in events:
         idx = [chans.index(c) for c in e.channels] or list(range(len(chans)))
         seg = x[idx, int(e.onset_s * sfreq) : int(e.offset_s * sfreq)]
@@ -155,7 +168,80 @@ def rhythm_gate(
         f_dom = dominant_frequency(seg, sfreq, p.band_hz, ref)
         if p.rhythm_hz[0] <= f_dom <= p.rhythm_hz[1]:
             kept.append(replace(e, dominant_freq_hz=f_dom))
+        elif p.slow_floor_hz <= f_dom < p.rhythm_hz[0]:
+            if bg_rms is None:
+                bg_rms = robust_rms(x, sfreq, p.window_s)
+            cue = blink_cue(x, chans, sfreq, e.onset_s, e.offset_s, bg_rms)
+            if cue is not None and not cue.blink_like(p):
+                kept.append(replace(e, dominant_freq_hz=f_dom))
     return kept
+
+
+# Electrodes over the eyes, where a blink is largest (PROBLEM_STATEMENT §11).
+FRONTOPOLAR_LEFT = frozenset({"FP1", "AF3", "AF7"})
+FRONTOPOLAR_RIGHT = frozenset({"FP2", "AF4", "AF8"})
+FRONTOPOLAR_MIDLINE = frozenset({"FPZ", "AFZ"})
+
+
+def robust_rms(x: FloatArray, sfreq: float, window_s: float) -> FloatArray:
+    """Each channel's typical level: the median RMS over non-overlapping
+    windows. Not the RMS of the whole recording, which contains the event being
+    measured and so caps an event's excess at sqrt(recording / event length)
+    (PROBLEM_STATEMENT §11, amendment)."""
+    win = max(1, round(window_s * sfreq))
+    n = x.shape[-1] // win
+    if n == 0:
+        return np.asarray(np.sqrt(np.mean(x**2, axis=-1)), dtype=np.float64)
+    windows = x[:, : n * win].reshape(x.shape[0], n, win)
+    return np.asarray(np.median(np.sqrt(np.mean(windows**2, axis=-1)), axis=-1), dtype=np.float64)
+
+
+def anterior_electrode(channel: str) -> str:
+    """The electrode a channel mostly reflects: its own name in a referential
+    montage, the first electrode of a derivation "A-B" (FP1-F7 -> FP1)."""
+    name = channel.upper().removeprefix("EEG ").strip()
+    return name.split("-", 1)[0]
+
+
+@dataclass(frozen=True)
+class BlinkCue:
+    frontality: float  # median frontopolar excess / median excess elsewhere
+    symmetry: float  # min / max of mean left and right frontopolar excess
+
+    def blink_like(self, p: DetectorParams) -> bool:
+        return self.frontality >= p.blink_frontality and self.symmetry >= p.blink_symmetry
+
+
+def blink_cue(
+    x: FloatArray,
+    chans: tuple[str, ...],
+    sfreq: float,
+    onset_s: float,
+    offset_s: float,
+    background_rms: FloatArray,
+) -> BlinkCue | None:
+    """Where an event's amplitude rises above each channel's own level.
+
+    Excess per channel is the RMS during the event over the channel's typical
+    level (robust_rms), so a channel's impedance and baseline cancel. None
+    when the cue cannot be measured: no analysed left or right frontopolar
+    channel, or no other channel to compare with."""
+    seg = x[:, int(onset_s * sfreq) : int(offset_s * sfreq)]
+    if seg.shape[-1] == 0:
+        return None
+    excess = np.sqrt(np.mean(seg**2, axis=-1)) / np.maximum(background_rms, 1e-12)
+    anterior = [anterior_electrode(c) for c in chans]
+    left = [i for i, a in enumerate(anterior) if a in FRONTOPOLAR_LEFT]
+    right = [i for i, a in enumerate(anterior) if a in FRONTOPOLAR_RIGHT]
+    front = set(left) | set(right)
+    front |= {i for i, a in enumerate(anterior) if a in FRONTOPOLAR_MIDLINE}
+    other = [i for i in range(len(chans)) if i not in front]
+    if not left or not right or not other:
+        return None
+    frontality = float(np.median(excess[sorted(front)]) / max(np.median(excess[other]), 1e-12))
+    lm, rm = float(np.mean(excess[left])), float(np.mean(excess[right]))
+    symmetry = min(lm, rm) / max(lm, rm, 1e-12)
+    return BlinkCue(frontality, symmetry)
 
 
 def band_limit(x: FloatArray, sfreq: float, band: tuple[float, float]) -> FloatArray:

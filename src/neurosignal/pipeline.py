@@ -60,6 +60,9 @@ def detector_params(cfg: PipelineConfig) -> DetectorParams:
         merge_gap_s=cfg.ll_merge_gap_s,
         band_hz=cfg.ll_band_hz,
         rhythm_hz=cfg.rhythm_band_hz,
+        slow_floor_hz=cfg.blink_slow_floor_hz,
+        blink_frontality=cfg.blink_frontality,
+        blink_symmetry=cfg.blink_symmetry,
     )
 
 
