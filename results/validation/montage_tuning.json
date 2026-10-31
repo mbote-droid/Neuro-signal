@@ -1,0 +1,4453 @@
+{
+  "experiment": "montage_tuning",
+  "grid": [
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 29.900000000000006,
+          "sensitivity": 0.9479166666666666
+        },
+        "referential": {
+          "false_per_hour": 30.500000000000007,
+          "sensitivity": 0.9479166666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 39.000000000000014,
+      "false_detections": 604,
+      "false_per_hour": 30.200000000000006,
+      "hits": 182,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9479166666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 31.000000000000007,
+          "sensitivity": 0.96875
+        },
+        "referential": {
+          "false_per_hour": 30.900000000000006,
+          "sensitivity": 0.9479166666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 40.25000000000002,
+      "false_detections": 619,
+      "false_per_hour": 30.950000000000006,
+      "hits": 184,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9583333333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 30.100000000000005,
+          "sensitivity": 0.9583333333333334
+        },
+        "referential": {
+          "false_per_hour": 28.600000000000005,
+          "sensitivity": 0.9583333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 38.500000000000014,
+      "false_detections": 587,
+      "false_per_hour": 29.350000000000005,
+      "hits": 184,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9583333333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 6.000000000000001,
+          "sensitivity": 0.8333333333333334
+        },
+        "referential": {
+          "false_per_hour": 5.900000000000001,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 11.250000000000005,
+      "false_detections": 119,
+      "false_per_hour": 5.950000000000001,
+      "hits": 162,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.84375,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 7.500000000000002,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 6.600000000000001,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 13.000000000000005,
+      "false_detections": 141,
+      "false_per_hour": 7.050000000000002,
+      "hits": 166,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8645833333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 8.8,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 7.100000000000001,
+          "sensitivity": 0.875
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 15.000000000000007,
+      "false_detections": 159,
+      "false_per_hour": 7.950000000000001,
+      "hits": 167,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8697916666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 23.400000000000006,
+          "sensitivity": 0.90625
+        },
+        "referential": {
+          "false_per_hour": 24.500000000000004,
+          "sensitivity": 0.9375
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 29.500000000000014,
+      "false_detections": 479,
+      "false_per_hour": 23.950000000000003,
+      "hits": 177,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.921875,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 24.600000000000005,
+          "sensitivity": 0.9270833333333334
+        },
+        "referential": {
+          "false_per_hour": 25.200000000000003,
+          "sensitivity": 0.9479166666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 31.500000000000014,
+      "false_detections": 498,
+      "false_per_hour": 24.900000000000006,
+      "hits": 180,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9375,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 25.600000000000005,
+          "sensitivity": 0.9479166666666666
+        },
+        "referential": {
+          "false_per_hour": 24.400000000000006,
+          "sensitivity": 0.9583333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 31.750000000000014,
+      "false_detections": 500,
+      "false_per_hour": 25.000000000000004,
+      "hits": 183,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.953125,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.8000000000000007,
+          "sensitivity": 0.7916666666666666
+        },
+        "referential": {
+          "false_per_hour": 2.7000000000000006,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.750000000000002,
+      "false_detections": 55,
+      "false_per_hour": 2.7500000000000004,
+      "hits": 157,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8177083333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 4.000000000000001,
+          "sensitivity": 0.8020833333333334
+        },
+        "referential": {
+          "false_per_hour": 3.400000000000001,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 6.750000000000003,
+      "false_detections": 74,
+      "false_per_hour": 3.7000000000000006,
+      "hits": 160,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8333333333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 5.700000000000001,
+          "sensitivity": 0.8333333333333334
+        },
+        "referential": {
+          "false_per_hour": 4.500000000000001,
+          "sensitivity": 0.875
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 9.000000000000004,
+      "false_detections": 102,
+      "false_per_hour": 5.1000000000000005,
+      "hits": 164,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8541666666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 19.600000000000005,
+          "sensitivity": 0.8854166666666666
+        },
+        "referential": {
+          "false_per_hour": 19.700000000000003,
+          "sensitivity": 0.9166666666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 26.75000000000001,
+      "false_detections": 393,
+      "false_per_hour": 19.650000000000002,
+      "hits": 173,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9010416666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 19.900000000000002,
+          "sensitivity": 0.90625
+        },
+        "referential": {
+          "false_per_hour": 20.300000000000004,
+          "sensitivity": 0.9270833333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 26.75000000000001,
+      "false_detections": 402,
+      "false_per_hour": 20.100000000000005,
+      "hits": 176,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9166666666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 20.800000000000004,
+          "sensitivity": 0.9375
+        },
+        "referential": {
+          "false_per_hour": 20.700000000000003,
+          "sensitivity": 0.9270833333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 26.25000000000001,
+      "false_detections": 415,
+      "false_per_hour": 20.750000000000004,
+      "hits": 179,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9322916666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.1000000000000005,
+          "sensitivity": 0.78125
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 39,
+      "false_per_hour": 1.9500000000000004,
+      "hits": 155,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8072916666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.4000000000000004,
+          "sensitivity": 0.7916666666666666
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 43,
+      "false_per_hour": 2.1500000000000004,
+      "hits": 158,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8229166666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.0000000000000004,
+          "sensitivity": 0.8333333333333334
+        },
+        "referential": {
+          "false_per_hour": 3.1000000000000005,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 5.250000000000003,
+      "false_detections": 61,
+      "false_per_hour": 3.0500000000000007,
+      "hits": 162,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.84375,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 27.500000000000004,
+          "sensitivity": 0.90625
+        },
+        "referential": {
+          "false_per_hour": 27.700000000000006,
+          "sensitivity": 0.9375
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 35.750000000000014,
+      "false_detections": 552,
+      "false_per_hour": 27.600000000000005,
+      "hits": 177,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.921875,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 27.200000000000006,
+          "sensitivity": 0.90625
+        },
+        "referential": {
+          "false_per_hour": 27.700000000000006,
+          "sensitivity": 0.9375
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 35.250000000000014,
+      "false_detections": 549,
+      "false_per_hour": 27.450000000000006,
+      "hits": 177,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.921875,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 26.600000000000005,
+          "sensitivity": 0.90625
+        },
+        "referential": {
+          "false_per_hour": 26.200000000000006,
+          "sensitivity": 0.9375
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 33.250000000000014,
+      "false_detections": 528,
+      "false_per_hour": 26.400000000000006,
+      "hits": 177,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.921875,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 4.000000000000001,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 3.400000000000001,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 7.7500000000000036,
+      "false_detections": 74,
+      "false_per_hour": 3.7000000000000006,
+      "hits": 155,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8072916666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 4.200000000000001,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 3.8000000000000007,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 8.000000000000004,
+      "false_detections": 80,
+      "false_per_hour": 4.000000000000001,
+      "hits": 155,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8072916666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 5.400000000000001,
+          "sensitivity": 0.8020833333333334
+        },
+        "referential": {
+          "false_per_hour": 3.900000000000001,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 9.000000000000004,
+      "false_detections": 93,
+      "false_per_hour": 4.650000000000001,
+      "hits": 158,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8229166666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 23.000000000000004,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 23.200000000000003,
+          "sensitivity": 0.90625
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 29.500000000000014,
+      "false_detections": 462,
+      "false_per_hour": 23.100000000000005,
+      "hits": 170,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8854166666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.800000000000004,
+          "sensitivity": 0.875
+        },
+        "referential": {
+          "false_per_hour": 23.200000000000003,
+          "sensitivity": 0.90625
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 29.000000000000014,
+      "false_detections": 460,
+      "false_per_hour": 23.000000000000004,
+      "hits": 171,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.890625,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 23.300000000000004,
+          "sensitivity": 0.8958333333333334
+        },
+        "referential": {
+          "false_per_hour": 22.700000000000003,
+          "sensitivity": 0.9375
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 28.500000000000014,
+      "false_detections": 460,
+      "false_per_hour": 23.000000000000004,
+      "hits": 176,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9166666666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.6000000000000005,
+          "sensitivity": 0.7395833333333334
+        },
+        "referential": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.8020833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.500000000000002,
+      "false_detections": 48,
+      "false_per_hour": 2.4000000000000004,
+      "hits": 148,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7708333333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.6000000000000005,
+          "sensitivity": 0.75
+        },
+        "referential": {
+          "false_per_hour": 2.4000000000000004,
+          "sensitivity": 0.8020833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.500000000000002,
+      "false_detections": 50,
+      "false_per_hour": 2.5000000000000004,
+      "hits": 149,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7760416666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.7000000000000006,
+          "sensitivity": 0.78125
+        },
+        "referential": {
+          "false_per_hour": 2.4000000000000004,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 5.250000000000003,
+      "false_detections": 61,
+      "false_per_hour": 3.0500000000000007,
+      "hits": 155,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8072916666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.900000000000002,
+          "sensitivity": 0.8541666666666666
+        },
+        "referential": {
+          "false_per_hour": 18.700000000000003,
+          "sensitivity": 0.875
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 26.00000000000001,
+      "false_detections": 376,
+      "false_per_hour": 18.800000000000004,
+      "hits": 166,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8645833333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.700000000000003,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 18.800000000000004,
+          "sensitivity": 0.8854166666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 26.25000000000001,
+      "false_detections": 375,
+      "false_per_hour": 18.750000000000004,
+      "hits": 168,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.875,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 19.800000000000004,
+          "sensitivity": 0.875
+        },
+        "referential": {
+          "false_per_hour": 19.100000000000005,
+          "sensitivity": 0.9270833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 25.00000000000001,
+      "false_detections": 389,
+      "false_per_hour": 19.450000000000003,
+      "hits": 173,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9010416666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.7395833333333334
+        },
+        "referential": {
+          "false_per_hour": 1.7000000000000004,
+          "sensitivity": 0.78125
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 39,
+      "false_per_hour": 1.9500000000000004,
+      "hits": 146,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7604166666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.75
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.7916666666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 40,
+      "false_per_hour": 2.0000000000000004,
+      "hits": 148,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7708333333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.0000000000000004,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 49,
+      "false_per_hour": 2.4500000000000006,
+      "hits": 154,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8020833333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 26.200000000000006,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 26.300000000000004,
+          "sensitivity": 0.875
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 33.500000000000014,
+      "false_detections": 525,
+      "false_per_hour": 26.250000000000004,
+      "hits": 167,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8697916666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 26.000000000000004,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 26.200000000000006,
+          "sensitivity": 0.875
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 33.000000000000014,
+      "false_detections": 522,
+      "false_per_hour": 26.100000000000005,
+      "hits": 167,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8697916666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 24.900000000000006,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 24.800000000000004,
+          "sensitivity": 0.875
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 30.500000000000014,
+      "false_detections": 497,
+      "false_per_hour": 24.850000000000005,
+      "hits": 167,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8697916666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.1000000000000005,
+          "sensitivity": 0.7395833333333334
+        },
+        "referential": {
+          "false_per_hour": 2.6000000000000005,
+          "sensitivity": 0.7604166666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 6.000000000000003,
+      "false_detections": 57,
+      "false_per_hour": 2.8500000000000005,
+      "hits": 144,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.75,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.2000000000000006,
+          "sensitivity": 0.7395833333333334
+        },
+        "referential": {
+          "false_per_hour": 2.7000000000000006,
+          "sensitivity": 0.7604166666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 6.000000000000003,
+      "false_detections": 59,
+      "false_per_hour": 2.9500000000000006,
+      "hits": 144,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.75,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.6000000000000005,
+          "sensitivity": 0.7291666666666666
+        },
+        "referential": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.75
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 5.750000000000003,
+      "false_detections": 61,
+      "false_per_hour": 3.0500000000000007,
+      "hits": 142,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7395833333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.300000000000004,
+          "sensitivity": 0.8229166666666666
+        },
+        "referential": {
+          "false_per_hour": 21.800000000000004,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 29.000000000000014,
+      "false_detections": 441,
+      "false_per_hour": 22.050000000000004,
+      "hits": 161,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8385416666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 21.900000000000002,
+          "sensitivity": 0.8125
+        },
+        "referential": {
+          "false_per_hour": 21.700000000000003,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 28.500000000000014,
+      "false_detections": 436,
+      "false_per_hour": 21.800000000000004,
+      "hits": 160,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8333333333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 21.500000000000004,
+          "sensitivity": 0.8125
+        },
+        "referential": {
+          "false_per_hour": 21.500000000000004,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 28.000000000000014,
+      "false_detections": 430,
+      "false_per_hour": 21.500000000000004,
+      "hits": 161,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8385416666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.6979166666666666
+        },
+        "referential": {
+          "false_per_hour": 1.6000000000000003,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 41,
+      "false_per_hour": 2.0500000000000003,
+      "hits": 138,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.71875,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.6875
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 43,
+      "false_per_hour": 2.1500000000000004,
+      "hits": 137,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7135416666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.7000000000000006,
+          "sensitivity": 0.6875
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.75
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 46,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 138,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.71875,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.400000000000002,
+          "sensitivity": 0.8020833333333334
+        },
+        "referential": {
+          "false_per_hour": 17.900000000000002,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 25.50000000000001,
+      "false_detections": 363,
+      "false_per_hour": 18.150000000000002,
+      "hits": 157,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8177083333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.300000000000004,
+          "sensitivity": 0.7916666666666666
+        },
+        "referential": {
+          "false_per_hour": 18.000000000000004,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 25.50000000000001,
+      "false_detections": 363,
+      "false_per_hour": 18.150000000000002,
+      "hits": 157,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8177083333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.500000000000004,
+          "sensitivity": 0.8020833333333334
+        },
+        "referential": {
+          "false_per_hour": 18.700000000000003,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 25.25000000000001,
+      "false_detections": 372,
+      "false_per_hour": 18.600000000000005,
+      "hits": 158,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8229166666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.6875
+        },
+        "referential": {
+          "false_per_hour": 1.6000000000000003,
+          "sensitivity": 0.7291666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 36,
+      "false_per_hour": 1.8000000000000003,
+      "hits": 136,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7083333333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.6770833333333334
+        },
+        "referential": {
+          "false_per_hour": 1.7000000000000004,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 37,
+      "false_per_hour": 1.8500000000000003,
+      "hits": 136,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7083333333333334,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.6875
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 41,
+      "false_per_hour": 2.0500000000000003,
+      "hits": 137,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7135416666666666,
+      "z_threshold": 2.5
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 28.100000000000005,
+          "sensitivity": 0.90625
+        },
+        "referential": {
+          "false_per_hour": 29.300000000000004,
+          "sensitivity": 0.9375
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 36.500000000000014,
+      "false_detections": 574,
+      "false_per_hour": 28.700000000000006,
+      "hits": 177,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.921875,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 27.700000000000006,
+          "sensitivity": 0.90625
+        },
+        "referential": {
+          "false_per_hour": 29.000000000000004,
+          "sensitivity": 0.9375
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 35.750000000000014,
+      "false_detections": 567,
+      "false_per_hour": 28.350000000000005,
+      "hits": 177,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.921875,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 27.200000000000006,
+          "sensitivity": 0.9375
+        },
+        "referential": {
+          "false_per_hour": 27.900000000000006,
+          "sensitivity": 0.9270833333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 34.750000000000014,
+      "false_detections": 551,
+      "false_per_hour": 27.550000000000004,
+      "hits": 179,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9322916666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 4.4,
+          "sensitivity": 0.7916666666666666
+        },
+        "referential": {
+          "false_per_hour": 4.700000000000001,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 8.500000000000004,
+      "false_detections": 91,
+      "false_per_hour": 4.550000000000001,
+      "hits": 159,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.828125,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 4.300000000000001,
+          "sensitivity": 0.7916666666666666
+        },
+        "referential": {
+          "false_per_hour": 4.700000000000001,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 8.750000000000004,
+      "false_detections": 90,
+      "false_per_hour": 4.500000000000001,
+      "hits": 157,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8177083333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 5.700000000000001,
+          "sensitivity": 0.84375
+        },
+        "referential": {
+          "false_per_hour": 4.900000000000001,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 10.250000000000005,
+      "false_detections": 106,
+      "false_per_hour": 5.300000000000001,
+      "hits": 161,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8385416666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 23.000000000000004,
+          "sensitivity": 0.8854166666666666
+        },
+        "referential": {
+          "false_per_hour": 23.400000000000006,
+          "sensitivity": 0.90625
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 28.750000000000014,
+      "false_detections": 464,
+      "false_per_hour": 23.200000000000003,
+      "hits": 172,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8958333333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.800000000000004,
+          "sensitivity": 0.8854166666666666
+        },
+        "referential": {
+          "false_per_hour": 23.600000000000005,
+          "sensitivity": 0.9270833333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 29.000000000000014,
+      "false_detections": 464,
+      "false_per_hour": 23.200000000000003,
+      "hits": 174,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.90625,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 23.100000000000005,
+          "sensitivity": 0.90625
+        },
+        "referential": {
+          "false_per_hour": 24.100000000000005,
+          "sensitivity": 0.9270833333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 29.250000000000014,
+      "false_detections": 472,
+      "false_per_hour": 23.600000000000005,
+      "hits": 176,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9166666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.6000000000000005,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 2.1000000000000005,
+          "sensitivity": 0.8125
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 47,
+      "false_per_hour": 2.3500000000000005,
+      "hits": 152,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7916666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.500000000000002,
+      "false_detections": 47,
+      "false_per_hour": 2.3500000000000005,
+      "hits": 154,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8020833333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.6000000000000005,
+          "sensitivity": 0.8125
+        },
+        "referential": {
+          "false_per_hour": 2.7000000000000006,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 5.750000000000003,
+      "false_detections": 63,
+      "false_per_hour": 3.1500000000000004,
+      "hits": 158,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8229166666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 19.200000000000003,
+          "sensitivity": 0.8541666666666666
+        },
+        "referential": {
+          "false_per_hour": 18.900000000000002,
+          "sensitivity": 0.8958333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 26.25000000000001,
+      "false_detections": 381,
+      "false_per_hour": 19.050000000000004,
+      "hits": 168,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.875,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 19.500000000000004,
+          "sensitivity": 0.875
+        },
+        "referential": {
+          "false_per_hour": 19.200000000000003,
+          "sensitivity": 0.9166666666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 26.50000000000001,
+      "false_detections": 387,
+      "false_per_hour": 19.350000000000005,
+      "hits": 172,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8958333333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 20.200000000000003,
+          "sensitivity": 0.8854166666666666
+        },
+        "referential": {
+          "false_per_hour": 20.100000000000005,
+          "sensitivity": 0.9166666666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 25.75000000000001,
+      "false_detections": 403,
+      "false_per_hour": 20.150000000000002,
+      "hits": 173,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9010416666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.3000000000000003,
+          "sensitivity": 0.7395833333333334
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.8125
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 41,
+      "false_per_hour": 2.0500000000000003,
+      "hits": 149,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7760416666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.3000000000000003,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 43,
+      "false_per_hour": 2.1500000000000004,
+      "hits": 154,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8020833333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.8000000000000007,
+          "sensitivity": 0.8020833333333334
+        },
+        "referential": {
+          "false_per_hour": 2.1000000000000005,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 49,
+      "false_per_hour": 2.4500000000000006,
+      "hits": 157,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8177083333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 26.800000000000004,
+          "sensitivity": 0.8854166666666666
+        },
+        "referential": {
+          "false_per_hour": 26.400000000000006,
+          "sensitivity": 0.8958333333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 34.500000000000014,
+      "false_detections": 532,
+      "false_per_hour": 26.600000000000005,
+      "hits": 171,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.890625,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 26.400000000000006,
+          "sensitivity": 0.8854166666666666
+        },
+        "referential": {
+          "false_per_hour": 26.400000000000006,
+          "sensitivity": 0.8958333333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 34.500000000000014,
+      "false_detections": 528,
+      "false_per_hour": 26.400000000000006,
+      "hits": 171,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.890625,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 25.500000000000004,
+          "sensitivity": 0.8958333333333334
+        },
+        "referential": {
+          "false_per_hour": 25.400000000000006,
+          "sensitivity": 0.90625
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 32.250000000000014,
+      "false_detections": 509,
+      "false_per_hour": 25.450000000000003,
+      "hits": 173,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9010416666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.5000000000000004,
+          "sensitivity": 0.75
+        },
+        "referential": {
+          "false_per_hour": 2.8000000000000007,
+          "sensitivity": 0.8020833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 7.0000000000000036,
+      "false_detections": 63,
+      "false_per_hour": 3.1500000000000004,
+      "hits": 149,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7760416666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.5000000000000004,
+          "sensitivity": 0.75
+        },
+        "referential": {
+          "false_per_hour": 3.1000000000000005,
+          "sensitivity": 0.7916666666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 7.5000000000000036,
+      "false_detections": 66,
+      "false_per_hour": 3.3000000000000007,
+      "hits": 148,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7708333333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 4.000000000000001,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 2.9000000000000004,
+          "sensitivity": 0.8020833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 7.7500000000000036,
+      "false_detections": 69,
+      "false_per_hour": 3.4500000000000006,
+      "hits": 151,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7864583333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.500000000000004,
+          "sensitivity": 0.8333333333333334
+        },
+        "referential": {
+          "false_per_hour": 22.500000000000004,
+          "sensitivity": 0.8854166666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 29.000000000000014,
+      "false_detections": 450,
+      "false_per_hour": 22.500000000000004,
+      "hits": 165,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.859375,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.200000000000003,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 22.600000000000005,
+          "sensitivity": 0.8854166666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 28.750000000000014,
+      "false_detections": 448,
+      "false_per_hour": 22.400000000000006,
+      "hits": 168,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.875,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.100000000000005,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 22.500000000000004,
+          "sensitivity": 0.8854166666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 28.250000000000014,
+      "false_detections": 446,
+      "false_per_hour": 22.300000000000004,
+      "hits": 168,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.875,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.7083333333333334
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.78125
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 44,
+      "false_per_hour": 2.2,
+      "hits": 143,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7447916666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.7395833333333334
+        },
+        "referential": {
+          "false_per_hour": 2.1000000000000005,
+          "sensitivity": 0.7708333333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 46,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 145,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7552083333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.7000000000000006,
+          "sensitivity": 0.75
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.7708333333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.750000000000002,
+      "false_detections": 46,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 146,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7604166666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.600000000000005,
+          "sensitivity": 0.8229166666666666
+        },
+        "referential": {
+          "false_per_hour": 18.300000000000004,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 25.50000000000001,
+      "false_detections": 369,
+      "false_per_hour": 18.450000000000003,
+      "hits": 161,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8385416666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.600000000000005,
+          "sensitivity": 0.8333333333333334
+        },
+        "referential": {
+          "false_per_hour": 18.300000000000004,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 26.00000000000001,
+      "false_detections": 369,
+      "false_per_hour": 18.450000000000003,
+      "hits": 163,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8489583333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.800000000000004,
+          "sensitivity": 0.8541666666666666
+        },
+        "referential": {
+          "false_per_hour": 19.100000000000005,
+          "sensitivity": 0.875
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 25.25000000000001,
+      "false_detections": 379,
+      "false_per_hour": 18.950000000000003,
+      "hits": 166,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8645833333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.1000000000000005,
+          "sensitivity": 0.7083333333333334
+        },
+        "referential": {
+          "false_per_hour": 1.7000000000000004,
+          "sensitivity": 0.75
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 38,
+      "false_per_hour": 1.9000000000000004,
+      "hits": 140,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7291666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.71875
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.7604166666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 40,
+      "false_per_hour": 2.0000000000000004,
+      "hits": 142,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7395833333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.4000000000000004,
+          "sensitivity": 0.75
+        },
+        "referential": {
+          "false_per_hour": 1.7000000000000004,
+          "sensitivity": 0.7708333333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 41,
+      "false_per_hour": 2.0500000000000003,
+      "hits": 146,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7604166666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 25.700000000000003,
+          "sensitivity": 0.8125
+        },
+        "referential": {
+          "false_per_hour": 26.100000000000005,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 32.500000000000014,
+      "false_detections": 518,
+      "false_per_hour": 25.900000000000006,
+      "hits": 160,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8333333333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 25.200000000000003,
+          "sensitivity": 0.8229166666666666
+        },
+        "referential": {
+          "false_per_hour": 25.800000000000004,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 31.750000000000014,
+      "false_detections": 510,
+      "false_per_hour": 25.500000000000004,
+      "hits": 162,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.84375,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 24.000000000000004,
+          "sensitivity": 0.8229166666666666
+        },
+        "referential": {
+          "false_per_hour": 24.700000000000003,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 29.750000000000014,
+      "false_detections": 487,
+      "false_per_hour": 24.350000000000005,
+      "hits": 162,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.84375,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.0000000000000004,
+          "sensitivity": 0.6666666666666666
+        },
+        "referential": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.7291666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 5.750000000000003,
+      "false_detections": 55,
+      "false_per_hour": 2.7500000000000004,
+      "hits": 134,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6979166666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.9000000000000004,
+          "sensitivity": 0.6770833333333334
+        },
+        "referential": {
+          "false_per_hour": 2.4000000000000004,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 5.500000000000003,
+      "false_detections": 53,
+      "false_per_hour": 2.6500000000000004,
+      "hits": 136,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7083333333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.0000000000000004,
+          "sensitivity": 0.6875
+        },
+        "referential": {
+          "false_per_hour": 2.4000000000000004,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 5.250000000000003,
+      "false_detections": 54,
+      "false_per_hour": 2.7000000000000006,
+      "hits": 137,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7135416666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.200000000000003,
+          "sensitivity": 0.7916666666666666
+        },
+        "referential": {
+          "false_per_hour": 21.900000000000002,
+          "sensitivity": 0.8229166666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 29.000000000000014,
+      "false_detections": 441,
+      "false_per_hour": 22.050000000000004,
+      "hits": 155,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8072916666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 21.800000000000004,
+          "sensitivity": 0.8125
+        },
+        "referential": {
+          "false_per_hour": 21.500000000000004,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 28.500000000000014,
+      "false_detections": 433,
+      "false_per_hour": 21.650000000000002,
+      "hits": 158,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8229166666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 21.200000000000003,
+          "sensitivity": 0.8125
+        },
+        "referential": {
+          "false_per_hour": 21.400000000000002,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 28.000000000000014,
+      "false_detections": 426,
+      "false_per_hour": 21.300000000000004,
+      "hits": 160,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8333333333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.65625
+        },
+        "referential": {
+          "false_per_hour": 1.7000000000000004,
+          "sensitivity": 0.7083333333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 42,
+      "false_per_hour": 2.1000000000000005,
+      "hits": 131,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6822916666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.6770833333333334
+        },
+        "referential": {
+          "false_per_hour": 1.6000000000000003,
+          "sensitivity": 0.71875
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 41,
+      "false_per_hour": 2.0500000000000003,
+      "hits": 134,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6979166666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.6875
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 44,
+      "false_per_hour": 2.2,
+      "hits": 137,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7135416666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.200000000000003,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 17.900000000000002,
+          "sensitivity": 0.7916666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 25.25000000000001,
+      "false_detections": 361,
+      "false_per_hour": 18.050000000000004,
+      "hits": 150,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.78125,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.100000000000005,
+          "sensitivity": 0.78125
+        },
+        "referential": {
+          "false_per_hour": 17.700000000000003,
+          "sensitivity": 0.8020833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 25.25000000000001,
+      "false_detections": 358,
+      "false_per_hour": 17.900000000000002,
+      "hits": 152,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7916666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.100000000000005,
+          "sensitivity": 0.8020833333333334
+        },
+        "referential": {
+          "false_per_hour": 18.200000000000003,
+          "sensitivity": 0.8229166666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 25.00000000000001,
+      "false_detections": 363,
+      "false_per_hour": 18.150000000000002,
+      "hits": 156,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8125,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.6458333333333334
+        },
+        "referential": {
+          "false_per_hour": 1.7000000000000004,
+          "sensitivity": 0.6875
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 37,
+      "false_per_hour": 1.8500000000000003,
+      "hits": 128,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6666666666666666,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.65625
+        },
+        "referential": {
+          "false_per_hour": 1.6000000000000003,
+          "sensitivity": 0.6979166666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 36,
+      "false_per_hour": 1.8000000000000003,
+      "hits": 130,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6770833333333334,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.1000000000000005,
+          "sensitivity": 0.6875
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.71875
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 40,
+      "false_per_hour": 2.0000000000000004,
+      "hits": 135,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.703125,
+      "z_threshold": 3.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 27.400000000000006,
+          "sensitivity": 0.8854166666666666
+        },
+        "referential": {
+          "false_per_hour": 28.300000000000004,
+          "sensitivity": 0.90625
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 35.500000000000014,
+      "false_detections": 557,
+      "false_per_hour": 27.850000000000005,
+      "hits": 172,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8958333333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 27.200000000000006,
+          "sensitivity": 0.875
+        },
+        "referential": {
+          "false_per_hour": 28.000000000000004,
+          "sensitivity": 0.90625
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 34.750000000000014,
+      "false_detections": 552,
+      "false_per_hour": 27.600000000000005,
+      "hits": 171,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.890625,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 26.200000000000006,
+          "sensitivity": 0.8854166666666666
+        },
+        "referential": {
+          "false_per_hour": 27.000000000000004,
+          "sensitivity": 0.9166666666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 32.750000000000014,
+      "false_detections": 532,
+      "false_per_hour": 26.600000000000005,
+      "hits": 173,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.9010416666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.900000000000001,
+          "sensitivity": 0.75
+        },
+        "referential": {
+          "false_per_hour": 3.900000000000001,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 7.7500000000000036,
+      "false_detections": 78,
+      "false_per_hour": 3.900000000000001,
+      "hits": 152,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7916666666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 4.1000000000000005,
+          "sensitivity": 0.7395833333333334
+        },
+        "referential": {
+          "false_per_hour": 3.900000000000001,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 7.7500000000000036,
+      "false_detections": 80,
+      "false_per_hour": 4.000000000000001,
+      "hits": 152,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7916666666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 4.200000000000001,
+          "sensitivity": 0.7604166666666666
+        },
+        "referential": {
+          "false_per_hour": 4.300000000000001,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 7.7500000000000036,
+      "false_detections": 85,
+      "false_per_hour": 4.250000000000001,
+      "hits": 154,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.8020833333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.900000000000006,
+          "sensitivity": 0.8541666666666666
+        },
+        "referential": {
+          "false_per_hour": 22.900000000000006,
+          "sensitivity": 0.8958333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 29.000000000000014,
+      "false_detections": 458,
+      "false_per_hour": 22.900000000000006,
+      "hits": 168,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.875,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.600000000000005,
+          "sensitivity": 0.8541666666666666
+        },
+        "referential": {
+          "false_per_hour": 23.100000000000005,
+          "sensitivity": 0.90625
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 28.500000000000014,
+      "false_detections": 457,
+      "false_per_hour": 22.850000000000005,
+      "hits": 169,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8802083333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.800000000000004,
+          "sensitivity": 0.875
+        },
+        "referential": {
+          "false_per_hour": 23.900000000000006,
+          "sensitivity": 0.9166666666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 28.750000000000014,
+      "false_detections": 467,
+      "false_per_hour": 23.350000000000005,
+      "hits": 172,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8958333333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.6000000000000005,
+          "sensitivity": 0.7291666666666666
+        },
+        "referential": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.8125
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 46,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 148,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7708333333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.6000000000000005,
+          "sensitivity": 0.7291666666666666
+        },
+        "referential": {
+          "false_per_hour": 2.3000000000000003,
+          "sensitivity": 0.8229166666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 49,
+      "false_per_hour": 2.4500000000000006,
+      "hits": 149,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7760416666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.9000000000000004,
+          "sensitivity": 0.7604166666666666
+        },
+        "referential": {
+          "false_per_hour": 2.9000000000000004,
+          "sensitivity": 0.8333333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.750000000000002,
+      "false_detections": 58,
+      "false_per_hour": 2.9000000000000004,
+      "hits": 153,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.796875,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.700000000000003,
+          "sensitivity": 0.84375
+        },
+        "referential": {
+          "false_per_hour": 18.500000000000004,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 25.50000000000001,
+      "false_detections": 372,
+      "false_per_hour": 18.600000000000005,
+      "hits": 164,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8541666666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.500000000000004,
+          "sensitivity": 0.8333333333333334
+        },
+        "referential": {
+          "false_per_hour": 18.800000000000004,
+          "sensitivity": 0.8854166666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 26.00000000000001,
+      "false_detections": 373,
+      "false_per_hour": 18.650000000000002,
+      "hits": 165,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.859375,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.900000000000002,
+          "sensitivity": 0.84375
+        },
+        "referential": {
+          "false_per_hour": 19.900000000000002,
+          "sensitivity": 0.8958333333333334
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 25.75000000000001,
+      "false_detections": 388,
+      "false_per_hour": 19.400000000000002,
+      "hits": 167,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8697916666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.7291666666666666
+        },
+        "referential": {
+          "false_per_hour": 1.7000000000000004,
+          "sensitivity": 0.7916666666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 37,
+      "false_per_hour": 1.8500000000000003,
+      "hits": 146,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7604166666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.71875
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.8125
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 38,
+      "false_per_hour": 1.9000000000000004,
+      "hits": 147,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.765625,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.7395833333333334
+        },
+        "referential": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.8229166666666666
+        }
+      },
+      "channel_fraction": 0.05,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 44,
+      "false_per_hour": 2.2,
+      "hits": 150,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.78125,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 26.500000000000004,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 26.400000000000006,
+          "sensitivity": 0.875
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 33.500000000000014,
+      "false_detections": 529,
+      "false_per_hour": 26.450000000000006,
+      "hits": 167,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8697916666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 26.100000000000005,
+          "sensitivity": 0.8645833333333334
+        },
+        "referential": {
+          "false_per_hour": 25.800000000000004,
+          "sensitivity": 0.8854166666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 32.750000000000014,
+      "false_detections": 519,
+      "false_per_hour": 25.950000000000003,
+      "hits": 168,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.875,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 25.200000000000003,
+          "sensitivity": 0.8854166666666666
+        },
+        "referential": {
+          "false_per_hour": 25.100000000000005,
+          "sensitivity": 0.8854166666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 31.000000000000014,
+      "false_detections": 503,
+      "false_per_hour": 25.150000000000006,
+      "hits": 170,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8854166666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.5000000000000004,
+          "sensitivity": 0.7291666666666666
+        },
+        "referential": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.75
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 6.500000000000003,
+      "false_detections": 60,
+      "false_per_hour": 3.0000000000000004,
+      "hits": 142,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7395833333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.400000000000001,
+          "sensitivity": 0.7291666666666666
+        },
+        "referential": {
+          "false_per_hour": 2.3000000000000003,
+          "sensitivity": 0.7604166666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 6.250000000000003,
+      "false_detections": 57,
+      "false_per_hour": 2.8500000000000005,
+      "hits": 143,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7447916666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.5000000000000004,
+          "sensitivity": 0.7604166666666666
+        },
+        "referential": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.7604166666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 6.250000000000003,
+      "false_detections": 60,
+      "false_per_hour": 3.0000000000000004,
+      "hits": 146,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7604166666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.600000000000005,
+          "sensitivity": 0.8333333333333334
+        },
+        "referential": {
+          "false_per_hour": 22.500000000000004,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 29.000000000000014,
+      "false_detections": 451,
+      "false_per_hour": 22.550000000000004,
+      "hits": 162,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.84375,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.300000000000004,
+          "sensitivity": 0.8333333333333334
+        },
+        "referential": {
+          "false_per_hour": 22.100000000000005,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 28.750000000000014,
+      "false_detections": 444,
+      "false_per_hour": 22.200000000000003,
+      "hits": 163,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8489583333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.200000000000003,
+          "sensitivity": 0.8541666666666666
+        },
+        "referential": {
+          "false_per_hour": 22.200000000000003,
+          "sensitivity": 0.8645833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 28.500000000000014,
+      "false_detections": 444,
+      "false_per_hour": 22.200000000000003,
+      "hits": 165,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.859375,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.6000000000000005,
+          "sensitivity": 0.7083333333333334
+        },
+        "referential": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 46,
+      "false_per_hour": 2.3000000000000003,
+      "hits": 139,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7239583333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.6000000000000005,
+          "sensitivity": 0.7083333333333334
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.75
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 45,
+      "false_per_hour": 2.2500000000000004,
+      "hits": 140,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7291666666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.7000000000000006,
+          "sensitivity": 0.7395833333333334
+        },
+        "referential": {
+          "false_per_hour": 2.1000000000000005,
+          "sensitivity": 0.75
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.500000000000002,
+      "false_detections": 48,
+      "false_per_hour": 2.4000000000000004,
+      "hits": 143,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7447916666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.600000000000005,
+          "sensitivity": 0.8020833333333334
+        },
+        "referential": {
+          "false_per_hour": 18.400000000000002,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 25.50000000000001,
+      "false_detections": 370,
+      "false_per_hour": 18.500000000000004,
+      "hits": 158,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8229166666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.500000000000004,
+          "sensitivity": 0.8125
+        },
+        "referential": {
+          "false_per_hour": 18.100000000000005,
+          "sensitivity": 0.84375
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 26.00000000000001,
+      "false_detections": 366,
+      "false_per_hour": 18.300000000000004,
+      "hits": 159,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.828125,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 18.700000000000003,
+          "sensitivity": 0.8125
+        },
+        "referential": {
+          "false_per_hour": 18.700000000000003,
+          "sensitivity": 0.8541666666666666
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 25.75000000000001,
+      "false_detections": 374,
+      "false_per_hour": 18.700000000000003,
+      "hits": 160,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8333333333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.6875
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 39,
+      "false_per_hour": 1.9500000000000004,
+      "hits": 137,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7135416666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.6979166666666666
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 38,
+      "false_per_hour": 1.9000000000000004,
+      "hits": 138,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.71875,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.1000000000000005,
+          "sensitivity": 0.7083333333333334
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.75
+        }
+      },
+      "channel_fraction": 0.1,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 40,
+      "false_per_hour": 2.0000000000000004,
+      "hits": 140,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.7291666666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 25.700000000000003,
+          "sensitivity": 0.8020833333333334
+        },
+        "referential": {
+          "false_per_hour": 25.900000000000006,
+          "sensitivity": 0.7916666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 31.750000000000014,
+      "false_detections": 516,
+      "false_per_hour": 25.800000000000004,
+      "hits": 153,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.796875,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 25.300000000000004,
+          "sensitivity": 0.8020833333333334
+        },
+        "referential": {
+          "false_per_hour": 25.000000000000004,
+          "sensitivity": 0.7916666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 31.250000000000014,
+      "false_detections": 503,
+      "false_per_hour": 25.150000000000006,
+      "hits": 153,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.796875,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 24.000000000000004,
+          "sensitivity": 0.8125
+        },
+        "referential": {
+          "false_per_hour": 24.100000000000005,
+          "sensitivity": 0.8125
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 29.500000000000014,
+      "false_detections": 481,
+      "false_per_hour": 24.050000000000004,
+      "hits": 156,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.8125,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.0000000000000004,
+          "sensitivity": 0.65625
+        },
+        "referential": {
+          "false_per_hour": 2.4000000000000004,
+          "sensitivity": 0.6666666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 5.500000000000003,
+      "false_detections": 54,
+      "false_per_hour": 2.7000000000000006,
+      "hits": 127,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6614583333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.9000000000000004,
+          "sensitivity": 0.65625
+        },
+        "referential": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.6666666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 5.250000000000003,
+      "false_detections": 51,
+      "false_per_hour": 2.5500000000000003,
+      "hits": 127,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6614583333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 3.0000000000000004,
+          "sensitivity": 0.6770833333333334
+        },
+        "referential": {
+          "false_per_hour": 2.2,
+          "sensitivity": 0.6875
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 5.000000000000003,
+      "false_detections": 52,
+      "false_per_hour": 2.6000000000000005,
+      "hits": 131,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 6.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6822916666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.200000000000003,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 21.900000000000002,
+          "sensitivity": 0.7708333333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 28.250000000000014,
+      "false_detections": 441,
+      "false_per_hour": 22.050000000000004,
+      "hits": 148,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7708333333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 22.100000000000005,
+          "sensitivity": 0.7708333333333334
+        },
+        "referential": {
+          "false_per_hour": 21.300000000000004,
+          "sensitivity": 0.7708333333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 28.500000000000014,
+      "false_detections": 434,
+      "false_per_hour": 21.700000000000003,
+      "hits": 148,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7708333333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 21.200000000000003,
+          "sensitivity": 0.78125
+        },
+        "referential": {
+          "false_per_hour": 21.000000000000004,
+          "sensitivity": 0.7916666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 28.000000000000014,
+      "false_detections": 422,
+      "false_per_hour": 21.100000000000005,
+      "hits": 151,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7864583333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.6354166666666666
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.6458333333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 43,
+      "false_per_hour": 2.1500000000000004,
+      "hits": 123,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.640625,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.6354166666666666
+        },
+        "referential": {
+          "false_per_hour": 1.6000000000000003,
+          "sensitivity": 0.6458333333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 41,
+      "false_per_hour": 2.0500000000000003,
+      "hits": 123,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.640625,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.5000000000000004,
+          "sensitivity": 0.65625
+        },
+        "referential": {
+          "false_per_hour": 1.9000000000000004,
+          "sensitivity": 0.6666666666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 44,
+      "false_per_hour": 2.2,
+      "hits": 127,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 10.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6614583333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 17.700000000000003,
+          "sensitivity": 0.75
+        },
+        "referential": {
+          "false_per_hour": 17.400000000000002,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 24.75000000000001,
+      "false_detections": 351,
+      "false_per_hour": 17.550000000000004,
+      "hits": 143,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7447916666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 17.700000000000003,
+          "sensitivity": 0.75
+        },
+        "referential": {
+          "false_per_hour": 17.000000000000004,
+          "sensitivity": 0.7395833333333334
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 24.75000000000001,
+      "false_detections": 347,
+      "false_per_hour": 17.35,
+      "hits": 143,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7447916666666666,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 17.500000000000004,
+          "sensitivity": 0.7604166666666666
+        },
+        "referential": {
+          "false_per_hour": 17.300000000000004,
+          "sensitivity": 0.75
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 24.50000000000001,
+      "false_detections": 348,
+      "false_per_hour": 17.400000000000002,
+      "hits": 145,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        13.0
+      ],
+      "sensitivity": 0.7552083333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.6354166666666666
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.625
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 38,
+      "false_per_hour": 1.9000000000000004,
+      "hits": 121,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 1.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6302083333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.6354166666666666
+        },
+        "referential": {
+          "false_per_hour": 1.6000000000000003,
+          "sensitivity": 0.625
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.000000000000002,
+      "false_detections": 36,
+      "false_per_hour": 1.8000000000000003,
+      "hits": 121,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 2.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6302083333333334,
+      "z_threshold": 4.0
+    },
+    {
+      "by_montage": {
+        "bipolar": {
+          "false_per_hour": 2.0000000000000004,
+          "sensitivity": 0.65625
+        },
+        "referential": {
+          "false_per_hour": 1.8000000000000003,
+          "sensitivity": 0.6354166666666666
+        }
+      },
+      "channel_fraction": 0.2,
+      "event_free_false_per_hour": 4.250000000000002,
+      "false_detections": 38,
+      "false_per_hour": 1.9000000000000004,
+      "hits": 124,
+      "hours": 19.999999999999996,
+      "merge_gap_s": 5.0,
+      "min_duration_s": 15.0,
+      "n_true": 192,
+      "rhythm_hz": [
+        2.0,
+        7.5
+      ],
+      "sensitivity": 0.6458333333333334,
+      "z_threshold": 4.0
+    }
+  ],
+  "provenance": {
+    "git": {
+      "commit": "0bcc0db6c04d0fc269eb67b2f2587cdb8b3db134",
+      "dirty": true
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.2",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "quiet_baseline_at_frozen_thresholds": {
+    "by_montage": {
+      "bipolar": {
+        "false_per_hour": 2.8000000000000007,
+        "sensitivity": 0.7916666666666666
+      },
+      "referential": {
+        "false_per_hour": 2.7000000000000006,
+        "sensitivity": 0.84375
+      }
+    },
+    "channel_fraction": 0.05,
+    "event_free_false_per_hour": 4.750000000000002,
+    "false_detections": 55,
+    "false_per_hour": 2.7500000000000004,
+    "hits": 157,
+    "hours": 19.999999999999996,
+    "merge_gap_s": 1.0,
+    "min_duration_s": 10.0,
+    "n_true": 192,
+    "rhythm_hz": [
+      2.0,
+      7.5
+    ],
+    "sensitivity": 0.8177083333333334,
+    "z_threshold": 2.5
+  },
+  "registration": "PROBLEM_STATEMENT \u00a712 (commit 59abd62)",
+  "seeds": [
+    0,
+    59
+  ],
+  "selected": {
+    "by_montage": {
+      "bipolar": {
+        "false_per_hour": 2.1000000000000005,
+        "sensitivity": 0.78125
+      },
+      "referential": {
+        "false_per_hour": 1.8000000000000003,
+        "sensitivity": 0.8333333333333334
+      }
+    },
+    "channel_fraction": 0.05,
+    "event_free_false_per_hour": 4.000000000000002,
+    "false_detections": 39,
+    "false_per_hour": 1.9500000000000004,
+    "hits": 155,
+    "hours": 19.999999999999996,
+    "merge_gap_s": 1.0,
+    "min_duration_s": 15.0,
+    "n_true": 192,
+    "rhythm_hz": [
+      2.0,
+      7.5
+    ],
+    "sensitivity": 0.8072916666666666,
+    "z_threshold": 2.5
+  },
+  "stop_rule_triggered": false
+}

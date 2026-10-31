@@ -3,6 +3,8 @@
 
     python validation/montage.py diagnose   # one source at a time, tuning seeds
     python validation/montage.py power      # is the gap real? fresh seeds 5000-5199
+    python validation/montage.py tune       # §12: re-tune with the quiet baseline, seeds 0-59
+    python validation/montage.py evaluate   # §12: once, E1-E5, seeds 1000-1199
 
 Exploratory, on synthetic tuning seeds only: event-free recordings with one
 source of realistic negatives at a time, each rendered in the referential
@@ -200,5 +202,276 @@ def _sign_test(more: int, fewer: int) -> float:
     return min(1.0, 2 * sum(comb(n, i) for i in range(k + 1)) / 2**n)
 
 
+# ---------------------------------------------------------------- §12 tuning
+
+
+def _quiet(**kw: Any) -> Any:
+    """The frozen detector with the quiet baseline on and `kw` overridden."""
+    return dataclasses.replace(detector_params(PipelineConfig()), quiet_baseline=True, **kw)
+
+
+def _tune_case(args: tuple[int, str]) -> dict[str, Any]:
+    """Every grid setting on one recording; returns per-setting counts."""
+    import itertools
+
+    from neurosignal.detection.events import Interval, score_events
+    from neurosignal.detection.seizure import (
+        background_spectra,
+        band_limit,
+        events_from_z,
+        log_line_length,
+        quiet_baseline_z,
+        rhythm_gate,
+    )
+    from validation.tune_detector import (
+        FRACTION_GRID,
+        MERGE_GAP_GRID,
+        MIN_DURATION_GRID,
+        RHYTHM_GRID,
+        Z_GRID,
+    )
+
+    seed, montage = args
+    rec, gt = make_recording(seed, detection_spec(seed))
+    if montage == "bipolar":
+        rec = bipolar_montage(rec)
+    clean = preprocess(rec, PipelineConfig())
+    chans = clean.analysed_channels
+    p0 = _quiet()
+    x = band_limit(clean.data[clean.index(list(chans))], clean.sfreq, p0.band_hz)
+    ll = log_line_length(x, clean.sfreq, p0.window_s, p0.step_s)
+    bg = background_spectra(x, clean.sfreq)
+    truth = [Interval(e.onset_s, e.offset_s) for e in gt.events]
+    out = []
+    for zt, frac in itertools.product(Z_GRID, FRACTION_GRID):
+        z = quiet_baseline_z(ll, zt, frac)
+        for mind, rhythm, gap in itertools.product(MIN_DURATION_GRID, RHYTHM_GRID, MERGE_GAP_GRID):
+            p = _quiet(z_threshold=zt, channel_fraction=frac, min_duration_s=mind,
+                       rhythm_hz=rhythm, merge_gap_s=gap)  # fmt: skip
+            det = [
+                e.interval()
+                for e in rhythm_gate(events_from_z(z, chans, p), x, chans, clean.sfreq, p, bg)
+            ]
+            sc = score_events(truth, det, rec.duration_s)
+            out.append(
+                [
+                    zt,
+                    frac,
+                    mind,
+                    list(rhythm),
+                    gap,
+                    sc.hits,
+                    sc.n_true,
+                    sc.false_detections,
+                    sc.hours,
+                ]
+            )
+    return {"seed": seed, "montage": montage, "event_free": not gt.events, "settings": out}
+
+
+def tune() -> None:
+    seeds = list(TUNING_SEEDS)
+    with ProcessPoolExecutor(WORKERS) as ex:
+        cases = list(ex.map(_tune_case, [(s, m) for s in seeds for m in MONTAGES]))
+    keys = [
+        tuple(map(lambda v: tuple(v) if isinstance(v, list) else v, row[:5]))
+        for row in cases[0]["settings"]
+    ]
+    rows = []
+    for i, key in enumerate(keys):
+        tot = {m: [0, 0, 0, 0.0] for m in (*MONTAGES, "event_free")}
+        for c in cases:
+            h, n, f, hrs = c["settings"][i][5:]
+            for k in (c["montage"], *(["event_free"] if c["event_free"] else [])):
+                tot[k][0] += h
+                tot[k][1] += n
+                tot[k][2] += f
+                tot[k][3] += hrs
+        hits = sum(tot[m][0] for m in MONTAGES)
+        n_true = sum(tot[m][1] for m in MONTAGES)
+        false = sum(tot[m][2] for m in MONTAGES)
+        hours = sum(tot[m][3] for m in MONTAGES)
+        zt, frac, mind, rhythm, gap = key
+        rows.append({
+            "z_threshold": zt, "channel_fraction": frac, "min_duration_s": mind,
+            "rhythm_hz": list(rhythm), "merge_gap_s": gap,
+            "sensitivity": hits / n_true, "false_per_hour": false / hours,
+            "hits": hits, "n_true": n_true, "false_detections": false, "hours": hours,
+            "by_montage": {m: {"sensitivity": tot[m][0] / tot[m][1],
+                               "false_per_hour": tot[m][2] / tot[m][3]} for m in MONTAGES},
+            "event_free_false_per_hour": tot["event_free"][2] / tot["event_free"][3],
+        })  # fmt: skip
+    feasible = [r for r in rows if r["false_per_hour"] <= 2.0]
+    # the H2 rule (validation/tune_detector.py): ties towards the conservative setting
+    best = max(
+        feasible,
+        key=lambda r: (r["sensitivity"], r["z_threshold"], r["min_duration_s"],
+                       -r["rhythm_hz"][1], -r["merge_gap_s"], -r["channel_fraction"]),
+    ) if feasible else None  # fmt: skip
+    frozen = detector_params(PipelineConfig())
+    frozen_key = (frozen.z_threshold, frozen.channel_fraction, frozen.min_duration_s,
+                  list(frozen.rhythm_hz), frozen.merge_gap_s)  # fmt: skip
+    at_frozen = next(r for r in rows if (r["z_threshold"], r["channel_fraction"], r["min_duration_s"],
+                                         r["rhythm_hz"], r["merge_gap_s"]) == frozen_key)  # fmt: skip
+    write_result(
+        "montage_tuning",
+        {
+            "registration": "PROBLEM_STATEMENT §12 (commit 59abd62)",
+            "seeds": [seeds[0], seeds[-1]],
+            "quiet_baseline_at_frozen_thresholds": at_frozen,
+            "grid": rows,
+            "selected": best,
+            "stop_rule_triggered": best is None,
+        },
+    )
+    print(
+        "at frozen thresholds:",
+        {
+            k: at_frozen[k]
+            for k in ("sensitivity", "false_per_hour", "event_free_false_per_hour", "by_montage")
+        },
+    )
+    print("selected:", best)
+
+
+# ------------------------------------------------------------ §12 evaluation
+
+
+def _eval_case(args: tuple[int, str, dict[str, Any]]) -> dict[str, Any]:
+    import numpy as np
+
+    from neurosignal.detection.events import Interval, score_events
+    from neurosignal.detection.seizure import band_limit, log_line_length, quiet_baseline_z
+
+    seed, montage, sel = args
+    spec = detection_spec(seed)
+    rec, gt = make_recording(seed, spec)
+    bare, _ = make_recording(seed, dataclasses.replace(spec, n_events=0))
+    if montage == "bipolar":
+        rec, bare = bipolar_montage(rec), bipolar_montage(bare)
+    truth = [Interval(e.onset_s, e.offset_s) for e in gt.events]
+    new, old = _quiet(**sel), detector_params(PipelineConfig())
+    clean = preprocess(rec, PipelineConfig())
+    out: dict[str, Any] = {"seed": seed, "montage": montage, "event_free": not gt.events,
+                           "hours": rec.duration_s / 3600}  # fmt: skip
+    for name, p in (("new", new), ("frozen", old)):
+        sc = score_events(truth, [e.interval() for e in detect(clean, p)], rec.duration_s)
+        out[name] = {"hits": sc.hits, "n_true": sc.n_true, "false": sc.false_detections}
+    if gt.events:  # E4: the spread with and without this recording's discharges
+
+        def spread(r: Any) -> Any:
+            c = preprocess(r, PipelineConfig())
+            ch = c.analysed_channels
+            x = band_limit(c.data[c.index(list(ch))], c.sfreq, new.band_hz)
+            ll = log_line_length(x, c.sfreq, new.window_s, new.step_s)
+            z = quiet_baseline_z(ll, new.z_threshold, new.channel_fraction)
+            return dict(zip(ch, np.std(ll, axis=-1) / np.std(z, axis=-1), strict=True))
+
+        a, b = spread(rec), spread(bare)
+        out["spread_ratio"] = float(np.median([a[c] / b[c] for c in a if c in b]))
+    return out
+
+
+def evaluate() -> None:
+    import json
+
+    import numpy as np
+
+    from neurosignal.core.stats import wilson
+    from validation.common import EVAL_SEEDS, ROOT
+
+    tuning = json.loads((ROOT / "results" / "validation" / "montage_tuning.json").read_text())
+    if tuning["stop_rule_triggered"]:
+        raise SystemExit("stop rule triggered at tuning: nothing to evaluate")
+    b = tuning["selected"]
+    sel = {"z_threshold": b["z_threshold"], "channel_fraction": b["channel_fraction"],
+           "min_duration_s": b["min_duration_s"], "rhythm_hz": tuple(b["rhythm_hz"]),
+           "merge_gap_s": b["merge_gap_s"]}  # fmt: skip
+    seeds = list(EVAL_SEEDS)
+    with ProcessPoolExecutor(WORKERS) as ex:
+        rows = list(ex.map(_eval_case, [(s, m, sel) for s in seeds for m in MONTAGES]))
+
+    def rates(sub: list[dict[str, Any]], which: str) -> dict[str, Any]:
+        hits = sum(r[which]["hits"] for r in sub)
+        n_true = sum(r[which]["n_true"] for r in sub)
+        false, hours = sum(r[which]["false"] for r in sub), sum(r["hours"] for r in sub)
+        return {"hits": hits, "n_true": n_true, "sensitivity": hits / n_true if n_true else None,
+                "sensitivity_wilson": list(wilson(hits, n_true)) if n_true else None,
+                "false_detections": false, "hours": hours, "false_per_hour": false / hours,
+                "false_per_hour_upper95": poisson_upper(false, hours)}  # fmt: skip
+
+    res: dict[str, Any] = {}
+    for m in MONTAGES:
+        sub = [r for r in rows if r["montage"] == m]
+        ef = [r for r in sub if r["event_free"]]
+        res[m] = {w: {"all": rates(sub, w), "event_free": rates(ef, w)} for w in ("new", "frozen")}
+        res[m]["spread_ratio_median"] = float(
+            np.median([r["spread_ratio"] for r in sub if "spread_ratio" in r])
+        )
+    verdict = {
+        "E1": all(
+            res[m]["new"][k]["false_per_hour"] <= 2.0
+            for m in MONTAGES
+            for k in ("all", "event_free")
+        ),
+        "E2": res["bipolar"]["new"]["all"]["false_per_hour"]
+        <= res["referential"]["new"]["all"]["false_per_hour"] + 0.5,
+        "E3": all(res[m]["new"]["all"]["sensitivity"] >= 0.80 for m in MONTAGES),
+        "E4": all(0.95 <= res[m]["spread_ratio_median"] <= 1.05 for m in MONTAGES),
+    }
+    adopted = all(verdict.values())
+    chb01 = _chb01(sel)
+    write_result(
+        "montage_evaluation",
+        {
+            "registration": "PROBLEM_STATEMENT §12 (commit 59abd62)",
+            "seeds": [seeds[0], seeds[-1]],
+            "selected": {**sel, "rhythm_hz": list(sel["rhythm_hz"])},
+            "results": res,
+            "E5_chb01_development": chb01,
+            "verdict": verdict,
+            "adopted": adopted,
+            "rows": rows,
+        },
+    )
+    for m in MONTAGES:
+        print(m, {w: (round(res[m][w]["all"]["sensitivity"], 3), round(res[m][w]["all"]["false_per_hour"], 2),
+                      round(res[m][w]["event_free"]["false_per_hour"], 2)) for w in ("new", "frozen")},
+              "spread ratio", round(res[m]["spread_ratio_median"], 3))  # fmt: skip
+    print("verdict:", verdict, "adopted:", adopted, "chb01:", chb01)
+
+
+def _chb01(sel: dict[str, Any]) -> dict[str, Any]:
+    """E5, development only: chb01 by the H5 file rule. chb03 is never read."""
+    import importlib.util
+
+    from neurosignal.detection.events import Interval, score_events
+    from neurosignal.io.readers import read
+    from validation.campaign import CHBMIT, parse_summary
+    from validation.common import ROOT
+
+    spec = importlib.util.spec_from_file_location("fetch", ROOT / "scripts" / "fetch_chbmit.py")
+    assert spec and spec.loader
+    fetch = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(fetch)
+    summary = CHBMIT / "chb01-summary.txt"
+    files = fetch.select_files(summary.read_text())
+    assert all(f.startswith("chb01_") for f in files), "only chb01 is read here"
+    seizures = parse_summary(summary)
+    cleaned = [(f, preprocess(read(CHBMIT / f), PipelineConfig())) for f in files]
+    out = {}
+    for name, p in (("frozen", detector_params(PipelineConfig())), ("new", _quiet(**sel))):
+        hits = n_true = false = 0
+        hours = 0.0
+        for f, clean in cleaned:
+            truth = [Interval(a, b) for a, b in seizures.get(f, [])]
+            sc = score_events(truth, [e.interval() for e in detect(clean, p)], clean.duration_s)
+            hits, n_true = hits + sc.hits, n_true + sc.n_true
+            false, hours = false + sc.false_detections, hours + sc.hours
+        out[name] = {"hits": hits, "seizures": n_true, "false_detections": false,
+                     "hours": hours, "false_per_hour": false / hours}  # fmt: skip
+    return out
+
+
 if __name__ == "__main__":
-    {"diagnose": diagnose, "power": power}[sys.argv[1]]()
+    {"diagnose": diagnose, "power": power, "tune": tune, "evaluate": evaluate}[sys.argv[1]]()
