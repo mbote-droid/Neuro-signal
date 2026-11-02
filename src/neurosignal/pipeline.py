@@ -60,6 +60,10 @@ def detector_params(cfg: PipelineConfig) -> DetectorParams:
         merge_gap_s=cfg.ll_merge_gap_s,
         band_hz=cfg.ll_band_hz,
         rhythm_hz=cfg.rhythm_band_hz,
+        slow_floor_hz=cfg.blink_slow_floor_hz,
+        blink_frontality=cfg.blink_frontality,
+        blink_symmetry=cfg.blink_symmetry,
+        quiet_baseline=cfg.ll_quiet_baseline,
     )
 
 
@@ -101,8 +105,9 @@ def analyse(rec: Recording, cfg: PipelineConfig | None = None) -> Analysis:
     exclude = [(e.onset_s, e.offset_s) for e in events]
     spectrum = welch(clean, cfg.welch_window_s, cfg.welch_overlap, exclude)
     fits = {}
+    analysed = set(clean.analysed_channels)
     for i, ch in enumerate(spectrum.channels):
-        if ch in clean.bad_channels:
+        if ch not in analysed:
             continue
         fits[ch] = fit_spectrum(
             spectrum.freqs,
@@ -114,7 +119,7 @@ def analyse(rec: Recording, cfg: PipelineConfig | None = None) -> Analysis:
             peak_width_limits=cfg.peak_width_limits_hz,
         )
     conn = None
-    if len(clean.good_channels) >= 2:
+    if len(clean.analysed_channels) >= 2:
         conn = phase_coupling(
             clean,
             cfg.alpha_band_hz,
@@ -182,7 +187,7 @@ def _top_pairs(conn: Connectivity, k: int = 5) -> list[dict[str, Any]]:
 def build_metrics(an: Analysis, input_sha256: str | None = None) -> dict[str, Any]:
     cfg = an.config
     clean = an.clean
-    good = [c for c in clean.channels if c not in clean.bad_channels]
+    good = list(clean.analysed_channels)  # EEG and not bad: what was measured (ISSUE-017)
     gidx = clean.index(good)
     alpha_bp = band_power(an.spectrum, cfg.alpha_band_hz)
     alpha_rel = relative_band_power(an.spectrum, cfg.alpha_band_hz)
@@ -205,6 +210,7 @@ def build_metrics(an: Analysis, input_sha256: str | None = None) -> dict[str, An
             "sfreq_hz": clean.sfreq,
             "duration_s": clean.duration_s,
             "montage": "bipolar" if clean.is_bipolar else "referential",
+            "non_eeg_channels": list(clean.non_eeg_channels),
         },
         "qc": {
             "bad_channels": list(clean.bad_channels),
@@ -214,7 +220,11 @@ def build_metrics(an: Analysis, input_sha256: str | None = None) -> dict[str, An
             "noisy": hist.get("qc_amplitude", {}).get("noisy_channels", {}),
             "low": hist.get("qc_amplitude", {}).get("low_channels", {}),
             "line_noise_reference_band_hz": list(LINE_REFERENCE_BAND_HZ),
-            "line_noise_ratio_before_median": _nanmedian(an.line_noise_before),
+            # over EEG channels (bad ones included: this is the raw state), never
+            # over an ECG or respiration channel, whose mains pickup differs (ISSUE-017)
+            "line_noise_ratio_before_median": _nanmedian(
+                an.line_noise_before[clean.index(list(clean.eeg_channels))]
+            ),
             "line_noise_ratio_after_median": _nanmedian(an.line_noise_after[gidx])
             if good
             else None,

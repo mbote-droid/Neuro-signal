@@ -50,6 +50,13 @@ class PipelineConfig:
     ll_merge_gap_s: float = 1.0
     ll_band_hz: tuple[float, float] = (1.0, 20.0)
     rhythm_band_hz: tuple[float, float] = (2.0, 7.5)
+    # spatial blink cue (PROBLEM_STATEMENT §11); a floor equal to the rhythm
+    # band's lower edge leaves the slow band empty and the cue off
+    blink_slow_floor_hz: float = 2.0
+    blink_frontality: float = 3.0
+    blink_symmetry: float = 0.5
+    # baseline outside active windows (PROBLEM_STATEMENT §12); false = H6 detector
+    ll_quiet_baseline: bool = False
     # reproducibility
     seed: int = 0
 

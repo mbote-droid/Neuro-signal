@@ -1,18 +1,18 @@
 {
   "experiment": "mutation",
-  "killed": 23,
-  "mutants": 23,
+  "killed": 31,
+  "mutants": 31,
   "not_applied": [],
   "provenance": {
     "git": {
-      "commit": "7565026feaf545d0833fbd21481b376b0cc7d20e",
-      "dirty": false
+      "commit": "59abd62baf7423ebbbf8046521dc204f833f1ea4",
+      "dirty": true
     },
     "python": "3.12.3",
     "versions": {
       "matplotlib": "3.11.2",
       "mne": "1.13.2",
-      "neurosignal": "0.1.1",
+      "neurosignal": "0.1.2",
       "numpy": "2.5.4",
       "scipy": "1.18.1"
     }
@@ -94,6 +94,94 @@
       "status": "KILLED",
       "tests": [
         "tests/test_reference.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "detector_votes_on_non_eeg",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_pipeline.py"
+      ]
+    },
+    {
+      "file": "preprocessing/qc.py",
+      "id": "amplitude_reference_includes_non_eeg",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_pipeline.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "blink_cue_ignores_symmetry",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "blink_cue_unavailable_admits",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "blink_cue_whole_recording_background",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "quiet_baseline_not_widened",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "quiet_baseline_no_fallback",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
+      ]
+    },
+    {
+      "file": "detection/seizure.py",
+      "id": "quiet_baseline_uses_all_windows",
+      "pytest": [
+        "!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      ],
+      "status": "KILLED",
+      "tests": [
+        "tests/test_detection.py"
       ]
     },
     {

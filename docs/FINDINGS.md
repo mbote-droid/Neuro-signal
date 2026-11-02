@@ -208,3 +208,96 @@ diagnostic words. The checker verifies that a value equals its key, not
 that the key is what the sentence is about. With no accepted local
 explanation, all 20 audit items came from the cloud model, so hiding the
 model had no effect; the single rater was the author.
+
+## F-12 A pre-registered blink cue was not adopted; the montage was the real gap
+
+PROBLEM_STATEMENT §11 registered a spatial cue to let the rhythm gate reach
+below 2 Hz, where the three seizures missed on chb03 lay (F-7): an event
+below 2 Hz is kept unless its field is blink-like (frontopolar and
+symmetric). Tuning on synthetic seeds 0-59, rendered in the referential and
+in CHB-MIT's bipolar montage, **triggered the stop rule: no setting kept the
+pooled false-detection rate at or below 2 per hour, so the cue is not
+adopted, the 2 Hz floor stays, and D1-D6 were not run.** Three things were
+learned.
+
+* **The detector frozen for H6 already exceeds its limit in a bipolar
+  montage.** With the cue off, the same synthetic signals produced 1.90
+  false detections per hour in the referential montage but 2.60 in the
+  bipolar one (3.00 with slowed discharges). H2 only ever measured the
+  referential montage, so this was never seen; it is consistent with the
+  3.30/h on bipolar chb03 (H6). A confirmatory test on CHB-MIT, which is
+  bipolar, has to deal with this first.
+* **The cue does recover slow seizures.** Opening the band down to 1.0 Hz
+  raised the slowed discharges found from 14 of 192 to 114-118 of 192
+  (0.59-0.61), at about 3.1 false detections per hour.
+* **Blinks were not what the extra false detections were** (exploratory,
+  post hoc). Changing the frontality threshold from 1.5 to 4 moved the
+  result by at most four discharges and 0.15/h. The false candidates below
+  2 Hz had a frontality near 1 (not frontal) and lasted a median of 12-13 s,
+  just above the 10 s minimum; true slowed discharges lasted a median of
+  40 s. The synthetic blinks themselves rarely reach the gate: band-limited
+  to 1-20 Hz they barely raise line length, which the 1 s merge gap
+  already handles (ISSUE-011). A minimum duration for slow-band events is
+  the obvious next idea, and because it came from looking at these results
+  it needs its own registration and fresh tuning.
+
+Two process notes. A unit test with a constructed blink field found an
+error in the registered definition (the whole-recording RMS contains the
+event and caps its excess) before any tuning ran, and the fix was recorded
+as a dated amendment rather than edited in. And the mutation campaign found
+that no test exercised that fix through the detector itself: the mutant
+survived until a test with a sustained bilateral frontal slow wave was
+added. The cue stays in the code, switched off by default and covered by
+tests, so a later registration can reuse it.
+
+## F-13 The benchmark's own discharges were lowering its false-alarm rate
+
+ROADMAP step 2b asked why the frozen detector raised more false alarms in a
+bipolar montage (ISSUE-022). An exploratory diagnosis on synthetic tuning
+seeds and on fresh seeds 5000-5199 found that the montage was the symptom,
+not the cause.
+
+* **Event-free, the montage does not matter.** With one source of negatives
+  at a time and no discharges, false alarms were the same in both montages
+  (full set 4.50 vs 4.30 per hour); normal alpha and spindle bursts caused
+  most of them (4.0/h).
+* **Discharges lowered the rate, and unequally.** On 200 fresh recordings,
+  paired: 1.80 false alarms per hour referential against 2.67 bipolar
+  (sign test p = 0.0005), but 4.17 against 4.65 for the same recordings with
+  their discharges removed (p = 0.15).
+* **The mechanism.** Each channel's robust z-score was scaled by the spread
+  of line length over the whole recording, which contains the discharges.
+  They widened it by a median factor of 1.31 in the referential montage,
+  where the common average carries a discharge into every channel, and 1.09
+  in the bipolar one, so every other burst looked less extreme, more so in
+  the referential montage. The published H2 rows show the same: 2.85 false
+  alarms per hour on event-free recordings against 1.39 on recordings with
+  discharges, pooled into the reported 1.68. It is the error of ISSUE-023
+  again: a reference that contains what it is used to measure.
+
+The registered fix (PROBLEM_STATEMENT §12) measures the baseline outside the
+windows where the detector is active, then re-tunes the thresholds with the
+H2 rule. On evaluation seeds 1000-1199, evaluated once:
+
+| montage | detector | sensitivity | false/h | false/h, event-free |
+|---|---|---|---|---|
+| referential | frozen for H6 | 0.847 | 1.68 | 2.85 |
+| referential | quiet baseline | 0.909 | 1.38 | 2.70 |
+| bipolar | frozen for H6 | 0.844 | 2.31 | 4.20 |
+| bipolar | quiet baseline | 0.850 | 1.77 | 3.15 |
+
+The baseline became blind to the discharges (spread ratios 1.004 and 1.013),
+the montage gap shrank from 0.63 to 0.39 per hour, and the new detector was
+better than the frozen one on every measure, also on chb01 (development):
+6 of 7 seizures at 1.24 instead of 1.66 per hour. **It is still not
+adopted.** E1 required at most 2 false alarms per hour on event-free
+recordings in each montage, and 2.70 and 3.15 miss it; the registration
+said adopt only if E1-E4 all pass, and a criterion is not re-read once its
+result is known.
+
+The lesson is about writing criteria. E1 asked two questions at once: is the
+change better than what it replaces, and does it reach an absolute bar? The
+first answer is yes; the second is no, for the old detector by a wider
+margin. A registration should say which question decides. What the
+event-free rate now points to is the real remaining source of false alarms:
+normal alpha and spindle bursts (ROADMAP step 2d).

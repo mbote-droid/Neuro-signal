@@ -81,7 +81,7 @@ def phase_coupling(
     channels: tuple[str, ...] | None = None,
     exclude: list[tuple[float, float]] | None = None,
 ) -> Connectivity:
-    chans = channels if channels is not None else rec.good_channels
+    chans = channels if channels is not None else rec.analysed_channels
     x = rec.data[rec.index(list(chans))]
     spec, _ = epoch_spectra(x, rec.sfreq, epoch_s, band, max_s, exclude)
     cross = spec[:, :, np.newaxis, :] * np.conj(spec[:, np.newaxis, :, :])  # (e, i, j, f)

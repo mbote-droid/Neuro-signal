@@ -9,7 +9,7 @@ import numpy as np
 
 from neurosignal.core.config import PipelineConfig
 from neurosignal.detection.events import Interval, score_events
-from neurosignal.detection.seizure import DetectorParams, detect
+from neurosignal.detection.seizure import DetectorParams, detect, robust_rms
 from neurosignal.pipeline import detector_params, preprocess
 from neurosignal.synth.eeg import SynthSpec, make_recording
 from validation.common import EVAL_SEEDS, RESULTS, TUNING_SEEDS
@@ -100,3 +100,241 @@ def test_rhythm_gate_reads_the_fundamental_not_a_harmonic():
     event = bg + 3 * np.std(bg) * spike_wave(t, 3.0, 3.0)
     ref = background_spectra(bg[None, :], fs)[0]
     assert abs(dominant_frequency(event[None, :], fs, (1.0, 20.0), ref) - 3.0) <= 0.5
+
+
+# --------------------------------------------------------------- blink cue (§11)
+
+
+def _cue_inputs(gains: dict[str, float], channels: tuple[str, ...], seed: int = 0):
+    """Background noise on every channel plus a 1.5 Hz train with the given
+    spatial gains between 40 and 60 s; returns (x, background RMS)."""
+    rng = np.random.default_rng(seed)
+    sfreq, n = 256.0, 256 * 120
+    x = rng.normal(0.0, 10.0, (len(channels), n))
+    t = np.arange(n) / sfreq
+    burst = (t >= 40) & (t < 60)
+    train = 60.0 * np.sin(2 * np.pi * 1.5 * t) * burst
+    for ch, g in gains.items():
+        x[channels.index(ch)] += g * train
+    return x, robust_rms(x, sfreq, 2.0)
+
+
+REF = ("Fp1", "Fp2", "F7", "F3", "Fz", "F4", "F8", "T7", "C3", "Cz", "C4", "T8",
+       "P7", "P3", "Pz", "P4", "P8", "O1", "O2")  # fmt: skip
+BLINK = {"Fp1": 1.0, "Fp2": 1.0, "F7": 0.4, "F3": 0.4, "Fz": 0.4, "F4": 0.4, "F8": 0.4}
+
+
+def test_anterior_electrode_reads_both_montages():
+    from neurosignal.detection.seizure import anterior_electrode
+
+    assert anterior_electrode("Fp1") == "FP1"
+    assert anterior_electrode("FP2-F4") == "FP2"
+    assert anterior_electrode("T8-P8-0") == "T8"
+    assert anterior_electrode("EEG Fp1-REF") == "FP1"
+
+
+def test_a_blink_field_is_blink_like():
+    from neurosignal.detection.seizure import blink_cue
+
+    x, bg = _cue_inputs(BLINK, REF)
+    cue = blink_cue(x, REF, 256.0, 40.0, 60.0, bg)
+    assert cue is not None
+    assert cue.frontality > 3.0 and cue.symmetry > 0.8
+    assert cue.blink_like(DetectorParams())
+
+
+def test_a_posterior_slow_rhythm_is_not_blink_like():
+    from neurosignal.detection.seizure import blink_cue
+
+    x, bg = _cue_inputs({"Pz": 1.0, "P3": 0.7, "P4": 0.7, "O1": 0.5, "O2": 0.5, "Cz": 0.4}, REF)
+    cue = blink_cue(x, REF, 256.0, 40.0, 60.0, bg)
+    assert cue is not None and cue.frontality < 1.0
+    assert not cue.blink_like(DetectorParams())
+
+
+def test_a_lateral_frontal_rhythm_is_not_symmetric():
+    """§11 D5: a lateralised frontal seizure is frontal enough to look like a
+    blink; its asymmetry is what keeps it."""
+    from neurosignal.detection.seizure import blink_cue
+
+    x, bg = _cue_inputs({"Fp1": 1.0, "Fp2": 0.4, "F7": 0.8, "F3": 0.6}, REF)
+    cue = blink_cue(x, REF, 256.0, 40.0, 60.0, bg)
+    assert cue is not None
+    assert cue.frontality >= DetectorParams().blink_frontality  # frontality alone would reject it
+    assert cue.symmetry < DetectorParams().blink_symmetry
+    assert not cue.blink_like(DetectorParams())
+
+
+def test_the_cue_is_unavailable_without_both_frontopolar_sides():
+    from neurosignal.detection.seizure import blink_cue
+
+    chans = tuple(c for c in REF if c != "Fp2")
+    x, bg = _cue_inputs({k: v for k, v in BLINK.items() if k != "Fp2"}, chans)
+    assert blink_cue(x, chans, 256.0, 40.0, 60.0, bg) is None
+
+
+def test_the_cue_works_on_a_bipolar_montage():
+    from neurosignal.detection.seizure import blink_cue
+    from neurosignal.synth.eeg import BIPOLAR_1020
+
+    x_ref, _ = _cue_inputs(BLINK, REF)
+    idx = {c: i for i, c in enumerate(REF)}
+    x = np.stack([x_ref[idx[a]] - x_ref[idx[b]] for a, b in BIPOLAR_1020])
+    names = tuple(f"{a.upper()}-{b.upper()}" for a, b in BIPOLAR_1020)
+    cue = blink_cue(x, names, 256.0, 40.0, 60.0, robust_rms(x, 256.0, 2.0))
+    # a derivation subtracts part of the field (FP1-F7 sees 1.0 - 0.4), so
+    # frontality is lower than in a referential montage: the reason the cue is
+    # tuned on both montages (§11)
+    assert cue is not None and cue.frontality > 1.8 and cue.symmetry > 0.9
+
+
+def test_the_default_detector_has_no_slow_band():
+    """§11: with the default floor equal to the gate's lower edge, the detector
+    is exactly the one frozen for H6."""
+    p = detector_params(PipelineConfig())
+    assert p.slow_floor_hz == p.rhythm_hz[0] == 2.0
+
+
+def test_the_cue_admits_a_slow_discharge_and_rejects_blinks():
+    """§11: below 2 Hz, a posterior slow discharge is kept with the cue on, and
+    an event-free recording full of blinks still produces no detection."""
+    on = replace(detector_params(PipelineConfig()), slow_floor_hz=1.0)
+    slow, gt = _clean(31, n_events=1, snr_db=10.0, event_f0_hz=(1.2, 1.6),
+                      event_f1_min_hz=1.0, event_centres=("Pz",))  # fmt: skip
+    truth = Interval(gt.events[0].onset_s, gt.events[0].offset_s)
+    assert not any(
+        e.interval().overlaps(truth) for e in detect(slow, detector_params(PipelineConfig()))
+    )
+    hits = [e for e in detect(slow, on) if e.interval().overlaps(truth)]
+    assert hits and hits[0].dominant_freq_hz < 2.0
+    blinks, _ = _clean(32, blinks_per_min=30.0)
+    assert detect(blinks, on) == []
+
+
+def test_robust_rms_ignores_the_event_it_will_be_compared_with():
+    """§11 amendment: the whole-recording RMS contains the event and capped the
+    excess of a strong event near sqrt(recording / event length)."""
+    rng = np.random.default_rng(1)
+    x = rng.normal(0.0, 10.0, (1, 256 * 120))
+    x[0, 256 * 40 : 256 * 60] *= 10.0
+    assert 9.0 < robust_rms(x, 256.0, 2.0)[0] < 11.0
+
+
+def test_without_frontopolar_channels_the_slow_band_stays_closed():
+    """§11: when the cue cannot be measured, events below 2 Hz are rejected as
+    in the detector frozen for H6."""
+    on = replace(detector_params(PipelineConfig()), slow_floor_hz=1.0)
+    slow, gt = _clean(31, n_events=1, snr_db=10.0, event_f0_hz=(1.2, 1.6),
+                      event_f1_min_hz=1.0, event_centres=("Pz",))  # fmt: skip
+    no_fp2 = slow.evolve(bad_channels=(*slow.bad_channels, "Fp2"))
+    truth = Interval(gt.events[0].onset_s, gt.events[0].offset_s)
+    assert not any(e.interval().overlaps(truth) for e in detect(no_fp2, on))
+
+
+def test_a_sustained_bilateral_frontal_slow_wave_is_rejected():
+    """§11 amendment, through the whole detector: a 60 s bilateral frontal
+    1.5 Hz wave (a blink-like field; in real EEG, FIRDA looks like this) must
+    stay rejected with the cue on. Measured against the whole-recording RMS,
+    which contains the wave, its frontality is capped near sqrt(300 / 60) and
+    it would be admitted."""
+    from neurosignal.core.recording import Recording
+
+    rng = np.random.default_rng(0)
+    sfreq, n = 256.0, 256 * 300
+    t = np.arange(n) / sfreq
+    x = rng.normal(0.0, 10.0, (len(REF), n))
+    wave = 60.0 * np.sin(2 * np.pi * 1.5 * t) * ((t >= 100) & (t < 160))
+    for ch, g in BLINK.items():
+        x[REF.index(ch)] += g * wave
+    rec = Recording(data=x, sfreq=sfreq, channels=REF)
+    assert detect(rec, replace(DetectorParams(), slow_floor_hz=1.0)) == []
+
+
+# ------------------------------------------------- baseline outside events (§12)
+
+
+def test_the_default_z_score_is_bit_for_bit_the_h6_one():
+    """§12 refactor: whole-recording z, computed exactly as frozen for H6."""
+    from neurosignal.detection.seizure import line_length_z
+    from neurosignal.preprocessing.qc import MAD_TO_SD
+
+    x = np.random.default_rng(3).normal(0.0, 10.0, (4, 256 * 60))
+    win, step = 512, 256
+    diff = np.abs(np.diff(x, axis=-1))
+    csum = np.concatenate([np.zeros((4, 1)), np.cumsum(diff, axis=-1)], axis=-1)
+    starts = np.arange(0, diff.shape[-1] - win + 1, step)
+    log_ll = np.log(np.maximum((csum[:, starts + win] - csum[:, starts]) / win, 1e-12))
+    med = np.median(log_ll, axis=-1, keepdims=True)
+    spread = MAD_TO_SD * np.median(np.abs(log_ll - med), axis=-1, keepdims=True)
+    expected = (log_ll - med) / np.maximum(spread, 1e-6)
+    np.testing.assert_array_equal(line_length_z(x, 256.0, 2.0, 1.0), expected)
+
+
+def test_the_quiet_baseline_ignores_a_long_burst():
+    """§12: a burst covering a fifth of the recording widens the whole-recording
+    spread; the quiet baseline measures the background as if it were absent."""
+    from neurosignal.detection.seizure import quiet_baseline_z, robust_z
+
+    rng = np.random.default_rng(4)
+    background = rng.normal(0.0, 0.2, (3, 600))
+    with_burst = background.copy()
+    with_burst[:, 200:320] += 1.5
+    z_whole = robust_z(with_burst)
+    z_quiet = quiet_baseline_z(with_burst, 2.5, 0.05)
+    z_none = robust_z(background)
+    quiet_part = np.r_[0:190, 330:600]
+    # without the burst the background's z-scores are what the quiet baseline gives
+    np.testing.assert_allclose(z_quiet[:, quiet_part], z_none[:, quiet_part], atol=0.15)
+    # the whole-recording baseline shrinks them (the false-alarm suppression)
+    assert np.std(z_whole[:, quiet_part]) < 0.9 * np.std(z_none[:, quiet_part])
+
+
+def test_a_mostly_active_recording_keeps_the_whole_recording_baseline():
+    from neurosignal.detection.seizure import quiet_baseline_z, robust_z
+
+    rng = np.random.default_rng(5)
+    x = rng.normal(0.0, 0.01, (3, 300))
+    x[:, ::3] += 1.0  # every third window active: widened, they cover everything
+    z1 = robust_z(x)
+    assert ((z1 > 2.5).mean(axis=0) >= 0.05)[::3].all()
+    np.testing.assert_array_equal(quiet_baseline_z(x, 2.5, 0.05), z1)
+
+
+def test_active_windows_are_widened_by_one_step():
+    """A 2 s window moving in 1 s steps: the windows next to an active one
+    contain part of the event and must not enter the baseline, even when they
+    stay below the threshold themselves."""
+    from neurosignal.detection.seizure import quiet_baseline_z, robust_z
+
+    x = np.random.default_rng(6).normal(0.0, 0.2, (1, 200))
+    x[0, 100] = 5.0  # one active window
+    x[0, 99] = x[0, 101] = 0.45  # its neighbours: raised, but below z = 2.5
+    z1 = robust_z(x)
+    assert (z1[0, [99, 101]] < 2.5).all()
+    # independent formulation: active windows dilated by a 3-wide box
+    quiet = np.convolve((z1[0] > 2.5).astype(float), np.ones(3), mode="same") == 0
+    assert not quiet[99:102].any()
+    np.testing.assert_array_equal(quiet_baseline_z(x, 2.5, 0.05), robust_z(x, quiet))
+
+
+def test_the_quiet_baseline_makes_the_spread_blind_to_discharges():
+    """§12 E4 on one recording: the same background with and without its
+    discharges gets the same per-channel spread (median ratio near 1)."""
+    import dataclasses
+
+    from neurosignal.detection.seizure import band_limit, log_line_length, quiet_baseline_z
+
+    p = detector_params(PipelineConfig())
+    spec = SynthSpec(duration_s=600.0, n_events=2, snr_db=6.0)
+
+    def spreads(spec_):
+        rec, _ = make_recording(41, spec_)
+        clean = preprocess(rec, PipelineConfig())
+        chans = clean.analysed_channels
+        x = band_limit(clean.data[clean.index(list(chans))], clean.sfreq, p.band_hz)
+        ll = log_line_length(x, clean.sfreq, p.window_s, p.step_s)
+        z = quiet_baseline_z(ll, p.z_threshold, p.channel_fraction)
+        return np.std(ll, axis=-1) / np.std(z, axis=-1)  # = the spread used
+
+    ratio = np.median(spreads(spec) / spreads(dataclasses.replace(spec, n_events=0)))
+    assert 0.95 <= ratio <= 1.05

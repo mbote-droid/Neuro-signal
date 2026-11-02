@@ -31,6 +31,14 @@ POSITIONS_1020: dict[str, tuple[float, float]] = {
     "O1": (-0.31, -0.95), "O2": (0.31, -0.95),
 }  # fmt: skip
 CHANNELS_1020: tuple[str, ...] = tuple(POSITIONS_1020)
+# The 18 longitudinal bipolar ("double banana") derivations of CHB-MIT.
+BIPOLAR_1020: tuple[tuple[str, str], ...] = (
+    ("Fp1", "F7"), ("F7", "T7"), ("T7", "P7"), ("P7", "O1"),
+    ("Fp1", "F3"), ("F3", "C3"), ("C3", "P3"), ("P3", "O1"),
+    ("Fp2", "F4"), ("F4", "C4"), ("C4", "P4"), ("P4", "O2"),
+    ("Fp2", "F8"), ("F8", "T8"), ("T8", "P8"), ("P8", "O2"),
+    ("Fz", "Cz"), ("Cz", "Pz"),
+)  # fmt: skip
 
 
 @dataclass(frozen=True)
@@ -150,6 +158,12 @@ class SynthSpec:
     n_events: int = 0
     snr_db: float = 6.0
     event_duration_s: tuple[float, float] = (15.0, 60.0)
+    # the discharge's rate glides from f0 in event_f0_hz down to a value in
+    # [event_f1_min_hz, f0]; (1.0, 1.8) and 1.0 give slow delta discharges
+    event_f0_hz: tuple[float, float] = (3.0, 5.0)
+    event_f1_min_hz: float = 2.0
+    # electrodes a discharge may be centred on; empty means any channel
+    event_centres: tuple[str, ...] = ()
     n_flat: int = 0
     n_noisy: int = 0
     line_noise_uv: float = 10.0
@@ -227,10 +241,10 @@ def _add_events(
     events: list[Event] = []
     slots = _event_slots(g, spec)
     for onset, dur in slots:
-        centre = str(g.choice(channels))
+        centre = str(g.choice(spec.event_centres or channels))
         region = _neighbours(centre, radius=g.uniform(0.6, 1.2), channels=channels)
-        f0 = g.uniform(3.0, 5.0)
-        f1 = g.uniform(2.0, f0)
+        f0 = g.uniform(*spec.event_f0_hz)
+        f1 = g.uniform(spec.event_f1_min_hz, f0)
         i0, i1 = int(onset * spec.sfreq), int((onset + dur) * spec.sfreq)
         wave = spike_wave(t[i0:i1], f0, f1) * _envelope(i1 - i0, spec.sfreq)
         for ch, gain in region:
@@ -501,4 +515,20 @@ def coupled_pair(
     b = s2 + mixing * s1 + noise[1]
     return Recording(
         data=np.stack([a, b]), sfreq=sfreq, channels=("A", "B"), subject_id=f"pair-{seed}"
+    )
+
+
+def bipolar_montage(rec: Recording) -> Recording:
+    """The same signals as CHB-MIT's 18 longitudinal bipolar derivations, named
+    as CHB-MIT names them ("FP1-F7"), so anything tuned on synthetic data is
+    also tuned on the montage it meets on real recordings (PROBLEM_STATEMENT
+    §11). A derivation with one dead electrode is not flat; QC sees it as the
+    real montage would."""
+    idx = {c: i for i, c in enumerate(rec.channels)}
+    data = np.stack([rec.data[idx[a]] - rec.data[idx[b]] for a, b in BIPOLAR_1020])
+    return Recording(
+        data=data,
+        sfreq=rec.sfreq,
+        channels=tuple(f"{a.upper()}-{b.upper()}" for a, b in BIPOLAR_1020),
+        subject_id=f"{rec.subject_id}-bipolar",
     )

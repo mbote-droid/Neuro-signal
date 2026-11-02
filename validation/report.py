@@ -193,6 +193,90 @@ def section_adversarial(r: dict[str, Any]) -> list[str]:
     return [*lines, "", note, "", f"Evidence: {_link('adversarial')}", ""]
 
 
+def section_blink_cue(r: dict[str, Any]) -> list[str]:
+    t = r.get("blink_cue_tuning")
+    if not t:
+        return []
+    b = t["baseline_cue_off"]
+    lines = [
+        "## Spatial blink cue (v0.2, pre-registered development step)",
+        "",
+        "PROBLEM_STATEMENT §11: events below the rhythm gate's 2 Hz floor kept only when their "
+        "field is not blink-like (frontopolar and symmetric). Tuned on synthetic tuning seeds "
+        f"{t['seeds'][0]}-{t['seeds'][1]}, standard and slowed (1.0-1.8 Hz) discharges, "
+        "referential and CHB-MIT bipolar renderings; constraint at most 2 false detections "
+        "per hour over all of them.",
+        "",
+        f"With the cue off the pooled rate was already {b['all']['false_per_hour']:.2f}/h "
+        f"({b['all']['false_detections']} in {b['all']['hours']:.0f} h), and slowed discharges "
+        f"were found {b['slow']['hits']}/{b['slow']['n_true']} times.",
+        "",
+        "| floor (Hz) | F* | S* | false/h | slowed discharges found |",
+        "|---|---|---|---|---|",
+    ]
+    for g in t["grid"]:
+        lines.append(
+            f"| {g['slow_floor_hz']:g} | {g['blink_frontality']:g} | {g['blink_symmetry']:g} "
+            f"| {g['false_per_hour']:.2f} | {g['slow_hits']}/{g['slow_n_true']} "
+            f"({g['slow_sensitivity']:.2f}) |"
+        )
+    verdict = (
+        "**Stop rule triggered: no setting met the constraint. The cue is not adopted; the "
+        "2 Hz floor stays and D1-D6 were not run.**"
+        if t["stop_rule_triggered"]
+        else f"Selected: {t['selected']}."
+    )
+    return [*lines, "", verdict, "", f"Evidence: {_link('blink_cue_tuning')}", ""]
+
+
+def section_montage(r: dict[str, Any]) -> list[str]:
+    ev = r.get("montage_evaluation")
+    if not ev:
+        return []
+    res, v = ev["results"], ev["verdict"]
+    sel = ev["selected"]
+    lines = [
+        "## Baseline outside active windows (v0.2, pre-registered development step)",
+        "",
+        "PROBLEM_STATEMENT §12: each channel's line-length baseline measured outside the "
+        "windows where the detector is active, so a recording's discharges no longer lower "
+        "its false-alarm rate; thresholds re-tuned with the H2 rule on tuning seeds "
+        f"(selected: z > {sel['z_threshold']:g}, vote {sel['channel_fraction']:g}, "
+        f"events >= {sel['min_duration_s']:g} s, gate {sel['rhythm_hz'][0]:g}-"
+        f"{sel['rhythm_hz'][1]:g} Hz, merge gap {sel['merge_gap_s']:g} s). One evaluation "
+        f"on seeds {ev['seeds'][0]}-{ev['seeds'][1]}.",
+        "",
+        "| montage | detector | sensitivity | false/h (all) | false/h (event-free) |",
+        "|---|---|---|---|---|",
+    ]
+    for m in ("referential", "bipolar"):
+        for w, label in (("frozen", "frozen for H6"), ("new", "quiet baseline, re-tuned")):
+            a_, e_ = res[m][w]["all"], res[m][w]["event_free"]
+            lines.append(
+                f"| {m} | {label} | {a_['sensitivity']:.3f} ({a_['hits']}/{a_['n_true']}) "
+                f"| {a_['false_per_hour']:.2f} | {e_['false_per_hour']:.2f} |"
+            )
+    ratios = ", ".join(
+        f"{m} {res[m]['spread_ratio_median']:.3f}" for m in ("referential", "bipolar")
+    )
+    marks = ", ".join(f"{k} {'pass' if ok else 'FAIL'}" for k, ok in v.items())
+    c = ev["E5_chb01_development"]
+    return [
+        *lines,
+        "",
+        f"Spread with/without a recording's discharges (E4, median): {ratios}. "
+        f"chb01 (development, E5): frozen {c['frozen']['hits']}/{c['frozen']['seizures']} at "
+        f"{c['frozen']['false_per_hour']:.2f}/h, new {c['new']['hits']}/{c['new']['seizures']} at "
+        f"{c['new']['false_per_hour']:.2f}/h.",
+        "",
+        f"Criteria: {marks}. **{'Adopted.' if ev['adopted'] else 'Not adopted (§12: E1-E4 must all pass); the detector frozen for H6 stays.'}**",
+        "",
+        f"Evidence: {_link('montage_evaluation')}, {_link('montage_tuning')}, "
+        f"{_link('montage_power')}, {_link('montage_diagnosis')}",
+        "",
+    ]
+
+
 def section_requirements(r: dict[str, Any]) -> list[str]:
     lines = [
         "## Validity and performance requirements",
@@ -375,7 +459,8 @@ def main() -> None:
     names = ["aperiodic", "h1_confound", "qc", "detection_synthetic", "connectivity", "checker",
              "chbmit_h5_registered", "chbmit", "chbmit_heldout", "resources",
              "detector_tuning", "mutation", "llm_eval_gemini", "llm_eval_ollama",
-             "llm_audit", "llm_recheck", "adversarial"]  # fmt: skip
+             "llm_audit", "llm_recheck", "adversarial", "blink_cue_tuning",
+             "montage_diagnosis", "montage_power", "montage_tuning", "montage_evaluation"]  # fmt: skip
     r = {n: d for n in names if (d := _load(n)) is not None}
     commits = sorted({str(d["provenance"]["git"]["commit"])[:10] for d in r.values()})
     dirty = any(d["provenance"]["git"]["dirty"] for d in r.values())
@@ -393,6 +478,8 @@ def main() -> None:
         *section_detection(r),
         *section_chbmit(r),
         *section_adversarial(r),
+        *section_blink_cue(r),
+        *section_montage(r),
         *section_checker(r),
         *section_llm(r),
         *section_tuning(r),

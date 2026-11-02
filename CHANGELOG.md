@@ -5,6 +5,43 @@ semantic versioning.
 
 ## [Unreleased]
 
+### Added
+- A spatial blink cue in the detector (PROBLEM_STATEMENT §11), **off by
+  default and not adopted**: its pre-registered tuning triggered the stop
+  rule (FINDINGS F-12). The detector is unchanged.
+- Synthetic generator options for the discharge frequency range and centre
+  electrodes (defaults byte-identical), and a rendering in CHB-MIT's
+  bipolar montage.
+- `validation/blink_cue.py`: the registered tuning and evaluation; the
+  validation report shows the full grid.
+- Three code mutants for the cue (28 total, all killed).
+
+### Found
+- The benchmark's discharges lowered its own false-alarm rate: they widen
+  each channel's robust baseline (x1.31 referential, x1.09 bipolar), so the
+  published H2 rate of 1.68/h pools 2.85/h on event-free recordings with
+  1.39/h on the rest (FINDINGS F-13, ISSUE-024). A baseline measured
+  outside active windows (PROBLEM_STATEMENT §12, `quiet_baseline`, off by
+  default) removes the effect and, re-tuned, beat the frozen detector on
+  every measure, but missed the registered event-free criterion, so it is
+  not adopted.
+- The frozen detector's false-alarm rate depends on the montage: 1.90/h
+  referential vs 2.60/h bipolar on the same synthetic signals
+  (BUILD_JOURNAL ISSUE-022). H2 stands as a referential result.
+
+### Changed
+- Non-EEG channels (ECG, VNS, respiration, placeholders) no longer enter any
+  measurement: the robust amplitude reference, spectra and aperiodic fits,
+  the coupling matrix, the detector's channel vote and the "before"
+  line-noise median all use `Recording.analysed_channels` (EEG and not bad),
+  the same set the average reference already used (BUILD_JOURNAL ISSUE-017).
+  Needed before a confirmatory test on CHB-MIT subjects that carry ECG and
+  VNS channels. `metrics.json` gains `recording.non_eeg_channels`.
+- No validation result changes: every synthetic recording is all-EEG, so
+  `analysed_channels` equals `good_channels` and the code path is identical.
+- Two code mutants added (26 total, all killed): the detector voting on
+  non-EEG channels, and the amplitude reference including them.
+
 ## [0.1.2] - 2026-10-28
 
 Archived on Zenodo: [10.5281/zenodo.23716723](https://doi.org/10.5281/zenodo.23716723).

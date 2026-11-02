@@ -102,8 +102,10 @@ def events_figure(an: Analysis, path: Path) -> Path:
     p = detector_params(an.config)
     clean = an.clean
     fig, ax = plt.subplots(figsize=(7.6, 2.6))
-    if clean.good_channels:
-        x = band_limit(clean.data[clean.index(list(clean.good_channels))], clean.sfreq, p.band_hz)
+    if clean.analysed_channels:
+        x = band_limit(
+            clean.data[clean.index(list(clean.analysed_channels))], clean.sfreq, p.band_hz
+        )
         z = line_length_z(x, clean.sfreq, p.window_s, p.step_s)
         t = np.arange(z.shape[1]) * p.step_s + p.window_s / 2
         ax.plot(t, z.max(axis=0), color=BLUE, lw=1.0, label="max channel z (line length)")

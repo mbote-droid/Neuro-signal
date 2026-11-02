@@ -296,8 +296,21 @@ so a confirmatory test on more subjects would have been affected.
 Mitigation: non-EEG channels are ignored for the montage decision and
 excluded from the average; duplicate suffixes are accepted; derivations
 sharing one or two second electrodes are referential.
-Open: non-EEG channels still enter spectra, coupling and the detector's
-channel vote (v0.2, before more CHB-MIT subjects are used).
+Closed (2026-10-31, v0.2): non-EEG channels are now excluded from the robust
+amplitude reference, the spectra and aperiodic fits, the coupling matrix, the
+detector's channel vote and the "before" line-noise median, as well as from
+the montage decision and the average reference. `Recording.analysed_channels`
+(EEG and not bad) is the single definition every measurement uses, and
+`recording.non_eeg_channels` reports what was left out. Effect on reported
+results: none. Every synthetic recording is all-EEG, so `analysed_channels`
+equals `good_channels` and the code path is unchanged (H1, H2, H3, QC,
+aperiodic, resources, adversarial), and H4 is unchanged at 3334/3334. The
+new metric `recording.non_eeg_channels` is a list, so it adds no key the
+`swap_key` operator can draw and the mutation sequence is untouched; a
+redundant numeric count was dropped for exactly that reason. chb01 and chb03 carry no non-EEG channels, and
+H5/H6 were not re-run in any case: they are one-shot results of a detector
+frozen at v0.1.2. The CHB-MIT runner now records `non_eeg_channels` per file,
+so the next run shows this rather than asserting it.
 
 ### ISSUE-018 A compressed .npz could exceed the size limit in memory   (2026-10-26)
 Phase: bug hunt (code review)
@@ -336,3 +349,49 @@ Mitigation: none yet; recorded as a limitation. An EMG cue (20-60 Hz power
 locked to the rhythm) is a v0.2 item, beside the spatial cue for blinks.
 Lesson: the realistic negatives of ISSUE-009 and ISSUE-011 were the ones we
 had met; artifacts we had not met still pass.
+
+### ISSUE-022 The detector's false-alarm rate depends on the montage   (2026-10-31)
+Phase: v0.2 development (§11 tuning)
+Symptom: rendering the synthetic tuning recordings in CHB-MIT's 18-derivation
+bipolar montage raised the frozen detector's false detections from 1.90 to
+2.60 per hour (standard benchmark) and 3.00 (slowed discharges), above H2's
+own 2/h limit. H2 measured only the referential montage.
+Effect on reported results: none; H2 is a referential result and stands. It
+is consistent with H6's 3.30/h on bipolar chb03.
+Diagnosed (2026-10-31, step 2b): the gap appears only with discharges
+present. They widened each channel's robust line-length baseline by x1.31
+in the referential montage (the common average carries them into every
+channel) and x1.09 in the bipolar one, lowering false alarms unequally
+(FINDINGS F-13). A baseline measured outside active windows removes it
+(x1.004 and x1.013 on evaluation seeds); with re-tuned thresholds the gap
+shrank from 0.63 to 0.39/h. Not adopted: the event-free criterion E1 failed
+(PROBLEM_STATEMENT §12). Implemented, off by default.
+
+### ISSUE-023 A pre-registered definition capped the quantity it measured   (2026-10-31)
+Phase: v0.2 development (§11, before tuning)
+Symptom: the blink cue's "excess" divided an event's RMS by the RMS of the
+whole recording, which contains the event; a textbook blink field scored a
+frontality of 2.2 instead of about 4. Found by a unit test with a
+constructed signal.
+Mitigation: excess is measured against each channel's median RMS over 2 s
+windows (`robust_rms`), recorded as a dated amendment to §11 (commit
+4f4049e) before any tuning or evaluation ran. The mutant that restores the
+old definition first survived; a test with a sustained bilateral frontal
+slow wave now kills it.
+
+### ISSUE-024 A benchmark flattered by its own discharges   (2026-10-31)
+Phase: v0.2 development (step 2b diagnosis)
+Symptom: the published H2 false-alarm rate, 1.68 per hour, pools event-free
+recordings (2.85/h) with recordings whose discharges widen the detector's
+robust baseline (1.39/h). Four recordings in five contain discharges, so
+the pooled figure understates what a seizure-free recording would see.
+Effect on reported results: the H2 verdict does not change (it was already
+rejected on sensitivity); the event-free rate is now reported alongside.
+Mitigation available: the quiet baseline (§12), off by default.
+
+### ISSUE-025 A pipe hid a failing check   (2026-10-31)
+Phase: v0.2 development
+Symptom: `make check | tail -1` returned tail's exit code, so a lint error
+was committed and pushed (7698b19); fixed in the next commit (0bcc0db).
+Mitigation: checks are run as `make check > log; echo $?` and the exit code
+is read before any commit. The same mistake is listed in the build rules.

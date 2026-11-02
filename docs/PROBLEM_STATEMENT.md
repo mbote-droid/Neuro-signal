@@ -226,3 +226,174 @@ checker as registered, kept as a hash-pinned copy
 (`validation/h7_registered_checker.py`); the corrected checker is applied
 to the same saved replies as a secondary analysis, reported alongside
 (`llm_eval.py recheck`). No model call is repeated for it.
+
+## 11. Addendum (2026-10-31): development criteria for a spatial blink cue (v0.2)
+
+Written before any code for the cue exists and before any measurement of
+it. This is a **development step**, not a confirmatory test: its purpose is
+to decide whether the cue enters the detector that will later be frozen for
+a confirmatory test on new subjects (ROADMAP, step 4). **chb03 is not used
+in any form**: it was the one-shot held-out test of H6 and is spent. chb01
+is a development set; anything measured on it is optimistic by
+construction.
+
+**Motivation (FINDINGS F-7).** All three seizures missed on chb03 passed the
+line-length stage but had fundamentals of 1.0-1.5 Hz, below the rhythm
+gate's 2 Hz floor. The floor exists to reject blink trains (F-6, ISSUE-011),
+which band-limited to 1-20 Hz look like a 1.5-2 Hz rhythm. Blinks have a
+field that slow ictal rhythms usually lack: frontopolar, bilateral and
+symmetric. If that field can be measured, the floor can come down below
+2 Hz for events that do not have it.
+
+**The cue (fixed now).** For a candidate event, using the detector's
+band-limited signal (1-20 Hz) and only analysed channels:
+
+* the *anterior electrode* of a channel is its name in a referential
+  montage, and the first electrode `A` of a derivation `A-B`;
+* *frontopolar* channels are those whose anterior electrode is Fp1, Fp2,
+  Fpz, AF3, AF4, AF7, AF8 or AFz (case-insensitive); *left* are Fp1, AF3,
+  AF7 and *right* Fp2, AF4, AF8; all other analysed channels are *other*;
+* per channel, *excess* = RMS of the event segment / RMS of the whole
+  recording;
+* *frontality* = median excess over frontopolar channels / median excess
+  over other channels;
+* *symmetry* = min(mean left excess, mean right excess) / max of the two;
+* an event is *blink-like* when frontality >= F* and symmetry >= S*.
+
+**The gate (fixed now).** An event is kept, as today, when its fundamental
+lies in 2-7.5 Hz. In addition, an event whose fundamental lies in
+[f_low, 2 Hz) is kept when the cue is available and the event is not
+blink-like. The cue is unavailable when no left, no right or no other
+channel is analysed (frontopolar electrodes missing or marked bad); such
+events are rejected below 2 Hz, exactly as today. Events at 2 Hz and above
+are never affected by the cue.
+
+**Tuning (fixed now), on synthetic tuning seeds 0-59 only.** Three
+populations, each rendered in the referential montage (as generated) and in
+the 18-derivation longitudinal bipolar montage of CHB-MIT (derived from
+the same signals): (a) the standard benchmark recordings; (b) the same with
+the discharges slowed to a fundamental gliding within 1.0-1.8 Hz. Grid:
+f_low in {1.0, 1.5} Hz; F* in {1.5, 2, 3, 4}; S* in {0.5, 0.7}. The other
+detector thresholds stay as frozen for H6. **Rule:** among settings with at
+most 2 false detections per hour over all tuning recordings in both
+montages, choose the highest sensitivity on the slowed discharges; break
+ties towards the setting that admits less (higher f_low, then lower F*,
+then lower S*). The full grid is saved whatever the outcome.
+
+**Stop rule.** If no setting meets the false-detection constraint, or the
+selected setting finds fewer than half of the slowed discharges on the
+tuning seeds, the cue is not adopted, the 2 Hz floor stays, and the result
+is reported as negative.
+
+**Evaluation (fixed now), once, on evaluation seeds 1000-1199** (never used
+for tuning), with the selected setting and with the cue off as a baseline:
+
+* **D1 (no regression).** Standard benchmark, referential: sensitivity at
+  least 0.847 (the H2 result) and at most 2 false detections per hour.
+* **D2 (slow discharges).** Slowed benchmark, both montages pooled:
+  sensitivity at least 0.70 with a Wilson 95 % lower bound of at least
+  0.60.
+* **D3 (bipolar montage).** Standard benchmark, bipolar: at most 2 false
+  detections per hour.
+* **D4 (artifacts).** On the event-free adversarial recordings (seeds
+  2000-2019: baseline, eye flutter, chewing, electrode pops, sweat), false
+  detections per hour with the cue are at most the cue-off rate plus
+  0.5 per hour for each artifact.
+* **D5 (the cost of the veto, reported).** Discharges centred on Fp1, Fp2,
+  F7 or F8, at normal and slowed frequency: sensitivity with and without
+  the cue. Normal-frequency sensitivity must be identical (the cue does not
+  act at 2 Hz and above); slowed frontal sensitivity is reported as the
+  cue's known cost, with no threshold. A bilateral, symmetric frontopolar
+  slow seizure is blink-like by this definition and would be rejected.
+* **D6 (chb01, development, reported).** Seizures found and false
+  detections per hour, with and without the cue. Not a test.
+
+**Decision.** The cue is switched on in the shipped detector only if D1-D4
+all pass. Otherwise it stays off and the result is reported as negative.
+Either way, any later change to the detector needs the confirmatory test
+on untouched subjects (ROADMAP step 4) before a detection claim is made.
+
+**Amendment to §11 (2026-10-31, before any tuning or evaluation run).**
+*Excess* is redefined as the RMS of the event segment over the channel's
+**median RMS across non-overlapping 2 s windows**, instead of over the RMS of
+the whole recording. A unit test with a constructed signal showed the
+registered definition was wrong: the whole-recording RMS contains the event
+it is compared with, which caps a strong event's excess near
+sqrt(recording length / event length). A textbook blink field (Fp1 = Fp2 =
+1, frontal row 0.4) scored a frontality of 2.2 in a 120 s recording instead
+of about 4. Nothing else changes: the gate, the grid, the tuning rule, the
+stop rule and D1-D6 stand as registered. No tuning, evaluation or real
+recording had been run with either definition.
+
+## 12. Addendum (2026-10-31): a baseline that excludes the events it measures (v0.2, step 2b)
+
+Written before the change exists in the detector and before the detector has
+been run with it. A development step: it decides whether the change enters
+the detector that will later be frozen for the confirmatory test (ROADMAP
+step 4). chb03 is not used; chb01 is development.
+
+**What the exploratory diagnosis found** (`results/validation/montage_diagnosis.json`,
+`montage_power.json`; synthetic tuning seeds and fresh seeds 5000-5199, never
+used for tuning or evaluation):
+
+* With one source of negatives at a time and no discharges, the frozen
+  detector's false-alarm rate does not depend on the montage (full set: 4.50
+  vs 4.30 per hour). Normal alpha and spindle bursts cause most of it (4.0/h).
+* On 200 fresh benchmark recordings the bipolar rendering raised false alarms
+  from 1.80 to 2.67 per hour (more on 30 recordings, fewer on 8; sign test
+  p = 0.0005), but the same recordings with their discharges removed gave
+  4.17 and 4.65 per hour (p = 0.15).
+* The mechanism: each channel's robust z-score is scaled by the spread of log
+  line length over the whole recording, which contains the discharges. They
+  widen it by a median factor of 1.31 in the referential montage, where the
+  common average carries a discharge into every channel, and 1.09 in the
+  bipolar one. Every other burst then looks less extreme, more so in the
+  referential montage. The benchmark's false-alarm rate is therefore lowered
+  by its own discharges: in the published H2 rows, event-free recordings
+  ran at 2.85 per hour against 1.39 with discharges.
+* Measuring the baseline outside the windows where the detector is active
+  removed the effect: median factors 1.002 (referential) and 1.006
+  (bipolar).
+
+**The change (fixed now).** The z-score is computed in two passes. Pass 1 is
+today's: per channel, median and MAD of log line length over all windows. A
+window is *active* when at least `channel_fraction` of the channels exceed
+`z_threshold` in pass 1; each active window is widened by one step on each
+side. Pass 2 recomputes each channel's median and MAD over the windows that
+are not active, and the final z-scores use them. If fewer than half of the
+windows are left, pass 1 is kept (a recording that is mostly active has no
+quiet baseline to measure). No new threshold is introduced.
+
+**Tuning (fixed now), synthetic tuning seeds 0-59 only.** Because the
+discharges no longer lower the false-alarm rate, the detector's thresholds
+are re-chosen with the rule and grids already used for H2
+(`validation/tune_detector.py`): among settings with at most 2 false
+detections per hour, the highest sensitivity, ties broken towards the more
+conservative setting. The false-alarm constraint and the sensitivity are
+pooled over the standard benchmark rendered in both the referential and the
+CHB-MIT bipolar montage. The blink cue (§11) stays off. The full grid is
+saved whatever the outcome.
+
+**Stop rule.** If no setting meets the constraint, the change is not adopted
+and the detector frozen for H6 stays; the result is reported as the honest
+false-alarm rate of a detector that the benchmark had flattered.
+
+**Evaluation (fixed now), once, on evaluation seeds 1000-1199**, with the
+selected setting, both montages:
+
+* **E1 (false alarms).** At most 2 false detections per hour in each montage,
+  over all recordings and over the event-free recordings separately.
+* **E2 (montage).** Bipolar false alarms at most 0.5 per hour above
+  referential.
+* **E3 (sensitivity).** At least 0.80 in each montage.
+* **E4 (mechanism).** On the recordings with discharges, the median ratio of
+  each channel's spread with and without its discharges lies within
+  0.95-1.05 in both montages.
+* **E5 (chb01, development, reported).** Seizures found and false detections
+  per hour, frozen detector against the new one. Not a test.
+* **Reported in all cases:** the frozen detector's rates on the same
+  recordings, overall and event-free, in both montages.
+
+**Decision.** The change and the re-tuned thresholds enter the shipped
+detector only if E1-E4 all pass. Results measured with the frozen detector
+(H2, H5, H6) are not re-labelled: they stay the results of that detector.

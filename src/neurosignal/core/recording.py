@@ -91,6 +91,20 @@ class Recording:
         return tuple(c for c in self.channels if not _NOT_EEG.match(c))
 
     @property
+    def non_eeg_channels(self) -> tuple[str, ...]:
+        """Channel names that are not scalp EEG, in file order (ISSUE-017)."""
+        return tuple(c for c in self.channels if _NOT_EEG.match(c))
+
+    @property
+    def analysed_channels(self) -> tuple[str, ...]:
+        """Scalp EEG channels that passed quality control: the channels every
+        measurement is computed on. Non-EEG channels (ECG, VNS, respiration)
+        carry no cortical signal, so including them would bias the robust
+        amplitude reference, the spectra, the coupling matrix and the
+        detector's channel vote (ISSUE-017)."""
+        return tuple(c for c in self.eeg_channels if c not in self.bad_channels)
+
+    @property
     def is_bipolar(self) -> bool:
         """True when every EEG channel is a derivation `A-B` between varying
         electrodes. Non-EEG channels (ECG, VNS, "-" placeholders) are ignored,

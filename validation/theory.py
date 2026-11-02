@@ -280,7 +280,7 @@ def _blink_case(seed: int) -> dict[str, Any]:
     rec, gt = make_recording(7000 + seed, spec)
     clean = preprocess(rec, PipelineConfig())
     p = detector_params(PipelineConfig())
-    chans = clean.good_channels
+    chans = clean.analysed_channels
     x = band_limit(clean.data[clean.index(list(chans))], clean.sfreq, p.band_hz)
     z = line_length_z(x, clean.sfreq, p.window_s, p.step_s)
     singles = events_from_z(z, chans, dataclasses.replace(p, merge_gap_s=0.0, min_duration_s=0.0))
@@ -525,7 +525,7 @@ def _robust_case(args: tuple[int, int]) -> dict[str, float]:
     rec, gt = make_recording(8000 + seed, spec)
     clean = preprocess(rec, PipelineConfig())
     p = DetectorParams()
-    chans = clean.good_channels
+    chans = clean.analysed_channels
     x = band_limit(clean.data[clean.index(list(chans))], clean.sfreq, p.band_hz)
     win, step = int(p.window_s * FS), int(p.step_s * FS)
     diff = np.abs(np.diff(x, axis=-1))

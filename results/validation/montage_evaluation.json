@@ -1,0 +1,6885 @@
+{
+  "E5_chb01_development": {
+    "frozen": {
+      "false_detections": 16,
+      "false_per_hour": 1.6587473002159827,
+      "hits": 6,
+      "hours": 9.645833333333334,
+      "seizures": 7
+    },
+    "new": {
+      "false_detections": 12,
+      "false_per_hour": 1.244060475161987,
+      "hits": 6,
+      "hours": 9.645833333333334,
+      "seizures": 7
+    }
+  },
+  "adopted": false,
+  "experiment": "montage_evaluation",
+  "provenance": {
+    "git": {
+      "commit": "8a91f182d27334f7ad7af8495e0992c36faa5cf5",
+      "dirty": false
+    },
+    "python": "3.12.3",
+    "versions": {
+      "matplotlib": "3.11.2",
+      "mne": "1.13.2",
+      "neurosignal": "0.1.2",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "registration": "PROBLEM_STATEMENT \u00a712 (commit 59abd62)",
+  "results": {
+    "bipolar": {
+      "frozen": {
+        "all": {
+          "false_detections": 77,
+          "false_per_hour": 2.3100000000000005,
+          "false_per_hour_upper95": 2.8871409015120446,
+          "hits": 270,
+          "hours": 33.33333333333333,
+          "n_true": 320,
+          "sensitivity": 0.84375,
+          "sensitivity_wilson": [
+            0.7999170588369071,
+            0.8794277069665675
+          ]
+        },
+        "event_free": {
+          "false_detections": 28,
+          "false_per_hour": 4.2,
+          "false_per_hour_upper95": 6.0703964332616165,
+          "hits": 0,
+          "hours": 6.666666666666666,
+          "n_true": 0,
+          "sensitivity": null,
+          "sensitivity_wilson": null
+        }
+      },
+      "new": {
+        "all": {
+          "false_detections": 59,
+          "false_per_hour": 1.7700000000000002,
+          "false_per_hour_upper95": 2.2832111288706196,
+          "hits": 272,
+          "hours": 33.33333333333333,
+          "n_true": 320,
+          "sensitivity": 0.85,
+          "sensitivity_wilson": [
+            0.8067373466249323,
+            0.8849591421931509
+          ]
+        },
+        "event_free": {
+          "false_detections": 21,
+          "false_per_hour": 3.1500000000000004,
+          "false_per_hour_upper95": 4.81533604186153,
+          "hits": 0,
+          "hours": 6.666666666666666,
+          "n_true": 0,
+          "sensitivity": null,
+          "sensitivity_wilson": null
+        }
+      },
+      "spread_ratio_median": 1.0133183191725341
+    },
+    "referential": {
+      "frozen": {
+        "all": {
+          "false_detections": 56,
+          "false_per_hour": 1.6800000000000002,
+          "false_per_hour_upper95": 2.1816603530065546,
+          "hits": 271,
+          "hours": 33.33333333333333,
+          "n_true": 320,
+          "sensitivity": 0.846875,
+          "sensitivity_wilson": [
+            0.8033244349945157,
+            0.8821961923162633
+          ]
+        },
+        "event_free": {
+          "false_detections": 19,
+          "false_per_hour": 2.85,
+          "false_per_hour_upper95": 4.450851939797719,
+          "hits": 0,
+          "hours": 6.666666666666666,
+          "n_true": 0,
+          "sensitivity": null,
+          "sensitivity_wilson": null
+        }
+      },
+      "new": {
+        "all": {
+          "false_detections": 46,
+          "false_per_hour": 1.3800000000000001,
+          "false_per_hour_upper95": 1.840769058795312,
+          "hits": 291,
+          "hours": 33.33333333333333,
+          "n_true": 320,
+          "sensitivity": 0.909375,
+          "sensitivity_wilson": [
+            0.8728777062611501,
+            0.9361601511957152
+          ]
+        },
+        "event_free": {
+          "false_detections": 18,
+          "false_per_hour": 2.7,
+          "false_per_hour_upper95": 4.267385986863925,
+          "hits": 0,
+          "hours": 6.666666666666666,
+          "n_true": 0,
+          "sensitivity": null,
+          "sensitivity_wilson": null
+        }
+      },
+      "spread_ratio_median": 1.0039635435379348
+    }
+  },
+  "rows": [
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1000,
+      "spread_ratio": 1.0034717900881924
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1000,
+      "spread_ratio": 1.0019614335909703
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1001,
+      "spread_ratio": 0.9956513549581658
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1001,
+      "spread_ratio": 1.0170082975695713
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1002,
+      "spread_ratio": 0.9944742648301548
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1002,
+      "spread_ratio": 1.2256003565638305
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1003,
+      "spread_ratio": 0.9978598086383349
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1003,
+      "spread_ratio": 1.0044887807203273
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1004
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1004
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1005,
+      "spread_ratio": 4.262028837709469
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1005,
+      "spread_ratio": 1.0868820195422608
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1006,
+      "spread_ratio": 1.0015346938531817
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1006,
+      "spread_ratio": 1.0130093490869434
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1007,
+      "spread_ratio": 2.9017146384419275
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1007,
+      "spread_ratio": 1.1775053458184843
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1008,
+      "spread_ratio": 3.7024730522379468
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1008,
+      "spread_ratio": 1.4304470012064092
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1009
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1009
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1010,
+      "spread_ratio": 0.9974649878283804
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1010,
+      "spread_ratio": 1.0007436485384122
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1011,
+      "spread_ratio": 5.343358061958314
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1011,
+      "spread_ratio": 1.1490044701480238
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1012,
+      "spread_ratio": 0.9918125036178163
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1012,
+      "spread_ratio": 1.3440106822933333
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1013,
+      "spread_ratio": 0.9882501175810073
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1013,
+      "spread_ratio": 1.0280162015953607
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1014
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1014
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1015,
+      "spread_ratio": 0.9968397166553988
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1015,
+      "spread_ratio": 1.004801655822718
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1016,
+      "spread_ratio": 0.47310227572854197
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1016,
+      "spread_ratio": 1.109566183145997
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1017,
+      "spread_ratio": 1.0206099994358446
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1017,
+      "spread_ratio": 1.0115453216485406
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1018,
+      "spread_ratio": 1.010978973804442
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1018,
+      "spread_ratio": 0.994659881488489
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 4,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1019
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 3,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1019
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1020,
+      "spread_ratio": 0.9913519455260204
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1020,
+      "spread_ratio": 1.4450161084767057
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1021,
+      "spread_ratio": 1.009657103446457
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1021,
+      "spread_ratio": 1.0135344848822938
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1022,
+      "spread_ratio": 3.499344542694617
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1022,
+      "spread_ratio": 1.0140356104230592
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1023,
+      "spread_ratio": 1.0021126920576933
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1023,
+      "spread_ratio": 1.01296913145242
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1024
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1024
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1025,
+      "spread_ratio": 1.0005786169481512
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1025,
+      "spread_ratio": 1.0006016818505512
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1026,
+      "spread_ratio": 0.9919382897838791
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1026,
+      "spread_ratio": 1.1595437566166433
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1027,
+      "spread_ratio": 0.997584333904733
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1027,
+      "spread_ratio": 1.0043744416981901
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1028,
+      "spread_ratio": 0.5142025413277325
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1028,
+      "spread_ratio": 1.0965218268028145
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1029
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1029
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1030,
+      "spread_ratio": 0.9990000705993248
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1030,
+      "spread_ratio": 1.009361456937261
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1031,
+      "spread_ratio": 2.2730487526408822
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1031,
+      "spread_ratio": 1.3691638134022057
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1032,
+      "spread_ratio": 1.0086075927057854
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1032,
+      "spread_ratio": 1.0069740231212838
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1033,
+      "spread_ratio": 0.9929683799104065
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1033,
+      "spread_ratio": 1.0055431196721716
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1034
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1034
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1035,
+      "spread_ratio": 0.9967596805722
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1035,
+      "spread_ratio": 0.9932626782054139
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1036,
+      "spread_ratio": 1.0064764703843307
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1036,
+      "spread_ratio": 1.015935502459631
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1037,
+      "spread_ratio": 1.0143612702523523
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1037,
+      "spread_ratio": 1.0145090057663686
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1038,
+      "spread_ratio": 1.0048649626888677
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1038,
+      "spread_ratio": 1.0800285149666307
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1039
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1039
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1040,
+      "spread_ratio": 0.9925479804842106
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1040,
+      "spread_ratio": 1.3156475267496583
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1041,
+      "spread_ratio": 0.9999999999533273
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1041,
+      "spread_ratio": 1.0022200181590746
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1042,
+      "spread_ratio": 2.7273374650621056
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1042,
+      "spread_ratio": 1.286818516706354
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1043,
+      "spread_ratio": 1.0050353218817236
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1043,
+      "spread_ratio": 1.43288294310178
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1044
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1044
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1045,
+      "spread_ratio": 2.666801983984495
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1045,
+      "spread_ratio": 1.4836452801235267
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1046,
+      "spread_ratio": 0.9869651134675473
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1046,
+      "spread_ratio": 1.0150296965989498
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1047,
+      "spread_ratio": 2.850297031383617
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1047,
+      "spread_ratio": 1.3437607616169445
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1048,
+      "spread_ratio": 0.9966853456185497
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1048,
+      "spread_ratio": 1.0001358325728114
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1049
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1049
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1050,
+      "spread_ratio": 1.0060899897563131
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1050,
+      "spread_ratio": 1.0012262939112595
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1051,
+      "spread_ratio": 0.9498249726135388
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1051,
+      "spread_ratio": 1.4003127011822212
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1052,
+      "spread_ratio": 1.0238410418759445
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1052,
+      "spread_ratio": 0.9962735993627887
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1053,
+      "spread_ratio": 0.9952466222969384
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1053,
+      "spread_ratio": 1.2106978684568404
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1054
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1054
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1055,
+      "spread_ratio": 1.0111968244628686
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1055,
+      "spread_ratio": 1.0136640777632548
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1056,
+      "spread_ratio": 0.9865697766683974
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1056,
+      "spread_ratio": 1.0199928875215765
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1057,
+      "spread_ratio": 1.0016368326498508
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1057,
+      "spread_ratio": 0.999710813907977
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1058,
+      "spread_ratio": 5.239478075486472
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1058,
+      "spread_ratio": 1.803209966543835
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1059
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1059
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1060,
+      "spread_ratio": 1.5343898768845656
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1060,
+      "spread_ratio": 1.1143555449481122
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1061,
+      "spread_ratio": 1.0198335515196648
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1061,
+      "spread_ratio": 0.982096521763768
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1062,
+      "spread_ratio": 0.9942639024852438
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1062,
+      "spread_ratio": 1.0159711177855544
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1063,
+      "spread_ratio": 3.4279562394972087
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1063,
+      "spread_ratio": 1.519742773102832
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1064
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1064
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1065,
+      "spread_ratio": 1.0427948651735055
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1065,
+      "spread_ratio": 0.9992093167509768
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1066,
+      "spread_ratio": 1.0125641883091805
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1066,
+      "spread_ratio": 1.008111639315243
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1067,
+      "spread_ratio": 0.9951459984680194
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1067,
+      "spread_ratio": 1.327310731611196
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1068,
+      "spread_ratio": 0.9946449938711209
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1068,
+      "spread_ratio": 0.9959189242468149
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1069
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1069
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1070,
+      "spread_ratio": 1.0001645899987466
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1070,
+      "spread_ratio": 0.9957413468032892
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1071,
+      "spread_ratio": 0.9922044155830958
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1071,
+      "spread_ratio": 1.5222110252451113
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1072,
+      "spread_ratio": 1.0031072774684706
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1072,
+      "spread_ratio": 1.7287605823268575
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1073,
+      "spread_ratio": 3.2663334862098394
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1073,
+      "spread_ratio": 1.034357482101643
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1074
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1074
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1075,
+      "spread_ratio": 1.0012523356808047
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1075,
+      "spread_ratio": 1.0016285884795406
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1076,
+      "spread_ratio": 3.7460174336647794
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1076,
+      "spread_ratio": 1.111725347786347
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1077,
+      "spread_ratio": 1.0235583753194317
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1077,
+      "spread_ratio": 1.0140635618973488
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1078,
+      "spread_ratio": 0.9722933026485183
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1078,
+      "spread_ratio": 1.698432749880476
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1079
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1079
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1080,
+      "spread_ratio": 1.0052264569455878
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1080,
+      "spread_ratio": 1.0000000000000004
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1081,
+      "spread_ratio": 0.9906343979187962
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1081,
+      "spread_ratio": 0.7399485094703493
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1082,
+      "spread_ratio": 1.0084600355711464
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1082,
+      "spread_ratio": 0.9752450261062399
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1083,
+      "spread_ratio": 1.0007133809004956
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1083,
+      "spread_ratio": 1.0025185697139913
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1084
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1084
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1085,
+      "spread_ratio": 1.0039583816874336
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1085,
+      "spread_ratio": 1.0068796669739806
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1086,
+      "spread_ratio": 3.3523833182741494
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1086,
+      "spread_ratio": 1.0778819519719343
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1087,
+      "spread_ratio": 1.0098405313881356
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1087,
+      "spread_ratio": 0.9960420363074526
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1088,
+      "spread_ratio": 1.0040260069576223
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1088,
+      "spread_ratio": 0.992334623031598
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1089
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1089
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1090,
+      "spread_ratio": 0.9928391145797456
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1090,
+      "spread_ratio": 1.0980519028087972
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1091,
+      "spread_ratio": 1.0093007587436669
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1091,
+      "spread_ratio": 1.0302918285332259
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1092,
+      "spread_ratio": 1.0052507662837102
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1092,
+      "spread_ratio": 1.0003547772783348
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1093,
+      "spread_ratio": 0.9996332841020727
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1093,
+      "spread_ratio": 1.0047098639311642
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1094
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1094
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1095,
+      "spread_ratio": 0.9912772354899081
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1095,
+      "spread_ratio": 0.9998729250333365
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1096,
+      "spread_ratio": 0.9937458055555514
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1096,
+      "spread_ratio": 1.007512579587352
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1097,
+      "spread_ratio": 0.9957529353930124
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1097,
+      "spread_ratio": 1.3524218750162023
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1098,
+      "spread_ratio": 3.787678783200254
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1098,
+      "spread_ratio": 1.1288321756362576
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1099
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1099
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1100,
+      "spread_ratio": 1.0031911746114566
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1100,
+      "spread_ratio": 1.00622929123058
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1101,
+      "spread_ratio": 3.4566316167724573
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1101,
+      "spread_ratio": 1.0534124220187695
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1102,
+      "spread_ratio": 0.9932100252112819
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1102,
+      "spread_ratio": 1.0015190623200785
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1103,
+      "spread_ratio": 0.9861453469313961
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1103,
+      "spread_ratio": 1.004485627424006
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1104
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1104
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1105,
+      "spread_ratio": 1.0128085498492163
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1105,
+      "spread_ratio": 1.0252944924960326
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1106,
+      "spread_ratio": 0.9967004848246093
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1106,
+      "spread_ratio": 1.0072395507123701
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1107,
+      "spread_ratio": 3.352108434262131
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1107,
+      "spread_ratio": 1.0765248461429322
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1108,
+      "spread_ratio": 0.9975493919355681
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1108,
+      "spread_ratio": 1.0016300063455068
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1109
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1109
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1110,
+      "spread_ratio": 2.8210025453737875
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1110,
+      "spread_ratio": 1.051231194207944
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1111,
+      "spread_ratio": 3.5924511404763377
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1111,
+      "spread_ratio": 1.7113175101450673
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1112,
+      "spread_ratio": 1.0024544592887898
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1112,
+      "spread_ratio": 1.5522699978712566
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1113,
+      "spread_ratio": 1.0023734572289786
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1113,
+      "spread_ratio": 1.0095743971712456
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1114
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1114
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1115,
+      "spread_ratio": 0.9966286445439095
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1115,
+      "spread_ratio": 1.0044754927616597
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1116,
+      "spread_ratio": 3.7765618760511193
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1116,
+      "spread_ratio": 1.5516262216989698
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1117,
+      "spread_ratio": 1.001579767383931
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1117,
+      "spread_ratio": 1.005624103073531
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1118,
+      "spread_ratio": 3.047807525170212
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1118,
+      "spread_ratio": 1.1102196864361638
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1119
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1119
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1120,
+      "spread_ratio": 1.0116608580116933
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1120,
+      "spread_ratio": 1.0057561797115908
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1121,
+      "spread_ratio": 1.004160487621363
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1121,
+      "spread_ratio": 0.9988568900363128
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1122,
+      "spread_ratio": 1.020837846726697
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1122,
+      "spread_ratio": 1.0057857112401114
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1123,
+      "spread_ratio": 3.840288411664339
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1123,
+      "spread_ratio": 1.1178386833334921
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1124
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1124
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1125,
+      "spread_ratio": 0.9959895063908989
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1125,
+      "spread_ratio": 0.9867726446108304
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1126,
+      "spread_ratio": 1.063268675492826
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1126,
+      "spread_ratio": 1.0
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1127,
+      "spread_ratio": 1.0283879456511174
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1127,
+      "spread_ratio": 0.9904587478146407
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1128,
+      "spread_ratio": 1.014419134560597
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1128,
+      "spread_ratio": 1.012592750860167
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1129
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1129
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1130,
+      "spread_ratio": 0.9870712770183431
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1130,
+      "spread_ratio": 1.4705536688467091
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1131,
+      "spread_ratio": 3.457234954561029
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1131,
+      "spread_ratio": 1.21438409201471
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1132,
+      "spread_ratio": 0.997302078738731
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1132,
+      "spread_ratio": 1.4006590984047027
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1133,
+      "spread_ratio": 1.0394288766743318
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1133,
+      "spread_ratio": 1.0220091890356255
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1134
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1134
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1135,
+      "spread_ratio": 3.902840800446305
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1135,
+      "spread_ratio": 1.118485670246765
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1136,
+      "spread_ratio": 0.9897003672157936
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1136,
+      "spread_ratio": 1.0198303654355687
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1137,
+      "spread_ratio": 1.0012062281974201
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1137,
+      "spread_ratio": 1.0013960547764
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1138,
+      "spread_ratio": 0.987956532861972
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1138,
+      "spread_ratio": 1.2400898718596554
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1139
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1139
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1140,
+      "spread_ratio": 1.0048917517968337
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1140,
+      "spread_ratio": 1.016874183550034
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1141,
+      "spread_ratio": 1.0056733476678392
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1141,
+      "spread_ratio": 1.0029295883360976
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1142,
+      "spread_ratio": 1.002720663234316
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1142,
+      "spread_ratio": 1.013384937457001
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1143,
+      "spread_ratio": 0.9862314391157161
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1143,
+      "spread_ratio": 0.9968176702180093
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1144
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1144
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1145,
+      "spread_ratio": 0.9866124061092023
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1145,
+      "spread_ratio": 0.983614832608484
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1146,
+      "spread_ratio": 0.9977471590520051
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1146,
+      "spread_ratio": 1.3316229993389448
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1147,
+      "spread_ratio": 1.00058135369073
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1147,
+      "spread_ratio": 0.9959784026799091
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1148,
+      "spread_ratio": 1.0231024321983633
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1148,
+      "spread_ratio": 1.142221497931454
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 2,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1149
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1149
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1150,
+      "spread_ratio": 0.9983252563405284
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1150,
+      "spread_ratio": 1.0119284268418038
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1151,
+      "spread_ratio": 1.000098836731623
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1151,
+      "spread_ratio": 1.0137768146068356
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1152,
+      "spread_ratio": 0.9916793676479585
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1152,
+      "spread_ratio": 1.0124698171994215
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1153,
+      "spread_ratio": 3.6315323863761666
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1153,
+      "spread_ratio": 1.0768907909077057
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1154
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1154
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1155,
+      "spread_ratio": 1.0132613368082484
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1155,
+      "spread_ratio": 1.0315269847596191
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1156,
+      "spread_ratio": 1.0009419748284414
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1156,
+      "spread_ratio": 1.0015791943445427
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1157,
+      "spread_ratio": 1.0028768197552174
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1157,
+      "spread_ratio": 1.0033457191203974
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1158,
+      "spread_ratio": 4.634659072206364
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1158,
+      "spread_ratio": 1.8102397169413154
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1159
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1159
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1160,
+      "spread_ratio": 1.0055908723158191
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1160,
+      "spread_ratio": 1.459003252493916
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 2,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1161,
+      "spread_ratio": 1.0014727239949222
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1161,
+      "spread_ratio": 1.0063565517548945
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1162,
+      "spread_ratio": 1.011247798070389
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1162,
+      "spread_ratio": 1.0046801515139232
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1163,
+      "spread_ratio": 0.9939375953777986
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1163,
+      "spread_ratio": 1.0039733437364378
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1164
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1164
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1165,
+      "spread_ratio": 1.0009432651713317
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1165,
+      "spread_ratio": 1.0083076584183335
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1166,
+      "spread_ratio": 1.0161926515228685
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1166,
+      "spread_ratio": 1.0248819130095383
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1167,
+      "spread_ratio": 3.5636896367098996
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1167,
+      "spread_ratio": 1.4959137899467452
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1168,
+      "spread_ratio": 1.0063420373124536
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1168,
+      "spread_ratio": 1.006060379623575
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1169
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1169
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1170,
+      "spread_ratio": 0.9986150233605531
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1170,
+      "spread_ratio": 1.061833955969698
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1171,
+      "spread_ratio": 5.311397915320643
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1171,
+      "spread_ratio": 1.1522014983579725
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1172,
+      "spread_ratio": 1.0008354340630181
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1172,
+      "spread_ratio": 1.0056257688723258
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1173,
+      "spread_ratio": 1.003968705388436
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1173,
+      "spread_ratio": 1.0147970279409715
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1174
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1174
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1175,
+      "spread_ratio": 1.0000000000000564
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1175,
+      "spread_ratio": 1.0055907239411295
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1176,
+      "spread_ratio": 1.0058000925518595
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1176,
+      "spread_ratio": 0.9982179284875313
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1177,
+      "spread_ratio": 1.012429696384768
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1177,
+      "spread_ratio": 1.0070682902702925
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1178,
+      "spread_ratio": 1.0180322534386796
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1178,
+      "spread_ratio": 1.8100781659544691
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1179
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1179
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1180,
+      "spread_ratio": 3.2595994942950837
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1180,
+      "spread_ratio": 1.0
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1181,
+      "spread_ratio": 0.9801160143645902
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1181,
+      "spread_ratio": 0.9944665465045963
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1182,
+      "spread_ratio": 4.249263713400902
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1182,
+      "spread_ratio": 1.1208840960277178
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1183,
+      "spread_ratio": 4.26283655776468
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1183,
+      "spread_ratio": 1.1844229865426745
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1184
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1184
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1185,
+      "spread_ratio": 0.994746405195999
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "seed": 1185,
+      "spread_ratio": 1.013633742268924
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1186,
+      "spread_ratio": 1.0139921131351972
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1186,
+      "spread_ratio": 0.9992710860152509
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1187,
+      "spread_ratio": 1.0080842686073774
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1187,
+      "spread_ratio": 1.0084764370212094
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1188,
+      "spread_ratio": 1.0146654712090037
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1188,
+      "spread_ratio": 1.0069913319875181
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1189
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1189
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1190,
+      "spread_ratio": 0.9800181071797129
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1190,
+      "spread_ratio": 1.4343432372833054
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1191,
+      "spread_ratio": 0.9963200698988796
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1191,
+      "spread_ratio": 1.0113453105051824
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1192,
+      "spread_ratio": 1.0074420698483129
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1192,
+      "spread_ratio": 0.9963126974414686
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1193,
+      "spread_ratio": 0.9984395110611739
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1193,
+      "spread_ratio": 1.0008371260309281
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1194
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1194
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1195,
+      "spread_ratio": 1.0101196032742852
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1195,
+      "spread_ratio": 1.0132517008880675
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1196,
+      "spread_ratio": 0.9844186484305851
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1196,
+      "spread_ratio": 0.9882286679761318
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1197,
+      "spread_ratio": 1.044893910722932
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 1,
+        "n_true": 2
+      },
+      "seed": 1197,
+      "spread_ratio": 1.0121427327595098
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 3,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1198,
+      "spread_ratio": 1.8692651675970868
+    },
+    {
+      "event_free": false,
+      "frozen": {
+        "false": 3,
+        "hits": 2,
+        "n_true": 2
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 1,
+        "hits": 2,
+        "n_true": 2
+      },
+      "seed": 1198,
+      "spread_ratio": 1.070600109471193
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "referential",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1199
+    },
+    {
+      "event_free": true,
+      "frozen": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "hours": 0.16666666666666666,
+      "montage": "bipolar",
+      "new": {
+        "false": 0,
+        "hits": 0,
+        "n_true": 0
+      },
+      "seed": 1199
+    }
+  ],
+  "seeds": [
+    1000,
+    1199
+  ],
+  "selected": {
+    "channel_fraction": 0.05,
+    "merge_gap_s": 1.0,
+    "min_duration_s": 15.0,
+    "rhythm_hz": [
+      2.0,
+      7.5
+    ],
+    "z_threshold": 2.5
+  },
+  "verdict": {
+    "E1": false,
+    "E2": true,
+    "E3": true,
+    "E4": true
+  }
+}

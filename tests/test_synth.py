@@ -77,3 +77,38 @@ def test_ground_truth_lists_events_and_bad_channels():
         assert 0 < e.onset_s < e.offset_s < rec.duration_s
     # ground truth never leaks into the recording
     assert rec.annotations == ()
+
+
+def test_default_event_options_reproduce_existing_recordings():
+    """PROBLEM_STATEMENT §11: new generator options must not change the
+    recordings every earlier result was measured on."""
+    from validation.common import detection_spec
+
+    rec, gt = make_recording(0, detection_spec(0))
+    assert hashlib.sha256(rec.data.tobytes()).hexdigest()[:16] == "57dc97656131d757"
+    assert [round(e.onset_s, 3) for e in gt.events] == [88.056, 235.914]
+
+
+def test_slow_discharges_have_a_slow_fundamental():
+    t = np.arange(0, 30, 1 / 256)
+    wave = spike_wave(t, 1.6, 1.2)
+    f, pxx = signal.welch(wave, fs=256, nperseg=1024)
+    assert 1.0 <= f[np.argmax(pxx)] <= 1.8
+
+
+def test_discharges_can_be_centred_on_chosen_electrodes():
+    spec = SynthSpec(duration_s=200.0, n_events=2, event_centres=("Fp1", "Fp2"))
+    _, gt = make_recording(5, spec)
+    for e in gt.events:
+        assert "Fp1" in e.channels or "Fp2" in e.channels
+
+
+def test_bipolar_rendering_matches_chbmit():
+    from neurosignal.synth.eeg import bipolar_montage
+
+    rec, _ = make_recording(1, SynthSpec(duration_s=30.0))
+    bip = bipolar_montage(rec)
+    assert bip.channels[0] == "FP1-F7" and bip.channels[-1] == "CZ-PZ"
+    assert bip.n_channels == 18 and bip.is_bipolar
+    i, j = rec.channels.index("Fp1"), rec.channels.index("F7")
+    np.testing.assert_allclose(bip.data[0], rec.data[i] - rec.data[j])
